@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/3rdParty/SimpliCity_Sandy_Beach/Demo/demo_scene_1 (SimpliCity Sandy
+    Beach).unity
+  isLoaded: 1
+  isActive: 1
