@@ -15,8 +15,9 @@ public class buildingCollision : MonoBehaviour {
         if (collision.gameObject.tag.Equals("Player") && GetComponent<Rigidbody>().isKinematic) // TODO: scale with "Impact"
         {
             float impact = collision.gameObject.GetComponent<CARnageCar>().impact;
-            Debug.Log("car collision: " + collision.relativeVelocity.magnitude * impact);
-            damageMe(collision.relativeVelocity.magnitude * impact);
+            //Debug.Log("car collision: " + collision.relativeVelocity.magnitude * impact);
+            damageMe(collision.relativeVelocity.magnitude * impact, true);
+
         }
 
         //if (collision.gameObject.tag.Equals("BuildingPart") && collision.gameObject.GetComponent<buildingCollision>().getResidualForce() * impact >= criticalForce)
@@ -26,10 +27,18 @@ public class buildingCollision : MonoBehaviour {
         //}
     }
 
-    void damageMe(float force)
+    void damageMe(float force, bool initialForce)
     {
         if (force >= criticalForce)
         {
+            if(initialForce)
+            {
+                // Particle FX: Get Building Center and align FX
+                GameObject fx = Instantiate(Resources.Load<GameObject>("FX_BuildingDamage"), transform);
+                fx.transform.LookAt(transform.parent);
+                fx.transform.Rotate(0, 90, 0);
+            }
+
             destroyMe(force);
         }
     }
@@ -65,7 +74,8 @@ public class buildingCollision : MonoBehaviour {
         if(transform.parent.GetComponent<Building>().getBuildingParts().Count <= 700)
         {
             // Destroy entirely
-            foreach(GameObject part in transform.parent.GetComponent<Building>().getBuildingParts())
+            Instantiate(Resources.Load<GameObject>("FX_Building_Explosion"), transform.parent.transform);
+            foreach (GameObject part in transform.parent.GetComponent<Building>().getBuildingParts())
             {
                 part.GetComponent<buildingCollision>().destroyMe(-1);
             }
@@ -74,23 +84,8 @@ public class buildingCollision : MonoBehaviour {
 
         GameObject go = transform.parent.GetComponent<Building>().getBuildingParts()[Random.Range(0, transform.parent.GetComponent<Building>().getBuildingParts().Count)];
         
-        Debug.Log("residual damage: " + residualForce);
+        //Debug.Log("residual damage: " + residualForce);
         //transform.parent.GetComponent<Building>().buildingParts.Remove(go);
-        go.GetComponent<buildingCollision>().damageMe(residualForce);
-
-        //float mindist = float.PositiveInfinity;
-        //Transform minTrans = null;
-        //foreach (Transform part in parts)
-        //{
-        //    if (part.gameObject.GetComponent<buildingCollision>() != null && !part.gameObject.GetComponent<buildingCollision>().destroyed && Mathf.Pow(Vector3.Distance(part.position, transform.position), 2) < mindist)
-        //    {
-        //        mindist = Mathf.Pow(Vector3.Distance(part.position, transform.position), 2);
-        //        minTrans = part;
-        //    }
-        //}
-        //if (minTrans != null)
-        //    minTrans.GetComponent<buildingCollision>().damageMe(residualForce);
-
-        //calcAdditionalDamage();
+        go.GetComponent<buildingCollision>().damageMe(residualForce, false);
     }
 }

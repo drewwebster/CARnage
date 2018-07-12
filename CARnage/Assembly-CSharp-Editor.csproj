@@ -185,6 +185,9 @@
     <Compile Include="Assets\3rdParty\Standard Assets\Editor\Water\Water4\WaterBaseEditor.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Editor\Water\Water4\WaterEditorUtility.cs" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Editor\PluginResources\Strings\cr_strings_en.xml" />
+    <Reference Include="Assembly-UnityScript">
+      <HintPath>D:/CARnage/CARnage/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/CARnage/CARnage/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

@@ -235,9 +235,11 @@ public class RCC_Camera : MonoBehaviour{
 
 		}
 
-		if(Input.GetKeyDown(RCCSettings.changeCameraKB)){
-			ChangeCamera();
-		}
+        //if(Input.GetKeyDown(RCCSettings.changeCameraKB)){
+        //	ChangeCamera();
+        //}
+        if (Input.GetKeyDown(KeyCode.C))
+            switchTopModes();
 
 	}
 
@@ -392,6 +394,15 @@ public class RCC_Camera : MonoBehaviour{
 			fixedCam.transform.SetParent(null);
 
 	}
+    
+    bool lockZ = true;
+    void switchTopModes()
+    {
+        if (lockZ)
+            lockZ = false;
+        else
+            lockZ = true;
+    }
 
 	void TOP(){
 
@@ -412,10 +423,13 @@ public class RCC_Camera : MonoBehaviour{
 
 		transform.position = SmoothApproach(pastFollowerPosition, pastTargetPosition, targetPosition, Mathf.Clamp(.5f, Mathf.Abs(speed), Mathf.Infinity));
 
-        Vector3 fixedAngle = new Vector3(topCameraAngle.x, playerCar.transform.rotation.eulerAngles.y, topCameraAngle.z); // CUSTOM
-        
-        //transform.rotation = Quaternion.Euler (topCameraAngle);
-        transform.rotation = Quaternion.Euler (fixedAngle);
+        if(lockZ)
+        {
+            Vector3 fixedAngle = new Vector3(topCameraAngle.x, playerCar.transform.rotation.eulerAngles.y, topCameraAngle.z); // CUSTOM
+            transform.rotation = Quaternion.Euler(fixedAngle);
+        }
+        else
+            transform.rotation = Quaternion.Euler (topCameraAngle);
 
         pastFollowerPosition = transform.position;
 		pastTargetPosition = targetPosition;

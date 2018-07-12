@@ -172,7 +172,6 @@
     <Compile Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Scripts\Tonemapping.cs" />
     <Compile Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Scripts\Triangles.cs" />
     <Compile Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
-    <Compile Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Environment\Water\Water\Scripts\Water.cs" />
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Scripts\ColorPickerBySliders.cs" />
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Scripts\Demo Scene Scripts\RCC_ResetScene.cs" />
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Scripts\Enter-Exit\RCC_EnterExitCar.cs" />
@@ -222,7 +221,6 @@
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Scripts\TerrainSurface.cs" />
     <Compile Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Demo\Scripts\AdvancedCA.cs" />
     <Compile Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Demo\Scripts\DynamicDOF.cs" />
-    <Compile Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Demo\Shaders\Vintage\Vintage.cs" />
     <Compile Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
     <Compile Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\BlurEffect.cs" />
     <Compile Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\ColorCorrectionEffect.cs" />
@@ -337,8 +335,11 @@
     <Compile Include="Assets\Building.cs" />
     <Compile Include="Assets\buildingCollision.cs" />
     <Compile Include="Assets\CARnageCar.cs" />
+    <Compile Include="Assets\CARnageWeapon.cs" />
     <Compile Include="Assets\CARS\FireGTO\Scripts\TakeScreenshot.cs" />
+    <Compile Include="Assets\damageCar.cs" />
     <Compile Include="Assets\freezeRotation.cs" />
+    <Compile Include="Assets\ProjectileTrajectory.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
@@ -347,6 +348,7 @@
     <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
+    <Compile Include="Assets\scaleEmission.cs" />
     <Compile Include="Assets\SimpleCarController.cs" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\SimpleClear.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
