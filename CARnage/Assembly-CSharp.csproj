@@ -334,6 +334,7 @@
     <Compile Include="Assets\AttachOnStart.cs" />
     <Compile Include="Assets\Building.cs" />
     <Compile Include="Assets\buildingCollision.cs" />
+    <Compile Include="Assets\bulletCase.cs" />
     <Compile Include="Assets\CARnageCar.cs" />
     <Compile Include="Assets\CARnageWeapon.cs" />
     <Compile Include="Assets\CARS\FireGTO\Scripts\TakeScreenshot.cs" />
@@ -349,6 +350,7 @@
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
     <Compile Include="Assets\scaleEmission.cs" />
+    <Compile Include="Assets\Scripts\CARnageAuxiliary.cs" />
     <Compile Include="Assets\SimpleCarController.cs" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\SimpleClear.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />

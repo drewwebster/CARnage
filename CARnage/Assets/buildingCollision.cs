@@ -7,7 +7,7 @@ public class buildingCollision : MonoBehaviour {
     float criticalForce = 10; // 10-15?
     //float impact = 10;
     public bool destroyed = false;
-
+    
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log(collision.gameObject.name);
@@ -27,11 +27,11 @@ public class buildingCollision : MonoBehaviour {
         //}
     }
 
-    void damageMe(float force, bool initialForce)
+    public void damageMe(float force, bool initialForce)
     {
         if (force >= criticalForce)
         {
-            if(initialForce)
+            if (initialForce)
             {
                 // Particle FX: Get Building Center and align FX
                 GameObject fx = Instantiate(Resources.Load<GameObject>("FX_BuildingDamage"), transform);
@@ -41,6 +41,8 @@ public class buildingCollision : MonoBehaviour {
 
             destroyMe(force);
         }
+        else
+            criticalForce -= force; // Damage the buildingPart
     }
 
     void destroyMe(float force)

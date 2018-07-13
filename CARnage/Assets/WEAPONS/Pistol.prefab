@@ -114,7 +114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1285168200825702
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,8 +346,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1269294471479400}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.22379807, z: 0.4605}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 0, y: 0.22379807, z: 0.6136}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 4060609180994182}
   m_RootOrder: 0
@@ -1050,7 +1050,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748138622da47484f891369d42929c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 5
+  shotDelay: 0.5
+  magazineSize: 20
+  reloadTime: 2
+  projectileSpeed: 2000
+  weaponSide: 0
   Projectile: {fileID: 1928108072952912, guid: c7420ae6a7072764190ddc12a9c23a64, type: 2}
+  Projectile_Bulletcase: {fileID: 1105117745786558, guid: 07f4d5f111b9e1b4c931a668361fa8ed,
+    type: 2}
+  destroyAfterSec: 10
+  addAngle: 90
 --- !u!114 &114831459778885638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1062,7 +1072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a40159c6e62584a913351c1e7b02e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 10
+  rel_car: {fileID: 0}
 --- !u!123 &123127840506572116
 LensFlare:
   m_ObjectHideFlags: 1

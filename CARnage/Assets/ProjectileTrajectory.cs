@@ -4,10 +4,21 @@ using UnityEngine;
 
 public class ProjectileTrajectory : MonoBehaviour {
 
-    public float projectileSpeed = 10;	
+    public GameObject rel_car;
+    public CARnageWeapon rel_weapon;
 
-	// Update is called once per frame
-	void Update () {
-        transform.Translate(0, Time.deltaTime * projectileSpeed, 0);
-	}
+    private void OnTriggerEnter(Collider other)
+    {
+        //Debug.Log(other.gameObject.name);
+        if(!CARnageAuxiliary.getCarFromHitbox(other.gameObject)) // no friendly fire in projectiles
+        {
+            if(other.gameObject.GetComponent<buildingCollision>() != null)
+            {
+                // damage to building
+                other.gameObject.GetComponent<buildingCollision>().damageMe(rel_weapon.Damage,true);
+                Debug.Log("bullet > building");
+            }
+            Destroy(gameObject);
+        }
+    }
 }
