@@ -85,7 +85,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1928108072952912}
-  m_Mesh: {fileID: 4300000, guid: 61e9e679c186cc1438c26891b8cfb0e4, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 91a3238a94a804c4cb4779a42f414810, type: 3}
 --- !u!54 &54833158624998044
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -124,4 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a40159c6e62584a913351c1e7b02e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 10
+  rel_car: {fileID: 0}
+  rel_weapon: {fileID: 0}

@@ -162,6 +162,8 @@
     <Compile Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Editor\Windows\CNFieldWindowBig.cs" />
     <Compile Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Editor\Windows\CNFieldWindowSmall.cs" />
     <Compile Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Editor\Windows\CNItemPopupWindow.cs" />
+    <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Editor\CFX_SpawnSystemEditor.cs" />
+    <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Editor\CFXEasyEditor.cs" />
     <Compile Include="Assets\3rdParty\Low Poly Ultimate Pack\Shaders\UnityVC\Editor\StandardShaderVCGUI.cs" />
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Editor\RCC_AIBZEditor.cs" />
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Editor\RCC_AIEditor.cs" />

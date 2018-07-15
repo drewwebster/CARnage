@@ -137,6 +137,17 @@
     <Compile Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Scripts\RuntimeScripts\Camera\CarFPSCounter.cs" />
     <Compile Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Scripts\RuntimeScripts\Miscellaneous\CarBalltreeMeshesManager.cs" />
     <Compile Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Scripts\RuntimeScripts\Miscellaneous\CRBalltreeAsset.cs" />
+    <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Demo\Assets\CFX_Demo.cs" />
+    <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
+    <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
+    <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
+    <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
+    <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Scripts\CFX_AutodestructWhenNoChildren.cs" />
+    <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
+    <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
+    <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Scripts\CFX_ShurikenThreadFix.cs" />
+    <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Spawn System\CFX_SpawnSystem.cs" />
+    <Compile Include="Assets\3rdParty\Cartoon FX Pack\FX Mega Pack\Scripts\SmoothCameraOrbit.cs" />
     <Compile Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Scripts\Antialiasing.cs" />
     <Compile Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Scripts\Bloom.cs" />
     <Compile Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Scripts\BloomAndFlares.cs" />
@@ -373,13 +384,16 @@
     <None Include="Assets\3rdParty\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Shaders\Oven\CFX Corpuscles Depth.shader" />
+    <None Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Shaders (Mobile)\CFXM_MobileParticleAdd_Alpha8.shader" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Shaders\CFX Standard Specular (double sided).shader" />
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SunShaftsComposite.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionCurves.shader" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Shaders\Oven\CFX-COMMON.cginc" />
+    <None Include="Assets\3rdParty\Cartoon FX Pack\FX Mega Pack 2\FX Mega Pack 2 - Readme.txt" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ScreenSpaceAmbientObscurance.shader" />
+    <None Include="Assets\3rdParty\Cartoon FX Pack\Shaders\CFX2 Particle Alpha Blend Add.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Environment\Water (Basic)\DO_NOT_WORK_IN_VR.txt" />
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\NFAA.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceRaytrace.cginc" />
@@ -388,10 +402,12 @@
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\VignetteShader.shader" />
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
+    <None Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\CartoonFX Releases Notes.txt" />
     <None Include="Assets\3rdParty\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularSmooth.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceAmbientObscurance.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Effects\Projectors\Guidelines.txt" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Shaders\Oven\CFX Fluid Compositor.shader" />
+    <None Include="Assets\3rdParty\Cartoon FX Pack\Shaders\CFX3 Invert.shader" />
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\MotionBlur.shader" />
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\MobileBloom.shader" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Resources\CFX Standard VA.shader" />
@@ -402,6 +418,7 @@
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\MinMaxReduction.shader" />
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\SSAA.shader" />
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\RadialBlur.shader" />
+    <None Include="Assets\3rdParty\Cartoon FX Pack\Shaders\CFX3 Multiply Color.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Resources\CarCSGPUSkinning.compute" />
@@ -409,6 +426,7 @@
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ContrastComposite.shader" />
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset3.shader" />
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\FisheyeShader.shader" />
+    <None Include="Assets\3rdParty\Cartoon FX Pack\FX Mega Pack 2\Scripts\Simple Particle Scaler\Simple Particle Scaler - Readme.txt" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Vehicles\Car\Shaders\DiffuseReflectiveShader.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />
@@ -417,6 +435,7 @@
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset3.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter2.shader" />
     <None Include="Assets\3rdParty\SimpleMilitary\ReadMe.txt" />
+    <None Include="Assets\3rdParty\Cartoon FX Pack\Shaders\CFX2 Particle Alpha Blend Tint.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MultiPassHollywoodFlares.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Luminance.shader" />
@@ -468,6 +487,7 @@
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\Luminance.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\VignetteShader.shader" />
+    <None Include="Assets\3rdParty\Cartoon FX Pack\FX Mega Pack\FX Mega Pack - Readme.txt" />
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionSelective.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
@@ -477,6 +497,8 @@
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\CameraMotionBlurDX11.shader" />
     <None Include="Assets\3rdParty\SimpliCity Extra Roads and Bridges\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\SeparableBlurPlus.shader" />
+    <None Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Demo\Assets\CFX_Demo_WaterWiggle.shader" />
+    <None Include="Assets\3rdParty\Cartoon FX Pack\FX Mega Pack 2\Shaders\Mobile Vertex Color Cull Off.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
     <None Include="Assets\3rdParty\SimpleApocalypse\_Materials\UnlitVertexColour_Alpha.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA3Console.shader" />
@@ -554,6 +576,7 @@
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Shaders\CFX Standard (interior).shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />
+    <None Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\CartoonFX Readme.txt" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\CreaseApply.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />

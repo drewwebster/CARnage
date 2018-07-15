@@ -1228,6 +1228,7 @@ MonoBehaviour:
   Projectile_Bulletcase: {fileID: 1105117745786558, guid: 07f4d5f111b9e1b4c931a668361fa8ed,
     type: 2}
   Magazine: {fileID: 1208365741665328, guid: d6374a7b7c180004aac69c3bcfb8b3bb, type: 2}
+  shootFX: {fileID: 1860845095675656, guid: b40ef2eb55f1b344dbf2644da69362a4, type: 2}
   destroyAfterSec: 10
   ShootSound: {fileID: 8300000, guid: d6cd83642b48c6b41bc965e02bb7246a, type: 3}
   ReloadSound: {fileID: 8300000, guid: c20cd36a501755744ae56a687ba4bb79, type: 3}

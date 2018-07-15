@@ -16,6 +16,7 @@ public class CARnageWeapon : MonoBehaviour {
     public GameObject Projectile;
     public GameObject Projectile_Bulletcase;
     public GameObject Magazine;
+    public GameObject shootFX;
     public float destroyAfterSec = 10;
     bool firing = false;
     bool reloading = false;
@@ -76,6 +77,7 @@ public class CARnageWeapon : MonoBehaviour {
 
         GameObject go = Instantiate(Projectile, transform); // parent transform for intialisation
         GameObject goBC = Instantiate(Projectile_Bulletcase, transform); // parent transform for intialisation
+        GameObject goFX = Instantiate(shootFX, transform);
         go.transform.parent = null;
         goBC.transform.parent = null;
         go.GetComponent<Rigidbody>().velocity = transform.parent.parent.parent.GetComponentInChildren<Rigidbody>().velocity;
@@ -84,6 +86,13 @@ public class CARnageWeapon : MonoBehaviour {
         go.GetComponent<ProjectileTrajectory>().rel_weapon = this;
         Destroy(go, destroyAfterSec);
         Destroy(goBC, destroyAfterSec);
+
+        //foreach(ParticleSystem ps in shootFX.GetComponentsInChildren<ParticleSystem>())
+        //{
+        //    ps.Stop();
+        //    ps.Play();
+        //}
+
         Invoke("resetFiringDelay", shotDelay);
         GetComponent<AudioSource>().PlayOneShot(ShootSound);
         magazineLoaded--;
