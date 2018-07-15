@@ -8,17 +8,21 @@ public class CARnageWeapon : MonoBehaviour {
     public float shotDelay;
     public int magazineSize;
     public float reloadTime;
+    public bool automatic;
 
     public float projectileSpeed = 1000;
 
     public WeaponSide weaponSide = WeaponSide.LEFT;
     public GameObject Projectile;
     public GameObject Projectile_Bulletcase;
+    public GameObject Magazine;
     public float destroyAfterSec = 10;
     bool firing = false;
     bool reloading = false;
     int magazineLoaded;
 
+    public AudioClip ShootSound;
+    public AudioClip ReloadSound;
 
     public int addAngle;
     GameObject rel_car;
@@ -43,8 +47,12 @@ public class CARnageWeapon : MonoBehaviour {
     float minAngleR = -90;
     float maxAngleR = 90;
     // Update is called once per frame
-    void Update () {
-		if((weaponSide == WeaponSide.LEFT && Input.GetMouseButtonDown(0)) || (weaponSide == WeaponSide.RIGHT && Input.GetMouseButtonDown(1)))
+    void Update ()
+    {
+        bool leftFiring = Input.GetMouseButtonDown(0) || (automatic && Input.GetMouseButton(0));
+        bool rightFiring = Input.GetMouseButtonDown(1) || (automatic && Input.GetMouseButton(1));
+
+        if ((weaponSide == WeaponSide.LEFT && leftFiring) || (weaponSide == WeaponSide.RIGHT && rightFiring))
             shoot();
 
         calcWeaponAngle();
@@ -57,7 +65,15 @@ public class CARnageWeapon : MonoBehaviour {
         if (reloading)
             return;
 
+        if (magazineLoaded == 0)
+        {
+            reload();
+            return;
+        }
+
         firing = true;
+        CARnageAuxiliary.playAnimationTimeScaled(gameObject, "Shoot", shotDelay);
+
         GameObject go = Instantiate(Projectile, transform); // parent transform for intialisation
         GameObject goBC = Instantiate(Projectile_Bulletcase, transform); // parent transform for intialisation
         go.transform.parent = null;
@@ -69,17 +85,26 @@ public class CARnageWeapon : MonoBehaviour {
         Destroy(go, destroyAfterSec);
         Destroy(goBC, destroyAfterSec);
         Invoke("resetFiringDelay", shotDelay);
+        GetComponent<AudioSource>().PlayOneShot(ShootSound);
         magazineLoaded--;
-        if(magazineLoaded == 0)
-        {
-            reloading = true;
-            Invoke("resetReloadingDelay", reloadTime);
-        }
     }
+
+
 
     public void resetFiringDelay()
     {
         firing = false;
+    }
+
+    public void reload()
+    {
+        reloading = true;
+        Invoke("resetReloadingDelay", reloadTime);
+        CARnageAuxiliary.playAnimationTimeScaled(gameObject, "Reload", reloadTime);
+        GameObject go = Instantiate(Magazine, transform);
+        go.transform.parent = null;
+        Destroy(go, destroyAfterSec);
+        GetComponent<AudioSource>().PlayOneShot(ReloadSound);
     }
     public void resetReloadingDelay()
     {

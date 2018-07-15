@@ -16,7 +16,7 @@ public class ProjectileTrajectory : MonoBehaviour {
             {
                 // damage to building
                 other.gameObject.GetComponent<buildingCollision>().damageMe(rel_weapon.Damage,true);
-                Debug.Log("bullet > building");
+                //Debug.Log("bullet > building");
             }
             Destroy(gameObject);
         }
