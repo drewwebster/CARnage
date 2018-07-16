@@ -466,6 +466,21 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/2015/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="VacuumShaders.LowPolyMeshGeneratorVC">
+      <HintPath>D:/CARnage/CARnage/Assets/3rdParty/VacuumShaders/Low Poly Mesh Generator/Editor/VacuumShaders.LowPolyMeshGeneratorVC.dll</HintPath>
+    </Reference>
+    <Reference Include="VacuumShaders.LowPolyMeshGenerator">
+      <HintPath>D:/CARnage/CARnage/Assets/3rdParty/VacuumShaders/Low Poly Mesh Generator/Scripts/VacuumShaders.LowPolyMeshGenerator.dll</HintPath>
+    </Reference>
+    <Reference Include="VacuumShaders">
+      <HintPath>D:/CARnage/CARnage/Assets/3rdParty/VacuumShaders/Editor/VacuumShaders.dll</HintPath>
+    </Reference>
+    <Reference Include="VacuumShaders.VertexColorShaders">
+      <HintPath>D:/CARnage/CARnage/Assets/3rdParty/VacuumShaders/Vertex Color Shaders/Editor/VacuumShaders.VertexColorShaders.dll</HintPath>
+    </Reference>
+    <Reference Include="VacuumShaders.LowPolyMeshGenerator_Editor">
+      <HintPath>D:/CARnage/CARnage/Assets/3rdParty/VacuumShaders/Low Poly Mesh Generator/Editor/VacuumShaders.LowPolyMeshGenerator_Editor.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:/Unity2018/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/mscorlib.dll</HintPath>
     </Reference>
