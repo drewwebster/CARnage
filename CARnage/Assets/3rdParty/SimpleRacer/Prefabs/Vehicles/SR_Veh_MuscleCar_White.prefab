@@ -166,9 +166,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: e75d4cafc3944844583ed92f504206ba, type: 2}
   m_StaticBatchInfo:
@@ -181,6 +183,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -198,9 +201,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: e75d4cafc3944844583ed92f504206ba, type: 2}
   m_StaticBatchInfo:
@@ -213,6 +218,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -230,9 +236,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: e75d4cafc3944844583ed92f504206ba, type: 2}
   m_StaticBatchInfo:
@@ -245,6 +253,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -262,9 +271,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: e75d4cafc3944844583ed92f504206ba, type: 2}
   m_StaticBatchInfo:
@@ -277,6 +288,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -294,9 +306,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: e75d4cafc3944844583ed92f504206ba, type: 2}
   m_StaticBatchInfo:
@@ -309,6 +323,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -371,6 +386,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4883321592724316}
+  - component: {fileID: 114863730801744864}
   m_Layer: 8
   m_Name: Chassis
   m_TagString: Untagged
@@ -1073,6 +1089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightType: 3
+  inertia: 1
 --- !u!114 &114175959810634814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1111,6 +1128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightType: 1
+  inertia: 1
 --- !u!114 &114356165929931930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1123,6 +1141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightType: 3
+  inertia: 1
 --- !u!114 &114606111040049000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1147,195 +1166,263 @@ MonoBehaviour:
   ExtraRearWheelsCollider: []
   applyEngineTorqueToExtraRearWheelColliders: 1
   SteeringWheel: {fileID: 0}
+  steeringWheelRotateAround: 0
+  steeringWheelAngleMultiplier: 3
   _wheelTypeChoise: 1
   biasedWheelTorque: 100
   COM: {fileID: 4248423751814258}
   canControl: 1
   engineRunning: 0
   semiAutomaticGear: 0
-  automaticClutch: 1
   engineTorqueCurve:
   - serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 36.666668
       value: 1
       inSlope: -0.024000002
       outSlope: -0.024000002
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 57.5
       value: 0
       inSlope: -0.048000004
       outSlope: -0.048000004
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   - serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0.16666666
       inSlope: 0.019318182
       outSlope: 0.019318182
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 36.666668
       value: 0.875
       inSlope: -0.00090909004
       outSlope: -0.00090909004
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 73.333336
       value: 0.1
       inSlope: -0.031704545
       outSlope: -0.031704545
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 146.66667
       value: -3
       inSlope: -0.042272724
       outSlope: -0.042272724
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   - serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0.125
       inSlope: 0.008522727
       outSlope: 0.008522727
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 73.333336
       value: 0.75
       inSlope: -0.004602273
       outSlope: -0.004602273
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 110
       value: 0.1
       inSlope: -0.022954546
       outSlope: -0.022954546
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 220
       value: -3
       inSlope: -0.028181817
       outSlope: -0.028181817
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   - serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0.08333333
       inSlope: 0.0049242424
       outSlope: 0.0049242424
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 110
       value: 0.625
       inSlope: -0.0046969685
       outSlope: -0.0046969685
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 146.66667
       value: 0.1
       inSlope: -0.01772727
       outSlope: -0.01772727
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 293.33334
       value: -3
       inSlope: -0.021136362
       outSlope: -0.021136362
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   - serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0.04166667
       inSlope: 0.0031249998
       outSlope: 0.0031249998
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 146.66667
       value: 0.5
       inSlope: -0.0038920473
       outSlope: -0.0038920473
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 183.33333
       value: 0.1
       inSlope: -0.013909092
       outSlope: -0.013909092
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 366.66666
       value: -3
       inSlope: -0.01690909
       outSlope: -0.01690909
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   - serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0.0020454547
       outSlope: 0.0020454547
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 183.33333
       value: 0.375
       inSlope: -0.002727272
       outSlope: -0.002727272
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 220
       value: 0.1
       inSlope: -0.010795454
       outSlope: -0.010795454
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 440
       value: -3
       inSlope: -0.014090909
       outSlope: -0.014090909
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  gearSpeed:
-  - 36.666668
-  - 73.333336
-  - 110
-  - 146.66667
-  - 183.33333
-  - 220
+  targetSpeedForGear: []
+  maxSpeedForGear: []
   engineTorque: 3000
+  brakeTorque: 2000
   maxEngineRPM: 7000
   minEngineRPM: 1000
   engineInertia: 1
   useRevLimiter: 1
   useExhaustFlame: 1
+  useClutchMarginAtFirstGear: 1
+  steerAngleSensitivityAdjuster: 0
   steerAngle: 40
   highspeedsteerAngle: 15
   highspeedsteerAngleAtspeed: 100
@@ -1344,14 +1431,17 @@ MonoBehaviour:
   antiRollVertical: 500
   downForce: 25
   speed: 0
-  brake: 2500
+  orgMaxSpeed: 0
   maxspeed: 220
-  fuelInput: 1
   currentGear: 0
   totalGears: 6
   gearShiftingDelay: 0.35
+  gearShiftingThreshold: 0.85
+  clutchInertia: 0.25
   changingGear: 0
+  NGear: 0
   direction: 1
+  launched: 0
   autoGenerateGearCurves: 1
   autoGenerateTargetSpeedsForChangingGear: 1
   engineStartClip: {fileID: 8300000, guid: 8d3ddfbc69660b342b48f88b496dedee, type: 3}
@@ -1370,7 +1460,10 @@ MonoBehaviour:
   boostInput: 1
   cutGas: 0
   idleInput: 0
+  permanentGas: 0
   chassis: {fileID: 1061867126085572}
+  chassisVerticalLean: 4
+  chassisHorizontalLean: 4
   lowBeamHeadLightsOn: 0
   highBeamHeadLightsOn: 0
   indicatorsOn: 0
@@ -1379,30 +1472,33 @@ MonoBehaviour:
   deformableMeshFilters: []
   randomizeVertices: 1
   damageRadius: 0.5
-  sleep: 1
+  repaired: 1
   maximumDamage: 0.5
   damageMultiplier: 1
   maximumContactSparkle: 5
   repairNow: 0
+  velocityDirection: {fileID: 0}
+  steeringDirection: {fileID: 0}
+  velocityAngle: 0
   ABS: 1
   TCS: 1
   ESP: 1
   steeringHelper: 1
   tractionHelper: 1
-  ABSAct: 0
-  TCSAct: 0
-  ESPAct: 0
   ABSThreshold: 0.35
   TCSThreshold: 0.25
   TCSStrength: 1
   ESPThreshold: 0.25
   ESPStrength: 0.5
-  steerHelperStrength: 0.1
+  steerHelperLinearVelStrength: 0.1
+  steerHelperAngularVelStrength: 0.1
   tractionHelperStrength: 0.1
+  ABSAct: 0
+  TCSAct: 0
+  ESPAct: 0
   overSteering: 0
   underSteering: 0
-  frontCamber: 0
-  rearCamber: 0
+  applyCounterSteering: 1
   frontSlip: 0
   rearSlip: 0
   turboBoost: 0
@@ -1434,6 +1530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightType: 1
+  inertia: 1
 --- !u!114 &114795371297966468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1459,6 +1556,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightType: 0
+  inertia: 1
+--- !u!114 &114863730801744864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1061867126085572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72887219efa8994d938b47f07b6625e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114962078846918454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1471,6 +1580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightType: 0
+  inertia: 1
 --- !u!146 &146044459413552642
 WheelCollider:
   m_ObjectHideFlags: 1

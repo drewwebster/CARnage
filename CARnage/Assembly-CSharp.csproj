@@ -348,7 +348,6 @@
     <Compile Include="Assets\bulletCase.cs" />
     <Compile Include="Assets\CARnageCar.cs" />
     <Compile Include="Assets\CARnageWeapon.cs" />
-    <Compile Include="Assets\CARS\FireGTO\Scripts\TakeScreenshot.cs" />
     <Compile Include="Assets\damageCar.cs" />
     <Compile Include="Assets\freezeRotation.cs" />
     <Compile Include="Assets\ProjectileTrajectory.cs" />

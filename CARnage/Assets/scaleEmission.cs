@@ -11,7 +11,7 @@ public class scaleEmission : MonoBehaviour {
     	
 	// Update is called once per frame
 	void Update () {
-        float speed = transform.parent.GetComponent<RCC_CarControllerV3>().speed; // get speed of vehicle
+        float speed = transform.parent.parent.GetComponent<RCC_CarControllerV3>().speed; // get speed of vehicle
 
         if (speed < 0)
             speed *= -1;
