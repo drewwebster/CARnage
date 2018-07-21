@@ -165,6 +165,37 @@
     <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Editor\CFX_SpawnSystemEditor.cs" />
     <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Editor\CFXEasyEditor.cs" />
     <Compile Include="Assets\3rdParty\Low Poly Ultimate Pack\Shaders\UnityVC\Editor\StandardShaderVCGUI.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiAboutWindow.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiAerodynamicConstraintsEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiBendingConstraintsEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiBezierCurveEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiBoneEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiCatmullRomCurveEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiClothParticleHandles.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiCollider2DEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiColliderEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiConstraintParametersDrawer.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiDistanceConstraintsEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiDistanceFieldEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiDraggableIcon.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiEditorUtils.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiEmitterEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiEmitterMaterialEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiParticleActorEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiParticleBakerEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiParticleCacheEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiParticleHandleEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiParticleRendererEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiPinConstraintsEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiRopeCursorEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiRopeEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiRopeSectionEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiSolverEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiSplineHandles.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiStitcherEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiTetherConstraintsEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\ObiVolumeConstraintsEditor.cs" />
+    <Compile Include="Assets\3rdParty\Obi\Editor\PreviewHelpers.cs" />
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Editor\RCC_AIBZEditor.cs" />
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Editor\RCC_AIEditor.cs" />
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Editor\RCC_AIWPEditor.cs" />
@@ -186,7 +217,14 @@
     <Compile Include="Assets\3rdParty\Standard Assets\Editor\Water\Water4\SpecularLightingEditor.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Editor\Water\Water4\WaterBaseEditor.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Editor\Water\Water4\WaterEditorUtility.cs" />
+    <None Include="Assets\3rdParty\Obi\Editor\Resources\EditorParticle.shader" />
+    <None Include="Assets\3rdParty\Obi\Editor\Resources\DistanceFieldPreview.shader" />
+    <None Include="Assets\3rdParty\Obi\Editor\Resources\FlatSurfaceShader.shader" />
+    <None Include="Assets\3rdParty\Obi\Editor\Resources\EditorLineShader.shader" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Editor\PluginResources\Strings\cr_strings_en.xml" />
+    <None Include="Assets\3rdParty\Obi\Editor\Resources\TopologyBorders.shader" />
+    <None Include="Assets\3rdParty\Obi\Editor\Resources\EditorParticleRadius.shader" />
+    <None Include="Assets\3rdParty\Obi\Editor\Resources\PropertyGradientMaterial.shader" />
     <Reference Include="Assembly-UnityScript">
       <HintPath>D:/CARnage/CARnage/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
     </Reference>
@@ -465,21 +503,6 @@
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/2015/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
-    </Reference>
-    <Reference Include="VacuumShaders.LowPolyMeshGeneratorVC">
-      <HintPath>D:/CARnage/CARnage/Assets/3rdParty/VacuumShaders/Low Poly Mesh Generator/Editor/VacuumShaders.LowPolyMeshGeneratorVC.dll</HintPath>
-    </Reference>
-    <Reference Include="VacuumShaders.LowPolyMeshGenerator">
-      <HintPath>D:/CARnage/CARnage/Assets/3rdParty/VacuumShaders/Low Poly Mesh Generator/Scripts/VacuumShaders.LowPolyMeshGenerator.dll</HintPath>
-    </Reference>
-    <Reference Include="VacuumShaders">
-      <HintPath>D:/CARnage/CARnage/Assets/3rdParty/VacuumShaders/Editor/VacuumShaders.dll</HintPath>
-    </Reference>
-    <Reference Include="VacuumShaders.VertexColorShaders">
-      <HintPath>D:/CARnage/CARnage/Assets/3rdParty/VacuumShaders/Vertex Color Shaders/Editor/VacuumShaders.VertexColorShaders.dll</HintPath>
-    </Reference>
-    <Reference Include="VacuumShaders.LowPolyMeshGenerator_Editor">
-      <HintPath>D:/CARnage/CARnage/Assets/3rdParty/VacuumShaders/Low Poly Mesh Generator/Editor/VacuumShaders.LowPolyMeshGenerator_Editor.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:/Unity2018/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/mscorlib.dll</HintPath>

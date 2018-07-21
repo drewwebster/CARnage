@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/3rdParty/VacuumShaders/Low Poly Mesh Generator/Example Scenes/7. SpeedTree.unity
+- path: Assets/Scenes/CrashTest.unity
   isLoaded: 1
   isActive: 1
