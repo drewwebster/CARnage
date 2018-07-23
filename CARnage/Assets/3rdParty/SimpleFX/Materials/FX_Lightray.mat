@@ -61,7 +61,7 @@ Material:
     - _DstBlend: 10
     - _EmissionScaleUI: 0
     - _Glossiness: 0.5
-    - _InvFade: 1.73
+    - _InvFade: 1
     - _Metallic: 0
     - _Mode: 3
     - _OcclusionStrength: 1

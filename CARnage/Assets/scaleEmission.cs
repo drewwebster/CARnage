@@ -8,10 +8,15 @@ public class scaleEmission : MonoBehaviour {
     float maxSpeed = 100;
     float minEmissionSize = 0.2f;
     float maxEmissionSize = 1;
-    	
-	// Update is called once per frame
-	void Update () {
-        float speed = transform.parent.parent.GetComponent<RCC_CarControllerV3>().speed; // get speed of vehicle
+
+    // Update is called once per frame
+    void Update() {
+        if (GetComponentInParent<CARnageCar>().destroyed)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        float speed = GetComponentInParent<RCC_CarControllerV3>().speed; // get speed of vehicle
 
         if (speed < 0)
             speed *= -1;

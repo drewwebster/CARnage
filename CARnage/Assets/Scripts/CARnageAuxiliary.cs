@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CARnageAuxiliary : MonoBehaviour {
 
+    public static float destroyAfterSec = 10;
+
     public static GameObject getCarFromHitbox(GameObject hitbox)
     {
         if (hitbox.transform.parent == null)
@@ -37,6 +39,14 @@ public class CARnageAuxiliary : MonoBehaviour {
             }
         }
 
+    }
+
+    public enum ControllerType
+    {
+        MouseKeyboard,
+        Controller1,
+        Controller2,
+        Controller3
     }
 
     //public static void setAnimationSpeed(GameObject target, string animationName, float actualValue)

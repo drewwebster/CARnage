@@ -12,6 +12,7 @@ public class damageCar : MonoBehaviour {
     public GameObject FX_CarFire;
     public GameObject FX_CarDrain;
     public GameObject FX_HPSmoke;
+    public GameObject FX_Destroy;
 
     // Update is called once per frame
     void Update () {
@@ -59,6 +60,17 @@ public class damageCar : MonoBehaviour {
 
     public void updateHP(CARnageCar car)
     {
+
+        if (car.currentHP <= 0 && car.currentShield <= 0)
+        {
+            FX_CarAcid.SetActive(false);
+            FX_CarDrain.SetActive(false);
+            FX_CarFire.SetActive(false);
+            FX_HPSmoke.SetActive(false);
+            FX_Destroy.SetActive(true);
+            return;
+        }
+
         float percentage = 1;
         if(car.currentShield <= 0)
         {
@@ -77,5 +89,6 @@ public class damageCar : MonoBehaviour {
         }
         else
             FX_HPSmoke.SetActive(false);
+
     }
 }

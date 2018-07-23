@@ -22,12 +22,22 @@ public class CARnageCar : MonoBehaviour {
     public float maxShield;
     [HideInInspector]
     public float currentShield;
+    [HideInInspector]
+    public bool destroyed;
 
     // UIs
     public Image HPBar;
     public Image ShieldBar;
 
     public GameObject speedUI;
+
+    public GameObject observingCamera;
+
+    public GameObject goShield;
+    public GameObject goShieldShattered;
+    public GameObject nakedModel;
+
+    public CARnageAuxiliary.ControllerType controlledBy;
 
     private void Start()
     {
@@ -44,6 +54,10 @@ public class CARnageCar : MonoBehaviour {
         {
             damageMe(Time.deltaTime * 10);
         }
+        if (Input.GetKey(KeyCode.K))
+        {
+            damageMe(Time.deltaTime * 100);
+        }
     }
 
     public void initializeValues()
@@ -54,6 +68,11 @@ public class CARnageCar : MonoBehaviour {
         currentHP = maxHP;
         maxShield = maxHP * shield / 4;
         currentShield = maxShield;
+        if (currentShield > 0)
+            goShield.SetActive(true);
+        else
+            goShield.SetActive(false);
+
         updateValues();
     }
 
@@ -73,6 +92,13 @@ public class CARnageCar : MonoBehaviour {
         else
             ShieldBar.fillAmount = 0;
         GetComponentInChildren<damageCar>().updateHP(this);
+
+        foreach (Material m in nakedModel.GetComponent<MeshRenderer>().materials)
+            if (m.name.Contains("ProgDamageMat"))
+                m.color = new Color(1, 1, 1, 1-(currentHP/maxHP));
+
+        if (currentHP <= 0 && currentShield <= 0)
+            destroyMe();
     }
 
     public void damageMe(float damage)
@@ -80,8 +106,11 @@ public class CARnageCar : MonoBehaviour {
         if (currentShield > 0)
         {
             currentShield -= damage;
-            if (currentShield < 0)
+            if (currentShield <= 0)
+            {
+                breakShield();
                 currentShield = 0;
+            }
         }
         else
         {
@@ -95,8 +124,24 @@ public class CARnageCar : MonoBehaviour {
         updateValues();
     }
 
+    public void breakShield()
+    {
+        goShield.SetActive(false);
+        GameObject go = Instantiate(goShieldShattered, goShield.transform.parent);
+        go.transform.parent = null;
+        Destroy(go, CARnageAuxiliary.destroyAfterSec);
+    }
+
     public void destroyMe()
     {
-
+        destroyed = true;
+        GetComponent<RCC_CarControllerV3>().canControl = false;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        foreach (MeshRenderer mr in gameObject.GetComponentsInChildren<MeshRenderer>())
+            mr.enabled = false;
+        foreach (Collider c in gameObject.GetComponentsInChildren<Collider>())
+            c.enabled = false;
+        foreach (Rigidbody r in gameObject.GetComponentsInChildren<Rigidbody>())
+            r.useGravity = false;
     }
 }

@@ -849,7 +849,9 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 		switch(RCCSettings.controllerType){
 
 		case RCC_Settings.ControllerType.Keyboard:
-			
+                if (GetComponent<CARnageCar>().controlledBy != CARnageAuxiliary.ControllerType.MouseKeyboard)
+                    return;
+
 			gasInput = Input.GetAxis(RCCSettings.verticalInput);
 			brakeInput = Mathf.Clamp01(-Input.GetAxis(RCCSettings.verticalInput));
 			handbrakeInput = Input.GetKey(RCCSettings.handbrakeKB) ? 1f : 0f;

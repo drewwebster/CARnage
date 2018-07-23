@@ -17,7 +17,6 @@ public class CARnageWeapon : MonoBehaviour {
     public GameObject Projectile_Bulletcase;
     public GameObject Magazine;
     public GameObject shootFX;
-    public float destroyAfterSec = 10;
     bool firing = false;
     bool reloading = false;
     int magazineLoaded;
@@ -38,7 +37,8 @@ public class CARnageWeapon : MonoBehaviour {
     private void Start()
     {
         rel_car = transform.parent.parent.parent.gameObject;
-        rel_camera = Camera.main.gameObject;
+        //rel_camera = Camera.main.gameObject;
+        rel_camera = rel_car.GetComponent<CARnageCar>().observingCamera;
         magazineLoaded = magazineSize;
     }
 
@@ -53,7 +53,7 @@ public class CARnageWeapon : MonoBehaviour {
         bool leftFiring = Input.GetMouseButtonDown(0) || (automatic && Input.GetMouseButton(0));
         bool rightFiring = Input.GetMouseButtonDown(1) || (automatic && Input.GetMouseButton(1));
 
-        if ((weaponSide == WeaponSide.LEFT && leftFiring) || (weaponSide == WeaponSide.RIGHT && rightFiring))
+        if (rel_car.GetComponent<CARnageCar>().controlledBy == CARnageAuxiliary.ControllerType.MouseKeyboard && (weaponSide == WeaponSide.LEFT && leftFiring) || (weaponSide == WeaponSide.RIGHT && rightFiring))
             shoot();
 
         calcWeaponAngle();
@@ -84,8 +84,8 @@ public class CARnageWeapon : MonoBehaviour {
         go.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
         go.GetComponent<ProjectileTrajectory>().rel_car = rel_car;
         go.GetComponent<ProjectileTrajectory>().rel_weapon = this;
-        Destroy(go, destroyAfterSec);
-        Destroy(goBC, destroyAfterSec);
+        Destroy(go, CARnageAuxiliary.destroyAfterSec);
+        Destroy(goBC, CARnageAuxiliary.destroyAfterSec);
 
         //foreach(ParticleSystem ps in shootFX.GetComponentsInChildren<ParticleSystem>())
         //{
@@ -112,7 +112,7 @@ public class CARnageWeapon : MonoBehaviour {
         CARnageAuxiliary.playAnimationTimeScaled(gameObject, "Reload", reloadTime);
         GameObject go = Instantiate(Magazine, transform);
         go.transform.parent = null;
-        Destroy(go, destroyAfterSec);
+        Destroy(go, CARnageAuxiliary.destroyAfterSec);
         GetComponent<AudioSource>().PlayOneShot(ReloadSound);
     }
     public void resetReloadingDelay()
@@ -123,8 +123,37 @@ public class CARnageWeapon : MonoBehaviour {
 
     public void calcWeaponAngle()
     {
+        if (rel_car.GetComponent<CARnageCar>().controlledBy != CARnageAuxiliary.ControllerType.MouseKeyboard)
+            return;
+
         Vector2 mousePos = Input.mousePosition;
         Vector2 relativeToPoint = new Vector2(Screen.width / 2, Screen.height / 2);
+
+        // consider splitscreen
+        if(GetComponentInParent<CARnageCar>().observingCamera != null)
+        {
+            Rect cameraRect = GetComponentInParent<CARnageCar>().observingCamera.GetComponentInChildren<Camera>().rect;
+            if(cameraRect.width == 0.5f || cameraRect.height == 0.5f)
+            {
+                if(cameraRect.x == 0) // left side
+                {
+                    if(cameraRect.y == 0) // lower side
+                        relativeToPoint = new Vector2(Screen.width / 4, Screen.height / 4); // TODO: not final?
+                    else // upper side
+                        relativeToPoint = new Vector2(Screen.width / 4, Screen.height * 3 / 4);
+                }
+                else // right side
+                {
+                    if (cameraRect.y == 0) // lower side
+                        relativeToPoint = new Vector2(Screen.width * 3 / 4, Screen.height / 4); // TODO: not final?
+                    else // upper side
+                        relativeToPoint = new Vector2(Screen.width * 3 / 4, Screen.height * 3/ 4);
+                }
+            }
+            
+        }
+
+
         Vector2 v = mousePos - relativeToPoint;
         
         float angleRadians = Mathf.Atan2(v.y, v.x);
@@ -134,10 +163,11 @@ public class CARnageWeapon : MonoBehaviour {
             angleDegrees += 360;
 
         // if: camera not y-rotation-Normalized
-        if(!rel_camera.transform.parent.parent.GetComponent<RCC_Camera>().lockZ)
+        if(rel_camera != null && !rel_camera.GetComponent<RCC_Camera>().lockZ)
         {
             angleDegrees += rel_car.transform.localRotation.eulerAngles.y;
-            angleDegrees -= rel_camera.transform.localRotation.eulerAngles.y;
+            //angleDegrees -= rel_camera.transform.localRotation.eulerAngles.y;
+            angleDegrees -= rel_camera.GetComponentInChildren<Camera>().transform.localRotation.eulerAngles.y;
         }
 
         transform.localRotation = Quaternion.Euler(new Vector3(0, -angleDegrees + addAngle, 0));

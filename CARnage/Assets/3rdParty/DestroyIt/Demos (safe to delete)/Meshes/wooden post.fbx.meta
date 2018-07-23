@@ -1,0 +1,147 @@
+fileFormatVersion: 2
+guid: 49072c85294b68143900a5d24d7a52ec
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Post
+    100002: Post_Destroyed_Bottom
+    100004: Post_Destroyed_Top
+    100006: Texture Group
+    100008: //RootNode
+    100010: Holes
+    100012: Metal Brace
+    100014: Metal Brace 01
+    100016: Metal Brace 02
+    100018: Metal Brace Bottom 01
+    100020: Metal Brace Bottom 02
+    100022: Metal Brace Top 01
+    100024: Metal Brace Top 02
+    100026: Post Long
+    100028: Post_Long_Destroyed_Bottom
+    100030: Post_Long_Destroyed_Top
+    100032: Camera
+    100034: Directional Light
+    100036: Metal Clamps
+    400000: Post
+    400002: Post_Destroyed_Bottom
+    400004: Post_Destroyed_Top
+    400006: Texture Group
+    400008: //RootNode
+    400010: Holes
+    400012: Metal Brace
+    400014: Metal Brace 01
+    400016: Metal Brace 02
+    400018: Metal Brace Bottom 01
+    400020: Metal Brace Bottom 02
+    400022: Metal Brace Top 01
+    400024: Metal Brace Top 02
+    400026: Post Long
+    400028: Post_Long_Destroyed_Bottom
+    400030: Post_Long_Destroyed_Top
+    400032: Camera
+    400034: Directional Light
+    400036: Metal Clamps
+    2300000: Post
+    2300002: Post_Destroyed_Bottom
+    2300004: Post_Destroyed_Top
+    2300006: Holes
+    2300008: Metal Brace
+    2300010: Metal Brace 01
+    2300012: Metal Brace 02
+    2300014: Metal Brace Bottom 01
+    2300016: Metal Brace Bottom 02
+    2300018: Metal Brace Top 01
+    2300020: Metal Brace Top 02
+    2300022: Post Long
+    2300024: Post_Long_Destroyed_Bottom
+    2300026: Post_Long_Destroyed_Top
+    2300028: Metal Clamps
+    3300000: Post
+    3300002: Post_Destroyed_Bottom
+    3300004: Post_Destroyed_Top
+    3300006: Holes
+    3300008: Metal Brace
+    3300010: Metal Brace 01
+    3300012: Metal Brace 02
+    3300014: Metal Brace Bottom 01
+    3300016: Metal Brace Bottom 02
+    3300018: Metal Brace Top 01
+    3300020: Metal Brace Top 02
+    3300022: Post Long
+    3300024: Post_Long_Destroyed_Bottom
+    3300026: Post_Long_Destroyed_Top
+    3300028: Metal Clamps
+    4300000: Post
+    4300002: Post_Destroyed_Top
+    4300004: Post_Destroyed_Bottom
+    4300006: Metal Brace
+    4300008: Holes
+    4300010: Metal Brace 01
+    4300012: Metal Brace 02
+    4300014: Metal Brace Top 01
+    4300016: Metal Brace Top 02
+    4300018: Metal Brace Bottom 01
+    4300020: Metal Brace Bottom 02
+    4300022: Post Long
+    4300024: Post_Long_Destroyed_Top
+    4300026: Post_Long_Destroyed_Bottom
+    4300028: Metal Clamps
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 1
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
