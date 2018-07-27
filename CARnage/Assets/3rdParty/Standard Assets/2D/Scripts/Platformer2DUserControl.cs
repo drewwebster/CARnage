@@ -1,28 +1,36 @@
 using System;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
-namespace UnityStandardAssets._2D
+namespace VacuumShaders.CurvedWorld.Demo
 {
-    [RequireComponent(typeof (PlatformerCharacter2D))]
-    public class Platformer2DUserControl : MonoBehaviour
+    [AddComponentMenu("VacuumShaders/Curved World/Demo/2D/Platformer User Control")]
+    [RequireComponent(typeof(CW_Demo_2D_PlatformerCharacter))]
+    public class CW_Demo_2D_PlatformerUserControl : MonoBehaviour
     {
-        private PlatformerCharacter2D m_Character;
+        private CW_Demo_2D_PlatformerCharacter m_Character;
         private bool m_Jump;
-
+        bool uiButtonJump;
+        Vector2 touchPivot;
 
         private void Awake()
         {
-            m_Character = GetComponent<PlatformerCharacter2D>();
+            m_Character = GetComponent<CW_Demo_2D_PlatformerCharacter>();
         }
 
 
         private void Update()
         {
+            //Get Jump from keyboard
             if (!m_Jump)
             {
-                // Read the jump input in Update so button presses aren't missed.
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                m_Jump = Input.GetButtonDown("Jump");
+            }
+
+            //Get Jump from touch-screen
+            if (uiButtonJump)
+            {
+                uiButtonJump = false;
+                m_Jump = true;
             }
         }
 
@@ -30,11 +38,37 @@ namespace UnityStandardAssets._2D
         private void FixedUpdate()
         {
             // Read the inputs.
-            bool crouch = Input.GetKey(KeyCode.LeftControl);
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
+            float h = 0;
+
+            //From touch-screen
+            if (Input.touchSupported && Input.touchCount > 0)
+            {
+                Touch currentTouch = Input.touches[0];
+
+                if (currentTouch.phase == TouchPhase.Began)
+                    touchPivot = currentTouch.position;
+
+                if (Input.touches[0].phase == TouchPhase.Moved ||
+                    Input.touches[0].phase == TouchPhase.Stationary)
+                {
+                    Vector2 delta = (currentTouch.position - touchPivot).normalized;
+
+                    h = delta.x;
+                }
+            }
+            else   //From keyboard
+            {
+                h = Input.GetAxis("Horizontal");
+            }
+
             // Pass all parameters to the character control script.
-            m_Character.Move(h, crouch, m_Jump);
+            m_Character.Move(h, false, m_Jump);
             m_Jump = false;
+        }
+
+        public void UIJumpButtonOn()
+        {
+            uiButtonJump = true;
         }
     }
 }

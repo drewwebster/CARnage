@@ -10,13 +10,20 @@ public class ProjectileTrajectory : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log(other.gameObject.name);
-        if(!CARnageAuxiliary.getCarFromHitbox(other.gameObject)) // no friendly fire in projectiles
+        if(rel_car.GetComponent<CARnageCar>() != other.GetComponentInParent<CARnageCar>()) // no friendly fire in projectiles
         {
             if(other.gameObject.GetComponent<buildingCollision>() != null)
             {
                 // damage to building
                 other.gameObject.GetComponent<buildingCollision>().damageMe(rel_weapon.Damage,true);
                 //Debug.Log("bullet > building");
+            }
+            CARnageCar car = other.GetComponentInParent<CARnageCar>();
+            if (car != null)
+            {
+                // damage to car
+                Debug.Log("bullet => " + car.gameObject.name);
+                car.damageMe(rel_weapon.Damage);
             }
             Destroy(gameObject);
         }

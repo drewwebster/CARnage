@@ -108,10 +108,12 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 	public float downForce = 25f;		// Applies Downforce Related With Vehicle Speed.
 
 	public float speed;		// Vehicle Speed.
-	public float orgMaxSpeed;		// Original Maximum Speed.
-	public float maxspeed = 220f;		//Maximum Speed.
+	public float orgMaxSpeed;       // Original Maximum Speed.
+    public float maxspeed = 220f;       //Maximum Speed.
+    //public float maxspeedLimit = 220f;
+    //public float acceleration = 1f;
 
-	private float resetTime = 0f;		// Used for resetting the car if upside down.
+    private float resetTime = 0f;		// Used for resetting the car if upside down.
 	private float orgSteerAngle = 0f;		// Default steer angle.
 	internal float fuelInput = 0f;		// Typical fuel.
 
@@ -330,6 +332,19 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 	public static event onRCCAISpawned OnRCCAISpawned;
 
 	void Awake (){
+        // CARnage custom:
+        CARnageCar car = GetComponent<CARnageCar>();
+        if (car == null)
+            Debug.LogWarning("NO CARnageCar attached to RCC!");
+        else
+        {
+            maxspeed = car.getRCC_speed();
+            //acceleration = car.getRCC_acceleration();
+            //maxspeedLimit = car.getRCC_speed();
+            //Debug.Log("max speed: " + maxspeed);
+            //Debug.Log("acc: " + acceleration);
+            //Debug.Log("Maxspeed: " + maxspeedLimit);
+        }
 
 		// Overriding Fixed TimeStep.
 		if(RCCSettings.overrideFixedTimeStep)
@@ -807,8 +822,13 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 		}
 
 	}
-	
-	void Update (){
+
+    // custom:
+    public float driftingTime = 0f;
+    public bool isDrifting;
+    public bool isInAir;
+
+    void Update (){
 		
 		if(canControl){
 			if(!AIController)
@@ -841,8 +861,18 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 			launched -= Time.deltaTime;
 		
 		launched = Mathf.Clamp (launched, 0f, 1f);
-		
-	}
+
+        if (_gasInput > 0 && (brakeInput > 0 || handbrakeInput > 0) && (steerInput < -0.5f || steerInput > 0.5f) && speed > 0)
+            driftingTime = 1f;
+        if (driftingTime > 0)
+            driftingTime -= Time.deltaTime;
+        if (driftingTime > 0)
+            isDrifting = true;
+        else
+            isDrifting = false;
+
+        isInAir = !FrontLeftWheelCollider.wheelCollider.isGrounded && !FrontRightWheelCollider.wheelCollider.isGrounded;
+    }
 
 	void Inputs(){
 		
@@ -927,7 +957,7 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 			gasInput = 1f;
 
 	}
-	
+    
 	void FixedUpdate (){
 
 		TorqueCurve();
@@ -984,7 +1014,7 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 			sleepingRigid = false;
 
 		float wheelRPM = _wheelTypeChoise == WheelType.FWD ? (FrontLeftWheelCollider.wheelRPMToSpeed + FrontRightWheelCollider.wheelRPMToSpeed) : (RearLeftWheelCollider.wheelRPMToSpeed + RearRightWheelCollider.wheelRPMToSpeed);
-		
+        
 		rawEngineRPM = Mathf.Clamp(Mathf.MoveTowards(rawEngineRPM, (maxEngineRPM * 1.1f) * 
 			(Mathf.Clamp01(Mathf.Lerp(0f, 1f, (1f - clutchInput) * 
 				(((wheelRPM * direction) / 2f) / maxSpeedForGear[currentGear])) + 
@@ -992,6 +1022,9 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 		                                             , engineInertia * 100f), 0f, maxEngineRPM * 1.1f);
 		
 		rawEngineRPM *= fuelInput;
+
+        // custom acceleration:
+        //rawEngineRPM *= acceleration;
 
 		engineRPM = Mathf.Lerp(engineRPM, rawEngineRPM, Mathf.Lerp(Time.fixedDeltaTime * 5f, Time.fixedDeltaTime * 50f, rawEngineRPM / maxEngineRPM));
 		
@@ -1643,8 +1676,9 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 
 	bool OverTorque(){
 
-		if(speed > maxspeed || !engineRunning)
-			return true;
+        if(speed > maxspeed || !engineRunning) // ori
+        //if (speed > maxspeedLimit || !engineRunning)
+            return true;
 
 		return false;
 

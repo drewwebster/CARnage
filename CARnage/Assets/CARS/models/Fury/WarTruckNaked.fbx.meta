@@ -1,0 +1,211 @@
+fileFormatVersion: 2
+guid: 31955b8189d0a314bbc45580e97df55f
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: SA_Veh_WarTruck_Wheel_FL
+    100002: SA_Veh_WarTruck_Wheel_FR
+    100004: SA_Veh_WarTruck_Wheel_RL01
+    100006: SA_Veh_WarTruck_Wheel_RL02
+    100008: SA_Veh_WarTruck_Wheel_RR01
+    100010: SA_Veh_WarTruck_Wheel_RR02
+    100012: //RootNode
+    100014: group
+    100016: pasted__SA_Veh_ArmytruckTanker
+    100018: pasted__SA_Veh_ArmytruckTanker_Extras
+    100020: pasted__SA_Veh_ArmytruckTanker_Wheel_FL
+    100022: pasted__SA_Veh_ArmytruckTanker_Wheel_FR
+    100024: pasted__SA_Veh_ArmytruckTanker_Wheel_RL1
+    100026: pasted__SA_Veh_ArmytruckTanker_Wheel_RL2
+    100028: pasted__SA_Veh_ArmytruckTanker_Wheel_RR1
+    100030: pasted__SA_Veh_ArmytruckTanker_Wheel_RR2
+    100032: SA_Veh_ArmytruckTanker
+    100034: SA_Veh_ArmytruckTanker_Extras
+    100036: SA_Veh_ArmytruckTanker_Wheel_FL
+    100038: SA_Veh_ArmytruckTanker_Wheel_FR
+    100040: SA_Veh_ArmytruckTanker_Wheel_RL1
+    100042: SA_Veh_ArmytruckTanker_Wheel_RL2
+    100044: SA_Veh_ArmytruckTanker_Wheel_RR1
+    100046: SA_Veh_ArmytruckTanker_Wheel_RR2
+    100048: SA_Veh_WarTruck
+    400000: SA_Veh_WarTruck_Wheel_FL
+    400002: SA_Veh_WarTruck_Wheel_FR
+    400004: SA_Veh_WarTruck_Wheel_RL01
+    400006: SA_Veh_WarTruck_Wheel_RL02
+    400008: SA_Veh_WarTruck_Wheel_RR01
+    400010: SA_Veh_WarTruck_Wheel_RR02
+    400012: //RootNode
+    400014: group
+    400016: pasted__SA_Veh_ArmytruckTanker
+    400018: pasted__SA_Veh_ArmytruckTanker_Extras
+    400020: pasted__SA_Veh_ArmytruckTanker_Wheel_FL
+    400022: pasted__SA_Veh_ArmytruckTanker_Wheel_FR
+    400024: pasted__SA_Veh_ArmytruckTanker_Wheel_RL1
+    400026: pasted__SA_Veh_ArmytruckTanker_Wheel_RL2
+    400028: pasted__SA_Veh_ArmytruckTanker_Wheel_RR1
+    400030: pasted__SA_Veh_ArmytruckTanker_Wheel_RR2
+    400032: SA_Veh_ArmytruckTanker
+    400034: SA_Veh_ArmytruckTanker_Extras
+    400036: SA_Veh_ArmytruckTanker_Wheel_FL
+    400038: SA_Veh_ArmytruckTanker_Wheel_FR
+    400040: SA_Veh_ArmytruckTanker_Wheel_RL1
+    400042: SA_Veh_ArmytruckTanker_Wheel_RL2
+    400044: SA_Veh_ArmytruckTanker_Wheel_RR1
+    400046: SA_Veh_ArmytruckTanker_Wheel_RR2
+    400048: SA_Veh_WarTruck
+    2100000: lambert2
+    2100002: lambert3
+    2100004: pasted__lambert3
+    2300000: SA_Veh_WarTruck_Wheel_FL
+    2300002: SA_Veh_WarTruck_Wheel_FR
+    2300004: SA_Veh_WarTruck_Wheel_RL01
+    2300006: SA_Veh_WarTruck_Wheel_RL02
+    2300008: SA_Veh_WarTruck_Wheel_RR01
+    2300010: SA_Veh_WarTruck_Wheel_RR02
+    2300012: //RootNode
+    2300014: pasted__SA_Veh_ArmytruckTanker
+    2300016: pasted__SA_Veh_ArmytruckTanker_Extras
+    2300018: pasted__SA_Veh_ArmytruckTanker_Wheel_FL
+    2300020: pasted__SA_Veh_ArmytruckTanker_Wheel_FR
+    2300022: pasted__SA_Veh_ArmytruckTanker_Wheel_RL1
+    2300024: pasted__SA_Veh_ArmytruckTanker_Wheel_RL2
+    2300026: pasted__SA_Veh_ArmytruckTanker_Wheel_RR1
+    2300028: pasted__SA_Veh_ArmytruckTanker_Wheel_RR2
+    2300030: SA_Veh_ArmytruckTanker
+    2300032: SA_Veh_ArmytruckTanker_Extras
+    2300034: SA_Veh_ArmytruckTanker_Wheel_FL
+    2300036: SA_Veh_ArmytruckTanker_Wheel_FR
+    2300038: SA_Veh_ArmytruckTanker_Wheel_RL1
+    2300040: SA_Veh_ArmytruckTanker_Wheel_RL2
+    2300042: SA_Veh_ArmytruckTanker_Wheel_RR1
+    2300044: SA_Veh_ArmytruckTanker_Wheel_RR2
+    2300046: SA_Veh_WarTruck
+    3300000: SA_Veh_WarTruck_Wheel_FL
+    3300002: SA_Veh_WarTruck_Wheel_FR
+    3300004: SA_Veh_WarTruck_Wheel_RL01
+    3300006: SA_Veh_WarTruck_Wheel_RL02
+    3300008: SA_Veh_WarTruck_Wheel_RR01
+    3300010: SA_Veh_WarTruck_Wheel_RR02
+    3300012: //RootNode
+    3300014: pasted__SA_Veh_ArmytruckTanker
+    3300016: pasted__SA_Veh_ArmytruckTanker_Extras
+    3300018: pasted__SA_Veh_ArmytruckTanker_Wheel_FL
+    3300020: pasted__SA_Veh_ArmytruckTanker_Wheel_FR
+    3300022: pasted__SA_Veh_ArmytruckTanker_Wheel_RL1
+    3300024: pasted__SA_Veh_ArmytruckTanker_Wheel_RL2
+    3300026: pasted__SA_Veh_ArmytruckTanker_Wheel_RR1
+    3300028: pasted__SA_Veh_ArmytruckTanker_Wheel_RR2
+    3300030: SA_Veh_ArmytruckTanker
+    3300032: SA_Veh_ArmytruckTanker_Extras
+    3300034: SA_Veh_ArmytruckTanker_Wheel_FL
+    3300036: SA_Veh_ArmytruckTanker_Wheel_FR
+    3300038: SA_Veh_ArmytruckTanker_Wheel_RL1
+    3300040: SA_Veh_ArmytruckTanker_Wheel_RL2
+    3300042: SA_Veh_ArmytruckTanker_Wheel_RR1
+    3300044: SA_Veh_ArmytruckTanker_Wheel_RR2
+    3300046: SA_Veh_WarTruck
+    4300000: SA_Veh_WarTruck
+    4300002: SA_Veh_WarTruck_Wheel_FL
+    4300004: SA_Veh_WarTruck_Wheel_RL02
+    4300006: SA_Veh_WarTruck_Wheel_RL01
+    4300008: SA_Veh_WarTruck_Wheel_FR
+    4300010: SA_Veh_WarTruck_Wheel_RR02
+    4300012: SA_Veh_WarTruck_Wheel_RR01
+    4300014: SA_Veh_ArmytruckTanker
+    4300016: SA_Veh_ArmytruckTanker_Extras
+    4300018: SA_Veh_ArmytruckTanker_Wheel_FL
+    4300020: SA_Veh_ArmytruckTanker_Wheel_RL2
+    4300022: SA_Veh_ArmytruckTanker_Wheel_RL1
+    4300024: SA_Veh_ArmytruckTanker_Wheel_FR
+    4300026: SA_Veh_ArmytruckTanker_Wheel_RR2
+    4300028: SA_Veh_ArmytruckTanker_Wheel_RR1
+    4300030: pasted__SA_Veh_ArmytruckTanker
+    4300032: pasted__SA_Veh_ArmytruckTanker_Extras
+    4300034: pasted__SA_Veh_ArmytruckTanker_Wheel_FL
+    4300036: pasted__SA_Veh_ArmytruckTanker_Wheel_RL2
+    4300038: pasted__SA_Veh_ArmytruckTanker_Wheel_RL1
+    4300040: pasted__SA_Veh_ArmytruckTanker_Wheel_FR
+    4300042: pasted__SA_Veh_ArmytruckTanker_Wheel_RR2
+    4300044: pasted__SA_Veh_ArmytruckTanker_Wheel_RR1
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

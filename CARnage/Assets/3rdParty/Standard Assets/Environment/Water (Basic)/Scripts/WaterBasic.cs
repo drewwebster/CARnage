@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
 
-namespace UnityStandardAssets.Water
+namespace VacuumShaders.CurvedWorld.Water
 {
+    [AddComponentMenu("VacuumShaders/Curved World/Water/WaterBasic")]
     [ExecuteInEditMode]
     public class WaterBasic : MonoBehaviour
     {

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CARnageWeapon : MonoBehaviour {
 
+    public string weaponName;
+    public WeaponType weaponType;
     public float Damage;
     public float shotDelay;
     public int magazineSize;
@@ -36,7 +38,7 @@ public class CARnageWeapon : MonoBehaviour {
 
     private void Start()
     {
-        rel_car = transform.parent.parent.parent.gameObject;
+        rel_car = GetComponentInParent<CARnageCar>().gameObject;
         //rel_camera = Camera.main.gameObject;
         rel_camera = rel_car.GetComponent<CARnageCar>().observingCamera;
         magazineLoaded = magazineSize;
@@ -53,7 +55,7 @@ public class CARnageWeapon : MonoBehaviour {
         bool leftFiring = Input.GetMouseButtonDown(0) || (automatic && Input.GetMouseButton(0));
         bool rightFiring = Input.GetMouseButtonDown(1) || (automatic && Input.GetMouseButton(1));
 
-        if (rel_car.GetComponent<CARnageCar>().controlledBy == CARnageAuxiliary.ControllerType.MouseKeyboard && (weaponSide == WeaponSide.LEFT && leftFiring) || (weaponSide == WeaponSide.RIGHT && rightFiring))
+        if (rel_car.GetComponent<CARnageCar>().controlledBy == CARnageAuxiliary.ControllerType.MouseKeyboard && ((weaponSide == WeaponSide.LEFT && leftFiring) || (weaponSide == WeaponSide.RIGHT && rightFiring)))
             shoot();
 
         calcWeaponAngle();
@@ -172,4 +174,29 @@ public class CARnageWeapon : MonoBehaviour {
 
         transform.localRotation = Quaternion.Euler(new Vector3(0, -angleDegrees + addAngle, 0));
     }   
+
+    public void addUpgrade(UpgradeTypes upgrade)
+    {
+
+    }
+
+    public void addRandomUpgrade()
+    {
+
+    }
+
+    public enum UpgradeTypes
+    {
+        MAGAZINE,
+        SCOPE,
+        SILENCER,
+        COMPENSATOR,
+        LIGHT,
+        AUTO
+    }
+
+    public enum WeaponType
+    {
+        DOWNFALL
+    }
 }

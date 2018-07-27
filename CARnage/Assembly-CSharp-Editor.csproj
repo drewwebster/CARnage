@@ -164,18 +164,6 @@
     <Compile Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Editor\Windows\CNItemPopupWindow.cs" />
     <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Editor\CFX_SpawnSystemEditor.cs" />
     <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Editor\CFXEasyEditor.cs" />
-    <Compile Include="Assets\3rdParty\DestroyIt\Demos (safe to delete)\Scripts\Editor\ColorCorrectionCurvesEditor.cs" />
-    <Compile Include="Assets\3rdParty\DestroyIt\Demos (safe to delete)\Scripts\Editor\FollowEditor.cs" />
-    <Compile Include="Assets\3rdParty\DestroyIt\Demos (safe to delete)\Scripts\Editor\TonemappingEditor.cs" />
-    <Compile Include="Assets\3rdParty\DestroyIt\Extras (safe to delete)\DestroyIt-Ready\Scripts\Editor\DestructibleConverter.cs" />
-    <Compile Include="Assets\3rdParty\DestroyIt\Scripts\Editor\CreateLayers.cs" />
-    <Compile Include="Assets\3rdParty\DestroyIt\Scripts\Editor\DestructibleEditor.cs" />
-    <Compile Include="Assets\3rdParty\DestroyIt\Scripts\Editor\DestructionManagerEditor.cs" />
-    <Compile Include="Assets\3rdParty\DestroyIt\Scripts\Editor\ExportPackage.cs" />
-    <Compile Include="Assets\3rdParty\DestroyIt\Scripts\Editor\HitEffectsEditor.cs" />
-    <Compile Include="Assets\3rdParty\DestroyIt\Scripts\Editor\ObjectPoolEditor.cs" />
-    <Compile Include="Assets\3rdParty\DestroyIt\Scripts\Editor\SetupDestroyIt.cs" />
-    <Compile Include="Assets\3rdParty\DestroyIt\Scripts\Editor\TagItEditor.cs" />
     <Compile Include="Assets\3rdParty\Low Poly Ultimate Pack\Shaders\UnityVC\Editor\StandardShaderVCGUI.cs" />
     <Compile Include="Assets\3rdParty\Obi\Editor\ObiAboutWindow.cs" />
     <Compile Include="Assets\3rdParty\Obi\Editor\ObiAerodynamicConstraintsEditor.cs" />
@@ -224,11 +212,6 @@
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Editor\RCC_SettingsEditor.cs" />
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Editor\ScriptableObjectUtility.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
-    <Compile Include="Assets\3rdParty\Standard Assets\Editor\Water\Water4\GerstnerDisplaceEditor.cs" />
-    <Compile Include="Assets\3rdParty\Standard Assets\Editor\Water\Water4\PlanarReflectionEditor.cs" />
-    <Compile Include="Assets\3rdParty\Standard Assets\Editor\Water\Water4\SpecularLightingEditor.cs" />
-    <Compile Include="Assets\3rdParty\Standard Assets\Editor\Water\Water4\WaterBaseEditor.cs" />
-    <Compile Include="Assets\3rdParty\Standard Assets\Editor\Water\Water4\WaterEditorUtility.cs" />
     <None Include="Assets\3rdParty\Obi\Editor\Resources\EditorParticle.shader" />
     <None Include="Assets\3rdParty\Obi\Editor\Resources\DistanceFieldPreview.shader" />
     <None Include="Assets\3rdParty\Obi\Editor\Resources\FlatSurfaceShader.shader" />
@@ -494,6 +477,18 @@
     </Reference>
     <Reference Include="CaronteFX-RuntimeBasic">
       <HintPath>D:/CARnage/CARnage/Assets/3rdParty/Caronte/CaronteFX/Plugin/Scripts/CaronteFX-RuntimeBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="VacuumShaders.CurvedWorldVC">
+      <HintPath>D:/CARnage/CARnage/Assets/VacuumShaders/Curved World/Editor/VacuumShaders.CurvedWorldVC.dll</HintPath>
+    </Reference>
+    <Reference Include="VacuumShaders.CurvedWorld_Editor">
+      <HintPath>D:/CARnage/CARnage/Assets/VacuumShaders/Curved World/Editor/VacuumShaders.CurvedWorld_Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="VacuumShaders.CurvedWorld">
+      <HintPath>D:/CARnage/CARnage/Assets/VacuumShaders/Curved World/Scripts/VacuumShaders.CurvedWorld.dll</HintPath>
+    </Reference>
+    <Reference Include="VacuumShaders">
+      <HintPath>D:/CARnage/CARnage/Assets/VacuumShaders/Editor/VacuumShaders.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/Jo/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.7/Editor/UnityEditor.Advertisements.dll</HintPath>
