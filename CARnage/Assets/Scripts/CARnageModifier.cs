@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CARnageModifier : MonoBehaviour {
 
     public ModID modID;
+    public string modName;
     public string description;
     public Sprite image;
 
@@ -361,7 +363,7 @@ public class CARnageModifier : MonoBehaviour {
         float mult = 1f;
         if (modID == ModID.GOLD_DIGGER && gearSource == GearSource.ENVIRONMENT)
             mult *= 2;
-        if (modID == ModID.WELL_PLACED_ADVERTISEMENT && getCar().isShielded())
+        if (modID == ModID.WELL__PLACED_ADVERTISEMENT && getCar().isShielded())
             mult *= 2;
         if (modID == ModID.HARVEST && gearSource == GearSource.CAR)
             mult *= 2;
@@ -434,7 +436,7 @@ public class CARnageModifier : MonoBehaviour {
         SURFIN_BIRD, // TODO: Remodel as boat
         VACATIONIST, // TODO: Bases
         RISK_LOVER, //
-        LEAD_FOOTED, // TODO: See if speed can be manipulated at run-time
+        LEAD__FOOTED, // TODO: See if speed can be manipulated at run-time
         LAST_TRIP, //
         SOLITUDE, // TODO: Check if any cars/buildings around
         HEAVY_LOAD, //
@@ -452,7 +454,7 @@ public class CARnageModifier : MonoBehaviour {
         RED_DEATH, //
         SURGEONEER, //
         BLIZZARD, // TODO: Freeze FX / Animation / engine blockage
-        WELL_PLACED_ADVERTISEMENT, //
+        WELL__PLACED_ADVERTISEMENT, //
         COD, // TODO: Dropping Modifiers
         MERCHANT_OF_DEATH, // 
         DELUSIONS_OF_GRANDEUR, //TODO: Weapons belonging to Cars
@@ -504,7 +506,7 @@ public class CARnageModifier : MonoBehaviour {
         SCREWED_DOWN, //
         BULLETSTORM, // TODO: Everything
         CANNONBALLS, // TODO: On change weapon, projectile size modifier
-        MUZZLE_LOADER, // TODO: Weapons, global variables
+        MUZZLE__LOADER, // TODO: Weapons, global variables
         HELL_SHELL, // TODO: projectile modifier
         INCINERATOR, //
         FURNACED, //

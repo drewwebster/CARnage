@@ -143,6 +143,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &1077096855997356
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4890010806254322}
+  - component: {fileID: 114919213142547058}
+  m_Layer: 0
+  m_Name: Car Improvement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1083283963161896
 GameObject:
   m_ObjectHideFlags: 1
@@ -702,6 +718,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &1498315417642404
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4365330468120558}
+  - component: {fileID: 114486960738795444}
+  m_Layer: 0
+  m_Name: Improvise
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1499233706840854
 GameObject:
   m_ObjectHideFlags: 1
@@ -881,6 +913,21 @@ GameObject:
   - component: {fileID: 95706297829899454}
   m_Layer: 0
   m_Name: scp_we_pistol_01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1614364812897676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4731839762513486}
+  m_Layer: 0
+  m_Name: Mods
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1745,6 +1792,19 @@ Transform:
   m_Father: {fileID: 4722930666854394}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!4 &4365330468120558
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1498315417642404}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4731839762513486}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4371189567478482
 Transform:
   m_ObjectHideFlags: 1
@@ -1999,6 +2059,21 @@ Transform:
   m_Father: {fileID: 4107927426797886}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4731839762513486
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614364812897676}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4365330468120558}
+  - {fileID: 4890010806254322}
+  m_Father: {fileID: 4949147249710782}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4756133526851456
 Transform:
   m_ObjectHideFlags: 1
@@ -2158,6 +2233,19 @@ Transform:
   m_Father: {fileID: 4809160113302124}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4890010806254322
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1077096855997356}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4731839762513486}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4893029219090122
 Transform:
   m_ObjectHideFlags: 1
@@ -2197,13 +2285,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1185936578095630}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 41.7, y: 0.7355766, z: 50}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -33.97, y: -49.55, z: 153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4116416244221202}
   - {fileID: 4107324535693178}
   - {fileID: 4371189567478482}
+  - {fileID: 4731839762513486}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -4110,6 +4199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748138622da47484f891369d42929c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: 
+  weaponType: 0
   Damage: 5
   shotDelay: 0.5
   magazineSize: 20
@@ -4306,6 +4397,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114486960738795444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1498315417642404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ed04dfb42f4c44bb4a79420d5b7e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 1
+  modName: Improvise
+  description: Weapons you obtain get a random upgrade.
+  image: {fileID: 21300000, guid: ae008baab6f5be04c869d59ec81b5551, type: 3}
 --- !u!114 &114490894065447944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4344,6 +4450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748138622da47484f891369d42929c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: 
+  weaponType: 0
   Damage: 5
   shotDelay: 0.5
   magazineSize: 20
@@ -4533,6 +4641,23 @@ MonoBehaviour:
   FX_CarDrain: {fileID: 1354385362881288}
   FX_HPSmoke: {fileID: 1169513447190340}
   FX_Destroy: {fileID: 1747985412123316}
+  FX_Freeze: {fileID: 0}
+  FX_Locked: {fileID: 0}
+--- !u!114 &114919213142547058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1077096855997356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ed04dfb42f4c44bb4a79420d5b7e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 0
+  modName: Car Improvement
+  description: -50% Modifier price cost.
+  image: {fileID: 21300000, guid: b1e532a9f2af99045a98b99fdbf2b81e, type: 3}
 --- !u!114 &114922168687133424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4572,15 +4697,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Tooltime
+  carColor: 0
   speed: 4
   impact: 6
   HP: 6
   shield: 1
+  gearStorage: 5
   maxHP: 0
   currentHP: 0
   maxShield: 0
   currentShield: 0
+  currentGears: 0
+  maxGears: 0
   destroyed: 0
+  destroyedCars: 0
   HPBar: {fileID: 114490894065447944}
   ShieldBar: {fileID: 114429441394575748}
   speedUI: {fileID: 1802595841001866}
@@ -4590,6 +4720,7 @@ MonoBehaviour:
     type: 2}
   nakedModel: {fileID: 1931616092636656}
   controlledBy: 0
+  modList: []
 --- !u!114 &114985725682398376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4639,26 +4770,26 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 2
-      inSlope: 0.06313131
-      outSlope: 0.06313131
+      inSlope: 0.11363636
+      outSlope: 0.11363636
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 7.9200006
+      time: 4.4
       value: 2.5
-      inSlope: -0.007891413
-      outSlope: -0.007891413
+      inSlope: -0.014204547
+      outSlope: -0.014204547
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 39.600002
+      time: 22
       value: 0
-      inSlope: -0.078914136
-      outSlope: -0.078914136
+      inSlope: -0.14204545
+      outSlope: -0.14204545
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
@@ -4671,35 +4802,35 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0.62
-      inSlope: 0.010370369
-      outSlope: 0.010370369
+      inSlope: 0.018666664
+      outSlope: 0.018666664
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 27
+      time: 15
       value: 0.9
-      inSlope: -0.0015608468
-      outSlope: -0.0015608468
+      inSlope: -0.0028095245
+      outSlope: -0.0028095245
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 90
+      time: 50
       value: 0.05
-      inSlope: -0.03498677
-      outSlope: -0.03498677
+      inSlope: -0.06297619
+      outSlope: -0.06297619
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 144
+      time: 80
       value: -3
-      inSlope: -0.05648148
-      outSlope: -0.05648148
+      inSlope: -0.10166667
+      outSlope: -0.10166667
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
@@ -4712,35 +4843,35 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0.42999998
-      inSlope: 0.0068518524
-      outSlope: 0.0068518524
+      inSlope: 0.012333334
+      outSlope: 0.012333334
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 54
+      time: 30
       value: 0.8
-      inSlope: -0.0012037035
-      outSlope: -0.0012037035
+      inSlope: -0.0021666666
+      outSlope: -0.0021666666
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 135
+      time: 75
       value: 0.05
-      inSlope: -0.023456786
-      outSlope: -0.023456786
+      inSlope: -0.042222217
+      outSlope: -0.042222217
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 216.00002
+      time: 120.00001
       value: -3
-      inSlope: -0.037654314
-      outSlope: -0.037654314
+      inSlope: -0.06777777
+      outSlope: -0.06777777
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
@@ -4753,35 +4884,35 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0.24
-      inSlope: 0.0056790123
-      outSlope: 0.0056790123
+      inSlope: 0.010222222
+      outSlope: 0.010222222
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 81
+      time: 45
       value: 0.7
-      inSlope: -0.00044332212
-      outSlope: -0.00044332212
+      inSlope: -0.00079798
+      outSlope: -0.00079798
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 180
+      time: 100
       value: 0.05
-      inSlope: -0.017403198
-      outSlope: -0.017403198
+      inSlope: -0.031325758
+      outSlope: -0.031325758
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 288
+      time: 160
       value: -3
-      inSlope: -0.02824074
-      outSlope: -0.02824074
+      inSlope: -0.050833333
+      outSlope: -0.050833333
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
@@ -4794,35 +4925,35 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0.05
-      inSlope: 0.005092593
-      outSlope: 0.005092593
+      inSlope: 0.009166667
+      outSlope: 0.009166667
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 108
+      time: 60
       value: 0.6
-      inSlope: 0.00019586901
-      outSlope: 0.00019586901
+      inSlope: 0.00035256427
+      outSlope: 0.00035256427
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 225
+      time: 125
       value: 0.05
-      inSlope: -0.013646724
-      outSlope: -0.013646724
+      inSlope: -0.024564102
+      outSlope: -0.024564102
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 360
+      time: 200
       value: -3
-      inSlope: -0.022592593
-      outSlope: -0.022592593
+      inSlope: -0.040666666
+      outSlope: -0.040666666
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
@@ -4831,16 +4962,16 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   targetSpeedForGear:
-  - 32.4
-  - 64.8
-  - 97.200005
-  - 129.6
+  - 18
+  - 36
+  - 54.000004
+  - 72
   maxSpeedForGear:
-  - 39.600002
-  - 79.200005
-  - 118.8
-  - 158.40001
-  - 198
+  - 22
+  - 44
+  - 66
+  - 88
+  - 110
   engineTorque: 2500
   brakeTorque: 4000
   maxEngineRPM: 6999.66
@@ -4858,8 +4989,8 @@ MonoBehaviour:
   antiRollVertical: 0
   downForce: 25
   speed: 0
-  orgMaxSpeed: 180
-  maxspeed: 180
+  orgMaxSpeed: 100
+  maxspeed: 100
   currentGear: 0
   totalGears: 5
   gearShiftingDelay: 0.25
@@ -4930,8 +5061,11 @@ MonoBehaviour:
   rearSlip: 0
   turboBoost: 0
   NoS: 100
-  useNOS: 1
+  useNOS: 0
   useTurbo: 0
+  driftingTime: 0
+  isDrifting: 0
+  isInAir: 0
 --- !u!123 &123320572794262010
 LensFlare:
   m_ObjectHideFlags: 1
