@@ -9,17 +9,17 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1703434411517930}
+  m_RootGameObject: {fileID: 1032041088423220}
   m_IsPrefabParent: 1
---- !u!1 &1703434411517930
+--- !u!1 &1032041088423220
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4629383981584244}
-  - component: {fileID: 114387373690099504}
+  - component: {fileID: 4097600412506570}
+  - component: {fileID: 114457678138117218}
   m_Layer: 0
   m_Name: Solitude
   m_TagString: Untagged
@@ -27,12 +27,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4629383981584244
+--- !u!4 &4097600412506570
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1703434411517930}
+  m_GameObject: {fileID: 1032041088423220}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,18 +40,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114387373690099504
+--- !u!114 &114457678138117218
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1703434411517930}
+  m_GameObject: {fileID: 1032041088423220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9ed04dfb42f4c44bb4a79420d5b7e8f, type: 3}
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   modID: 20
   modName: Solitude
-  description: Repair 1HP/s when no cars or buildings around.
+  description: 
   image: {fileID: 21300000, guid: f7f4985623600e2429db5f269d874271, type: 3}

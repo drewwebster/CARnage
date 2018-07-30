@@ -9,17 +9,17 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1064311484566708}
+  m_RootGameObject: {fileID: 1961086933232540}
   m_IsPrefabParent: 1
---- !u!1 &1064311484566708
+--- !u!1 &1961086933232540
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4755112484433614}
-  - component: {fileID: 114389270722240064}
+  - component: {fileID: 4710908217157942}
+  - component: {fileID: 114807499584311586}
   m_Layer: 0
   m_Name: Impatience
   m_TagString: Untagged
@@ -27,12 +27,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4755112484433614
+--- !u!4 &4710908217157942
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1064311484566708}
+  m_GameObject: {fileID: 1961086933232540}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,18 +40,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114389270722240064
+--- !u!114 &114807499584311586
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1064311484566708}
+  m_GameObject: {fileID: 1961086933232540}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9ed04dfb42f4c44bb4a79420d5b7e8f, type: 3}
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   modID: 8
   modName: Impatience
-  description: -50% Weapon Reload time.
+  description: 
   image: {fileID: 21300000, guid: c415857cfd10550459e7bd661a1225e2, type: 3}

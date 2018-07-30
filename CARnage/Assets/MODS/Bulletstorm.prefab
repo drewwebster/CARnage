@@ -9,17 +9,17 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1951305630924566}
+  m_RootGameObject: {fileID: 1942825414154562}
   m_IsPrefabParent: 1
---- !u!1 &1951305630924566
+--- !u!1 &1942825414154562
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4775279014939660}
-  - component: {fileID: 114302040950441624}
+  - component: {fileID: 4613179418076426}
+  - component: {fileID: 114226666107394160}
   m_Layer: 0
   m_Name: Bulletstorm
   m_TagString: Untagged
@@ -27,12 +27,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4775279014939660
+--- !u!4 &4613179418076426
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1951305630924566}
+  m_GameObject: {fileID: 1942825414154562}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,18 +40,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114302040950441624
+--- !u!114 &114226666107394160
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1951305630924566}
+  m_GameObject: {fileID: 1942825414154562}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9ed04dfb42f4c44bb4a79420d5b7e8f, type: 3}
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   modID: 86
   modName: Bulletstorm
-  description: 30% chance to fire an additional bullet while shielded.
+  description: 
   image: {fileID: 21300000, guid: 486b6a25d6a56e74eb1090a1d239f4df, type: 3}

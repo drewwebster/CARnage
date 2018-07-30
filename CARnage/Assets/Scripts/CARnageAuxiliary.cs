@@ -47,10 +47,10 @@ public class CARnageAuxiliary : MonoBehaviour {
 
         // choose from them
 
-        spawnWeapon(CARnageWeapon.WeaponType.DOWNFALL, location);
+        spawnWeapon(CARnageWeapon.WeaponModel.DOWNFALL, location);
     }
 
-    public static void spawnWeapon(CARnageWeapon.WeaponType type, Vector3 location)
+    public static void spawnWeapon(CARnageWeapon.WeaponModel model, Vector3 location)
     {
 
     }

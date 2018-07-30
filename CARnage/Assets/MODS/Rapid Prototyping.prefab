@@ -9,17 +9,17 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1941963743595128}
+  m_RootGameObject: {fileID: 1777926302605402}
   m_IsPrefabParent: 1
---- !u!1 &1941963743595128
+--- !u!1 &1777926302605402
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4880311243577836}
-  - component: {fileID: 114839898916849380}
+  - component: {fileID: 4188829668806540}
+  - component: {fileID: 114110031781558832}
   m_Layer: 0
   m_Name: Rapid Prototyping
   m_TagString: Untagged
@@ -27,12 +27,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4880311243577836
+--- !u!4 &4188829668806540
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1941963743595128}
+  m_GameObject: {fileID: 1777926302605402}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,19 +40,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114839898916849380
+--- !u!114 &114110031781558832
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1941963743595128}
+  m_GameObject: {fileID: 1777926302605402}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9ed04dfb42f4c44bb4a79420d5b7e8f, type: 3}
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   modID: 47
   modName: Rapid Prototyping
-  description: Gain a free modifier when entering a shop, then shuffle all of them.
-    Can't buy modifiers at shops.
+  description: 
   image: {fileID: 21300000, guid: e11e432dd26f8b64cb87762db8cd5ab9, type: 3}

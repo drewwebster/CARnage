@@ -16,6 +16,12 @@ public class CARnageModifier : MonoBehaviour {
         used = false;
     }
 
+    bool finaleActive = false;
+    CARnageCar killWill_Enemy;
+    // ----- ------ ----- ----- -----
+    // ----- ----- ON-HANDLER ----- -----
+    // ----- ------ ----- ----- -----
+
     public void onSpawn()
     {
         if(modID == ModID.TRAFFIC_BYPASSER && !used)
@@ -58,28 +64,136 @@ public class CARnageModifier : MonoBehaviour {
         
     }
 
-    // when purchasing a Mod, this will be multiplied with the price
-    public float getModifierPrice_Mod()
+    public void onSecondPassed()
     {
-        if (modID == ModID.CAR_IMPROVEMENT)
-            return 0.5f;
-        return 1f;
+        if (modID == ModID.RED_DEATH)
+            if (getCar().currentHP / getCar().maxHP >= 0.5f)
+                getCar().repair(1);
+            else
+                getCar().damageMe(1);
+
+        if (modID == ModID.GROWTH)
+            getCar().addGears(1);
+
+        if (modID == ModID.UPWIND && GetComponent<RCC_CarControllerV3>().isInAir)
+            getCar().repair(10);
+        if (modID == ModID.AIRBORNE && GetComponent<RCC_CarControllerV3>().isInAir)
+            getCar().replenishShield(10);
     }
-    
+
     public void onPickupWeapon(CARnageWeapon weapon)
     {
         if (modID == ModID.IMPROVISE)
             weapon.addRandomUpgrade();
     }
-    
-    public enum DamageType
+
+    public void onDestroyingCar(CARnageCar destroyedCar)
     {
-        PROJECTILE,
-        MELEE,
-        RAM,
-        EXPLOSION,
-        DEBUFF
+        if (modID == ModID.GUN_RACK)
+            CARnageAuxiliary.spawnRndWeapon(destroyedCar.transform.position);
+
+        if (modID == ModID.LIFT)
+            getCar().replenishShield(getCar().maxHP / 4);
+        if (modID == ModID.SPARE_PARTS)
+            getCar().repair(getCar().maxHP / 4);
+
     }
+
+    public void onSelfDestroyed(CARnageCar killerCar)
+    {
+        if (modID == ModID.LAST_TRIP)
+            killerCar.applyDebuff(CARnageCar.Debuff.Acid, getCar(), 2);
+
+        if (modID == ModID.KILL_WILL)
+            killWill_Enemy = killerCar;
+
+        if (modID == ModID.MARTYRDOM)
+            getCar().addGears(1000);
+    }
+
+    public void onShieldDestroyed()
+    {
+        if (modID == ModID.TASTY_BURGER && !used)
+        {
+            getCar().replenishShield();
+            used = true;
+        }
+        if (modID == ModID.FINALE)
+        {
+            finaleActive = true;
+            Invoke("disableFinaleActive", 10);
+        }
+    }
+
+    public void onDMGReceived(float damage)
+    {
+        if (modID == ModID.DOWNFALL && getCar().currentHP <= getCar().maxHP / 4 && !used)
+            CARnageAuxiliary.spawnWeapon(CARnageWeapon.WeaponModel.DOWNFALL, getCar().transform.position);
+    }
+
+    public void onDMGDealt(CARnageCar damagedCar, DamageType damageType, float amount)
+    {
+        if (modID == ModID.HYDROFLUORIC_ACID)
+            damagedCar.applyDebuff(CARnageCar.Debuff.Acid, getCar());
+
+        if (modID == ModID.DISASSEMBLY)
+            damagedCar.dropGears(1);
+
+        switch (damageType)
+        {
+            case DamageType.PROJECTILE:
+                if (modID == ModID.LOCK)
+                    getCar().applyDebuff(CARnageCar.Debuff.Locked, getCar());
+                break;
+
+            case DamageType.DEBUFF:
+                if (modID == ModID.BLACK_THUMB)
+                    getCar().repair(1);
+                if (modID == ModID.INCINERATOR)
+                    getCar().replenishNitro(10);
+                break;
+
+            case DamageType.MELEE:
+                if (modID == ModID.BB_BBQ)
+                    getCar().replenishShield(amount * 0.1f);
+                if (modID == ModID.FORCED_EXTRACTION)
+                    damagedCar.dropWeapon();
+                break;
+
+            case DamageType.RAM:
+                if (modID == ModID.BLIZZARD)
+                    damagedCar.applyDebuff(CARnageCar.Debuff.Freeze, getCar());
+                if (modID == ModID.OILWAY)
+                    damagedCar.applyDebuff(CARnageCar.Debuff.Drain, getCar(), 2);
+                //if (modID == ModID.INCINERATOR && getCar().isOnFire()) // Deprecated
+                //    damagedCar.applyDebuff(CARnageCar.Debuff.Fire, getCar());
+                if (modID == ModID.IMPULSIVE_DEFLORATION && damagedCar.isShielded())
+                    damagedCar.breakShield();
+                break;
+        }
+    }
+
+    public void onBuildingDestroyed()
+    {
+        if (modID == ModID.DEMOLITION)
+            getCar().repair();
+    }
+
+    public void onGearCollected(int amount)
+    {
+        if (modID == ModID.SURGEONEER)
+            getCar().repair(amount);
+        if (modID == ModID.CROP)
+            getCar().replenishShield(amount);
+    }
+
+    public void onWeaponObtained(CARnageWeapon weapon)
+    {
+        //if(modID == ModID.BIG_FAT_KILL && )
+    }
+    // ----- ------ ----- ----- -----
+    // ----- ----- DMG RELATED ----- -----
+    // ----- ------ ----- ----- -----
 
     public float getSelfDMG_Multiplier(CARnageCar damager, DamageType damageType)
     {
@@ -88,7 +202,7 @@ public class CARnageModifier : MonoBehaviour {
         if (modID == ModID.IRON_SHELTER && getCar().isShielded())
             mult *= 0.5f;
 
-        switch(damageType)
+        switch (damageType)
         {
             // ----- ----- ----- PROJECTILE ----- ----- ----- 
             case DamageType.PROJECTILE:
@@ -114,15 +228,13 @@ public class CARnageModifier : MonoBehaviour {
                 {
                     mult = 0f;
                     getCar().repair(2);
-                }                    
+                }
                 break;
         }
 
         return mult;
     }
 
-    bool finaleActive = false;
-    // when dealing dmg, this will be multiplied with the dmg
     public float getDMG_Multiplier(DamageType damageType, CARnageCar damagedCar)
     {
         float mult = 1f;
@@ -141,6 +253,9 @@ public class CARnageModifier : MonoBehaviour {
         if (modID == ModID.AGGRESSIVE_STEREOTYPES && damagedCar.carColor != getCar().carColor)
             mult += 0.1f;
 
+        if (modID == ModID.UTTERLY_INSANE && getCar().isOnNitro())
+            mult += 0.2f;
+
         switch (damageType)
         {
             // ----- ----- ----- PROJECTILE ----- ----- ----- 
@@ -152,7 +267,7 @@ public class CARnageModifier : MonoBehaviour {
                 {
                     CARnageWeapon[] weapons = getCar().GetComponentsInChildren<CARnageWeapon>();
                     if (weapons.Length == 2)
-                        if (weapons[0].weaponType == weapons[1].weaponType)
+                        if (weapons[0].weaponModel == weapons[1].weaponModel)
                             mult += 0.3f;
                 }
 
@@ -184,15 +299,7 @@ public class CARnageModifier : MonoBehaviour {
         return mult;
     }
 
-    public bool getDebuffImmunity(CARnageCar.Debuff debuff)
-    {
-        if (modID == ModID.HEROIC)
-            return true;
-
-        return false;
-    }
-    
-    public float getBuildingDMG_Mod()
+    public float getBuildingDMG_Multiplier()
     {
         float damage = 1f;
         if (modID == ModID.TEARDOWN)
@@ -201,56 +308,7 @@ public class CARnageModifier : MonoBehaviour {
         return damage;
     }
 
-    public void onDestroyingCar(CARnageCar destroyedCar)
-    {
-        if (modID == ModID.GUN_RACK)
-            CARnageAuxiliary.spawnRndWeapon(destroyedCar.transform.position);
-
-        if(modID == ModID.LIFT)
-            getCar().replenishShield(getCar().maxHP / 4);
-        if (modID == ModID.SPARE_PARTS)
-            getCar().repair(getCar().maxHP / 4);
-            
-    }
-    public void onSelfDestroyed(CARnageCar killerCar)
-    {
-        if(modID == ModID.LAST_TRIP)
-            killerCar.applyDebuff(CARnageCar.Debuff.Acid, getCar(), 2);
-
-        if (modID == ModID.KILL_WILL)
-            killWill_Enemy = killerCar;
-
-        if (modID == ModID.MARTYRDOM)
-            getCar().addGears(1000);
-    }
-    CARnageCar killWill_Enemy;
-
-    public void onShieldDestroyed()
-    {
-        if (modID == ModID.TASTY_BURGER && !used)
-        {
-            getCar().replenishShield();
-            used = true;
-        }
-        if(modID == ModID.FINALE)
-        {
-            finaleActive = true;
-            Invoke("disableFinaleActive", 10);
-        }
-    }
-
-    void disableFinaleActive()
-    {
-        finaleActive = false;
-    }
-
-    public void onDMGReceived(float damage)
-    {
-        if (modID == ModID.DOWNFALL && !used)
-            CARnageAuxiliary.spawnWeapon(CARnageWeapon.WeaponType.DOWNFALL, getCar().transform.position);
-    }
-
-    public float getWeaponReloadTime_Mod()
+    public float getWeaponReloadTime_Multiplier()
     {
         float reloadTime = 1f;
         if (modID == ModID.IMPATIENCE)
@@ -258,48 +316,8 @@ public class CARnageModifier : MonoBehaviour {
 
         return reloadTime;
     }
-    
-    public void onDMGDealt(CARnageCar damagedCar, DamageType damageType, float amount)
-    {
-        if (modID == ModID.HYDROFLUORIC_ACID)
-            damagedCar.applyDebuff(CARnageCar.Debuff.Acid, getCar());
 
-        if (modID == ModID.DISASSEMBLY)
-            damagedCar.dropGears(1);
-
-        switch(damageType)
-        {
-            case DamageType.PROJECTILE:
-                if (modID == ModID.LOCK)
-                    getCar().applyDebuff(CARnageCar.Debuff.Locked, getCar());
-                break;
-
-            case DamageType.DEBUFF:
-                if (modID == ModID.BLACK_THUMB)
-                    getCar().repair(1);
-                break;
-
-            case DamageType.MELEE:
-                if (modID == ModID.BB_BBQ)
-                    getCar().replenishShield(amount * 0.1f);
-                if (modID == ModID.FORCED_EXTRACTION)
-                    damagedCar.dropWeapon();
-                break;
-
-            case DamageType.RAM:
-                if (modID == ModID.BLIZZARD)
-                    damagedCar.applyDebuff(CARnageCar.Debuff.Freeze, getCar());
-                if (modID == ModID.OILWAY)
-                    damagedCar.applyDebuff(CARnageCar.Debuff.Drain, getCar(), 2);
-                if (modID == ModID.INCINERATOR && getCar().isOnFire())
-                    damagedCar.applyDebuff(CARnageCar.Debuff.Fire, getCar());
-                if (modID == ModID.IMPULSIVE_DEFLORATION && damagedCar.isShielded())
-                    damagedCar.breakShield();
-                break;
-        }
-    }
-    
-    public float getShotDelay_Mod()
+    public float getShotDelay_Multiplier()
     {
         float mult = 1f;
         if (modID == ModID.RAPID_RUSH)
@@ -307,30 +325,86 @@ public class CARnageModifier : MonoBehaviour {
 
         return mult;
     }
-
+    // ----- ------ ----- ----- -----
+    // ----- ----- PRICE/GEARS ----- -----
+    // ----- ------ ----- ----- -----
+    public float getModifierPrice_Multiplier()
+    {
+        if (modID == ModID.CAR_IMPROVEMENT)
+            return 0.5f;
+        return 1f;
+    }
     // when purchasing a Weapon, this will be multiplied with the price
-    public float getWeaponPrice_Mod()
+    public float getWeaponPrice_Multiplier()
     {
         float mult = 1f;
         if (modID == ModID.BEST_CUSTOMER)
             mult *= 0.5f;
         if (modID == ModID.MERCHANT_OF_DEATH)
             mult *= 1 - Mathf.Max(1, getCar().destroyedCars / 100f);
-            
+
         return mult;
     }
     // when repairing, this will be multiplied with the price
-    public float getRepairPrice_Mod()
+    public float getRepairPrice_Multiplier()
     {
         if (modID == ModID.CONSTRUCTION_WORKER)
             return 0.5f;
         return 1f;
     }
 
-    public float getWaterContactDMG_Mod()
+    public float getCollectedGears_Multiplier(GearSource gearSource)
+    {
+        float mult = 1f;
+        if (modID == ModID.GOLD_DIGGER && gearSource == GearSource.ENVIRONMENT)
+            mult *= 2;
+        if (modID == ModID.WELL__PLACED_ADVERTISEMENT && getCar().isShielded())
+            mult *= 2;
+        if (modID == ModID.HARVEST && gearSource == GearSource.CAR)
+            mult *= 2;
+
+        return mult;
+    }
+
+    public float getDroppedGears_Multiplier()
+    {
+        float mult = 1f;
+        if (modID == ModID.APPOINTMENT)
+            mult *= 0.5f;
+
+        return mult;
+    }
+
+    public float getNitroConsumption_Multiplier()
+    {
+        float mult = 1f;
+        if (modID == ModID.GASWORKS)
+            mult *= 0.5f;
+        return mult;
+    }
+    public float getNitroRegeneration_Multiplier()
+    {
+        float mult = 1f;
+        if (modID == ModID.STUFFED && getCar().isShielded())
+            mult *= 2f;
+        return mult;
+    }
+    // ----- ------ ----- ----- -----
+    // ----- ----- IMMUNITIES---
+    // ----- ------ ----- ----- -----
+
+    public bool getDebuffImmunity(CARnageCar.Debuff debuff)
+    {
+        if (modID == ModID.HEROIC)
+            return true;
+
+        return false;
+    }
+
+    public float getWaterContactDMG()
     {
         float damage = 1f;
-        if(modID == ModID.SURFIN_BIRD)
+        if (modID == ModID.SURFIN_BIRD)
         {
             damage = 0f;
             // TODO: Remodel as Boat
@@ -345,12 +419,6 @@ public class CARnageModifier : MonoBehaviour {
         }
     }
 
-    public void onBuildingDestroyed()
-    {
-        if (modID == ModID.DEMOLITION)
-            getCar().repair();
-    }
-
     public bool isIgnoringEnemyShield()
     {
         if (modID == ModID.STEAMROLLER)
@@ -358,51 +426,13 @@ public class CARnageModifier : MonoBehaviour {
         return false;
     }
 
-    public float getCollectedGears_Mult(GearSource gearSource)
+    // ----- ------ ----- ----- -----
+    // ----- ----- HELPER FUNCTIONS ---
+    // ----- ------ ----- ----- -----
+
+    void disableFinaleActive()
     {
-        float mult = 1f;
-        if (modID == ModID.GOLD_DIGGER && gearSource == GearSource.ENVIRONMENT)
-            mult *= 2;
-        if (modID == ModID.WELL__PLACED_ADVERTISEMENT && getCar().isShielded())
-            mult *= 2;
-        if (modID == ModID.HARVEST && gearSource == GearSource.CAR)
-            mult *= 2;
-
-        return mult;
-    }
-
-    public float getDroppedGears_Mod()
-    {
-        float mult = 1f;
-        if (modID == ModID.APPOINTMENT)
-            mult *= 0.5f;
-
-        return mult;
-    }
-
-    public void onSecondPassed()
-    {
-        if (modID == ModID.RED_DEATH)
-            if (getCar().currentHP / getCar().maxHP >= 0.5f)
-                getCar().repair(1);
-            else
-                getCar().damageMe(1);
-
-        if (modID == ModID.GROWTH)
-            getCar().addGears(1);
-
-        if (modID == ModID.UPWIND && GetComponent<RCC_CarControllerV3>().isInAir)
-            getCar().repair(10);
-        if (modID == ModID.AIRBORNE && GetComponent<RCC_CarControllerV3>().isInAir)
-            getCar().replenishShield(10);
-    }
-
-    public void onGearCollected(int amount)
-    {
-        if (modID == ModID.SURGEONEER)
-            getCar().repair(amount);
-        if (modID == ModID.CROP)
-            getCar().replenishShield(amount);
+        finaleActive = false;
     }
 
     public enum GearSource
@@ -478,7 +508,7 @@ public class CARnageModifier : MonoBehaviour {
         IRON_SHELTER, //
         HEROIC, //
         COMMITMENT, //
-        STUFFED, // TODO: See if speed can be manipulated at run-time
+        STUFFED, // TODO: Nitro
         BB_BBQ, //
         GROWTH, //
         HARVEST, // 
@@ -516,6 +546,8 @@ public class CARnageModifier : MonoBehaviour {
         MARTYRDOM, // TODO: Weapons (no)
         UPWIND, //
         AIRBORNE, //
-        APPOINTMENT //
+        APPOINTMENT, //
+        GASWORKS, //
+        UTTERLY_INSANE //
     }
 }

@@ -315,7 +315,9 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 
 	public float turboBoost = 0f;
 	public float NoS = 100f;
-	private float NoSConsumption = 25f;
+    public float maxNitro = 0f;
+
+    private float NoSConsumption = 25f;
 	private float NoSRegenerateTime = 10f;
 
 	public bool useNOS = false;
@@ -339,6 +341,8 @@ public class RCC_CarControllerV3 : MonoBehaviour {
         else
         {
             maxspeed = car.getRCC_speed();
+            maxNitro = car.getRCC_nitro();
+            NoS = maxNitro;
             //acceleration = car.getRCC_acceleration();
             //maxspeedLimit = car.getRCC_speed();
             //Debug.Log("max speed: " + maxspeed);
@@ -346,8 +350,8 @@ public class RCC_CarControllerV3 : MonoBehaviour {
             //Debug.Log("Maxspeed: " + maxspeedLimit);
         }
 
-		// Overriding Fixed TimeStep.
-		if(RCCSettings.overrideFixedTimeStep)
+        // Overriding Fixed TimeStep.
+        if (RCCSettings.overrideFixedTimeStep)
 			Time.fixedDeltaTime = RCCSettings.fixedTimeStep;
 
 		// Getting Rigidbody and settings.
@@ -882,7 +886,7 @@ public class RCC_CarControllerV3 : MonoBehaviour {
                 if (GetComponent<CARnageCar>().controlledBy != CARnageAuxiliary.ControllerType.MouseKeyboard)
                     return;
 
-			gasInput = Input.GetAxis(RCCSettings.verticalInput);
+            gasInput = Input.GetAxis(RCCSettings.verticalInput);
 			brakeInput = Mathf.Clamp01(-Input.GetAxis(RCCSettings.verticalInput));
 			handbrakeInput = Input.GetKey(RCCSettings.handbrakeKB) ? 1f : 0f;
 			steerInput = Input.GetAxis(RCCSettings.horizontalInput);
@@ -1430,8 +1434,10 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 		
 	}
 
-	void NOS(){
+    public bool isUsingNitro;
 
+	void NOS(){
+        
 		if(!useNOS)
 			return;
 
@@ -1441,15 +1447,22 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 		if(!blowSound)
 			blowSound = RCC_CreateAudioSource.NewAudioSource(gameObject, "NOS Blow", 1, 10, 1, null, false, false, false);
 
-		if(boostInput > 1.5f && _gasInput >= .8f && NoS > 5){
-			NoS -= NoSConsumption * Time.fixedDeltaTime;
+		if(boostInput > 1.5f && _gasInput >= .8f && NoS > 0){
+			NoS -= NoSConsumption * GetComponent<CARnageCar>().getModController().getNitroConsumption_Multiplier() * Time.fixedDeltaTime;
+            GetComponent<CARnageCar>().updateValues();
+            isUsingNitro = true;
 			NoSRegenerateTime = 0f;
 			if(!NOSSound.isPlaying)
 				NOSSound.Play();
 		}else{
-			if(NoS < 100 && NoSRegenerateTime > 3)
-				NoS += (NoSConsumption / 1.5f) * Time.fixedDeltaTime;
-			NoSRegenerateTime += Time.fixedDeltaTime;
+            if(boostInput < 1.5f || NoS < 0)
+                isUsingNitro = false;
+            if (NoS < maxNitro && NoSRegenerateTime > 3)
+            {
+                NoS += (NoSConsumption / 1.5f) * GetComponent<CARnageCar>().getModController().getNitroRegeneration_Multiplier() * Time.fixedDeltaTime;
+                GetComponent<CARnageCar>().updateValues();
+            }
+            NoSRegenerateTime += Time.fixedDeltaTime;
 			if(NOSSound.isPlaying){
 				NOSSound.Stop();
 				blowSound.clip = RCCSettings.blowoutClip[UnityEngine.Random.Range(0, RCCSettings.blowoutClip.Length)];
@@ -1676,8 +1689,7 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 
 	bool OverTorque(){
 
-        if(speed > maxspeed || !engineRunning) // ori
-        //if (speed > maxspeedLimit || !engineRunning)
+        if(speed > maxspeed || !engineRunning)
             return true;
 
 		return false;

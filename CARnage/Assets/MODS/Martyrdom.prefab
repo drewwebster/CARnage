@@ -9,17 +9,17 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1459421667539890}
+  m_RootGameObject: {fileID: 1946873121052360}
   m_IsPrefabParent: 1
---- !u!1 &1459421667539890
+--- !u!1 &1946873121052360
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4497755612228888}
-  - component: {fileID: 114932108399463194}
+  - component: {fileID: 4983088630355586}
+  - component: {fileID: 114962667158305328}
   m_Layer: 0
   m_Name: Martyrdom
   m_TagString: Untagged
@@ -27,12 +27,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4497755612228888
+--- !u!4 &4983088630355586
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1459421667539890}
+  m_GameObject: {fileID: 1946873121052360}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,18 +40,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114932108399463194
+--- !u!114 &114962667158305328
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1459421667539890}
+  m_GameObject: {fileID: 1946873121052360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9ed04dfb42f4c44bb4a79420d5b7e8f, type: 3}
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   modID: 95
   modName: Martyrdom
-  description: +1000 Gears when you die without a weapon.
+  description: 
   image: {fileID: 21300000, guid: b7d6d22e372e04245912232d4c6b5fc4, type: 3}
