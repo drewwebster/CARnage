@@ -28,6 +28,22 @@ public class CARnageWeapon : MonoBehaviour {
     public AudioClip ReloadSound;
 
     public GameObject WeaponGameObject;
+    public GameObject BulletSpawnGO;
+    public GameObject BulletcaseSpawnGO;
+    public GameObject shootFXSpawnGO;
+
+    public GameObject upgrade_MagazineGO;
+    public GameObject upgrade_ScopeGO;
+    public GameObject upgrade_SilencerGO;
+    public GameObject upgrade_AutomaticGO;
+    public GameObject upgrade_DamageGO;
+    public GameObject upgrade_LightGO;
+    public bool upgraded_magazine;
+    public bool upgraded_scope;
+    public bool upgraded_silencer;
+    public bool upgraded_automatic;
+    public bool upgraded_damage;
+    public bool upgraded_light;
 
     public int addAngle;
     GameObject rel_car;
@@ -47,7 +63,19 @@ public class CARnageWeapon : MonoBehaviour {
         rel_car = GetComponentInParent<CARnageCar>().gameObject;
         //rel_camera = Camera.main.gameObject;
         rel_camera = rel_car.GetComponent<CARnageCar>().observingCamera;
-        magazineLoaded = magazineSize;
+        magazineLoaded = (int)(magazineSize * getWeaponMod_magazine_multiplier());
+        if (upgraded_magazine)
+            upgrade_MagazineGO.SetActive(true);
+        if (upgraded_scope)
+            upgrade_ScopeGO.SetActive(true);
+        if (upgraded_silencer)
+            upgrade_SilencerGO.SetActive(true);
+        if (upgraded_automatic)
+            upgrade_AutomaticGO.SetActive(true);
+        if (upgraded_damage)
+            upgrade_DamageGO.SetActive(true);
+        if (upgraded_light)
+            upgrade_LightGO.SetActive(true);
     }
 
     // left:
@@ -64,8 +92,8 @@ public class CARnageWeapon : MonoBehaviour {
             collectableFX.SetActive(true);
             return;
         }
-        bool leftFiring = Input.GetMouseButtonDown(0) || (automatic && Input.GetMouseButton(0));
-        bool rightFiring = Input.GetMouseButtonDown(1) || (automatic && Input.GetMouseButton(1));
+        bool leftFiring = Input.GetMouseButtonDown(0) || ((automatic || getWeaponMod_automatic()) && Input.GetMouseButton(0));
+        bool rightFiring = Input.GetMouseButtonDown(1) || ((automatic || getWeaponMod_automatic()) && Input.GetMouseButton(1));
 
         if (rel_car.GetComponent<CARnageCar>().controlledBy == CARnageAuxiliary.ControllerType.MouseKeyboard && ((weaponState == WeaponState.EQUIPPED_LEFT && leftFiring) || (weaponState == WeaponState.EQUIPPED_RIGHT && rightFiring)))
             shoot();
@@ -87,32 +115,30 @@ public class CARnageWeapon : MonoBehaviour {
         }
 
         firing = true;
-        CARnageAuxiliary.playAnimationTimeScaled(gameObject, "Shoot", shotDelay);
+        CARnageAuxiliary.playAnimationTimeScaled(gameObject, "Shoot", shotDelay * getWeaponMod_shotDelay_multiplier());
 
-        GameObject go = Instantiate(Projectile, transform); // parent transform for intialisation
-        GameObject goBC = Instantiate(Projectile_Bulletcase, transform); // parent transform for intialisation
-        GameObject goFX = Instantiate(shootFX, transform);
-        go.transform.parent = null;
-        goBC.transform.parent = null;
-        go.GetComponent<Rigidbody>().velocity = transform.parent.parent.parent.GetComponentInChildren<Rigidbody>().velocity;
-        go.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
-        go.GetComponent<ProjectileTrajectory>().rel_car = rel_car;
-        go.GetComponent<ProjectileTrajectory>().rel_weapon = this;
-        Destroy(go, CARnageAuxiliary.destroyAfterSec);
-        Destroy(goBC, CARnageAuxiliary.destroyAfterSec);
+        shootProjectile();
 
-        //foreach(ParticleSystem ps in shootFX.GetComponentsInChildren<ParticleSystem>())
-        //{
-        //    ps.Stop();
-        //    ps.Play();
-        //}
-
-        Invoke("resetFiringDelay", shotDelay);
-        GetComponent<AudioSource>().PlayOneShot(ShootSound);
+        Invoke("resetFiringDelay", shotDelay * getWeaponMod_shotDelay_multiplier());
         magazineLoaded--;
     }
 
-
+    public void shootProjectile()
+    {
+        GameObject go = Instantiate(Projectile, BulletSpawnGO.transform); // parent transform for intialisation
+        GameObject goBC = Instantiate(Projectile_Bulletcase, BulletcaseSpawnGO.transform); // parent transform for intialisation
+        GameObject goFX = Instantiate(shootFX, shootFXSpawnGO.transform);
+        go.transform.parent = null;
+        goBC.transform.parent = null;
+        go.GetComponent<Rigidbody>().velocity = GetComponentInParent<CARnageCar>().GetComponent<Rigidbody>().velocity;
+        go.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed * getWeaponMod_projectileSpeed_multiplier());
+        go.GetComponent<ProjectileTrajectory>().rel_car = rel_car;
+        go.GetComponent<ProjectileTrajectory>().rel_weapon = this;
+        go.GetComponent<ProjectileTrajectory>().damage = Damage * getWeaponMod_damage_multiplier();
+        Destroy(go, CARnageAuxiliary.destroyAfterSec);
+        Destroy(goBC, CARnageAuxiliary.destroyAfterSec);
+        GetComponent<AudioSource>().PlayOneShot(ShootSound);
+    }
 
     public void resetFiringDelay()
     {
@@ -131,7 +157,7 @@ public class CARnageWeapon : MonoBehaviour {
     }
     public void resetReloadingDelay()
     {
-        magazineLoaded = magazineSize;
+        magazineLoaded = (int)(magazineSize * getWeaponMod_magazine_multiplier());
         reloading = false;
     }
 
@@ -278,5 +304,36 @@ public class CARnageWeapon : MonoBehaviour {
                 car.GetComponentInChildren<WeaponController>().obtainWeapon(gameObject);
             }
         }
+    }
+
+    public float getWeaponMod_magazine_multiplier()
+    {
+        if (upgraded_magazine)
+            return 1.5f;
+        return 1f;
+    }
+    public float getWeaponMod_projectileSpeed_multiplier()
+    {
+        if (upgraded_scope)
+            return 1.5f;
+        return 1f;
+    }
+    public float getWeaponMod_shotDelay_multiplier()
+    {
+        if (upgraded_silencer)
+            return 0.8f;
+        return 1f;
+    }
+    public float getWeaponMod_damage_multiplier()
+    {
+        if (upgraded_damage)
+            return 1.2f;
+        return 1f;
+    }
+    public bool getWeaponMod_automatic()
+    {
+        if (upgraded_automatic)
+            return true;
+        return false;
     }
 }

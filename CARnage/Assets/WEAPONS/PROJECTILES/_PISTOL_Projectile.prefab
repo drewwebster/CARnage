@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 65499857178895964}
   - component: {fileID: 114160033390860278}
   m_Layer: 0
-  m_Name: _PistolProjectile
+  m_Name: _PISTOL_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1928108072952912}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.22379807, z: 0.51499957}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}

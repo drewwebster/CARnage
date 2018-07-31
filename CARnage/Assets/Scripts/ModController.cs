@@ -9,7 +9,7 @@ public class ModController : MonoBehaviour {
         return GetComponentsInChildren<CARnageModifier>();
     }
 
-    public void resetMod()
+    public void resetMods()
     {
         foreach (CARnageModifier mod in getMods())
             mod.resetMod();
@@ -19,6 +19,7 @@ public class ModController : MonoBehaviour {
     {
         foreach (CARnageModifier mod in getMods())
             mod.onSpawn();
+        resetMods();
     }
 
     public float getModifierPrice_Multiplier()
@@ -207,5 +208,43 @@ public class ModController : MonoBehaviour {
         foreach (CARnageModifier mod in getMods())
             mult *= mod.getNitroRegeneration_Multiplier();
         return mult;
+    }
+
+    public float getWeaponMagazine_Multiplier()
+    {
+        float mult = 1f;
+        foreach (CARnageModifier mod in getMods())
+            mult *= mod.getWeaponMagazine_Multiplier();
+        return mult;
+    }
+
+    public CARnageModifier getRandomMod()
+    {
+        return getMods()[Random.Range(0, getMods().Length)];
+    }
+
+    public void onProjectileShot(ProjectileTrajectory projectile)
+    {
+        foreach (CARnageModifier mod in getMods())
+            mod.onProjectileShot(projectile);
+    }
+
+    public void onModifierBought(CARnageModifier modifier)
+    {
+        foreach (CARnageModifier mod in getMods())
+            mod.onModifierBought(modifier);
+    }
+
+    public void onShopEntered()
+    {
+        foreach (CARnageModifier mod in getMods())
+            mod.onShopEntered();
+    }
+
+    public bool isEmpty()
+    {
+        if (getMods().Length == 0)
+            return true;
+        return false;
     }
 }

@@ -88,15 +88,9 @@ public class CARnageCar : MonoBehaviour {
     {
         return GetComponent<RCC_CarControllerV3>().NoS;
     }
-    //public float getRCC_acceleration()
-    //{
-    //    return 2f * acceleration / 10f;
-    //}
 
     public void initializeValues()
     {
-        //GetComponent<RCC_CarControllerV3>().orgMaxSpeed = 400 * speed / 10;
-        // TODO: Acceleration
         destroyedCars = 0;
         maxHP = 200 * HP / 10;
         currentHP = maxHP;
@@ -110,7 +104,7 @@ public class CARnageCar : MonoBehaviour {
         currentGears = 0;
         maxGears = 50 * gearStorage;
 
-        getModController().resetMod();
+        getModController().onSpawn();
         updateValues();
     }
 
@@ -377,11 +371,6 @@ public class CARnageCar : MonoBehaviour {
 
     }
 
-    public void dropWeapon()
-    {
-
-    }
-
     public void repair()
     {
         repair(-1);
@@ -421,6 +410,11 @@ public class CARnageCar : MonoBehaviour {
     public ModController getModController()
     {
         return GetComponentInChildren<ModController>();
+    }
+
+    public WeaponController getWeaponController()
+    {
+        return GetComponentInChildren<WeaponController>();
     }
 
     public void onWeaponObtained(CARnageWeapon weapon)

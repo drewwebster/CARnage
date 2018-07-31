@@ -18,6 +18,13 @@ public class CARnageModifier : MonoBehaviour {
 
     bool finaleActive = false;
     CARnageCar killWill_Enemy;
+
+    public void deleteMe()
+    {
+        onDeleted();
+        Destroy(gameObject);
+    }
+
     // ----- ------ ----- ----- -----
     // ----- ----- ON-HANDLER ----- -----
     // ----- ------ ----- ----- -----
@@ -51,17 +58,57 @@ public class CARnageModifier : MonoBehaviour {
             used = true;
         }
 
-        if(modID == ModID.COMMITMENT)
+        if (modID == ModID.COMMITMENT && !used)
+        {
             getCar().replenishShield(getCar().maxHP * 0.5f);
+            used = true;
+        }
         
-        if(modID == ModID.SCREWED_DOWN)
+        if(modID == ModID.SCREWED_DOWN && !used)
         {
             getCar().replenishShield(getCar().maxHP * 0.99f);
             getCar().maxHP *= 0.01f;
             getCar().currentHP = getCar().maxHP;
             getCar().updateValues();
+            used = true;
+        }
+
+        if(modID == ModID.D6 && !used)
+        {
+            ModFactory.spawnRandomMod(getCar());
+            ModFactory.spawnRandomMod(getCar());
+            used = true;
         }
         
+    }
+
+    public void onDeleted()
+    {
+        if (modID == ModID.TRAFFIC_BYPASSER)
+            getCar().transform.localScale = getCar().transform.localScale * 2f;
+
+        if (modID == ModID.HEAVY_LOAD)
+        {
+            getCar().maxGears /= 6;
+            getCar().currentGears = Math.Min(getCar().currentGears, getCar().maxGears);
+        }
+        if (modID == ModID.MOONWALK)
+            Physics.gravity = Physics.gravity * 2f;
+
+        if (modID == ModID.COLOSSUS)
+        {
+            getCar().transform.localScale /= 2;
+            getCar().maxHP /= 2;
+            getCar().currentHP = Mathf.Min(getCar().currentHP, getCar().maxHP);
+            getCar().updateValues();
+        }
+        if (modID == ModID.SCREWED_DOWN)
+        {
+            getCar().maxShield -= getCar().maxHP * 100;
+            getCar().currentShield = Mathf.Min(getCar().currentShield, getCar().maxShield);
+            getCar().maxHP *= 100;
+            getCar().updateValues();
+        }
     }
 
     public void onSecondPassed()
@@ -90,12 +137,22 @@ public class CARnageModifier : MonoBehaviour {
     public void onDestroyingCar(CARnageCar destroyedCar)
     {
         if (modID == ModID.GUN_RACK)
-            CARnageAuxiliary.spawnRndWeapon(destroyedCar.transform.position);
+            WeaponFactory.spawnRndWeapon(destroyedCar.transform.position);
 
         if (modID == ModID.LIFT)
             getCar().replenishShield(getCar().maxHP / 4);
         if (modID == ModID.SPARE_PARTS)
             getCar().repair(getCar().maxHP / 4);
+
+        if (modID == ModID.CUT_OFF_THE_GAS)
+            destroyedCar.getModController().getRandomMod().deleteMe();
+        if(modID == ModID.SURVEILLANCE)
+        {
+            if (destroyedCar.getModController().isEmpty())
+                return;
+            ModID copyMod = destroyedCar.getModController().getRandomMod().modID;
+            ModFactory.spawnMod(copyMod, getCar());
+        }
 
     }
 
@@ -107,7 +164,7 @@ public class CARnageModifier : MonoBehaviour {
         if (modID == ModID.KILL_WILL)
             killWill_Enemy = killerCar;
 
-        if (modID == ModID.MARTYRDOM)
+        if (modID == ModID.MARTYRDOM && getCar().getWeaponController().getAllWeapons().Length == 0)
             getCar().addGears(1000);
     }
 
@@ -128,7 +185,7 @@ public class CARnageModifier : MonoBehaviour {
     public void onDMGReceived(float damage)
     {
         if (modID == ModID.DOWNFALL && getCar().currentHP <= getCar().maxHP / 4 && !used)
-            CARnageAuxiliary.spawnWeapon(CARnageWeapon.WeaponModel.DOWNFALL, getCar().transform.position);
+            WeaponFactory.spawnWeapon(CARnageWeapon.WeaponModel.DOWNFALL, getCar());
     }
 
     public void onDMGDealt(CARnageCar damagedCar, DamageType damageType, float amount)
@@ -157,7 +214,7 @@ public class CARnageModifier : MonoBehaviour {
                 if (modID == ModID.BB_BBQ)
                     getCar().replenishShield(amount * 0.1f);
                 if (modID == ModID.FORCED_EXTRACTION)
-                    damagedCar.dropWeapon();
+                    damagedCar.getWeaponController().dropRandomWeapon();
                 break;
 
             case DamageType.RAM:
@@ -165,10 +222,13 @@ public class CARnageModifier : MonoBehaviour {
                     damagedCar.applyDebuff(CARnageCar.Debuff.Freeze, getCar());
                 if (modID == ModID.OILWAY)
                     damagedCar.applyDebuff(CARnageCar.Debuff.Drain, getCar(), 2);
-                //if (modID == ModID.INCINERATOR && getCar().isOnFire()) // Deprecated
-                //    damagedCar.applyDebuff(CARnageCar.Debuff.Fire, getCar());
                 if (modID == ModID.IMPULSIVE_DEFLORATION && damagedCar.isShielded())
                     damagedCar.breakShield();
+                if(modID == ModID.POLICE_OPPRESSION)
+                {
+                    CARnageWeapon stolenWeapon = damagedCar.getWeaponController().dropRandomWeapon();
+                    getCar().getWeaponController().obtainWeapon(stolenWeapon.gameObject);
+                }
                 break;
         }
     }
@@ -189,7 +249,46 @@ public class CARnageModifier : MonoBehaviour {
 
     public void onWeaponObtained(CARnageWeapon weapon)
     {
-        //if(modID == ModID.BIG_FAT_KILL && )
+        if (modID == ModID.BIG_FAT_KILL && weapon.damageType == DamageType.MELEE)
+            weapon.transform.localScale *= 2;
+    }
+
+    public void onProjectileShot(ProjectileTrajectory projectile)
+    {
+        if(modID == ModID.CANNONBALLS)
+            projectile.transform.localScale *= 2;
+        if (modID == ModID.BULLETSTORM && getCar().isShielded() && UnityEngine.Random.Range(0, 100f) > 30f)
+            projectile.rel_weapon.shootProjectile();
+    }
+
+    public void onModifierBought(CARnageModifier modifier)
+    {
+        if(modID == ModID.RAPID_PROTOTYPING)
+        {
+            List<CARnageModifier> toDelete = new List<CARnageModifier>();
+            foreach (CARnageModifier mod in getCar().getModController().getMods())
+                if (mod.modID != ModID.RAPID_PROTOTYPING)
+                    toDelete.Add(mod);
+            int i = 1; // +1 from rapid prototyping bonus
+            foreach(CARnageModifier mod in toDelete)
+            {
+                mod.deleteMe();
+                i++;
+            }
+            for (int j = 0; j < i; j++)
+                ModFactory.spawnRandomMod(getCar());
+        }
+    }
+
+    public void onShopEntered()
+    {
+        if(modID == ModID.COD && !used)
+        {
+            ModFactory.spawnRandomMod(getCar());
+            ModFactory.spawnRandomMod(getCar());
+            WeaponFactory.spawnRndWeapon(getCar());
+            used = true;
+        }
     }
     // ----- ------ ----- ----- -----
     // ----- ----- DMG RELATED ----- -----
@@ -255,6 +354,9 @@ public class CARnageModifier : MonoBehaviour {
 
         if (modID == ModID.UTTERLY_INSANE && getCar().isOnNitro())
             mult += 0.2f;
+
+        if (modID == ModID.DELUSIONS_OF_GRANDEUR)
+            mult += 0.05f * getCar().getWeaponController().getAllWeapons().Length;
 
         switch (damageType)
         {
@@ -325,6 +427,15 @@ public class CARnageModifier : MonoBehaviour {
 
         return mult;
     }
+
+    public float getWeaponMagazine_Multiplier()
+    {
+        float mult = 1f;
+        if (modID == ModID.ENDLESS_SUPPLY)
+            mult *= 2;
+        return mult;
+    }
+
     // ----- ------ ----- ----- -----
     // ----- ----- PRICE/GEARS ----- -----
     // ----- ------ ----- ----- -----
@@ -380,6 +491,8 @@ public class CARnageModifier : MonoBehaviour {
         float mult = 1f;
         if (modID == ModID.GASWORKS)
             mult *= 0.5f;
+        if (modID == ModID.LEAD__FOOTED)
+            mult -= 1-(getCar().currentHP / getCar().maxHP);
         return mult;
     }
     public float getNitroRegeneration_Multiplier()
@@ -452,7 +565,7 @@ public class CARnageModifier : MonoBehaviour {
         IMPROVISE, //
         DEJA_VU,// TODO: Bases
         DRIFT_KING, //
-        GUN_RACK, // TODO: spawnRndWeapon
+        GUN_RACK, //
         TASTY_BURGER, //
         DOUBLE_DARE, //
         DOWNFALL, //
@@ -466,7 +579,7 @@ public class CARnageModifier : MonoBehaviour {
         SURFIN_BIRD, // TODO: Remodel as boat
         VACATIONIST, // TODO: Bases
         RISK_LOVER, //
-        LEAD__FOOTED, // TODO: See if speed can be manipulated at run-time
+        LEAD__FOOTED, //
         LAST_TRIP, //
         SOLITUDE, // TODO: Check if any cars/buildings around
         HEAVY_LOAD, //
@@ -477,17 +590,17 @@ public class CARnageModifier : MonoBehaviour {
         CONSTRUCTION_WORKER, //
         TEARDOWN, //
         GOLD_DIGGER, //
-        POLICE_OPPRESSION, // TODO: Weapons belonging to Cars
-        CUT_OFF_THE_GAS, // TODO: Mods belonging to Cars
-        SURVEILLANCE, // TODO: Mods belonging to Cars
+        POLICE_OPPRESSION, //
+        CUT_OFF_THE_GAS, //
+        SURVEILLANCE, //
         UNDERCOVER, // TODO: Hide
         RED_DEATH, //
         SURGEONEER, //
         BLIZZARD, // TODO: Freeze FX / Animation / engine blockage
         WELL__PLACED_ADVERTISEMENT, //
-        COD, // TODO: Dropping Modifiers
+        COD, //
         MERCHANT_OF_DEATH, // 
-        DELUSIONS_OF_GRANDEUR, //TODO: Weapons belonging to Cars
+        DELUSIONS_OF_GRANDEUR, //
         MOONWALK, //
         CHALLENGER, //TODO: Explosions
         SOLDIER_OF_FORTUNE, // TODO: Everything
@@ -495,9 +608,9 @@ public class CARnageModifier : MonoBehaviour {
         RAPID_RUSH, //
         FINAL_MESSAGE, // TODO: Bases
         COWCATCHER, //
-        RAPID_PROTOTYPING, // TODO: Mods belonging to Cars
+        RAPID_PROTOTYPING, //
         KILL_WILL, //
-        UNEARTH, // TODO: Destroying Cars
+        UNEARTH, // TODO: resurrecting Cars
         COLOSSUS, //
         BULLETPROOF, //
         LIFT, // TODO: Visual appearance @Towboy
@@ -508,20 +621,20 @@ public class CARnageModifier : MonoBehaviour {
         IRON_SHELTER, //
         HEROIC, //
         COMMITMENT, //
-        STUFFED, // TODO: Nitro
+        STUFFED, //
         BB_BBQ, //
         GROWTH, //
         HARVEST, // 
         DEATH_PROOF, //
         FINISHER, //
         TREACHEROUS_FLAVOR, // TODO: Bases
-        FORCED_EXTRACTION, // TODO: Drop Weapon
+        FORCED_EXTRACTION, //
         SINNER, //
-        BIG_FAT_KILL, //TODO: on Weapon equipped
+        BIG_FAT_KILL, //
         INTUITION, // TODO: Reflection
         GUN_FU, // TODO: Everything
         HALO, // TODO: Everything
-        D6, // TODO: Obtain Mods
+        D6, //
         RUBBERNECK, // TODO: Everything
         POLICE_TRANSMITTER, // TODO: Map
         FINALE, //
@@ -532,18 +645,18 @@ public class CARnageModifier : MonoBehaviour {
         DETONATION, // TODO: Explosions
         OILWAY, //
         SPARE_PARTS, //
-        ENDLESS_SUPPLY, // TODO: On change Weapon
+        ENDLESS_SUPPLY, //
         SCREWED_DOWN, //
-        BULLETSTORM, // TODO: Everything
-        CANNONBALLS, // TODO: On change weapon, projectile size modifier
-        MUZZLE__LOADER, // TODO: Weapons, global variables
+        BULLETSTORM, //
+        CANNONBALLS, //
+        MUZZLE__LOADER, //
         HELL_SHELL, // TODO: projectile modifier
         INCINERATOR, //
         FURNACED, //
         IMPULSIVE_DEFLORATION, //
-        INERTIA, //TODO: Weapons, global variables
+        INERTIA, //
         AGGRESSIVE_STEREOTYPES, //
-        MARTYRDOM, // TODO: Weapons (no)
+        MARTYRDOM, //
         UPWIND, //
         AIRBORNE, //
         APPOINTMENT, //

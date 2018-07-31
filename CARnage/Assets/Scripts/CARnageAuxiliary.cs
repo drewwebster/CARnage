@@ -40,21 +40,7 @@ public class CARnageAuxiliary : MonoBehaviour {
         }
 
     }
-
-    public static void spawnRndWeapon(Vector3 location)
-    {
-        // collect all weapons that are unlocked
-
-        // choose from them
-
-        spawnWeapon(CARnageWeapon.WeaponModel.DOWNFALL, location);
-    }
-
-    public static void spawnWeapon(CARnageWeapon.WeaponModel model, Vector3 location)
-    {
-
-    }
-
+    
     public enum ControllerType
     {
         MouseKeyboard,

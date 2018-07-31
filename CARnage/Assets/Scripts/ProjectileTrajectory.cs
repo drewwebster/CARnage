@@ -6,6 +6,7 @@ public class ProjectileTrajectory : MonoBehaviour {
 
     public GameObject rel_car;
     public CARnageWeapon rel_weapon;
+    public float damage;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,15 +16,15 @@ public class ProjectileTrajectory : MonoBehaviour {
             if(other.gameObject.GetComponent<buildingCollision>() != null)
             {
                 // damage to building
-                other.gameObject.GetComponent<buildingCollision>().damageMe(rel_weapon.Damage,true);
+                other.gameObject.GetComponent<buildingCollision>().damageMe(damage, true);
                 //Debug.Log("bullet > building");
             }
             CARnageCar car = other.GetComponentInParent<CARnageCar>();
             if (car != null)
             {
                 // damage to car
-                Debug.Log("bullet => " + car.gameObject.name);
-                car.damageMe(rel_weapon.Damage);
+                //Debug.Log("bullet => " + car.gameObject.name);
+                car.damageMe(damage);
             }
             Destroy(gameObject);
         }

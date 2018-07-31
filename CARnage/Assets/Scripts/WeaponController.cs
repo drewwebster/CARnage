@@ -144,4 +144,25 @@ public class WeaponController : MonoBehaviour {
         weaponGO.transform.localPosition = Vector3.zero;
         weaponGO.GetComponent<CARnageWeapon>().weaponState = side;
     }
+
+    public CARnageWeapon dropRandomWeapon()
+    {
+        CARnageWeapon weapon = getAllWeapons()[Random.Range(0, getAllWeapons().Length)];
+        dropWeapon(weapon);
+        return weapon;
+    }
+
+    public void dropAllEquippedWeapons()
+    {
+        if (getLeftWeapon() != null)
+            dropWeapon(getLeftWeapon());
+        if (getRightWeapon() != null)
+            dropWeapon(getRightWeapon());
+    }
+
+    public void dropWeapon(CARnageWeapon weapon)
+    {
+        weapon.transform.parent = null;
+        weapon.weaponState = CARnageWeapon.WeaponState.COLLECTABLE;
+    }
 }
