@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4348428719625754}
   - component: {fileID: 114858345207945662}
   m_Layer: 0
-  m_Name: Growth
+  m_Name: GROWTH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

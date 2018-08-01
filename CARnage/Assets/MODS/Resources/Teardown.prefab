@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4869474854706264}
   - component: {fileID: 114651369944053038}
   m_Layer: 0
-  m_Name: Teardown
+  m_Name: TEARDOWN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

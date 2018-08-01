@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4957779843047260}
   - component: {fileID: 114796634918042990}
   m_Layer: 0
-  m_Name: Harvest
+  m_Name: HARVEST
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4654894757347592}
   - component: {fileID: 114790444712807640}
   m_Layer: 0
-  m_Name: Inertia
+  m_Name: INERTIA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

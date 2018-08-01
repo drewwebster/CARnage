@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4352568083137900}
   - component: {fileID: 114549871243904528}
   m_Layer: 0
-  m_Name: Sinner
+  m_Name: SINNER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

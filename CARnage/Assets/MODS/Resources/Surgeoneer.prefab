@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4231186969004054}
   - component: {fileID: 114771663705950328}
   m_Layer: 0
-  m_Name: Surgeoneer
+  m_Name: SURGEONEER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

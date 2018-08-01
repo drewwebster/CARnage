@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4072604019430606}
   - component: {fileID: 114756701526955030}
   m_Layer: 0
-  m_Name: Thresh
+  m_Name: THRESH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

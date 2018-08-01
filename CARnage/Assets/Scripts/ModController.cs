@@ -30,12 +30,6 @@ public class ModController : MonoBehaviour {
         return mult;
     }
 
-    public void onPickupWeapon(CARnageWeapon weapon)
-    {
-        foreach (CARnageModifier mod in getMods())
-            mod.onPickupWeapon(weapon);
-    }
-
     public float getSelfDMG_Multiplier(CARnageCar damager, DamageType damageType)
     {
         float mult = 1f;
@@ -220,6 +214,8 @@ public class ModController : MonoBehaviour {
 
     public CARnageModifier getRandomMod()
     {
+        if (getMods().Length == 0)
+            return null;
         return getMods()[Random.Range(0, getMods().Length)];
     }
 
@@ -239,6 +235,22 @@ public class ModController : MonoBehaviour {
     {
         foreach (CARnageModifier mod in getMods())
             mod.onShopEntered();
+    }
+
+    public float getShieldRegeneration_Multiplier()
+    {
+        float mult = 1f;
+        foreach (CARnageModifier mod in getMods())
+            mult *= mod.getShieldRegeneration_Multiplier();
+        return mult;
+    }
+
+    public float getShieldRegenerationOnset_Multiplier()
+    {
+        float mult = 1f;
+        foreach (CARnageModifier mod in getMods())
+            mult *= mod.getShieldRegenerationOnset_Multiplier();
+        return mult;
     }
 
     public bool isEmpty()

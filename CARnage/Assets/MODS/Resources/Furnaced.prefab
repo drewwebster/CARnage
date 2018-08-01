@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4348061009734152}
   - component: {fileID: 114159099762456328}
   m_Layer: 0
-  m_Name: Furnaced
+  m_Name: FURNACED
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

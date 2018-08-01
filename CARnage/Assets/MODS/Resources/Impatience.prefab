@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4710908217157942}
   - component: {fileID: 114807499584311586}
   m_Layer: 0
-  m_Name: Impatience
+  m_Name: IMPATIENCE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

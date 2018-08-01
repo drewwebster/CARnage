@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4369581854605940}
   - component: {fileID: 114900855855856258}
   m_Layer: 0
-  m_Name: Lift
+  m_Name: LIFT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

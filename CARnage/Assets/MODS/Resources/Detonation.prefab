@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4153749103584852}
   - component: {fileID: 114498068210368214}
   m_Layer: 0
-  m_Name: Detonation
+  m_Name: DETONATION
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

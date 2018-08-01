@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4232462011385378}
   - component: {fileID: 114575847314436430}
   m_Layer: 0
-  m_Name: Undercover
+  m_Name: UNDERCOVER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

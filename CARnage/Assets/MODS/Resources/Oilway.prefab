@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4147966758984808}
   - component: {fileID: 114964110283975614}
   m_Layer: 0
-  m_Name: Oilway
+  m_Name: OILWAY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

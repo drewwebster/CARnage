@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4099492649725158}
   - component: {fileID: 114323934700662136}
   m_Layer: 0
-  m_Name: Upwind
+  m_Name: UPWIND
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

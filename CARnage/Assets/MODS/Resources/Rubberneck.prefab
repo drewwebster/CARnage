@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4779380045862376}
   - component: {fileID: 114888591736755024}
   m_Layer: 0
-  m_Name: Rubberneck
+  m_Name: RUBBERNECK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

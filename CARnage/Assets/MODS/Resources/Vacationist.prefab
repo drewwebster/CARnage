@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4470752671052530}
   - component: {fileID: 114632571023399972}
   m_Layer: 0
-  m_Name: Vacationist
+  m_Name: VACATIONIST
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

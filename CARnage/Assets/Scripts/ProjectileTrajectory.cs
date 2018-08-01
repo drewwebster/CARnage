@@ -4,27 +4,26 @@ using UnityEngine;
 
 public class ProjectileTrajectory : MonoBehaviour {
 
-    public GameObject rel_car;
+    public CARnageCar rel_car;
     public CARnageWeapon rel_weapon;
-    public float damage;
 
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log(other.gameObject.name);
-        if(rel_car.GetComponent<CARnageCar>() != other.GetComponentInParent<CARnageCar>()) // no friendly fire in projectiles
+        if(rel_car != other.GetComponentInParent<CARnageCar>()) // no friendly fire in projectiles
         {
             if(other.gameObject.GetComponent<buildingCollision>() != null)
             {
                 // damage to building
+                float damage = rel_weapon.calcDamage(other.gameObject.GetComponent<buildingCollision>());
                 other.gameObject.GetComponent<buildingCollision>().damageMe(damage, true);
-                //Debug.Log("bullet > building");
             }
-            CARnageCar car = other.GetComponentInParent<CARnageCar>();
-            if (car != null)
+            CARnageCar damagedCar = other.GetComponentInParent<CARnageCar>();
+            if (damagedCar != null)
             {
                 // damage to car
-                //Debug.Log("bullet => " + car.gameObject.name);
-                car.damageMe(damage);
+                float damage = rel_weapon.calcDamage(damagedCar);
+                damagedCar.damageMe(damage,rel_car,DamageType.PROJECTILE);
             }
             Destroy(gameObject);
         }

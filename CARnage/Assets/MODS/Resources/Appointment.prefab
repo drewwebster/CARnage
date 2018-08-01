@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4871070642860810}
   - component: {fileID: 114213091770146140}
   m_Layer: 0
-  m_Name: Appointment
+  m_Name: APPOINTMENT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

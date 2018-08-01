@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4545008463973416}
   - component: {fileID: 114204160791964066}
   m_Layer: 0
-  m_Name: Crop
+  m_Name: CROP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

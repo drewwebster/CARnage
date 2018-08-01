@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4627377389240182}
   - component: {fileID: 114008033920247546}
   m_Layer: 0
-  m_Name: Intuition
+  m_Name: INTUITION
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

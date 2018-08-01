@@ -21,19 +21,19 @@ MonoBehaviour:
   verticalInput: Vertical
   horizontalInput: Horizontal
   handbrakeKB: 32
-  startEngineKB: 105
+  startEngineKB: 0
   lowBeamHeadlightsKB: 108
   highBeamHeadlightsKB: 107
-  rightIndicatorKB: 101
-  leftIndicatorKB: 113
-  hazardIndicatorKB: 122
-  shiftGearUp: 304
-  shiftGearDown: 306
-  NGear: 110
+  rightIndicatorKB: 0
+  leftIndicatorKB: 0
+  hazardIndicatorKB: 0
+  shiftGearUp: 0
+  shiftGearDown: 0
+  NGear: 0
   boostKB: 102
   slowMotionKB: 103
   changeCameraKB: 99
-  enterExitVehicleKB: 13
+  enterExitVehicleKB: 0
   useAutomaticGear: 1
   runEngineAtAwake: 1
   keepEnginesAlive: 1

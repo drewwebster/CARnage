@@ -147,6 +147,8 @@ public class WeaponController : MonoBehaviour {
 
     public CARnageWeapon dropRandomWeapon()
     {
+        if (getAllWeapons().Length == 0)
+            return null;
         CARnageWeapon weapon = getAllWeapons()[Random.Range(0, getAllWeapons().Length)];
         dropWeapon(weapon);
         return weapon;
@@ -159,10 +161,14 @@ public class WeaponController : MonoBehaviour {
         if (getRightWeapon() != null)
             dropWeapon(getRightWeapon());
     }
-
+    
     public void dropWeapon(CARnageWeapon weapon)
     {
+        weapon.transform.position = new Vector3(weapon.transform.position.x, weapon.transform.position.y + 10, weapon.transform.position.z);
         weapon.transform.parent = null;
         weapon.weaponState = CARnageWeapon.WeaponState.COLLECTABLE;
+        weapon.GetComponent<Rigidbody>().useGravity = true;
+        weapon.GetComponent<Rigidbody>().isKinematic = false;
+        weapon.GetComponent<BoxCollider>().enabled = true;
     }
 }

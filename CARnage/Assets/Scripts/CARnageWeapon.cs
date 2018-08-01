@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,7 +47,7 @@ public class CARnageWeapon : MonoBehaviour {
     public bool upgraded_light;
 
     public int addAngle;
-    GameObject rel_car;
+    CARnageCar rel_car;
     GameObject rel_camera;
     int magazineLoaded;
 
@@ -60,7 +61,11 @@ public class CARnageWeapon : MonoBehaviour {
     
     public void onObtained()
     {
-        rel_car = GetComponentInParent<CARnageCar>().gameObject;
+        GetComponent<Rigidbody>().useGravity = false;
+        GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<BoxCollider>().enabled = false;
+
+        rel_car = GetComponentInParent<CARnageCar>();
         //rel_camera = Camera.main.gameObject;
         rel_camera = rel_car.GetComponent<CARnageCar>().observingCamera;
         magazineLoaded = (int)(magazineSize * getWeaponMod_magazine_multiplier());
@@ -115,11 +120,11 @@ public class CARnageWeapon : MonoBehaviour {
         }
 
         firing = true;
-        CARnageAuxiliary.playAnimationTimeScaled(gameObject, "Shoot", shotDelay * getWeaponMod_shotDelay_multiplier());
+        CARnageAuxiliary.playAnimationTimeScaled(gameObject, "Shoot", shotDelay * getWeaponMod_shotDelay_multiplier() * getCar().getModController().getShotDelay_Multiplier());
 
         shootProjectile();
 
-        Invoke("resetFiringDelay", shotDelay * getWeaponMod_shotDelay_multiplier());
+        Invoke("resetFiringDelay", shotDelay * getWeaponMod_shotDelay_multiplier() * getCar().getModController().getShotDelay_Multiplier());
         magazineLoaded--;
     }
 
@@ -132,12 +137,27 @@ public class CARnageWeapon : MonoBehaviour {
         goBC.transform.parent = null;
         go.GetComponent<Rigidbody>().velocity = GetComponentInParent<CARnageCar>().GetComponent<Rigidbody>().velocity;
         go.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed * getWeaponMod_projectileSpeed_multiplier());
-        go.GetComponent<ProjectileTrajectory>().rel_car = rel_car;
+        go.GetComponent<ProjectileTrajectory>().rel_car = getCar();
         go.GetComponent<ProjectileTrajectory>().rel_weapon = this;
-        go.GetComponent<ProjectileTrajectory>().damage = Damage * getWeaponMod_damage_multiplier();
+        
         Destroy(go, CARnageAuxiliary.destroyAfterSec);
         Destroy(goBC, CARnageAuxiliary.destroyAfterSec);
         GetComponent<AudioSource>().PlayOneShot(ShootSound);
+    }
+
+    public float calcDamage(CARnageCar damagedCar)
+    {
+        return Damage * getWeaponMod_damage_multiplier();
+    }
+
+    public float calcDamage(buildingCollision building)
+    {
+        return Damage * getWeaponMod_damage_multiplier();
+    }
+
+    public CARnageCar getCar()
+    {
+        return rel_car.GetComponent<CARnageCar>();
     }
 
     public void resetFiringDelay()
@@ -148,8 +168,9 @@ public class CARnageWeapon : MonoBehaviour {
     public void reload()
     {
         reloading = true;
-        Invoke("resetReloadingDelay", reloadTime);
-        CARnageAuxiliary.playAnimationTimeScaled(gameObject, "Reload", reloadTime);
+        Invoke("resetReloadingDelay", reloadTime * getCar().getModController().getWeaponReloadTime_Multiplier());
+        CARnageAuxiliary.playAnimationTimeScaled(gameObject, "Reload", reloadTime * getCar().getModController().getWeaponReloadTime_Multiplier());
+
         GameObject go = Instantiate(Magazine, transform);
         go.transform.parent = null;
         Destroy(go, CARnageAuxiliary.destroyAfterSec);
@@ -215,13 +236,57 @@ public class CARnageWeapon : MonoBehaviour {
 
     public void addUpgrade(UpgradeTypes upgrade)
     {
-
+        switch(upgrade)
+        {
+            case UpgradeTypes.AUTO:
+                upgraded_automatic = true;
+                upgrade_AutomaticGO.SetActive(true);
+                break;
+            case UpgradeTypes.COMPENSATOR:
+                upgraded_damage = true;
+                upgrade_DamageGO.SetActive(true);
+                break;
+            case UpgradeTypes.LIGHT:
+                upgraded_light = true;
+                upgrade_LightGO.SetActive(true);
+                break;
+            case UpgradeTypes.MAGAZINE:
+                upgraded_magazine = true;
+                upgrade_MagazineGO.SetActive(true);
+                break;
+            case UpgradeTypes.SCOPE:
+                upgraded_scope = true;
+                upgrade_ScopeGO.SetActive(true);
+                break;
+            case UpgradeTypes.SILENCER:
+                upgraded_silencer = true;
+                upgrade_SilencerGO.SetActive(true);
+                break;
+        }
     }
 
     public void addRandomUpgrade()
     {
-
+        List<UpgradeTypes> possibleUpgrades = new List<UpgradeTypes>();
+        if (upgrade_AutomaticGO != null && !upgraded_automatic)
+            possibleUpgrades.Add(UpgradeTypes.AUTO);
+        if (upgrade_DamageGO != null && !upgraded_damage)
+            possibleUpgrades.Add(UpgradeTypes.COMPENSATOR);
+        if (upgrade_LightGO != null && !upgraded_light)
+            possibleUpgrades.Add(UpgradeTypes.LIGHT);
+        if (upgrade_MagazineGO != null && !upgraded_magazine)
+            possibleUpgrades.Add(UpgradeTypes.MAGAZINE);
+        if (upgrade_ScopeGO != null && !upgraded_scope)
+            possibleUpgrades.Add(UpgradeTypes.SCOPE);
+        if (upgrade_SilencerGO != null && !upgraded_silencer)
+            possibleUpgrades.Add(UpgradeTypes.SILENCER);
+        if (possibleUpgrades.Count == 0)
+            return;
+        
+        addUpgrade(possibleUpgrades[UnityEngine.Random.Range(0,possibleUpgrades.Count)]);
     }
+    
+    
 
     public enum UpgradeTypes
     {

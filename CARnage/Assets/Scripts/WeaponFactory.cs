@@ -7,6 +7,10 @@ public class WeaponFactory : MonoBehaviour {
     
     static CARnageWeapon.WeaponModel getRndModel()
     {
+        // not final:
+        return CARnageWeapon.WeaponModel.LIBERTY;
+
+        //  actual:
         Array values = Enum.GetValues(typeof(CARnageWeapon.WeaponModel));
         return (CARnageWeapon.WeaponModel)values.GetValue(UnityEngine.Random.Range(0, values.Length));
     }
@@ -33,6 +37,7 @@ public class WeaponFactory : MonoBehaviour {
 
     static GameObject spawnWeapon(CARnageWeapon.WeaponModel model, CARnageCar car, Vector3 position)
     {
+        //Debug.Log("Spawning weapon: " + model.ToString());
         if(car != null)
         {
             GameObject go = Instantiate(Resources.Load<GameObject>(model.ToString()), car.getModController().transform);
@@ -42,7 +47,7 @@ public class WeaponFactory : MonoBehaviour {
         else
         {
             GameObject go = Instantiate(Resources.Load<GameObject>(model.ToString()));
-            go.transform.position = position;
+            go.transform.position = new Vector3(position.x, position.y + 10, position.z);
             return go;
         }
     }

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4730259159617930}
   - component: {fileID: 114911487304192974}
   m_Layer: 0
-  m_Name: Airborne
+  m_Name: AIRBORNE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4213855934324496}
   - component: {fileID: 114099385273938800}
   m_Layer: 0
-  m_Name: Demolition
+  m_Name: DEMOLITION
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4822259501397946}
   - component: {fileID: 114980179847415138}
   m_Layer: 0
-  m_Name: Steamroller
+  m_Name: STEAMROLLER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

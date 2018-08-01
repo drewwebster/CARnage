@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4551227365475238}
   - component: {fileID: 114239099741931572}
   m_Layer: 0
-  m_Name: Cowcatcher
+  m_Name: COWCATCHER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

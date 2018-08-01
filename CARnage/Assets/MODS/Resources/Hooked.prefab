@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4330643123720324}
   - component: {fileID: 114887027958010708}
   m_Layer: 0
-  m_Name: Hooked
+  m_Name: HOOKED
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

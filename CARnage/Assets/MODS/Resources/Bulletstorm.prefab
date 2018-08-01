@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4613179418076426}
   - component: {fileID: 114226666107394160}
   m_Layer: 0
-  m_Name: Bulletstorm
+  m_Name: BULLETSTORM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

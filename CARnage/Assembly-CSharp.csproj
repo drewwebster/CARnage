@@ -469,6 +469,7 @@
     <Compile Include="Assets\Scripts\spinWeapon.cs" />
     <Compile Include="Assets\Scripts\WeaponController.cs" />
     <Compile Include="Assets\Scripts\WeaponFactory.cs" />
+    <Compile Include="Assets\TestConsole.cs" />
     <Compile Include="Assets\VacuumShaders\Curved World\Example Scenes\Files\Scripts\CW_Demo_Camera_Pan.cs" />
     <Compile Include="Assets\VacuumShaders\Curved World\Example Scenes\Files\Scripts\CW_Demo_ClassicRunner_ChunkController.cs" />
     <Compile Include="Assets\VacuumShaders\Curved World\Example Scenes\Files\Scripts\CW_Demo_ClassicRunner_Spheres.cs" />

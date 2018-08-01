@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4857446079339136}
   - component: {fileID: 114296024387030590}
   m_Layer: 0
-  m_Name: Reckless
+  m_Name: RECKLESS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

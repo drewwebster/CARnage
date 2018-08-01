@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4097600412506570}
   - component: {fileID: 114457678138117218}
   m_Layer: 0
-  m_Name: Solitude
+  m_Name: SOLITUDE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

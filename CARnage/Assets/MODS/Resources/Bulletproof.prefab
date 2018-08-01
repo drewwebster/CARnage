@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4645259153868290}
   - component: {fileID: 114468682222099658}
   m_Layer: 0
-  m_Name: Bulletproof
+  m_Name: BULLETPROOF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

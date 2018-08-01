@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4951419041516066}
   - component: {fileID: 114766064316555776}
   m_Layer: 0
-  m_Name: Improvise
+  m_Name: IMPROVISE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

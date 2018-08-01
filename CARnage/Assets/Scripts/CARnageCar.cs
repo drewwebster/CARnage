@@ -52,24 +52,29 @@ public class CARnageCar : MonoBehaviour {
 
     public CARnageAuxiliary.ControllerType controlledBy;
 
+    float lastDamagedTime;
+    float shieldRegSeconds = 5;
+    float shieldRepairRate = 1;
+
     private void Start()
     {
         initializeValues();
     }
 
+    float secondCounter;
     private void Update()
     {
         if (speedUI != null)
             speedUI.GetComponent<Text>().text = (int)(GetComponent<RCC_CarControllerV3>().speed) + " km/h";
 
-        // debug: J
-        if (Input.GetKey(KeyCode.J))
+        if (isShielded() && lastDamagedTime + (shieldRegSeconds * getModController().getShieldRegenerationOnset_Multiplier()) < Time.time)
+            regenerateShield(Time.deltaTime * shieldRepairRate * getModController().getShieldRegeneration_Multiplier());
+
+        secondCounter += Time.deltaTime;
+        if(secondCounter >= 1)
         {
-            damageMe(Time.deltaTime * 10);
-        }
-        if (Input.GetKey(KeyCode.K))
-        {
-            damageMe(Time.deltaTime * 100);
+            secondCounter -= 1;
+            getModController().onSecondPassed();
         }
     }
 
@@ -91,11 +96,13 @@ public class CARnageCar : MonoBehaviour {
 
     public void initializeValues()
     {
+        lastDamagedTime = 0;
         destroyedCars = 0;
         maxHP = 200 * HP / 10;
         currentHP = maxHP;
         maxShield = maxHP * shield / 4;
         currentShield = maxShield;
+        secondCounter = 0;
         if (currentShield > 0)
             goShield.SetActive(true);
         else
@@ -141,19 +148,29 @@ public class CARnageCar : MonoBehaviour {
         //    if (m.name.Contains("ProgDamageMat"))
         //        m.color = new Color(1, 1, 1, 1-(currentHP/maxHP));
 
-        if (currentHP <= 0 && currentShield <= 0)
+        if (!destroyed && currentHP <= 0 && currentShield <= 0)
             destroyMe();
     }
 
-    public void damageMe(float damage)
+    CARnageCar lastDamager;
+    public void damageMe(float damage, CARnageCar damager, DamageType damageType)
     {
-        if (currentShield > 0)
+        damage *= getModController().getSelfDMG_Multiplier(damager, damageType);
+        damage *= damager.getModController().getDMG_Multiplier(damageType, this);
+        Debug.Log("Damage dealt: " + damage);
+        if (damage <= 0)
+            return;
+
+        lastDamagedTime = Time.time;
+        lastDamager = damager;
+
+        if (currentShield > 0 && !damager.getModController().isIgnoringEnemyShield())
         {
             currentShield -= damage;
             if (currentShield <= 0)
             {
-                breakShield();
                 currentShield = 0;
+                breakShield();
             }
         }
         else
@@ -166,6 +183,7 @@ public class CARnageCar : MonoBehaviour {
             }
         }
         updateValues();
+        damager.getModController().onDMGDealt(this, damageType, damage);
     }
 
     public bool isOnFire()
@@ -177,7 +195,7 @@ public class CARnageCar : MonoBehaviour {
 
     float fireTicks = 0;
     CARnageCar fireApplier;
-    float acidTicks = 0;
+    public float acidTicks = 0;
     CARnageCar acidApplier;
     float drainTicks = 0;
     CARnageCar drainApplier;
@@ -201,6 +219,8 @@ public class CARnageCar : MonoBehaviour {
         switch (debuff)
         {
             case Debuff.Fire:
+                if (getModController().getDebuffImmunity(Debuff.Fire))
+                    return;
                 fireApplier = applier;
                 if (fireTicks > 0)
                 {
@@ -212,6 +232,8 @@ public class CARnageCar : MonoBehaviour {
                 GetComponentInChildren<damageCar>().showFire();
                 break;
             case Debuff.Acid:
+                if (getModController().getDebuffImmunity(Debuff.Acid))
+                    return;
                 acidApplier = applier;
                 if (acidTicks > 0)
                 {
@@ -223,6 +245,8 @@ public class CARnageCar : MonoBehaviour {
                 GetComponentInChildren<damageCar>().showAcid();
                 break;
             case Debuff.Drain:
+                if (getModController().getDebuffImmunity(Debuff.Drain))
+                    return;
                 drainApplier = applier;
                 if (drainTicks > 0)
                 {
@@ -234,6 +258,8 @@ public class CARnageCar : MonoBehaviour {
                 GetComponentInChildren<damageCar>().showDrain();
                 break;
             case Debuff.Freeze:
+                if (getModController().getDebuffImmunity(Debuff.Freeze))
+                    return;
                 if (freezeTicks > 0)
                 {
                     freezeTicks = Mathf.Max(freezeTicks, freezeTicksInitial * multiplier);
@@ -243,6 +269,8 @@ public class CARnageCar : MonoBehaviour {
                 GetComponentInChildren<damageCar>().showFreeze();
                 break;
             case Debuff.Locked:
+                if (getModController().getDebuffImmunity(Debuff.Locked))
+                    return;
                 if (lockedTicks > 0)
                 {
                     lockedTicks = Mathf.Max(lockedTicks, lockedTicksInitial * multiplier);
@@ -272,7 +300,7 @@ public class CARnageCar : MonoBehaviour {
 
     void fireDMG()
     {
-        damageMe(fireDamage);
+        damageMe(fireDamage, fireApplier, DamageType.DEBUFF);
         fireTicks--;
         if (fireTicks > 0)
             Invoke("fireDMG", 1);
@@ -281,7 +309,7 @@ public class CARnageCar : MonoBehaviour {
     }
     void acidDMG()
     {
-        damageMe(acidDamage);
+        damageMe(acidDamage, acidApplier, DamageType.DEBUFF);
         acidTicks--;
         if (acidTicks > 0)
             Invoke("acidDMG", 1);
@@ -290,7 +318,7 @@ public class CARnageCar : MonoBehaviour {
     }
     void drainDMG()
     {
-        damageMe(drainDamage);
+        damageMe(drainDamage, drainApplier, DamageType.DEBUFF);
         drainTicks--;
         if (drainTicks > 0)
             Invoke("drainDMG", 1);
@@ -313,19 +341,26 @@ public class CARnageCar : MonoBehaviour {
         GameObject go = Instantiate(goShieldShattered, goShield.transform.parent);
         go.transform.parent = null;
         Destroy(go, CARnageAuxiliary.destroyAfterSec);
+        getModController().onShieldDestroyed();
     }
 
     public void destroyMe()
     {
+        if (lastDamager != null)
+            lastDamager.getModController().onDestroyingCar(this);
         destroyed = true;
         GetComponent<RCC_CarControllerV3>().canControl = false;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
-        foreach (MeshRenderer mr in gameObject.GetComponentsInChildren<MeshRenderer>())
+        getWeaponController().dropAllEquippedWeapons();
+        foreach (MeshRenderer mr in GetComponentsInChildren<MeshRenderer>())
             mr.enabled = false;
-        foreach (Collider c in gameObject.GetComponentsInChildren<Collider>())
+        foreach (Collider c in GetComponentsInChildren<Collider>())
             c.enabled = false;
-        foreach (Rigidbody r in gameObject.GetComponentsInChildren<Rigidbody>())
+        foreach (Rigidbody r in GetComponentsInChildren<Rigidbody>())
             r.useGravity = false;
+        foreach (Image i in GetComponentsInChildren<Image>())
+            i.enabled = false;
+        getModController().onSelfDestroyed(lastDamager);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -337,19 +372,33 @@ public class CARnageCar : MonoBehaviour {
             //Debug.Log(gameObject.GetComponent<Rigidbody>().velocity + " (" + gameObject.GetComponent<Rigidbody>().velocity.magnitude + ") vs. " + GetComponent<RCC_CarControllerV3>().speed);
             float damage = 0.1f * GetComponent<RCC_CarControllerV3>().speed * impact;
             Debug.Log("Damage from " + name + " to " + colliCar.name + " : " + damage);
-            colliCar.damageMe(damage);
+            colliCar.damageMe(damage, this, DamageType.RAM);
             return;
         }
     }
 
     public void replenishShield()
     {
-        replenishShield(-1);
+        regenerateShield(maxShield); // no overheal
     }
-    public void replenishShield(float amount)
+    public void replenishShield(float amount) // with overheal
     {
+        // repair not possible while acid is applied
+        if (acidTicks > 0)
+            return;
+        
+        goShield.SetActive(true);
         currentShield += amount;
         maxShield = Mathf.Max(maxShield, currentShield);
+        updateValues();
+    }
+    public void regenerateShield(float amount)
+    {
+        // repair not possible while acid is applied
+        if (acidTicks > 0)
+            return;
+
+        currentShield = Mathf.Min(currentShield + amount, maxShield);
         updateValues();
     }
 

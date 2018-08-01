@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4674951137432410}
   - component: {fileID: 114288513789605036}
   m_Layer: 0
-  m_Name: Gasworks
+  m_Name: GASWORKS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
