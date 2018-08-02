@@ -193,11 +193,14 @@ public class CARnageCar : MonoBehaviour {
         return false;
     }
 
-    float fireTicks = 0;
+    [HideInInspector]
+    public float fireTicks = 0;
     CARnageCar fireApplier;
+    [HideInInspector]
     public float acidTicks = 0;
     CARnageCar acidApplier;
-    float drainTicks = 0;
+    [HideInInspector]
+    public float drainTicks = 0;
     CARnageCar drainApplier;
     float freezeTicks = 0;
     float lockedTicks = 0;
@@ -342,6 +345,7 @@ public class CARnageCar : MonoBehaviour {
         go.transform.parent = null;
         Destroy(go, CARnageAuxiliary.destroyAfterSec);
         getModController().onShieldDestroyed();
+        //GlobalModifiers.sloMoCounter += 1;
     }
 
     public void destroyMe()
@@ -384,7 +388,7 @@ public class CARnageCar : MonoBehaviour {
     public void replenishShield(float amount) // with overheal
     {
         // repair not possible while acid is applied
-        if (acidTicks > 0)
+        if (!isRepairable())
             return;
         
         goShield.SetActive(true);
@@ -395,7 +399,7 @@ public class CARnageCar : MonoBehaviour {
     public void regenerateShield(float amount)
     {
         // repair not possible while acid is applied
-        if (acidTicks > 0)
+        if (!isRepairable())
             return;
 
         currentShield = Mathf.Min(currentShield + amount, maxShield);
@@ -425,10 +429,21 @@ public class CARnageCar : MonoBehaviour {
         repair(-1);
     }
 
+    public bool isRepairable()
+    {
+        if (acidTicks > 0)
+            return false;
+        return true;
+    }
+
     public void repair(float amount)
     {
+        repair(amount, false);
+    }
+    public void repair(float amount, bool overrideAcid)
+    {
         // repair not possible while acid is applied
-        if (acidTicks > 0)
+        if (!isRepairable() && !overrideAcid)
             return;
 
         if (amount == -1)
@@ -436,7 +451,6 @@ public class CARnageCar : MonoBehaviour {
 
         currentHP = Mathf.Min(currentHP + amount, maxHP);
         updateValues();
-
     }
 
     public void addGears(int amount)

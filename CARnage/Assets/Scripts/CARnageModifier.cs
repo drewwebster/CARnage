@@ -116,9 +116,9 @@ public class CARnageModifier : MonoBehaviour {
         if (modID == ModID.GROWTH)
             getCar().addGears(1);
 
-        if (modID == ModID.UPWIND && GetComponent<RCC_CarControllerV3>().isInAir)
+        if (modID == ModID.UPWIND && getCar().GetComponent<RCC_CarControllerV3>().isInAir)
             getCar().repair(10);
-        if (modID == ModID.AIRBORNE && GetComponent<RCC_CarControllerV3>().isInAir)
+        if (modID == ModID.AIRBORNE && getCar().GetComponent<RCC_CarControllerV3>().isInAir)
             getCar().replenishShield(10);
     }
     
@@ -218,8 +218,8 @@ public class CARnageModifier : MonoBehaviour {
                     damagedCar.applyDebuff(CARnageCar.Debuff.Freeze, getCar());
                 if (modID == ModID.OILWAY)
                     damagedCar.applyDebuff(CARnageCar.Debuff.Drain, getCar(), 2);
-                if (modID == ModID.IMPULSIVE_DEFLORATION && damagedCar.isShielded())
-                    damagedCar.breakShield();
+                //if (modID == ModID.IMPULSIVE_DEFLORATION && damagedCar.isShielded())
+                //    damagedCar.breakShield();
                 if(modID == ModID.POLICE_OPPRESSION)
                 {
                     CARnageWeapon stolenWeapon = damagedCar.getWeaponController().dropRandomWeapon();
@@ -256,7 +256,7 @@ public class CARnageModifier : MonoBehaviour {
         if(modID == ModID.CANNONBALLS)
             projectile.transform.localScale *= 2;
         if (modID == ModID.BULLETSTORM && getCar().isShielded() && UnityEngine.Random.Range(0, 100f) > 30f)
-            projectile.rel_weapon.shootProjectile();
+            projectile.rel_weapon.Invoke("shootProjectile", projectile.rel_weapon.shotDelay/2);
     }
 
     public void onModifierBought(CARnageModifier modifier)
@@ -321,10 +321,12 @@ public class CARnageModifier : MonoBehaviour {
 
             // ----- ----- ----- DEBUFFS ----- ----- ----- 
             case DamageType.DEBUFF:
-                if (modID == ModID.FURNACED)
+                if (modID == ModID.HEROIC)
+                    mult = 0f;
+                if (modID == ModID.FURNACED && getCar().fireTicks > 0)
                 {
                     mult = 0f;
-                    getCar().repair(2);
+                    getCar().repair(2,true);
                 }
                 break;
         }
@@ -382,11 +384,13 @@ public class CARnageModifier : MonoBehaviour {
                 if (modID == ModID.COWCATCHER && getCar().isShielded())
                     mult += 0.3f;
                 if (modID == ModID.THRESH)
-                    mult += getCar().currentShield / Mathf.Max(getCar().maxHP,getCar().maxShield);
+                    mult += getCar().currentShield / 100;
                 if (modID == ModID.FINISHER && damagedCar.currentHP / damagedCar.maxHP <= 0.25f)
-                    mult *= 100f;
+                    mult *= 1000f;
                 if (modID == ModID.FINALE && finaleActive)
-                    mult *= 100f;
+                    mult *= 1000f;
+                if (modID == ModID.IMPULSIVE_DEFLORATION && damagedCar.isShielded())
+                    mult *= 1000f;
                 break;
 
             // ----- ----- ----- MELEE ----- ----- ----- 
@@ -647,38 +651,38 @@ public class CARnageModifier : MonoBehaviour {
         FINISHER, // works
         TREACHEROUS_FLAVOR, // TODO: Bases
         FORCED_EXTRACTION, //
-        SINNER, //
+        SINNER, // works
         BIG_FAT_KILL, //
         INTUITION, // TODO: Reflection
         GUN_FU, // TODO: Everything
         HALO, // TODO: Everything
-        D6, //
+        D6, // works
         RUBBERNECK, // TODO: Everything
         POLICE_TRANSMITTER, // TODO: Map
-        FINALE, //
+        FINALE, // works
         DESTINATION, // TODO: Bases
-        BUSINESS_CARD, // 
+        BUSINESS_CARD, // works
         CROP, //
-        THRESH, //
+        THRESH, // works
         DETONATION, // TODO: Explosions
-        OILWAY, //
-        SPARE_PARTS, //
-        ENDLESS_SUPPLY, //
-        SCREWED_DOWN, //
-        BULLETSTORM, //
-        CANNONBALLS, //
-        MUZZLE__LOADER, //
+        OILWAY, // works
+        SPARE_PARTS, // works
+        ENDLESS_SUPPLY, // works
+        SCREWED_DOWN, // works
+        BULLETSTORM, // works
+        CANNONBALLS, // works
+        MUZZLE__LOADER, // works
         HELL_SHELL, // TODO: projectile modifier
-        INCINERATOR, //
-        FURNACED, //
-        IMPULSIVE_DEFLORATION, //
-        INERTIA, //
-        AGGRESSIVE_STEREOTYPES, //
+        INCINERATOR, // works
+        FURNACED, // works
+        IMPULSIVE_DEFLORATION, // works
+        INERTIA, // works
+        AGGRESSIVE_STEREOTYPES, // works
         MARTYRDOM, //
-        UPWIND, //
-        AIRBORNE, //
+        UPWIND, // works
+        AIRBORNE, // works
         APPOINTMENT, //
-        GASWORKS, //
-        UTTERLY_INSANE //
+        GASWORKS, // works
+        UTTERLY_INSANE // works
     }
 }

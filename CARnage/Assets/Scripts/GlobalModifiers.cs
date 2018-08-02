@@ -28,8 +28,23 @@ public class GlobalModifiers : MonoBehaviour {
         foreach (ModController mc in mcList)
             foreach (CARnageModifier mod in mc.getMods())
                 if (mod.modID == CARnageModifier.ModID.MUZZLE__LOADER)
-                    mult = 1/weapon.magazineSize;   // set to 1 (can be influenced by local mods tho)
+                    mult = 1f/weapon.magazineSize;   // set to 1 (can be influenced by local mods tho)
 
         return mult;
     }
+
+    //public static float sloMoCounter = 0f;
+    //private void Update()
+    //{
+    //    if(sloMoCounter > 0f)
+    //    {
+    //        sloMoCounter -= Time.deltaTime;
+    //        Time.timeScale = 0.2f;
+    //        if(sloMoCounter <= 0)
+    //        {
+    //            Time.timeScale = 1f;
+    //            sloMoCounter = 0;
+    //        }
+    //    }
+    //}
 }

@@ -88,7 +88,8 @@ public class TestConsole : MonoBehaviour {
                         mod.deleteMe();
                 break;
             case "ADDWEAPON":
-                WeaponFactory.spawnWeapon((CARnageWeapon.WeaponModel)System.Enum.Parse(typeof(CARnageWeapon.WeaponModel), parameter), relCar);
+                CARnageWeapon weapon= WeaponFactory.spawnWeapon((CARnageWeapon.WeaponModel)System.Enum.Parse(typeof(CARnageWeapon.WeaponModel), parameter), relCar).GetComponent<CARnageWeapon>();
+                weapon.onObtained();
                 break;
             case "RNDWEAPON":
                 WeaponFactory.spawnRndWeapon(relCar.transform.position);

@@ -9,23 +9,25 @@ public class ProjectileTrajectory : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(other.gameObject.name);
-        if(rel_car != other.GetComponentInParent<CARnageCar>()) // no friendly fire in projectiles
+        if (other.GetComponentInParent<CARnageCar>() == rel_car || other.GetComponent<CARnageWeapon>() != null || other.gameObject.name.Contains("Bulletcase")) // no friendly fire in projectiles
+            return;
+            Debug.Log(other.gameObject.name);
+
+        if(other.gameObject.GetComponent<buildingCollision>() != null)
         {
-            if(other.gameObject.GetComponent<buildingCollision>() != null)
-            {
-                // damage to building
-                float damage = rel_weapon.calcDamage(other.gameObject.GetComponent<buildingCollision>());
-                other.gameObject.GetComponent<buildingCollision>().damageMe(damage, true);
-            }
-            CARnageCar damagedCar = other.GetComponentInParent<CARnageCar>();
-            if (damagedCar != null)
-            {
-                // damage to car
-                float damage = rel_weapon.calcDamage(damagedCar);
-                damagedCar.damageMe(damage,rel_car,DamageType.PROJECTILE);
-            }
-            Destroy(gameObject);
+            // damage to building
+            float damage = rel_weapon.calcDamage(other.gameObject.GetComponent<buildingCollision>());
+            other.gameObject.GetComponent<buildingCollision>().damageMe(damage, true);
         }
+        CARnageCar damagedCar = other.GetComponentInParent<CARnageCar>();
+        if (damagedCar != null)
+        {
+            // damage to car
+            float damage = rel_weapon.calcDamage(damagedCar);
+            damagedCar.damageMe(damage,rel_car,DamageType.PROJECTILE);
+            rel_weapon.OnDMG_WeaponModelMod(rel_car, damagedCar);
+        }
+        Destroy(gameObject);
+        
     }
 }

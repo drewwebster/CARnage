@@ -20,6 +20,7 @@ public class ModController : MonoBehaviour {
         foreach (CARnageModifier mod in getMods())
             mod.onSpawn();
         resetMods();
+        GlobalModifiers.registerModController(this);
     }
 
     public float getModifierPrice_Multiplier()
@@ -67,6 +68,7 @@ public class ModController : MonoBehaviour {
     {
         foreach (CARnageModifier mod in getMods())
             mod.onDestroyingCar(destroyedCar);
+        GetComponentInParent<CARnageCar>().destroyedCars++;
     }
 
     public void onSelfDestroyed(CARnageCar killerCar)

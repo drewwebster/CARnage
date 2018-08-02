@@ -1652,12 +1652,15 @@ MonoBehaviour:
   damageType: 0
   Damage: 5
   shotDelay: 0.5
+  swingSpeedMult: 0
+  meleeDMGdelay: 0
   magazineSize: 20
   reloadTime: 2
   automatic: 0
   projectileSpeed: 1000
   weaponState: 3
   Projectile: {fileID: 1928108072952912, guid: c7420ae6a7072764190ddc12a9c23a64, type: 2}
+  meleeHitbox: {fileID: 0}
   Projectile_Bulletcase: {fileID: 1105117745786558, guid: 07f4d5f111b9e1b4c931a668361fa8ed,
     type: 2}
   Magazine: {fileID: 1208365741665328, guid: d6374a7b7c180004aac69c3bcfb8b3bb, type: 2}
