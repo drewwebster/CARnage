@@ -15,14 +15,16 @@ public class meleeHitbox : MonoBehaviour {
             return;
         if (rel_weapon.weaponState == CARnageWeapon.WeaponState.COLLECTABLE)
             return;
-        Debug.Log("hit: " + other.gameObject.name);
+        //Debug.Log("hit: " + other.gameObject.name);
 
-        if (other.gameObject.GetComponent<buildingCollision>() != null)
+        buildingCollision building = other.gameObject.GetComponent<buildingCollision>();
+        if (building != null)
         {
             // damage to building
-            float damage = rel_weapon.calcDamage(other.gameObject.GetComponent<buildingCollision>());
+            float damage = rel_weapon.calcDamage(building);
             other.gameObject.GetComponent<buildingCollision>().damageMe(damage, true);
             rel_weapon.onHit();
+            rel_weapon.OnDMG_WeaponModelMod(rel_car, building);
         }
         if (damagedCar != null)
         {

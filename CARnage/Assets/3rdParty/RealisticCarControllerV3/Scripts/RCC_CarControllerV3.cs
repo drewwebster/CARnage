@@ -890,7 +890,12 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 			brakeInput = Mathf.Clamp01(-Input.GetAxis(RCCSettings.verticalInput));
 			handbrakeInput = Input.GetKey(RCCSettings.handbrakeKB) ? 1f : 0f;
 			steerInput = Input.GetAxis(RCCSettings.horizontalInput);
-			boostInput = Input.GetKey(RCCSettings.boostKB) ? 2.5f : 1f;
+
+            // Custom: Drain vs Nitro Multiplier
+            if (GetComponent<CARnageCar>().drainTicks > 0)
+                boostInput = 0.1f;
+            else
+                boostInput = Input.GetKey(RCCSettings.boostKB) ? 2.5f : 1f;
 
 			if(Input.GetKeyDown(RCCSettings.lowBeamHeadlightsKB)){
 				lowBeamHeadLightsOn = !lowBeamHeadLightsOn;
@@ -963,8 +968,8 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 	}
     
 	void FixedUpdate (){
-
-		TorqueCurve();
+        
+        TorqueCurve();
 		
 		Engine();
 
@@ -1005,7 +1010,8 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 	}
 	
 	void Engine (){
-		
+
+
 		//Speed.
 		speed = rigid.velocity.magnitude * 3.6f;
 
@@ -1026,10 +1032,7 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 		                                             , engineInertia * 100f), 0f, maxEngineRPM * 1.1f);
 		
 		rawEngineRPM *= fuelInput;
-
-        // custom acceleration:
-        //rawEngineRPM *= acceleration;
-
+        
 		engineRPM = Mathf.Lerp(engineRPM, rawEngineRPM, Mathf.Lerp(Time.fixedDeltaTime * 5f, Time.fixedDeltaTime * 50f, rawEngineRPM / maxEngineRPM));
 		
 		//Auto Reverse Bool.

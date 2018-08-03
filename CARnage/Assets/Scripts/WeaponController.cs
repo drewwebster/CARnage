@@ -154,6 +154,21 @@ public class WeaponController : MonoBehaviour {
         return weapon;
     }
 
+    public void dropRandomEquippedWeapon()
+    {
+        if(getLeftWeapon() != null)
+            if (getRightWeapon() != null)
+                if (Random.Range(0f, 1f) > 0.5f)
+                    dropWeapon(getLeftWeapon());
+                else
+                    dropWeapon(getRightWeapon());
+            else
+                dropWeapon(getLeftWeapon());
+        else
+            if(getRightWeapon() != null)
+                dropWeapon(getRightWeapon());
+    }
+
     public void dropAllEquippedWeapons()
     {
         if (getLeftWeapon() != null)
@@ -170,5 +185,6 @@ public class WeaponController : MonoBehaviour {
         weapon.GetComponent<Rigidbody>().useGravity = true;
         weapon.GetComponent<Rigidbody>().isKinematic = false;
         weapon.GetComponent<BoxCollider>().enabled = true;
+        getCar().getModController().onWeaponDropped(weapon);
     }
 }

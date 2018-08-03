@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 114016928256506614}
   - component: {fileID: 114981334566000552}
   m_Layer: 0
-  m_Name: CAR_Tooltime
+  m_Name: TOOLTIME
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2663,6 +2663,9 @@ MonoBehaviour:
     type: 2}
   nakedModel: {fileID: 1669597402093550}
   controlledBy: 0
+  fireTicks: 0
+  acidTicks: 0
+  drainTicks: 0
 --- !u!114 &114986129740640884
 MonoBehaviour:
   m_ObjectHideFlags: 1

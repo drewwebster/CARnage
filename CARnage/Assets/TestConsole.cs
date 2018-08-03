@@ -7,9 +7,13 @@ public class TestConsole : MonoBehaviour {
 
     public GameObject inputField;
     CARnageCar relCar;
+    public List<string> cmdHistory;
+    int cmdHistoryPointer;
 
     private void Start()
     {
+        cmdHistory = new List<string>();
+        cmdHistoryPointer = 0;
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
             if (go.GetComponent<CARnageCar>() != null && go.GetComponent<CARnageCar>().controlledBy == CARnageAuxiliary.ControllerType.MouseKeyboard)
                 relCar = go.GetComponent<CARnageCar>();
@@ -37,11 +41,27 @@ public class TestConsole : MonoBehaviour {
                 sendTestCommand(inputField.GetComponent<InputField>().text);
                 inputField.GetComponent<InputField>().text = "";
             }
-                
+        if (Input.GetKeyDown(KeyCode.UpArrow) && inputField.activeSelf && cmdHistoryPointer > 0)
+        {
+            cmdHistoryPointer--;
+            inputField.GetComponent<InputField>().text = cmdHistory[cmdHistoryPointer];
+            inputField.GetComponent<InputField>().Select();
+            inputField.GetComponent<InputField>().ActivateInputField();
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow) && inputField.activeSelf && cmdHistoryPointer < cmdHistory.Count)
+        {
+            cmdHistoryPointer++;
+            inputField.GetComponent<InputField>().text = cmdHistory[cmdHistoryPointer];
+            inputField.GetComponent<InputField>().Select();
+            inputField.GetComponent<InputField>().ActivateInputField();
+        }
+
     }
 
     public void sendTestCommand(string command)
     {
+        cmdHistory.Add(command);
+        cmdHistoryPointer = cmdHistory.Count;
         command = command.ToUpper();
         string parameter = "";
         if(command.Contains(" "))
@@ -50,7 +70,8 @@ public class TestConsole : MonoBehaviour {
             command = command.Split(" ".ToCharArray()[0])[0];
         }
 
-        switch(command)
+        float mult = 1;
+        switch (command)
         {
             case "DMG":
                 float dmg = float.Parse(parameter);
@@ -71,15 +92,22 @@ public class TestConsole : MonoBehaviour {
                 relCar.regenerateShield(2000);
                 break;
             case "FIRE":
-                relCar.applyDebuff(CARnageCar.Debuff.Fire, relCar);
+                if (parameter.Length > 0)
+                    mult = float.Parse(parameter);
+                relCar.applyDebuff(CARnageCar.Debuff.Fire, relCar, mult);
                 break;
             case "ACID":
-                relCar.applyDebuff(CARnageCar.Debuff.Acid, relCar);
+                if (parameter.Length > 0)
+                    mult = float.Parse(parameter);
+                relCar.applyDebuff(CARnageCar.Debuff.Acid, relCar, mult);
                 break;
             case "DRAIN":
-                relCar.applyDebuff(CARnageCar.Debuff.Drain, relCar);
+                if (parameter.Length > 0)
+                    mult = float.Parse(parameter);
+                relCar.applyDebuff(CARnageCar.Debuff.Drain, relCar, mult);
                 break;
             case "ADDMOD":
+            case "MOD":
                 ModFactory.spawnMod((CARnageModifier.ModID)System.Enum.Parse(typeof(CARnageModifier.ModID), parameter), relCar);
                 break;
             case "DELMOD":
@@ -88,11 +116,15 @@ public class TestConsole : MonoBehaviour {
                         mod.deleteMe();
                 break;
             case "ADDWEAPON":
+            case "WEAPON":
                 CARnageWeapon weapon= WeaponFactory.spawnWeapon((CARnageWeapon.WeaponModel)System.Enum.Parse(typeof(CARnageWeapon.WeaponModel), parameter), relCar).GetComponent<CARnageWeapon>();
                 weapon.onObtained();
                 break;
             case "RNDWEAPON":
                 WeaponFactory.spawnRndWeapon(relCar.transform.position);
+                break;
+            case "CAR":
+                CarFactory.spawnCar(CarModel.TOOLTIME, relCar.transform.position + relCar.transform.forward * 10);
                 break;
         }
     }

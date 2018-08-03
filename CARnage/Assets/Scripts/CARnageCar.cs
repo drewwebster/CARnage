@@ -133,7 +133,10 @@ public class CARnageCar : MonoBehaviour {
             maxShieldBar.fillAmount = maxShield / maxBar;
         }
         else
+        {
             ShieldBar.fillAmount = 0;
+            maxShieldBar.fillAmount = 0;
+        }
         GetComponentInChildren<damageCar>().updateHP(this);
         
         if (nitro > 0)
@@ -170,6 +173,7 @@ public class CARnageCar : MonoBehaviour {
             if (currentShield <= 0)
             {
                 currentShield = 0;
+                maxShield = 0;
                 breakShield();
             }
         }

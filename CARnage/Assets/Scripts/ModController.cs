@@ -190,6 +190,12 @@ public class ModController : MonoBehaviour {
             mod.onWeaponObtained(weapon);
     }
 
+    public void onWeaponDropped(CARnageWeapon weapon)
+    {
+        foreach (CARnageModifier mod in getMods())
+            mod.onWeaponDropped(weapon);
+    }
+
     public float getNitroConsumption_Multiplier()
     {
         float mult = 1f;

@@ -73,6 +73,13 @@ public class CARnageModifier : MonoBehaviour {
             ModFactory.spawnRandomMod(getCar());
             used = true;
         }
+
+        if(modID == ModID.BIG_FAT_KILL)
+        {
+            foreach(CARnageWeapon weapon in getCar().getWeaponController().getAllWeapons())
+                if(weapon.damageType == DamageType.MELEE)
+                    weapon.transform.localScale *= 2;
+        }
         
     }
 
@@ -102,6 +109,12 @@ public class CARnageModifier : MonoBehaviour {
             getCar().currentShield = Mathf.Min(getCar().currentShield, getCar().maxShield);
             getCar().maxHP *= 100;
             getCar().updateValues();
+        }
+        if (modID == ModID.BIG_FAT_KILL)
+        {
+            foreach (CARnageWeapon weapon in getCar().getWeaponController().getAllWeapons())
+                if (weapon.damageType == DamageType.MELEE)
+                    weapon.transform.localScale /= 2;
         }
     }
 
@@ -207,7 +220,7 @@ public class CARnageModifier : MonoBehaviour {
                 if (modID == ModID.BB_BBQ)
                     getCar().replenishShield(amount * 0.1f);
                 if (modID == ModID.FORCED_EXTRACTION)
-                    damagedCar.getWeaponController().dropRandomWeapon();
+                    damagedCar.getWeaponController().dropRandomEquippedWeapon();
                 break;
 
             case DamageType.RAM:
@@ -249,6 +262,12 @@ public class CARnageModifier : MonoBehaviour {
             weapon.addRandomUpgrade();
         if (modID == ModID.BIG_FAT_KILL && weapon.damageType == DamageType.MELEE)
             weapon.transform.localScale *= 2;
+    }
+
+    public void onWeaponDropped(CARnageWeapon weapon)
+    {
+        if (modID == ModID.BIG_FAT_KILL && weapon.damageType == DamageType.MELEE)
+            weapon.transform.localScale /= 2;
     }
 
     public void onProjectileShot(ProjectileTrajectory projectile)
@@ -593,7 +612,7 @@ public class CARnageModifier : MonoBehaviour {
         DOWNFALL, // 
         IMPATIENCE, // works
         TRAILER_THRASH, // TODO: Trailer Thrash
-        BARE_KNUCKLES, //
+        BARE_KNUCKLES, // works
         HYDROFLUORIC_ACID, // works
         RECKLESS, // 
         BEST_CUSTOMER, //
@@ -644,15 +663,15 @@ public class CARnageModifier : MonoBehaviour {
         HEROIC, // works
         COMMITMENT, // works
         STUFFED, // works
-        BB_BBQ, //
+        BB_BBQ, // works
         GROWTH, //
         HARVEST, // 
         DEATH_PROOF, // works
         FINISHER, // works
         TREACHEROUS_FLAVOR, // TODO: Bases
-        FORCED_EXTRACTION, //
+        FORCED_EXTRACTION, // works
         SINNER, // works
-        BIG_FAT_KILL, //
+        BIG_FAT_KILL, // works
         INTUITION, // TODO: Reflection
         GUN_FU, // TODO: Everything
         HALO, // TODO: Everything

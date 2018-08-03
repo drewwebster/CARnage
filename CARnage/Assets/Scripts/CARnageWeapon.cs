@@ -76,6 +76,7 @@ public class CARnageWeapon : MonoBehaviour {
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<BoxCollider>().enabled = false;
+        collectableFX.SetActive(false);
 
         rel_car = GetComponentInParent<CARnageCar>();
         //rel_camera = Camera.main.gameObject;
@@ -151,7 +152,16 @@ public class CARnageWeapon : MonoBehaviour {
         //if(weaponState == WeaponState.EQUIPPED_RIGHT)
         //    CARnageAuxiliary.playAnimationTimeScaled(gameObject, "SwingRight", getModdedShotDelay());
         
-        CARnageAuxiliary.playAnimationTimeScaled(gameObject, "SwingTowardsFront", getModdedShotDelay());
+        switch(weaponModel)
+        {
+            case WeaponModel.ESCAPE:
+                CARnageAuxiliary.playAnimationTimeScaled(gameObject, "ChopTowardsFront", getModdedShotDelay());
+                break;
+            default:
+                CARnageAuxiliary.playAnimationTimeScaled(gameObject, "SwingTowardsFront", getModdedShotDelay());
+                break;
+        }
+
 
         onSwing();
         Invoke("onSwingEnd", getModdedShotDelay());
@@ -163,6 +173,13 @@ public class CARnageWeapon : MonoBehaviour {
         if (automatic)
             meleeHitbox.SetActive(false); // flicker; dont know if this is necessary
         meleeHitbox.SetActive(true);
+
+        switch(weaponModel)
+        {
+            case WeaponModel.TOOL:
+                getCar().repair(1);
+                break;
+        }
     }
     public void onSwingEnd()
     {
@@ -240,7 +257,7 @@ public class CARnageWeapon : MonoBehaviour {
 
     public float calcDamage(buildingCollision building)
     {
-        return Damage * getWeaponMod_damage_multiplier();
+        return Damage * getWeaponMod_damage_multiplier() * buildingDMG_WeaponModelMod();
     }
 
     public CARnageCar getCar()
@@ -457,7 +474,6 @@ public class CARnageWeapon : MonoBehaviour {
             CARnageCar car = other.GetComponentInParent<CARnageCar>();
             if (car != null)
             {
-                collectableFX.SetActive(false);
                 car.GetComponentInChildren<WeaponController>().obtainWeapon(gameObject);
             }
         }
@@ -500,9 +516,47 @@ public class CARnageWeapon : MonoBehaviour {
         switch (weaponModel)
         {
             case WeaponModel.BOOMSTICK:
+            case WeaponModel.TORCH:
                 damagedCar.applyDebuff(CARnageCar.Debuff.Fire, damager);
                 break;
+            case WeaponModel.PUNCH:
+                Vector3 knockbackDirection = transform.forward * 50000;                
+                damagedCar.GetComponent<Rigidbody>().AddForce(knockbackDirection, ForceMode.Impulse);
+                break;
+            case WeaponModel.THE_BRIDE:
+            case WeaponModel.ESE:
+            case WeaponModel.GRACE:
+            case WeaponModel.SAW:
+            case WeaponModel.MOMS_KNIFE:
+                damagedCar.applyDebuff(CARnageCar.Debuff.Drain, damager);
+                break;
+            case WeaponModel.MOTHER_THERESA:
+                damagedCar.applyDebuff(CARnageCar.Debuff.Acid, damager);
+                break;
         }
+    }
+
+    public void OnDMG_WeaponModelMod(CARnageCar damager, buildingCollision building)
+    {
+        switch(weaponModel)
+        {
+            case WeaponModel.ACE_OF_SPADES:
+                getCar().addGears(1);
+                break;
+        }
+    }
+
+    public float buildingDMG_WeaponModelMod()
+    {
+        float mult = 1f;
+        switch(weaponModel)
+        {
+            case WeaponModel.ESCAPE:
+            case WeaponModel.THE_NEWS:
+                mult *= 2;
+                break;
+        }
+        return mult;
     }
 
 }
