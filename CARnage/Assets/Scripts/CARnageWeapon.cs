@@ -44,6 +44,9 @@ public class CARnageWeapon : MonoBehaviour {
     public GameObject upgrade_AutomaticGO;
     public GameObject upgrade_DamageGO;
     public GameObject upgrade_LightGO;
+
+    GameObject throwable;
+    public GameObject[] throwableVariants;
     [HideInInspector]
     public bool upgraded_magazine;
     [HideInInspector]
@@ -133,8 +136,17 @@ public class CARnageWeapon : MonoBehaviour {
                 case DamageType.MELEE:
                     swingMe();
                     break;
+                case DamageType.EXPLOSION:
+                    gatherThrowForce();
+                    break;
             }
         }
+
+        if (isGatheringThrowForce)
+            throwForceTime += Time.deltaTime;
+
+        if (damageType == DamageType.EXPLOSION && rel_car.GetComponent<CARnageCar>().controlledBy == CARnageAuxiliary.ControllerType.MouseKeyboard && ((weaponState == WeaponState.EQUIPPED_LEFT && Input.GetMouseButtonUp(0)) || (weaponState == WeaponState.EQUIPPED_RIGHT && Input.GetMouseButtonUp(1))))
+            throwMe();
 
         calcWeaponAngle();
     }
@@ -250,6 +262,56 @@ public class CARnageWeapon : MonoBehaviour {
         return go.GetComponent<ProjectileTrajectory>();
     }
 
+    bool isGatheringThrowForce = false;
+    float throwForceTime = 0;
+    //float throwTimeMax = 3;
+    void gatherThrowForce()
+    {
+        isGatheringThrowForce = true;
+        CARnageAuxiliary.playAnimationTimeScaled(gameObject, "Gather", reloadTime);
+    }
+
+    public void throwMe()
+    {
+        if (firing)
+            return;
+        if (reloading)
+            return;
+        if (magazineLoaded == 0)
+        {
+            reload();
+            return;
+        }
+
+        firing = true;
+        CARnageAuxiliary.playAnimationTimeScaled(gameObject, "Gather", 0.001f);
+        isGatheringThrowForce = false;
+
+        GameObject thrown = Instantiate(throwable, throwable.transform.parent);
+        throwable.SetActive(false);
+        thrown.transform.parent = null;
+        thrown.GetComponent<enableColliderDelayed>().enabled = true;
+        thrown.GetComponent<explodableHitbox>().enabled = true;
+        thrown.GetComponent<explodableHitbox>().rel_weapon = this;
+        thrown.GetComponentInChildren<explodableHitbox>().explodeTime = shotDelay;
+        thrown.AddComponent<Rigidbody>();
+        Vector3 throwForce = new Vector3(thrown.transform.up.x, thrown.transform.up.y + 0.2f, thrown.transform.up.z);
+        throwForceTime = Mathf.Min(throwForceTime, reloadTime);
+        float throwMult = 1000 * throwForceTime / reloadTime;
+        throwForceTime = 0;
+        throwForce = throwForce * throwMult;
+        throwForce.y = Mathf.Clamp(throwForce.y, 0, 250);
+
+        thrown.GetComponent<Rigidbody>().velocity = getCar().GetComponent<Rigidbody>().velocity;
+        thrown.GetComponent<Rigidbody>().AddForce(throwForce);
+
+        //Invoke("resetFiringDelay", getModdedShotDelay());
+        //Invoke("reload", getModdedShotDelay());
+        resetFiringDelay();
+        reload();
+        magazineLoaded--;
+    }
+
     public float calcDamage(CARnageCar damagedCar)
     {
         return Damage * getWeaponMod_damage_multiplier();
@@ -277,15 +339,25 @@ public class CARnageWeapon : MonoBehaviour {
         Invoke("resetReloadingDelay", reloadTimeModded);
         CARnageAuxiliary.playAnimationTimeScaled(gameObject, "Reload", reloadTimeModded);
 
-        GameObject go = Instantiate(Magazine, transform);
-        go.transform.parent = null;
-        Destroy(go, CARnageAuxiliary.destroyAfterSec);
+        if(Magazine != null)
+        {
+            GameObject go = Instantiate(Magazine, transform);
+            go.transform.parent = null;
+            Destroy(go, CARnageAuxiliary.destroyAfterSec);
+        }
         GetComponent<AudioSource>().PlayOneShot(ReloadSound);
     }
     public void resetReloadingDelay()
     {
         magazineLoaded = (int)(magazineSize * getWeaponMod_magazine_multiplier() * getCar().getModController().getWeaponMagazine_Multiplier() * GlobalModifiers.getWeaponMagazine_Multiplier_GLOBAL(this));
         reloading = false;
+
+        if(damageType == DamageType.EXPLOSION)
+        {
+            throwable = throwableVariants[UnityEngine.Random.Range(0, throwableVariants.Length)];
+            throwable.SetActive(true);
+            throwForceTime = 0f;
+        }
     }
 
     public void calcWeaponAngle()
@@ -513,14 +585,26 @@ public class CARnageWeapon : MonoBehaviour {
     // ----- ----- ----- COMMON WEAPON BONUSES ----- ----- -----
     public void OnDMG_WeaponModelMod(CARnageCar damager, CARnageCar damagedCar)
     {
+        Vector3 knockbackDirection;
         switch (weaponModel)
         {
             case WeaponModel.BOOMSTICK:
             case WeaponModel.TORCH:
+            case WeaponModel.BARREL_ROLL:
+            case WeaponModel.FLOWER_POWER:
+            case WeaponModel.DRAGON:
                 damagedCar.applyDebuff(CARnageCar.Debuff.Fire, damager);
                 break;
+            case WeaponModel.PHOENIX:
+                damagedCar.applyDebuff(CARnageCar.Debuff.Fire, damager, 2);
+                break;
             case WeaponModel.PUNCH:
-                Vector3 knockbackDirection = transform.forward * 50000;                
+            case WeaponModel.WHACK:
+                knockbackDirection = transform.forward * 50000;                
+                damagedCar.GetComponent<Rigidbody>().AddForce(knockbackDirection, ForceMode.Impulse);
+                break;
+            case WeaponModel.SILLY_BILLY:
+                knockbackDirection = transform.forward * 10000;
                 damagedCar.GetComponent<Rigidbody>().AddForce(knockbackDirection, ForceMode.Impulse);
                 break;
             case WeaponModel.THE_BRIDE:
@@ -531,6 +615,8 @@ public class CARnageWeapon : MonoBehaviour {
                 damagedCar.applyDebuff(CARnageCar.Debuff.Drain, damager);
                 break;
             case WeaponModel.MOTHER_THERESA:
+            case WeaponModel.TOXIC_WASTE:
+            case WeaponModel.SAUCE_PLOX:
                 damagedCar.applyDebuff(CARnageCar.Debuff.Acid, damager);
                 break;
         }
@@ -553,6 +639,8 @@ public class CARnageWeapon : MonoBehaviour {
         {
             case WeaponModel.ESCAPE:
             case WeaponModel.THE_NEWS:
+            case WeaponModel.DENTIST:
+            case WeaponModel.KEVIN:
                 mult *= 2;
                 break;
         }

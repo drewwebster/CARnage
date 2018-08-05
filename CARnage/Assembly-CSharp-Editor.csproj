@@ -164,6 +164,24 @@
     <Compile Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Editor\Windows\CNItemPopupWindow.cs" />
     <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Editor\CFX_SpawnSystemEditor.cs" />
     <Compile Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Editor\CFXEasyEditor.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\TCP2_Config.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\TCP2_GetPosOnWater_Editor.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\TCP2_GradientManager.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\TCP2_GUI.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\TCP2_MaterialInspector.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\TCP2_MaterialInspector_PBS.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\TCP2_MaterialInspector_PBS_SG.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\TCP2_MaterialInspector_SG.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\TCP2_Menu.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\TCP2_OutlineInspector.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\TCP2_RampGenerator.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\TCP2_ShaderGenerator.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\TCP2_ShaderGenerator.UIFeatures.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\TCP2_ShaderUpdateUnityTime_Editor.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\TCP2_SmoothedNormalsUtility.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Utils\TCP2_ExpressionParser.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Utils\TCP2_ShaderGeneratorUtils.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Utils\TCP2_Utils.cs" />
     <Compile Include="Assets\3rdParty\Low Poly Ultimate Pack\Shaders\UnityVC\Editor\StandardShaderVCGUI.cs" />
     <Compile Include="Assets\3rdParty\Obi\Editor\ObiAboutWindow.cs" />
     <Compile Include="Assets\3rdParty\Obi\Editor\ObiAerodynamicConstraintsEditor.cs" />
@@ -213,13 +231,19 @@
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Editor\ScriptableObjectUtility.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
     <None Include="Assets\3rdParty\Obi\Editor\Resources\EditorParticle.shader" />
+    <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Shader Templates\TCP2_ShaderTemplate_Terrain.txt" />
     <None Include="Assets\3rdParty\Obi\Editor\Resources\DistanceFieldPreview.shader" />
     <None Include="Assets\3rdParty\Obi\Editor\Resources\FlatSurfaceShader.shader" />
     <None Include="Assets\3rdParty\Obi\Editor\Resources\EditorLineShader.shader" />
+    <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Shader Templates\TCP2_ShaderTemplate_Default_CurvedWorld.txt" />
+    <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Shader Templates\TCP2_ShaderTemplate_Default.txt" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Editor\PluginResources\Strings\cr_strings_en.xml" />
+    <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Shader Templates\TCP2_ShaderTemplate_Water.txt" />
+    <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Shader Templates\TCP2_ShaderTemplate_PBS.txt" />
     <None Include="Assets\3rdParty\Obi\Editor\Resources\TopologyBorders.shader" />
     <None Include="Assets\3rdParty\Obi\Editor\Resources\EditorParticleRadius.shader" />
     <None Include="Assets\3rdParty\Obi\Editor\Resources\PropertyGradientMaterial.shader" />
+    <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Shader Templates\TCP2_ShaderTemplate_Water_CurvedWorld.txt" />
     <Reference Include="Assembly-UnityScript">
       <HintPath>D:/CARnage/CARnage/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
     </Reference>
@@ -477,6 +501,9 @@
     </Reference>
     <Reference Include="CaronteFX-RuntimeBasic">
       <HintPath>D:/CARnage/CARnage/Assets/3rdParty/Caronte/CaronteFX/Plugin/Scripts/CaronteFX-RuntimeBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="JMOAssets">
+      <HintPath>D:/CARnage/CARnage/Assets/3rdParty/JMO Assets/Editor/JMOAssets.dll</HintPath>
     </Reference>
     <Reference Include="VacuumShaders.CurvedWorldVC">
       <HintPath>D:/CARnage/CARnage/Assets/VacuumShaders/Curved World/Editor/VacuumShaders.CurvedWorldVC.dll</HintPath>
