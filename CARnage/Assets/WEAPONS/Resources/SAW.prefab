@@ -3595,14 +3595,17 @@ MonoBehaviour:
   weaponName: Saw
   weaponModel: 13
   damageType: 1
-  Damage: 2
+  Damage: 5
   shotDelay: 0.2
   meleeDMGdelay: 0
   magazineSize: -1
   reloadTime: -1
   automatic: 1
   projectileSpeed: -1
+  knockbackMult: 1
   weaponState: 3
+  isRoofWeapon: 0
+  isSprayWeapon: 0
   Projectile: {fileID: 0}
   meleeHitbox: {fileID: 1570163521101782}
   Projectile_Bulletcase: {fileID: 0}
@@ -3623,6 +3626,7 @@ MonoBehaviour:
   upgrade_AutomaticGO: {fileID: 0}
   upgrade_DamageGO: {fileID: 0}
   upgrade_LightGO: {fileID: 0}
+  throwableVariants: []
   upgraded_magazine: 0
   upgraded_scope: 0
   upgraded_silencer: 0

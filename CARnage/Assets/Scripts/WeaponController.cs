@@ -7,9 +7,10 @@ public class WeaponController : MonoBehaviour {
     public GameObject leftWeaponGO;
     public GameObject rightWeaponGO;
     public GameObject stashGO;
+    public GameObject RoofWeaponSpot;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         foreach (CARnageWeapon weapon in getAllWeapons())
             onWeaponObtained(weapon);
 	}

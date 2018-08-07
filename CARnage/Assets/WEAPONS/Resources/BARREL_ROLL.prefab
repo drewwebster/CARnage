@@ -177,7 +177,6 @@ GameObject:
   - component: {fileID: 23348357283521048}
   - component: {fileID: 64405426658555346}
   - component: {fileID: 114691439785400380}
-  - component: {fileID: 114269007486139662}
   m_Layer: 0
   m_Name: v3
   m_TagString: Untagged
@@ -214,7 +213,6 @@ GameObject:
   - component: {fileID: 23212643406294848}
   - component: {fileID: 64113322190843824}
   - component: {fileID: 114750601354849124}
-  - component: {fileID: 114147980805363718}
   m_Layer: 0
   m_Name: v1
   m_TagString: Untagged
@@ -556,7 +554,6 @@ GameObject:
   - component: {fileID: 23573275367363914}
   - component: {fileID: 64380149903703724}
   - component: {fileID: 114015128822881706}
-  - component: {fileID: 114668495793708102}
   m_Layer: 0
   m_Name: v2
   m_TagString: Untagged
@@ -1614,30 +1611,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
---- !u!114 &114147980805363718
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1356196673917732}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e616c8ed9b886948b7281d45a21b827, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delayTime: 0.25
---- !u!114 &114269007486139662
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1309293161482770}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e616c8ed9b886948b7281d45a21b827, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delayTime: 0.5
 --- !u!114 &114407408549910606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1698,6 +1671,7 @@ MonoBehaviour:
   reloadTime: 3
   automatic: 0
   projectileSpeed: -1
+  knockbackMult: 1
   weaponState: 3
   Projectile: {fileID: 0}
   meleeHitbox: {fileID: 0}
@@ -1757,18 +1731,6 @@ MonoBehaviour:
   m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 2
---- !u!114 &114668495793708102
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1911007358464754}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e616c8ed9b886948b7281d45a21b827, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delayTime: 0.5
 --- !u!114 &114691439785400380
 MonoBehaviour:
   m_ObjectHideFlags: 1

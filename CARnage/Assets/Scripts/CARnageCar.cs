@@ -167,7 +167,7 @@ public class CARnageCar : MonoBehaviour {
         lastDamagedTime = Time.time;
         lastDamager = damager;
 
-        if (currentShield > 0 && !damager.getModController().isIgnoringEnemyShield())
+        if (currentShield > 0 && !damager.getModController().isIgnoringEnemyShield() && damageType != DamageType.DIRECT_DAMAGE)
         {
             currentShield -= damage;
             if (currentShield <= 0)
@@ -307,6 +307,8 @@ public class CARnageCar : MonoBehaviour {
 
     void fireDMG()
     {
+        if (fireTicks == -1) // ended from another source
+            return;
         damageMe(fireDamage, fireApplier, DamageType.DEBUFF);
         fireTicks--;
         if (fireTicks > 0)
@@ -316,6 +318,8 @@ public class CARnageCar : MonoBehaviour {
     }
     void acidDMG()
     {
+        if (acidTicks == -1) // ended from another source
+            return;
         damageMe(acidDamage, acidApplier, DamageType.DEBUFF);
         acidTicks--;
         if (acidTicks > 0)
@@ -325,6 +329,8 @@ public class CARnageCar : MonoBehaviour {
     }
     void drainDMG()
     {
+        if (drainTicks == -1) // ended from another source
+            return;
         damageMe(drainDamage, drainApplier, DamageType.DEBUFF);
         drainTicks--;
         if (drainTicks > 0)
@@ -492,5 +498,11 @@ public class CARnageCar : MonoBehaviour {
     public bool isOnNitro()
     {
         return GetComponent<RCC_CarControllerV3>().isUsingNitro;
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if(other.GetComponentInParent<CARnageWeapon>() != null)
+            other.GetComponentInParent<CARnageWeapon>().doParticleDMG(this);
     }
 }

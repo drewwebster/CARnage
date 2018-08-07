@@ -4,5 +4,6 @@
     MELEE,
     RAM,
     EXPLOSION,
-    DEBUFF
+    DEBUFF,
+    DIRECT_DAMAGE
 }

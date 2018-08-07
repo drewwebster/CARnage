@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class explosionHitbox : MonoBehaviour {
-
-    [HideInInspector]
+    
     public CARnageWeapon rel_weapon;
 
     private void Start()
@@ -18,6 +17,9 @@ public class explosionHitbox : MonoBehaviour {
         if(other.GetComponent<damageCar>())
         {
             CARnageCar damagedCar = other.GetComponentInParent<CARnageCar>();
+
+            //if (GetComponentInParent<ProjectileTrajectory>() != null) // launched rockets
+            //    rel_weapon = GetComponentInParent<ProjectileTrajectory>().rel_weapon;
             float damage = rel_weapon.calcDamage(damagedCar);
             damagedCar.damageMe(damage, rel_weapon.getCar(),DamageType.EXPLOSION);
             rel_weapon.OnDMG_WeaponModelMod(rel_weapon.getCar(), damagedCar);
@@ -29,7 +31,7 @@ public class explosionHitbox : MonoBehaviour {
 
             heading.y = 1;
             
-            var knockbackDirection = heading * 10000;
+            var knockbackDirection = heading * 10000 * rel_weapon.knockbackMult;
             damagedCar.GetComponent<Rigidbody>().AddForce(knockbackDirection, ForceMode.Impulse);
         }        
     }

@@ -76,7 +76,6 @@ GameObject:
   - component: {fileID: 23144244708046332}
   - component: {fileID: 64032852620640440}
   - component: {fileID: 114875443232229546}
-  - component: {fileID: 114723969301171242}
   m_Layer: 0
   m_Name: v1
   m_TagString: Untagged
@@ -152,7 +151,6 @@ GameObject:
   - component: {fileID: 33079007952380714}
   - component: {fileID: 23696540815346200}
   - component: {fileID: 64254433432583092}
-  - component: {fileID: 114244142477871656}
   - component: {fileID: 114582537310329414}
   m_Layer: 0
   m_Name: v2
@@ -1525,18 +1523,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
---- !u!114 &114244142477871656
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1166496322805474}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e616c8ed9b886948b7281d45a21b827, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delayTime: 0.25
 --- !u!114 &114318168488653412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1570,6 +1556,7 @@ MonoBehaviour:
   reloadTime: 3
   automatic: 0
   projectileSpeed: -1
+  knockbackMult: 1
   weaponState: 3
   Projectile: {fileID: 0}
   meleeHitbox: {fileID: 0}
@@ -1717,18 +1704,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
---- !u!114 &114723969301171242
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1045633444311168}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e616c8ed9b886948b7281d45a21b827, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delayTime: 0.25
 --- !u!114 &114724568559680850
 MonoBehaviour:
   m_ObjectHideFlags: 1
