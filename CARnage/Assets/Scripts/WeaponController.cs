@@ -8,6 +8,7 @@ public class WeaponController : MonoBehaviour {
     public GameObject rightWeaponGO;
     public GameObject stashGO;
     public GameObject RoofWeaponSpot;
+    public GameObject FrontWeaponSpot;
 
     // Use this for initialization
     void Start () {

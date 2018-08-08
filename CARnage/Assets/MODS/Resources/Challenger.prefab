@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4618203696103132}
   - component: {fileID: 114094487695899338}
   m_Layer: 0
-  m_Name: Challenger
+  m_Name: CHALLENGER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

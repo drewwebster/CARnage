@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4667781747442002}
   - component: {fileID: 114215933850699266}
   m_Layer: 0
-  m_Name: Rapid Rush
+  m_Name: RAPID_RUSH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
