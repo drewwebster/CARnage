@@ -145,7 +145,10 @@ public class CARnageCar : MonoBehaviour {
             maxNitroBar.fillAmount = getRCC_nitro() / 100f;
         }
         else
+        {
             NitroBar.fillAmount = 0;
+            maxNitroBar.fillAmount = 0;
+        }
 
         //foreach (Material m in nakedModel.GetComponent<MeshRenderer>().materials)
         //    if (m.name.Contains("ProgDamageMat"))

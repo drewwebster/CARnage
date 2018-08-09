@@ -14,6 +14,9 @@ public class CARnageWeapon : MonoBehaviour {
     public bool meleeDMGdelay;
     public int magazineSize;
     public float reloadTime;
+    public int projectilesPerShot = 1;
+    public float projectileScatterAngle = 0;
+    public float projectileSpeedRNDRange = 0;
     public bool automatic;
 
     public float projectileSpeed = 1000;
@@ -293,10 +296,25 @@ public class CARnageWeapon : MonoBehaviour {
                 break;
         }
 
-        ProjectileTrajectory proj = shootProjectile();
-        if (loadedProjectileGO)
-            loadedProjectileGO.SetActive(false);
-        getCar().getModController().onProjectileShot(proj);
+        for(int i = 0; i < projectilesPerShot; i++)
+        {
+            ProjectileTrajectory proj = shootProjectile();
+            if (loadedProjectileGO)
+                loadedProjectileGO.SetActive(false);
+            getCar().getModController().onProjectileShot(proj);
+        }
+
+        // Bulletcase / FX
+        if (Projectile_Bulletcase != null)
+        {
+            GameObject goBC = Instantiate(Projectile_Bulletcase, BulletcaseSpawnGO.transform); // parent transform for intialisation
+            goBC.transform.parent = null;
+            Destroy(goBC, CARnageAuxiliary.destroyAfterSec);
+        }
+
+        if (shootFX != null)
+            Instantiate(shootFX, shootFXSpawnGO.transform);
+
 
         Invoke("resetFiringDelay", getModdedShotDelay());
         magazineLoaded--;
@@ -308,22 +326,14 @@ public class CARnageWeapon : MonoBehaviour {
         go.transform.parent = null;
         if(weaponState != WeaponState.AUTOFIRE)
             go.GetComponentInChildren<Rigidbody>().velocity = getCar().GetComponent<Rigidbody>().velocity;
-        go.GetComponentInChildren<Rigidbody>().AddForce(go.transform.up * projectileSpeed * getWeaponMod_projectileSpeed_multiplier());
+
+        go.transform.Rotate(new Vector3(0, 0, UnityEngine.Random.Range(-projectileScatterAngle, projectileScatterAngle)));
+        go.GetComponentInChildren<Rigidbody>().AddForce(go.transform.up * projectileSpeed * (1-UnityEngine.Random.Range(-projectileSpeedRNDRange, projectileSpeedRNDRange)) * getWeaponMod_projectileSpeed_multiplier());
         go.GetComponentInChildren<ProjectileTrajectory>().rel_car = getCar();
         go.GetComponentInChildren<ProjectileTrajectory>().rel_weapon = this;
         if (go.GetComponentInChildren<explodableHitbox>())
             go.GetComponentInChildren<explodableHitbox>().rel_weapon = this;
         
-        if (Projectile_Bulletcase != null)
-        {
-            GameObject goBC = Instantiate(Projectile_Bulletcase, BulletcaseSpawnGO.transform); // parent transform for intialisation
-            goBC.transform.parent = null;
-            Destroy(goBC, CARnageAuxiliary.destroyAfterSec);
-        }
-
-        if (shootFX != null)
-            Instantiate(shootFX, shootFXSpawnGO.transform);
-
         Destroy(go, CARnageAuxiliary.destroyAfterSec);
         GetComponent<AudioSource>().PlayOneShot(ShootSound);
         return go.GetComponent<ProjectileTrajectory>();
@@ -725,6 +735,7 @@ public class CARnageWeapon : MonoBehaviour {
             case WeaponModel.SAW:
             case WeaponModel.MOMS_KNIFE:
             case WeaponModel.FILTH:
+            case WeaponModel.WITNESS:
                 damagedCar.applyDebuff(CARnageCar.Debuff.Drain, damager);
                 break;
             case WeaponModel.MOTHER_THERESA:

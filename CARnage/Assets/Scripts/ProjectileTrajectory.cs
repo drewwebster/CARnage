@@ -17,7 +17,11 @@ public class ProjectileTrajectory : MonoBehaviour {
     {
         if (other.GetComponentInParent<CARnageCar>() == rel_car || other.GetComponent<CARnageWeapon>() != null || other.gameObject.name.Contains("Bulletcase")) // no friendly fire in projectiles
             return;
-            Debug.Log(other.gameObject.name);
+
+        if (other.GetComponent<ProjectileTrajectory>() && other.GetComponent<ProjectileTrajectory>().rel_weapon == rel_weapon)
+            return;
+
+        Debug.Log(other.gameObject.name);
 
         if(other.gameObject.GetComponent<buildingCollision>() != null)
         {

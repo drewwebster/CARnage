@@ -14,9 +14,11 @@ public class TestConsole : MonoBehaviour {
     {
         cmdHistory = new List<string>();
         cmdHistoryPointer = 0;
-        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
-            if (go.GetComponent<CARnageCar>() != null && go.GetComponent<CARnageCar>().controlledBy == CARnageAuxiliary.ControllerType.MouseKeyboard)
-                relCar = go.GetComponent<CARnageCar>();
+        relCar = GameObject.Find("RCCCamera").GetComponent<RCC_Camera>().playerCar.GetComponent<CARnageCar>();
+
+        //foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+        //    if (go.GetComponent<CARnageCar>() != null && go.GetComponent<CARnageCar>().controlledBy == CARnageAuxiliary.ControllerType.MouseKeyboard)
+        //        relCar = go.GetComponent<CARnageCar>();
     }
     private void Update()
     {
@@ -87,6 +89,9 @@ public class TestConsole : MonoBehaviour {
                 if (relCar.currentShield <= 0)
                     return;
                 relCar.damageMe(2000, relCar, DamageType.PROJECTILE);
+                break;
+            case "SHIELD":
+                relCar.replenishShield(float.Parse(parameter));
                 break;
             case "REPAIRSHIELD":
                 relCar.regenerateShield(2000);
