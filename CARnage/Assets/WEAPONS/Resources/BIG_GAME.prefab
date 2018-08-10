@@ -616,7 +616,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1902956274395348}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.806, y: 0, z: -5.503}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4246621559666236}
@@ -1466,11 +1466,15 @@ MonoBehaviour:
   meleeDMGdelay: 0
   magazineSize: 4
   reloadTime: 2
+  projectilesPerShot: 1
+  projectileScatterAngle: 0
+  projectileSpeedRNDRange: 0
   automatic: 0
   projectileSpeed: 2000
   knockbackMult: 1
   weaponState: 3
   isRoofWeapon: 0
+  isFrontWeapon: 0
   isSprayWeapon: 0
   Projectile: {fileID: 1017203074450606, guid: f465c92af4866424da47a3fb5fbe06ef, type: 2}
   meleeHitbox: {fileID: 0}
@@ -1503,6 +1507,7 @@ MonoBehaviour:
   upgraded_damage: 0
   upgraded_light: 0
   addAngle: 90
+  magazineLoaded: 0
 --- !u!114 &114553362070650592
 MonoBehaviour:
   m_ObjectHideFlags: 1

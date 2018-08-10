@@ -477,6 +477,7 @@ public class CARnageCar : MonoBehaviour {
         BLACK,
         RED,
         YELLOW,
+        ORANGE,
         GREEN,
         BLUE,
         VIOLET,

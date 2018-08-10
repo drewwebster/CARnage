@@ -867,7 +867,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147981161266222}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.91, y: 0, z: -24.33}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4773555964238762}
@@ -2042,6 +2042,9 @@ MonoBehaviour:
   meleeDMGdelay: 0
   magazineSize: 1
   reloadTime: 2
+  projectilesPerShot: 1
+  projectileScatterAngle: 0
+  projectileSpeedRNDRange: 0
   automatic: 0
   projectileSpeed: 1000
   knockbackMult: 1

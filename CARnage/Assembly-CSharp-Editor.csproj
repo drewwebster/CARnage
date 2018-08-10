@@ -199,6 +199,11 @@
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Editor\RCC_SettingsEditor.cs" />
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Editor\ScriptableObjectUtility.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
+    <Compile Include="Assets\SRIA\Scripts\DLLSources\ScrollRectItemsAdapter\Editor\SRIAStandaloneInputModuleCustomEditor.cs" />
+    <Compile Include="Assets\SRIA\Scripts\DLLSources\ScrollRectItemsAdapter\Editor\SRIATouchInputModuleCustomEditor.cs" />
+    <Compile Include="Assets\SRIA\Scripts\Editor\MenuItems.cs" />
+    <Compile Include="Assets\SRIA\Scripts\Editor\ReadOnlyDrawer.cs" />
+    <Compile Include="Assets\SRIA\Scripts\Editor\ThankYou.cs" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Shader Templates\TCP2_ShaderTemplate_Terrain.txt" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Shader Templates\TCP2_ShaderTemplate_Default_CurvedWorld.txt" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Shader Templates\TCP2_ShaderTemplate_Default.txt" />
