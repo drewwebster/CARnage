@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 54907913636666878}
   - component: {fileID: 135665523309323010}
   m_Layer: 0
-  m_Name: DRAGON
+  m_Name: INFERNO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -707,7 +707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1d0c0eabc95004b8764a073e07383f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Dragon
+  weaponName: Inferno
   weaponModel: 52
   damageType: 1
   Damage: 0
@@ -715,11 +715,15 @@ MonoBehaviour:
   meleeDMGdelay: 0
   magazineSize: -1
   reloadTime: -1
+  projectilesPerShot: 1
+  projectileScatterAngle: 0
+  projectileSpeedRNDRange: 0
   automatic: 1
   projectileSpeed: -1
   knockbackMult: 1
   weaponState: 3
   isRoofWeapon: 0
+  isFrontWeapon: 0
   isSprayWeapon: 1
   Projectile: {fileID: 0}
   meleeHitbox: {fileID: 0}
@@ -736,6 +740,7 @@ MonoBehaviour:
   BulletSpawnGO: {fileID: 0}
   BulletcaseSpawnGO: {fileID: 0}
   shootFXSpawnGO: {fileID: 0}
+  loadedProjectileGO: {fileID: 0}
   upgrade_MagazineGO: {fileID: 0}
   upgrade_ScopeGO: {fileID: 0}
   upgrade_SilencerGO: {fileID: 0}
@@ -750,6 +755,7 @@ MonoBehaviour:
   upgraded_damage: 0
   upgraded_light: 0
   addAngle: 90
+  magazineLoaded: 0
 --- !u!135 &135665523309323010
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -258,6 +258,7 @@ public class CARnageModifier : MonoBehaviour {
 
     public void onWeaponObtained(CARnageWeapon weapon)
     {
+        //Debug.Log("on weapon obtained: " + weapon.weaponModel.ToString());
         if (modID == ModID.IMPROVISE)
             weapon.addRandomUpgrade();
         if (modID == ModID.BIG_FAT_KILL && weapon.damageType == DamageType.MELEE)

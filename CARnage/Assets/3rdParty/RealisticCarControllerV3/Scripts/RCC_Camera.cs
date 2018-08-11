@@ -127,9 +127,10 @@ public class RCC_Camera : MonoBehaviour{
 
 		cam = GetComponentInChildren<Camera>();
 		orgTimeScale = Time.timeScale;
-
         if (playerCar == null)
-            playerCar = GameObject.FindGameObjectWithTag("Player").GetComponentInParent<CARnageCar>().transform;
+            foreach(GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+                if(go.GetComponentInParent<CARnageCar>())
+                    playerCar = go.GetComponentInParent<CARnageCar>().transform;
     }
 
     private void Start()

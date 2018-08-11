@@ -655,7 +655,7 @@ public class CARnageWeapon : MonoBehaviour {
         WRECKER,
         LORI,
         FLOWER_POWER,
-        DRAGON,
+        INFERNO,
         PHOENIX,
         CROSSIE,
         SLOTTIE
@@ -714,7 +714,7 @@ public class CARnageWeapon : MonoBehaviour {
             case WeaponModel.TORCH:
             case WeaponModel.BARREL_ROLL:
             case WeaponModel.FLOWER_POWER:
-            case WeaponModel.DRAGON:
+            case WeaponModel.INFERNO:
                 damagedCar.applyDebuff(CARnageCar.Debuff.Fire, damager);
                 break;
             case WeaponModel.PHOENIX:
