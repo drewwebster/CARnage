@@ -402,7 +402,7 @@ public class RCC_Camera : MonoBehaviour{
 
 	}
     
-    public bool lockZ = true;
+    public bool lockZ = false;
     void switchTopModes()
     {
         if (lockZ)

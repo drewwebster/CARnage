@@ -558,6 +558,7 @@
     <Compile Include="Assets\SRIA\Scripts\Util\SimpleFPSCounter.cs" />
     <Compile Include="Assets\SRIA\Scripts\Util\SimpleImageColorBouncer.cs" />
     <Compile Include="Assets\SRIA\Scripts\Util\SimpleImageDownloader.cs" />
+    <Compile Include="Assets\syncYangle.cs" />
     <Compile Include="Assets\TestConsole.cs" />
     <Compile Include="Assets\VacuumShaders\Curved World\Example Scenes\Files\Scripts\CW_Demo_Camera_Pan.cs" />
     <Compile Include="Assets\VacuumShaders\Curved World\Example Scenes\Files\Scripts\CW_Demo_ClassicRunner_ChunkController.cs" />

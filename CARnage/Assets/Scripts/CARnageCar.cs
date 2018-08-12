@@ -164,8 +164,8 @@ public class CARnageCar : MonoBehaviour {
         damage *= getModController().getSelfDMG_Multiplier(damager, damageType);
         damage *= damager.getModController().getDMG_Multiplier(damageType, this);
         Debug.Log("Damage dealt: " + damage);
-        if (damage <= 0)
-            return;
+        //if (damage <= 0) // TODO: See if this works out
+        //    return;
 
         lastDamagedTime = Time.time;
         lastDamager = damager;

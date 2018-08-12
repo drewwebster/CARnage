@@ -891,7 +891,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1597197852121466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.29, y: 0, z: -20.02}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4094397482573076}
@@ -1669,15 +1669,22 @@ MonoBehaviour:
   meleeDMGdelay: 0
   magazineSize: 1
   reloadTime: 3
+  projectilesPerShot: 1
+  projectileScatterAngle: 0
+  projectileSpeedRNDRange: 0
   automatic: 0
   projectileSpeed: -1
   knockbackMult: 1
   weaponState: 3
+  isRoofWeapon: 0
+  isFrontWeapon: 0
+  isSprayWeapon: 0
   Projectile: {fileID: 0}
   meleeHitbox: {fileID: 0}
   Projectile_Bulletcase: {fileID: 0}
   Magazine: {fileID: 0}
   shootFX: {fileID: 0}
+  shootFXinsta: {fileID: 0}
   collectableFX: {fileID: 1213585118866536}
   ShootSound: {fileID: 0}
   ReloadSound: {fileID: 0}
@@ -1687,6 +1694,7 @@ MonoBehaviour:
   BulletSpawnGO: {fileID: 0}
   BulletcaseSpawnGO: {fileID: 0}
   shootFXSpawnGO: {fileID: 0}
+  loadedProjectileGO: {fileID: 0}
   upgrade_MagazineGO: {fileID: 0}
   upgrade_ScopeGO: {fileID: 0}
   upgrade_SilencerGO: {fileID: 0}
@@ -1704,6 +1712,7 @@ MonoBehaviour:
   upgraded_damage: 0
   upgraded_light: 0
   addAngle: 90
+  magazineLoaded: 0
 --- !u!114 &114656035234724870
 MonoBehaviour:
   m_ObjectHideFlags: 1
