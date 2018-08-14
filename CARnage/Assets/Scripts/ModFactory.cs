@@ -15,7 +15,7 @@ public class ModFactory : MonoBehaviour {
 
 	public static GameObject spawnMod(CARnageModifier.ModID modID, CARnageCar car)
     {
-        GameObject go = Instantiate(Resources.Load<GameObject>(modID.ToString()), car.getModController().transform);
+        GameObject go = Instantiate(Resources.Load<GameObject>("MODSResources/"+modID.ToString()), car.getModController().transform);
         go.GetComponent<CARnageModifier>().onSpawn();
         return go;
     }

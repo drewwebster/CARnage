@@ -1570,6 +1570,9 @@ MonoBehaviour:
   meleeDMGdelay: 0
   magazineSize: 1
   reloadTime: 4
+  projectilesPerShot: 1
+  projectileScatterAngle: 0
+  projectileSpeedRNDRange: 0
   automatic: 0
   projectileSpeed: 1000
   knockbackMult: 1
@@ -1577,7 +1580,7 @@ MonoBehaviour:
   isRoofWeapon: 0
   isFrontWeapon: 0
   isSprayWeapon: 0
-  Projectile: {fileID: 1774782623899608, guid: b26c58a457ca96b46aa536e833846211, type: 2}
+  Projectile: {fileID: 1775321727713256, guid: b26c58a457ca96b46aa536e833846211, type: 2}
   meleeHitbox: {fileID: 0}
   Projectile_Bulletcase: {fileID: 0}
   Magazine: {fileID: 0}

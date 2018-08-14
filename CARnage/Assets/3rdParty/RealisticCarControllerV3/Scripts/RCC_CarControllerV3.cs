@@ -317,7 +317,7 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 	public float NoS = 100f;
     public float maxNitro = 0f;
 
-    private float NoSConsumption = 25f;
+    private float NoSConsumption = 15f;
 	private float NoSRegenerateTime = 10f;
 
 	public bool useNOS = false;
@@ -1014,6 +1014,7 @@ public class RCC_CarControllerV3 : MonoBehaviour {
 
 		//Speed.
 		speed = rigid.velocity.magnitude * 3.6f;
+        //Debug.Log(speed);
 
 		//Steer Limit.
 		steerAngle = Mathf.Lerp(orgSteerAngle, highspeedsteerAngle, (speed / highspeedsteerAngleAtspeed));

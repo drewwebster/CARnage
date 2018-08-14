@@ -18,6 +18,7 @@ public class CARnageWeapon : MonoBehaviour {
     public float projectileScatterAngle = 0;
     public float projectileSpeedRNDRange = 0;
     public bool automatic;
+    public float timeDelayAfterShooting = 0f;
 
     public float projectileSpeed = 1000;
     public float knockbackMult = 1f;
@@ -146,7 +147,7 @@ public class CARnageWeapon : MonoBehaviour {
             switch (damageType)
             {
                 case DamageType.PROJECTILE:
-                    shoot();
+                    Invoke("shoot", timeDelayAfterShooting);
                     break;
                 case DamageType.MELEE:
                     swingMe();
@@ -469,8 +470,9 @@ public class CARnageWeapon : MonoBehaviour {
     
     public void calcWeaponAngle()
     {
-        if (weaponState == WeaponState.AUTOFIRE)
+        if (weaponState == WeaponState.AUTOFIRE || weaponModel == WeaponModel.GREED_WEAPON)
             return;
+        
         if(isRoofWeapon)
         {
             transform.position = getCar().getWeaponController().RoofWeaponSpot.transform.position;
@@ -483,7 +485,7 @@ public class CARnageWeapon : MonoBehaviour {
             transform.localRotation = Quaternion.identity;
             return;
         }
-
+        
         if (rel_car.GetComponent<CARnageCar>().controlledBy != CARnageAuxiliary.ControllerType.MouseKeyboard)
             return;
 
@@ -517,7 +519,6 @@ public class CARnageWeapon : MonoBehaviour {
             
         }
 
-
         Vector2 v = mousePos - relativeToPoint;
         
         float angleRadians = Mathf.Atan2(v.y, v.x);
@@ -533,8 +534,11 @@ public class CARnageWeapon : MonoBehaviour {
             //angleDegrees -= rel_camera.transform.localRotation.eulerAngles.y;
             angleDegrees -= rel_camera.GetComponentInChildren<Camera>().transform.localRotation.eulerAngles.y;
         }
-
+        
         transform.localRotation = Quaternion.Euler(new Vector3(0, -angleDegrees + addAngle, 0));
+
+        if (weaponModel == WeaponModel.GLUTTONY_WEAPON) // that doesnt make any sense but ... well.
+            transform.localRotation = Quaternion.identity;
     }   
 
     public void addUpgrade(UpgradeTypes upgrade)
@@ -658,7 +662,12 @@ public class CARnageWeapon : MonoBehaviour {
         INFERNO,
         PHOENIX,
         CROSSIE,
-        SLOTTIE
+        SLOTTIE,
+        WRATH_WEAPON,
+        GLUTTONY_WEAPON,
+        LUST_WEAPON,
+        GREED_WEAPON,
+        ENVY_WEAPON
     }
 
     private void OnTriggerEnter(Collider other)
@@ -722,11 +731,16 @@ public class CARnageWeapon : MonoBehaviour {
                 break;
             case WeaponModel.PUNCH:
             case WeaponModel.WHACK:
+            case WeaponModel.LUST_WEAPON:
                 knockbackDirection = transform.forward * 50000;                
                 damagedCar.GetComponent<Rigidbody>().AddForce(knockbackDirection, ForceMode.Impulse);
                 break;
             case WeaponModel.SILLY_BILLY:
                 knockbackDirection = transform.forward * 10000;
+                damagedCar.GetComponent<Rigidbody>().AddForce(knockbackDirection, ForceMode.Impulse);
+                break;
+            case WeaponModel.GLUTTONY_WEAPON:
+                knockbackDirection = transform.forward * 25000;
                 damagedCar.GetComponent<Rigidbody>().AddForce(knockbackDirection, ForceMode.Impulse);
                 break;
             case WeaponModel.THE_BRIDE:

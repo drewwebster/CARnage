@@ -141,7 +141,7 @@ public class CARnageCar : MonoBehaviour {
         
         if (nitro > 0)
         {
-            NitroBar.fillAmount = getCurrentNitro() / (getRCC_nitro());
+            NitroBar.fillAmount = getCurrentNitro() / 100f;
             maxNitroBar.fillAmount = getRCC_nitro() / 100f;
         }
         else

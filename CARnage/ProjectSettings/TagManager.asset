@@ -9,6 +9,8 @@ TagManager:
   - SpeedUI
   - FxTemporaire
   - ClingPoint
+  - AutoTurretFire
+  - Ground
   layers:
   - Default
   - TransparentFX

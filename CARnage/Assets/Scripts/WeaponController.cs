@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour {
 
+    public bool unableToPickupWeapons = false;
     public GameObject leftWeaponGO;
     public GameObject rightWeaponGO;
     public GameObject stashGO;
@@ -33,6 +34,9 @@ public class WeaponController : MonoBehaviour {
 
     public void changeWeapon(CARnageWeapon.WeaponState side)
     {
+        if (unableToPickupWeapons)
+            return;
+
         GameObject currentWeapon = null;
         if (side == CARnageWeapon.WeaponState.EQUIPPED_LEFT && getLeftWeapon() != null)
             currentWeapon = getLeftWeapon().gameObject;
@@ -112,6 +116,9 @@ public class WeaponController : MonoBehaviour {
 
     public void obtainWeapon(GameObject weaponGO)
     {
+        if (unableToPickupWeapons)
+            return;
+
         if (getLeftWeapon() == null)
             // equip in Left slot
             equipWeapon(weaponGO, CARnageWeapon.WeaponState.EQUIPPED_LEFT);
@@ -181,6 +188,9 @@ public class WeaponController : MonoBehaviour {
     
     public void dropWeapon(CARnageWeapon weapon)
     {
+        if (unableToPickupWeapons) // car-related weapons are unable to drop
+            return;
+
         weapon.transform.position = new Vector3(weapon.transform.position.x, weapon.transform.position.y + 10, weapon.transform.position.z);
         weapon.transform.parent = null;
         weapon.weaponState = CARnageWeapon.WeaponState.COLLECTABLE;

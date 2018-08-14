@@ -15,6 +15,9 @@ public class ProjectileTrajectory : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Ground")
+            return;
+        Debug.Log("projectile trigger: " + other.gameObject.name);
         if (other.GetComponentInParent<CARnageCar>() == rel_car || other.GetComponent<CARnageWeapon>() != null || other.gameObject.name.Contains("Bulletcase")) // no friendly fire in projectiles
             return;
 

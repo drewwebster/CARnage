@@ -12,9 +12,9 @@ public class syncYangle : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        float x = 0;
-        float y = 0;
-        float z = 0;
+        float x = transform.localRotation.eulerAngles.x;
+        float y = transform.localRotation.eulerAngles.y;
+        float z = transform.localRotation.eulerAngles.z;
         if (syncX)
             x = target.transform.localRotation.eulerAngles.x;
         if (syncY)

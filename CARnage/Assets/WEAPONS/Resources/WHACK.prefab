@@ -503,22 +503,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1d0c0eabc95004b8764a073e07383f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Kevin
-  weaponModel: 40
+  weaponName: Whack
+  weaponModel: 17
   damageType: 1
-  Damage: 32
-  shotDelay: 2.4
+  Damage: 48
+  shotDelay: 5
   meleeDMGdelay: 0
   magazineSize: -1
   reloadTime: -1
+  projectilesPerShot: 1
+  projectileScatterAngle: 0
+  projectileSpeedRNDRange: 0
   automatic: 0
   projectileSpeed: -1
+  knockbackMult: 1
   weaponState: 3
+  isRoofWeapon: 0
+  isFrontWeapon: 0
+  isSprayWeapon: 0
   Projectile: {fileID: 0}
   meleeHitbox: {fileID: 1359977384887582}
   Projectile_Bulletcase: {fileID: 0}
   Magazine: {fileID: 0}
   shootFX: {fileID: 0}
+  shootFXinsta: {fileID: 0}
   collectableFX: {fileID: 1588657818837586}
   ShootSound: {fileID: 0}
   ReloadSound: {fileID: 0}
@@ -528,12 +536,14 @@ MonoBehaviour:
   BulletSpawnGO: {fileID: 0}
   BulletcaseSpawnGO: {fileID: 0}
   shootFXSpawnGO: {fileID: 0}
+  loadedProjectileGO: {fileID: 0}
   upgrade_MagazineGO: {fileID: 0}
   upgrade_ScopeGO: {fileID: 0}
   upgrade_SilencerGO: {fileID: 0}
   upgrade_AutomaticGO: {fileID: 0}
   upgrade_DamageGO: {fileID: 0}
   upgrade_LightGO: {fileID: 0}
+  throwableVariants: []
   upgraded_magazine: 0
   upgraded_scope: 0
   upgraded_silencer: 0
@@ -541,6 +551,7 @@ MonoBehaviour:
   upgraded_damage: 0
   upgraded_light: 0
   addAngle: 90
+  magazineLoaded: 0
 --- !u!114 &114742962471928428
 MonoBehaviour:
   m_ObjectHideFlags: 1
