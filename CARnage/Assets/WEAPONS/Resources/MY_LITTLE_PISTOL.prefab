@@ -82,7 +82,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1129390567345234
 GameObject:
   m_ObjectHideFlags: 1
@@ -167,7 +167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1344728518407976
 GameObject:
   m_ObjectHideFlags: 1
@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 4206264941381296}
   - component: {fileID: 33176228525335734}
   - component: {fileID: 23132969732598804}
+  - component: {fileID: 120687365842880998}
   m_Layer: 0
   m_Name: scp_we_laser_beam
   m_TagString: Untagged
@@ -284,6 +285,7 @@ GameObject:
   - component: {fileID: 4914952562525070}
   - component: {fileID: 33715084072756650}
   - component: {fileID: 23475844021438800}
+  - component: {fileID: 95148024376167854}
   m_Layer: 0
   m_Name: MODEL
   m_TagString: Untagged
@@ -711,7 +713,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1075580827949298}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -6.801, y: 0, z: 8.698}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4217298876384268}
@@ -1465,6 +1467,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &95148024376167854
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1586964622856386}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e9d38ffba26db4c478e4a3ee7da7ff55, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!95 &95557181384602632
 Animator:
   serializedVersion: 3
@@ -1665,29 +1685,44 @@ MonoBehaviour:
   damageType: 0
   Damage: 3
   shotDelay: 0.2
+  meleeDMGdelay: 0
   magazineSize: 12
   reloadTime: 2
+  projectilesPerShot: 1
+  projectileScatterAngle: 0
+  projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: 1000
+  knockbackMult: 1
   weaponState: 3
+  isRoofWeapon: 0
+  isFrontWeapon: 0
+  isSprayWeapon: 0
   Projectile: {fileID: 1928108072952912, guid: c7420ae6a7072764190ddc12a9c23a64, type: 2}
+  meleeHitbox: {fileID: 0}
   Projectile_Bulletcase: {fileID: 1105117745786558, guid: 07f4d5f111b9e1b4c931a668361fa8ed,
     type: 2}
   Magazine: {fileID: 1322507010713782, guid: 59ab3741757884647b216814ac2efd3d, type: 2}
   shootFX: {fileID: 1860845095675656, guid: b40ef2eb55f1b344dbf2644da69362a4, type: 2}
+  shootFXinsta: {fileID: 0}
   collectableFX: {fileID: 1636471235199318}
   ShootSound: {fileID: 8300000, guid: d6cd83642b48c6b41bc965e02bb7246a, type: 3}
   ReloadSound: {fileID: 8300000, guid: c20cd36a501755744ae56a687ba4bb79, type: 3}
   WeaponGameObject: {fileID: 1601691222315870}
+  WeaponModelGameObject: {fileID: 0}
+  WeaponModelWhenCollectableGameObject: {fileID: 0}
   BulletSpawnGO: {fileID: 1194711186331552}
   BulletcaseSpawnGO: {fileID: 1937917745708816}
   shootFXSpawnGO: {fileID: 1653859312563198}
+  loadedProjectileGO: {fileID: 0}
   upgrade_MagazineGO: {fileID: 1492611633362726}
   upgrade_ScopeGO: {fileID: 1733689725235410}
   upgrade_SilencerGO: {fileID: 1191615537017388}
   upgrade_AutomaticGO: {fileID: 1344728518407976}
   upgrade_DamageGO: {fileID: 1356135755932504}
   upgrade_LightGO: {fileID: 1206567216766278}
+  throwableVariants: []
   upgraded_magazine: 0
   upgraded_scope: 0
   upgraded_silencer: 0
@@ -1695,6 +1730,7 @@ MonoBehaviour:
   upgraded_damage: 0
   upgraded_light: 0
   addAngle: 90
+  magazineLoaded: 0
 --- !u!114 &114547892685937320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1758,6 +1794,98 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rel_car: {fileID: 0}
   rel_weapon: {fileID: 0}
+--- !u!120 &120687365842880998
+LineRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515650438165656}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 3be32027f72922548a584b36c00b4a6f, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 35}
+  m_Parameters:
+    serializedVersion: 2
+    widthMultiplier: 0.02
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 0
+    textureMode: 0
+    generateLightingData: 0
+  m_UseWorldSpace: 0
+  m_Loop: 0
 --- !u!123 &123353670175395628
 LensFlare:
   m_ObjectHideFlags: 1

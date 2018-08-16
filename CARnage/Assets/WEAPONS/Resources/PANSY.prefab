@@ -152,7 +152,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1703240841927700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.45, y: 0, z: -9.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4532968795258012}
@@ -365,7 +365,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.31564718, y: 2.767539, z: 1.5623631}
+  m_Size: {x: 0.31564718, y: 2.767539, z: 3}
   m_Center: {x: -0.059560955, y: 1.2624096, z: 0.027230322}
 --- !u!65 &65928692200811918
 BoxCollider:
@@ -503,6 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2120b3b11e138cc48b2e1db3d8dfc525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reflectsProjectiles: 1
 --- !u!114 &114153729831822470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -522,14 +523,23 @@ MonoBehaviour:
   meleeDMGdelay: 0
   magazineSize: -1
   reloadTime: -1
+  projectilesPerShot: 1
+  projectileScatterAngle: 0
+  projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: -1
+  knockbackMult: 1
   weaponState: 3
+  isRoofWeapon: 0
+  isFrontWeapon: 0
+  isSprayWeapon: 0
   Projectile: {fileID: 0}
   meleeHitbox: {fileID: 1833973398823946}
   Projectile_Bulletcase: {fileID: 0}
   Magazine: {fileID: 0}
   shootFX: {fileID: 0}
+  shootFXinsta: {fileID: 0}
   collectableFX: {fileID: 1539045115079582}
   ShootSound: {fileID: 0}
   ReloadSound: {fileID: 0}
@@ -539,12 +549,14 @@ MonoBehaviour:
   BulletSpawnGO: {fileID: 0}
   BulletcaseSpawnGO: {fileID: 0}
   shootFXSpawnGO: {fileID: 0}
+  loadedProjectileGO: {fileID: 0}
   upgrade_MagazineGO: {fileID: 0}
   upgrade_ScopeGO: {fileID: 0}
   upgrade_SilencerGO: {fileID: 0}
   upgrade_AutomaticGO: {fileID: 0}
   upgrade_DamageGO: {fileID: 0}
   upgrade_LightGO: {fileID: 0}
+  throwableVariants: []
   upgraded_magazine: 0
   upgraded_scope: 0
   upgraded_silencer: 0
@@ -552,6 +564,7 @@ MonoBehaviour:
   upgraded_damage: 0
   upgraded_light: 0
   addAngle: 90
+  magazineLoaded: 0
 --- !u!135 &135983371933959590
 SphereCollider:
   m_ObjectHideFlags: 1

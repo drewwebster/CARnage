@@ -127,6 +127,9 @@ public class CARnageWeapon : MonoBehaviour {
         if (weaponState == WeaponState.STASHED)
             return;
 
+        if (getCar() != null && getCar().isLocked())
+            return;
+
         if(weaponState == WeaponState.COLLECTABLE)
         {
             transform.Rotate(0, 100 * Time.deltaTime, 0);
@@ -219,6 +222,10 @@ public class CARnageWeapon : MonoBehaviour {
                 CARnageAuxiliary.playAnimationTimeScaled(gameObject, "ChopTowardsFront", getModdedShotDelay());
                 break;
             case WeaponModel.RELIEF:
+            case WeaponModel.WRECKER:
+            case WeaponModel.DRILL:
+            case WeaponModel.TORCH:
+            case WeaponModel.SURPRISE:
                 break;
             default:
                 CARnageAuxiliary.playAnimationTimeScaled(gameObject, "SwingTowardsFront", getModdedShotDelay());
@@ -233,9 +240,12 @@ public class CARnageWeapon : MonoBehaviour {
 
     public void onSwing()
     {
-        if (automatic)
-            meleeHitbox.SetActive(false); // flicker; dont know if this is necessary
-        meleeHitbox.SetActive(true);
+        if(meleeHitbox != null)
+        {
+            if (automatic)
+                meleeHitbox.SetActive(false); // flicker; dont know if this is necessary
+            meleeHitbox.SetActive(true);
+        }
 
         switch(weaponModel)
         {
@@ -246,10 +256,13 @@ public class CARnageWeapon : MonoBehaviour {
     }
     public void onSwingEnd()
     {
-        //GetComponent<Animator>().enabled = false;
-        meleeHitbox.SetActive(false);
-        if (automatic)
-            meleeHitbox.SetActive(true); // flicker to re-collide
+        if (meleeHitbox != null)
+        {
+            //GetComponent<Animator>().enabled = false;
+            meleeHitbox.SetActive(false);
+            if (automatic)
+                meleeHitbox.SetActive(true); // flicker to re-collide
+        }
     }
 
     public void onHit()
@@ -572,6 +585,28 @@ public class CARnageWeapon : MonoBehaviour {
         }
     }
 
+    public void addAllUpgrades()
+    {
+        List<UpgradeTypes> possibleUpgrades = new List<UpgradeTypes>();
+        if (upgrade_AutomaticGO != null && !upgraded_automatic)
+            possibleUpgrades.Add(UpgradeTypes.AUTO);
+        if (upgrade_DamageGO != null && !upgraded_damage)
+            possibleUpgrades.Add(UpgradeTypes.COMPENSATOR);
+        if (upgrade_LightGO != null && !upgraded_light)
+            possibleUpgrades.Add(UpgradeTypes.LIGHT);
+        if (upgrade_MagazineGO != null && !upgraded_magazine)
+            possibleUpgrades.Add(UpgradeTypes.MAGAZINE);
+        if (upgrade_ScopeGO != null && !upgraded_scope)
+            possibleUpgrades.Add(UpgradeTypes.SCOPE);
+        if (upgrade_SilencerGO != null && !upgraded_silencer)
+            possibleUpgrades.Add(UpgradeTypes.SILENCER);
+        if (possibleUpgrades.Count == 0)
+            return;
+
+        foreach (UpgradeTypes ut in possibleUpgrades)
+            addUpgrade(ut);
+    }
+
     public void addRandomUpgrade()
     {
         List<UpgradeTypes> possibleUpgrades = new List<UpgradeTypes>();
@@ -667,7 +702,8 @@ public class CARnageWeapon : MonoBehaviour {
         GLUTTONY_WEAPON,
         LUST_WEAPON,
         GREED_WEAPON,
-        ENVY_WEAPON
+        ENVY_WEAPON,
+        DETONATION_WEAPON
     }
 
     private void OnTriggerEnter(Collider other)
@@ -728,6 +764,9 @@ public class CARnageWeapon : MonoBehaviour {
                 break;
             case WeaponModel.PHOENIX:
                 damagedCar.applyDebuff(CARnageCar.Debuff.Fire, damager, 2);
+                break;
+            case WeaponModel.SURPRISE:
+                damagedCar.applyDebuff(CARnageCar.Debuff.Fire, damager, 0.4f);
                 break;
             case WeaponModel.PUNCH:
             case WeaponModel.WHACK:

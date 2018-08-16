@@ -4,6 +4,8 @@
     MELEE,
     RAM,
     EXPLOSION,
-    DEBUFF,
+    DEBUFF_FIRE,
+    DEBUFF_ACID,
+    DEBUFF_DRAIN,
     DIRECT_DAMAGE
 }

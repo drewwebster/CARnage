@@ -5,24 +5,43 @@ using UnityEngine;
 public class explosionHitbox : MonoBehaviour {
     
     public CARnageWeapon rel_weapon;
+    public float fixedDamage;
+    public CARnageCar rel_car;
+    List<CARnageCar> alreadyDamaged;
 
     private void Start()
     {
+        alreadyDamaged = new List<CARnageCar>();
+        foreach (Collider c in GetComponentsInChildren<Collider>())
+            c.enabled = true;
         Destroy(gameObject, 0.5f);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(other.name);
-        if(other.GetComponent<damageCar>())
+        if (other.GetComponentInParent<CARnageCar>())
+            Debug.Log("explo collision: " + other.GetComponentInParent<CARnageCar>().gameObject.name);
+        Debug.Log(other.gameObject.name);
+        if (other.GetComponent<damageCar>())
         {
             CARnageCar damagedCar = other.GetComponentInParent<CARnageCar>();
+            if (alreadyDamaged.Contains(damagedCar))    // single explosion hit for all vehicles
+                return;
+            alreadyDamaged.Add(damagedCar);
 
-            //if (GetComponentInParent<ProjectileTrajectory>() != null) // launched rockets
-            //    rel_weapon = GetComponentInParent<ProjectileTrajectory>().rel_weapon;
-            float damage = rel_weapon.calcDamage(damagedCar);
-            damagedCar.damageMe(damage, rel_weapon.getCar(),DamageType.EXPLOSION);
-            rel_weapon.OnDMG_WeaponModelMod(rel_weapon.getCar(), damagedCar);
+            if (rel_weapon != null)
+                rel_car = rel_weapon.getCar();
+            
+            float damage = 0;
+            if (fixedDamage > 0)
+                damage = fixedDamage;
+            else
+                damage = rel_weapon.calcDamage(damagedCar);
+            
+            damagedCar.damageMe(damage, rel_car,DamageType.EXPLOSION);
+
+            if(rel_weapon != null)
+                rel_weapon.OnDMG_WeaponModelMod(rel_weapon.getCar(), damagedCar);
 
             // knockback
             var heading = other.transform.position - transform.position;
@@ -30,8 +49,10 @@ public class explosionHitbox : MonoBehaviour {
             //var direction = heading / distance;
 
             heading.y = 1;
-            
-            var knockbackDirection = heading * 10000 * rel_weapon.knockbackMult;
+
+            var knockbackDirection = heading * 10000;
+            if(rel_weapon != null)
+                knockbackDirection *= rel_weapon.knockbackMult;
             damagedCar.GetComponent<Rigidbody>().AddForce(knockbackDirection, ForceMode.Impulse);
         }        
     }

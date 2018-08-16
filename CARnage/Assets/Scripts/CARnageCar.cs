@@ -162,7 +162,8 @@ public class CARnageCar : MonoBehaviour {
     public void damageMe(float damage, CARnageCar damager, DamageType damageType)
     {
         damage *= getModController().getSelfDMG_Multiplier(damager, damageType);
-        damage *= damager.getModController().getDMG_Multiplier(damageType, this);
+        if(damager != null)
+            damage *= damager.getModController().getDMG_Multiplier(damageType, this);
         Debug.Log("Damage dealt: " + damage);
         //if (damage <= 0) // TODO: See if this works out
         //    return;
@@ -170,7 +171,9 @@ public class CARnageCar : MonoBehaviour {
         lastDamagedTime = Time.time;
         lastDamager = damager;
 
-        if (currentShield > 0 && !damager.getModController().isIgnoringEnemyShield() && damageType != DamageType.DIRECT_DAMAGE)
+        bool isIgnoringEnemyShield = (damager != null) ? damager.getModController().isIgnoringEnemyShield() : false;
+
+        if (currentShield > 0 && !isIgnoringEnemyShield && damageType != DamageType.DIRECT_DAMAGE)
         {
             currentShield -= damage;
             if (currentShield <= 0)
@@ -190,12 +193,31 @@ public class CARnageCar : MonoBehaviour {
             }
         }
         updateValues();
-        damager.getModController().onDMGDealt(this, damageType, damage);
+        if (damager != null)
+            damager.getModController().onDMGDealt(this, damageType, damage);
+        getModController().onDMGReceived(damage);
+
+        GameObject dmgDisplay = Instantiate(Resources.Load<GameObject>("DMGDisplay"), GetComponentInChildren<damageCar>().transform);
+        dmgDisplay.GetComponent<DMGdisplay>().display((int)damage, damageType);
     }
 
     public bool isOnFire()
     {
         if (fireTicks > 0)
+            return true;
+        return false;
+    }
+
+    public bool isFreezed()
+    {
+        if (freezeTicks > 0)
+            return true;
+        return false;
+    }
+
+    public bool isLocked()
+    {
+        if (lockedTicks > 0)
             return true;
         return false;
     }
@@ -218,7 +240,7 @@ public class CARnageCar : MonoBehaviour {
     int drainDamage = 2;
     int drainTicksInitial = 5;
     int freezeTicksInitial = 5;
-    int lockedTicksInitial = 1;
+    int lockedTicksInitial = 2;
     public void applyDebuff(Debuff debuff, CARnageCar applier)
     {
         applyDebuff(debuff, applier, 1);
@@ -276,7 +298,9 @@ public class CARnageCar : MonoBehaviour {
                     return;
                 }
                 freezeTicks = Mathf.Max(freezeTicks, freezeTicksInitial * multiplier);
+                freezeDMG();
                 GetComponentInChildren<damageCar>().showFreeze();
+                GetComponent<Rigidbody>().velocity = Vector3.zero;
                 break;
             case Debuff.Locked:
                 if (getModController().getDebuffImmunity(Debuff.Locked))
@@ -287,6 +311,7 @@ public class CARnageCar : MonoBehaviour {
                     return;
                 }
                 lockedTicks = Mathf.Max(lockedTicks, lockedTicksInitial * multiplier);
+                lockedDMG();
                 GetComponentInChildren<damageCar>().showLocked();
                 break;
         }
@@ -305,6 +330,12 @@ public class CARnageCar : MonoBehaviour {
             case Debuff.Drain:
                 GetComponentInChildren<damageCar>().hideDrain();
                 break;
+            case Debuff.Freeze:
+                GetComponentInChildren<damageCar>().hideFreeze();
+                break;
+            case Debuff.Locked:
+                GetComponentInChildren<damageCar>().hideLocked();
+                break;
         }
     }
 
@@ -312,7 +343,14 @@ public class CARnageCar : MonoBehaviour {
     {
         if (fireTicks == -1) // ended from another source
             return;
-        damageMe(fireDamage, fireApplier, DamageType.DEBUFF);
+
+        if(isFreezed()) // fire melts freeze
+        {
+            freezeTicks = -1;
+            endDebuff(Debuff.Freeze);
+        }
+
+        damageMe(fireDamage, fireApplier, DamageType.DEBUFF_FIRE);
         fireTicks--;
         if (fireTicks > 0)
             Invoke("fireDMG", 1);
@@ -323,7 +361,7 @@ public class CARnageCar : MonoBehaviour {
     {
         if (acidTicks == -1) // ended from another source
             return;
-        damageMe(acidDamage, acidApplier, DamageType.DEBUFF);
+        damageMe(acidDamage, acidApplier, DamageType.DEBUFF_ACID);
         acidTicks--;
         if (acidTicks > 0)
             Invoke("acidDMG", 1);
@@ -334,12 +372,32 @@ public class CARnageCar : MonoBehaviour {
     {
         if (drainTicks == -1) // ended from another source
             return;
-        damageMe(drainDamage, drainApplier, DamageType.DEBUFF);
+        damageMe(drainDamage, drainApplier, DamageType.DEBUFF_DRAIN);
         drainTicks--;
         if (drainTicks > 0)
             Invoke("drainDMG", 1);
         else
             endDebuff(Debuff.Drain);
+    }
+    void freezeDMG()
+    {
+        if (freezeTicks == -1) // ended from another source
+            return;
+        freezeTicks--;
+        if (freezeTicks > 0)
+            Invoke("freezeDMG", 1);
+        else
+            endDebuff(Debuff.Freeze);
+    }
+    void lockedDMG()
+    {
+        if (lockedTicks == -1) // ended from another source
+            return;
+        lockedTicks--;
+        if (lockedTicks > 0)
+            Invoke("lockedDMG", 1);
+        else
+            endDebuff(Debuff.Locked);
     }
 
     public enum Debuff
@@ -388,7 +446,7 @@ public class CARnageCar : MonoBehaviour {
         {
             //Debug.Log(gameObject.GetComponent<Rigidbody>().velocity + " (" + gameObject.GetComponent<Rigidbody>().velocity.magnitude + ") vs. " + GetComponent<RCC_CarControllerV3>().speed);
             float damage = 0.1f * GetComponent<RCC_CarControllerV3>().speed * impact;
-            Debug.Log("Damage from " + name + " to " + colliCar.name + " : " + damage);
+            //Debug.Log("Damage from " + name + " to " + colliCar.name + " : " + damage);
             colliCar.damageMe(damage, this, DamageType.RAM);
             return;
         }

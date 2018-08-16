@@ -74,13 +74,13 @@ public class CARnageModifier : MonoBehaviour {
             used = true;
         }
 
-        if(modID == ModID.BIG_FAT_KILL)
+        if (modID == ModID.BIG_FAT_KILL)
         {
-            foreach(CARnageWeapon weapon in getCar().getWeaponController().getAllWeapons())
-                if(weapon.damageType == DamageType.MELEE)
+            foreach (CARnageWeapon weapon in getCar().getWeaponController().getAllWeapons())
+                if (weapon.damageType == DamageType.MELEE)
                     weapon.transform.localScale *= 2;
         }
-        
+
     }
 
     public void onDeleted()
@@ -124,7 +124,7 @@ public class CARnageModifier : MonoBehaviour {
             if (getCar().currentHP / getCar().maxHP >= 0.5f)
                 getCar().repair(2f / 100f * getCar().maxHP);
             else
-                getCar().damageMe(2f / 100f * getCar().maxHP, getCar(),DamageType.DEBUFF);
+                getCar().damageMe(2f / 100f * getCar().maxHP, getCar(),DamageType.DIRECT_DAMAGE);
 
         if (modID == ModID.GROWTH)
             getCar().addGears(1);
@@ -171,6 +171,12 @@ public class CARnageModifier : MonoBehaviour {
 
         if (modID == ModID.MARTYRDOM && getCar().getWeaponController().getAllWeapons().Length == 0)
             getCar().addGears(1000);
+
+        if(modID == ModID.DETONATION)
+        {
+            GameObject go = Instantiate(Resources.Load<GameObject>("COMMON_EXPLOSION"), getCar().transform);
+            go.GetComponentInChildren<explosionHitbox>().rel_car = getCar();
+        }
     }
 
     public void onShieldDestroyed()
@@ -196,7 +202,7 @@ public class CARnageModifier : MonoBehaviour {
     float ramDMGTriggerThreshold = 10;
     public void onDMGDealt(CARnageCar damagedCar, DamageType damageType, float amount)
     {
-        if (modID == ModID.HYDROFLUORIC_ACID && damageType != DamageType.DEBUFF)
+        if (modID == ModID.HYDROFLUORIC_ACID && damageType != DamageType.DEBUFF_ACID)
             damagedCar.applyDebuff(CARnageCar.Debuff.Acid, getCar());
 
         if (modID == ModID.DISASSEMBLY)
@@ -209,7 +215,9 @@ public class CARnageModifier : MonoBehaviour {
                     getCar().applyDebuff(CARnageCar.Debuff.Locked, getCar());
                 break;
 
-            case DamageType.DEBUFF:
+            case DamageType.DEBUFF_FIRE:
+            case DamageType.DEBUFF_ACID:
+            case DamageType.DEBUFF_DRAIN:
                 if (modID == ModID.BLACK_THUMB)
                     getCar().repair(2);
                 if (modID == ModID.INCINERATOR)
@@ -226,17 +234,26 @@ public class CARnageModifier : MonoBehaviour {
             case DamageType.RAM:
                 if (amount < ramDMGTriggerThreshold)
                     return;
-
+                
                 if (modID == ModID.BLIZZARD)
                     damagedCar.applyDebuff(CARnageCar.Debuff.Freeze, getCar());
                 if (modID == ModID.OILWAY)
                     damagedCar.applyDebuff(CARnageCar.Debuff.Drain, getCar(), 2);
-                //if (modID == ModID.IMPULSIVE_DEFLORATION && damagedCar.isShielded())
-                //    damagedCar.breakShield();
                 if(modID == ModID.POLICE_OPPRESSION)
                 {
                     CARnageWeapon stolenWeapon = damagedCar.getWeaponController().dropRandomWeapon();
                     getCar().getWeaponController().obtainWeapon(stolenWeapon.gameObject);
+                }
+                if(modID == ModID.CONCRETE_FRONT)
+                {
+                    Vector3 knockbackDirection = getCar().transform.forward * 50000;
+                    damagedCar.GetComponent<Rigidbody>().AddForce(knockbackDirection, ForceMode.Impulse);
+                }
+                if (modID == ModID.CHALLENGER)
+                {
+                    GameObject go = Instantiate(Resources.Load<GameObject>("COMMON_EXPLOSION"));
+                    go.transform.position = getCar().transform.position;
+                    go.GetComponentInChildren<explosionHitbox>().rel_car = getCar();
                 }
                 break;
         }
@@ -340,7 +357,9 @@ public class CARnageModifier : MonoBehaviour {
                 break;
 
             // ----- ----- ----- DEBUFFS ----- ----- ----- 
-            case DamageType.DEBUFF:
+            case DamageType.DEBUFF_FIRE:
+            case DamageType.DEBUFF_ACID:
+            case DamageType.DEBUFF_DRAIN:
                 if (modID == ModID.HEROIC)
                     mult = 0f;
                 if (modID == ModID.FURNACED && getCar().fireTicks > 0)
@@ -399,8 +418,8 @@ public class CARnageModifier : MonoBehaviour {
 
             // ----- ----- ----- RAM ----- ----- ----- 
             case DamageType.RAM:
-                if (modID == ModID.CONCRETE_FRONT)
-                    mult += GetComponentInParent<RCC_CarControllerV3>().speed / 100f;
+                //if (modID == ModID.CONCRETE_FRONT)
+                //    mult += GetComponentInParent<RCC_CarControllerV3>().speed / 100f; // DEPRECATED
                 if (modID == ModID.COWCATCHER && getCar().isShielded())
                     mult += 0.3f;
                 if (modID == ModID.THRESH)
@@ -581,6 +600,13 @@ public class CARnageModifier : MonoBehaviour {
         return false;
     }
 
+    public bool isReflectingProjectiles()
+    {
+        if (modID == ModID.INTUITION && getCar().isOnNitro())
+            return true;
+        return false;
+    }
+
     // ----- ------ ----- ----- -----
     // ----- ----- HELPER FUNCTIONS ---
     // ----- ------ ----- ----- -----
@@ -610,12 +636,12 @@ public class CARnageModifier : MonoBehaviour {
         GUN_RACK, // works
         TASTY_BURGER, // works
         DOUBLE_DARE, // works
-        DOWNFALL, // 
+        DOWNFALL, // works
         IMPATIENCE, // works
         TRAILER_THRASH, // TODO: Trailer Thrash
         BARE_KNUCKLES, // works
         HYDROFLUORIC_ACID, // works
-        RECKLESS, // 
+        RECKLESS, // works
         BEST_CUSTOMER, //
         TRAFFIC_BYPASSER, // works
         SURFIN_BIRD, // TODO: Remodel as boat
@@ -624,7 +650,7 @@ public class CARnageModifier : MonoBehaviour {
         LEAD__FOOTED, // works
         LAST_TRIP, // works
         SOLITUDE, // TODO: Check if any cars/buildings around
-        HEAVY_LOAD, //
+        HEAVY_LOAD, // works
         DISASSEMBLY, //
         DEMOLITION, //
         STEAMROLLER, // works
@@ -673,7 +699,7 @@ public class CARnageModifier : MonoBehaviour {
         FORCED_EXTRACTION, // works
         SINNER, // works
         BIG_FAT_KILL, // works
-        INTUITION, // TODO: Reflection
+        INTUITION, // works
         GUN_FU, // TODO: Everything
         HALO, // TODO: Everything
         D6, // works
@@ -684,7 +710,7 @@ public class CARnageModifier : MonoBehaviour {
         BUSINESS_CARD, // works
         CROP, //
         THRESH, // works
-        DETONATION, // TODO: Explosions
+        DETONATION, // works
         OILWAY, // works
         SPARE_PARTS, // works
         ENDLESS_SUPPLY, // works

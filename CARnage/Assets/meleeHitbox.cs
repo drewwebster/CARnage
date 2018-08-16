@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class meleeHitbox : MonoBehaviour {
 
+    public bool reflectsProjectiles;
+
     private void OnTriggerEnter(Collider other)
     {
         CARnageCar rel_car = GetComponentInParent<CARnageCar>();
         CARnageWeapon rel_weapon = GetComponentInParent<CARnageWeapon>();
         CARnageCar damagedCar = other.GetComponentInParent<CARnageCar>();
+        ProjectileTrajectory projectile = other.GetComponentInParent<ProjectileTrajectory>();
         if (rel_weapon.meleeDMGdelay)
             return;
         if (damagedCar == rel_car) // no friendly fire
@@ -16,6 +19,11 @@ public class meleeHitbox : MonoBehaviour {
         if (rel_weapon.weaponState == CARnageWeapon.WeaponState.COLLECTABLE)
             return;
         //Debug.Log("hit: " + other.gameObject.name);
+        if(reflectsProjectiles && projectile != null)
+        {
+            projectile.reflectMe();
+            return;
+        }
 
         buildingCollision building = other.gameObject.GetComponent<buildingCollision>();
         if (building != null)

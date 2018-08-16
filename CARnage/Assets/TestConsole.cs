@@ -111,6 +111,18 @@ public class TestConsole : MonoBehaviour {
                     mult = float.Parse(parameter);
                 relCar.applyDebuff(CARnageCar.Debuff.Drain, relCar, mult);
                 break;
+            case "FREEZE":
+            case "FRZ":
+                if (parameter.Length > 0)
+                    mult = float.Parse(parameter);
+                relCar.applyDebuff(CARnageCar.Debuff.Freeze, relCar, mult);
+                break;
+            case "LOCK":
+            case "LOCKED":
+                if (parameter.Length > 0)
+                    mult = float.Parse(parameter);
+                relCar.applyDebuff(CARnageCar.Debuff.Locked, relCar, mult);
+                break;
             case "ADDMOD":
             case "MOD":
                 ModFactory.spawnMod((CARnageModifier.ModID)System.Enum.Parse(typeof(CARnageModifier.ModID), parameter), relCar);
@@ -130,6 +142,11 @@ public class TestConsole : MonoBehaviour {
                 break;
             case "CAR":
                 CarFactory.spawnCar(CarModel.TOOLTIME, relCar.transform.position + relCar.transform.forward * 10);
+                break;
+            case "UP":
+            case "UPGRADE":
+                foreach (CARnageWeapon w in relCar.getWeaponController().getAllWeapons())
+                    w.addAllUpgrades();
                 break;
         }
     }

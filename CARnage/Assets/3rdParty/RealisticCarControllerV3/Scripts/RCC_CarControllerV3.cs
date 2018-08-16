@@ -896,6 +896,8 @@ public class RCC_CarControllerV3 : MonoBehaviour {
                 boostInput = 0.1f;
             else
                 boostInput = Input.GetKey(RCCSettings.boostKB) ? 2.5f : 1f;
+            if (GetComponent<CARnageCar>().isFreezed())
+                boostInput = 0f;
 
 			if(Input.GetKeyDown(RCCSettings.lowBeamHeadlightsKB)){
 				lowBeamHeadLightsOn = !lowBeamHeadLightsOn;

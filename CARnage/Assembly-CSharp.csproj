@@ -422,6 +422,7 @@
     <Compile Include="Assets\3rdParty\Standard Assets\Vehicles\Car\Scripts\Suspension.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Vehicles\Car\Scripts\WheelEffects.cs" />
     <Compile Include="Assets\AutoTurretFire.cs" />
+    <Compile Include="Assets\DMGdisplay.cs" />
     <Compile Include="Assets\enableColliderDelayed.cs" />
     <Compile Include="Assets\explodableHitbox.cs" />
     <Compile Include="Assets\explosionHitbox.cs" />

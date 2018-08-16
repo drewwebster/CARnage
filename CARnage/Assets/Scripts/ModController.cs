@@ -267,4 +267,12 @@ public class ModController : MonoBehaviour {
             return true;
         return false;
     }
+
+    public bool isReflectingProjectiles()
+    {
+        foreach (CARnageModifier mod in getMods())
+            if (mod.isReflectingProjectiles())
+                return true;
+        return false;
+    }
 }
