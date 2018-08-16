@@ -127,7 +127,7 @@ public class CARnageModifier : MonoBehaviour {
                 getCar().damageMe(2f / 100f * getCar().maxHP, getCar(),DamageType.DIRECT_DAMAGE);
 
         if (modID == ModID.GROWTH)
-            getCar().addGears(1);
+            Gear.spawnGears(1, getCar(),GearSource.OTHER);
 
         if (modID == ModID.UPWIND && getCar().GetComponent<RCC_CarControllerV3>().isInAir)
             getCar().repair(10);
@@ -170,7 +170,7 @@ public class CARnageModifier : MonoBehaviour {
             killWill_Enemy = killerCar;
 
         if (modID == ModID.MARTYRDOM && getCar().getWeaponController().getAllWeapons().Length == 0)
-            getCar().addGears(1000);
+            getCar().addGears(1000,GearSource.OTHER);
 
         if(modID == ModID.DETONATION)
         {
@@ -268,7 +268,7 @@ public class CARnageModifier : MonoBehaviour {
     public void onGearCollected(int amount)
     {
         if (modID == ModID.SURGEONEER)
-            getCar().repair(amount);
+            getCar().repair(amount*2);
         if (modID == ModID.CROP)
             getCar().replenishShield(amount);
     }
@@ -619,7 +619,8 @@ public class CARnageModifier : MonoBehaviour {
     public enum GearSource
     {
         ENVIRONMENT,
-        CAR
+        CAR,
+        OTHER
     }
 
     public CARnageCar getCar()
@@ -651,7 +652,7 @@ public class CARnageModifier : MonoBehaviour {
         LAST_TRIP, // works
         SOLITUDE, // TODO: Check if any cars/buildings around
         HEAVY_LOAD, // works
-        DISASSEMBLY, //
+        DISASSEMBLY, // works
         DEMOLITION, //
         STEAMROLLER, // works
         CONCRETE_FRONT, // works
@@ -663,9 +664,9 @@ public class CARnageModifier : MonoBehaviour {
         SURVEILLANCE, // works
         UNDERCOVER, // TODO: Hide
         RED_DEATH, // works
-        SURGEONEER, //
+        SURGEONEER, // works
         BLIZZARD, // TODO: Freeze FX / Animation / engine blockage
-        WELL__PLACED_ADVERTISEMENT, //
+        WELL__PLACED_ADVERTISEMENT, // works
         COD, //
         MERCHANT_OF_DEATH, // 
         DELUSIONS_OF_GRANDEUR, // works
@@ -691,8 +692,8 @@ public class CARnageModifier : MonoBehaviour {
         COMMITMENT, // works
         STUFFED, // works
         BB_BBQ, // works
-        GROWTH, //
-        HARVEST, // 
+        GROWTH, // works
+        HARVEST, // works
         DEATH_PROOF, // works
         FINISHER, // works
         TREACHEROUS_FLAVOR, // TODO: Bases
@@ -708,7 +709,7 @@ public class CARnageModifier : MonoBehaviour {
         FINALE, // works
         DESTINATION, // TODO: Bases
         BUSINESS_CARD, // works
-        CROP, //
+        CROP, // works
         THRESH, // works
         DETONATION, // works
         OILWAY, // works

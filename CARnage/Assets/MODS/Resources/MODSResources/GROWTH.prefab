@@ -52,6 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modID: 62
-  modName: Growth
+  modName: Sow the Seeds
   description: sample description
   image: {fileID: 21300000, guid: 8da820347d51e7b41bb14884c6aba89d, type: 3}

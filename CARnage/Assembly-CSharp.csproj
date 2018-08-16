@@ -426,6 +426,7 @@
     <Compile Include="Assets\enableColliderDelayed.cs" />
     <Compile Include="Assets\explodableHitbox.cs" />
     <Compile Include="Assets\explosionHitbox.cs" />
+    <Compile Include="Assets\Gear.cs" />
     <Compile Include="Assets\meleeHitbox.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />

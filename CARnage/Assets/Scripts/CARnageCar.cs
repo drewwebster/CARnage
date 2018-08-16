@@ -26,9 +26,9 @@ public class CARnageCar : MonoBehaviour {
     [HideInInspector]
     public float currentShield;
     [HideInInspector]
-    public float currentGears;
+    public int currentGears;
     [HideInInspector]
-    public float maxGears;
+    public int maxGears;
     [HideInInspector]
     public bool destroyed;
     [HideInInspector]
@@ -423,10 +423,12 @@ public class CARnageCar : MonoBehaviour {
     {
         if (lastDamager != null)
             lastDamager.getModController().onDestroyingCar(this);
+        getModController().onSelfDestroyed(lastDamager);
         destroyed = true;
         GetComponent<RCC_CarControllerV3>().canControl = false;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         getWeaponController().dropAllEquippedWeapons();
+        dropGears((int)(currentGears * getModController().getDroppedGears_Multiplier()));
         foreach (MeshRenderer mr in GetComponentsInChildren<MeshRenderer>())
             mr.enabled = false;
         foreach (Collider c in GetComponentsInChildren<Collider>())
@@ -435,7 +437,6 @@ public class CARnageCar : MonoBehaviour {
             r.useGravity = false;
         foreach (Image i in GetComponentsInChildren<Image>())
             i.enabled = false;
-        getModController().onSelfDestroyed(lastDamager);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -466,15 +467,13 @@ public class CARnageCar : MonoBehaviour {
         currentShield += amount;
         maxShield = Mathf.Max(maxShield, currentShield);
         updateValues();
+        GameObject dmgDisplay = Instantiate(Resources.Load<GameObject>("DMGDisplay"), GetComponentInChildren<damageCar>().transform);
+        dmgDisplay.GetComponent<DMGdisplay>().displayRepair((int)amount, true);
     }
     public void regenerateShield(float amount)
     {
-        // repair not possible while acid is applied
-        if (!isRepairable())
-            return;
-
-        currentShield = Mathf.Min(currentShield + amount, maxShield);
-        updateValues();
+        amount = Mathf.Min(amount, maxShield - currentShield);
+        replenishShield(amount);
     }
 
     public void replenishNitro(float amount)
@@ -490,9 +489,13 @@ public class CARnageCar : MonoBehaviour {
         return false;
     }
 
-    public void dropGears(int Count)
+    public void dropGears(int amount)
     {
-
+        amount = Mathf.Min(amount, currentGears);
+        if (amount <= 0)
+            return;
+        currentGears -= amount;
+        Gear.spawnGears(amount, this, CARnageModifier.GearSource.CAR);
     }
 
     public void repair()
@@ -518,15 +521,28 @@ public class CARnageCar : MonoBehaviour {
             return;
 
         if (amount == -1)
-            amount = (int)maxHP;
-
-        currentHP = Mathf.Min(currentHP + amount, maxHP);
+            amount = (int)maxHP - currentHP;
+        else
+            amount = Mathf.Min(amount, maxHP - currentHP);
+        currentHP += amount;
         updateValues();
+
+        GameObject dmgDisplay = Instantiate(Resources.Load<GameObject>("DMGDisplay"), GetComponentInChildren<damageCar>().transform);
+        dmgDisplay.GetComponent<DMGdisplay>().displayRepair((int)amount, false);
     }
 
-    public void addGears(int amount)
+    public bool canCarryGears()
     {
-        currentGears = Mathf.Min(currentGears + amount, gearStorage);
+        if (currentGears < maxGears)
+            return true;
+        return false;
+    }
+
+    public void addGears(int amount, CARnageModifier.GearSource source)
+    {
+        amount *= (int)getModController().getCollectedGears_Multiplier(source);
+        currentGears = Mathf.Min(currentGears + amount, maxGears);
+        Debug.Log("current gears: " + currentGears + "/" + maxGears);
     }
 
     public enum CarColor

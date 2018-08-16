@@ -148,6 +148,11 @@ public class TestConsole : MonoBehaviour {
                 foreach (CARnageWeapon w in relCar.getWeaponController().getAllWeapons())
                     w.addAllUpgrades();
                 break;
+            case "GEAR":
+                if (parameter.Length > 0)
+                    mult = float.Parse(parameter);
+                Gear.spawnGears((int)mult,relCar,CARnageModifier.GearSource.OTHER);
+                break;
         }
     }
 }
