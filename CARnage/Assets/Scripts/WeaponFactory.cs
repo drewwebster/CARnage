@@ -7,9 +7,6 @@ public class WeaponFactory : MonoBehaviour {
     
     static CARnageWeapon.WeaponModel getRndModel()
     {
-        // not final:
-        return CARnageWeapon.WeaponModel.LIBERTY;
-
         //  actual:
         Array values = Enum.GetValues(typeof(CARnageWeapon.WeaponModel));
         return (CARnageWeapon.WeaponModel)values.GetValue(UnityEngine.Random.Range(0, values.Length));

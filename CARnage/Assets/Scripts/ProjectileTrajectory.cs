@@ -33,7 +33,7 @@ public class ProjectileTrajectory : MonoBehaviour {
         {
             // damage to building
             float damage = rel_weapon.calcDamage(other.gameObject.GetComponent<buildingCollision>());
-            other.gameObject.GetComponent<buildingCollision>().damageMe(damage, true);
+            other.gameObject.GetComponent<buildingCollision>().damageMe(damage, true, DamageType.PROJECTILE, rel_car);
         }
         CARnageCar damagedCar = other.GetComponentInParent<CARnageCar>();
         if (damagedCar != null)

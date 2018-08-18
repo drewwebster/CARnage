@@ -460,6 +460,7 @@
     <Compile Include="Assets\Scripts\spinWeapon.cs" />
     <Compile Include="Assets\Scripts\WeaponController.cs" />
     <Compile Include="Assets\Scripts\WeaponFactory.cs" />
+    <Compile Include="Assets\spawnableOffset.cs" />
     <Compile Include="Assets\SRIA\Scripts\C.cs" />
     <Compile Include="Assets\SRIA\Scripts\ChatExample\ChatExample.cs" />
     <Compile Include="Assets\SRIA\Scripts\ContentSizeFitterExample\ContentSizeFitterExample.cs" />

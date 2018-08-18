@@ -5,6 +5,19 @@ using UnityEngine;
 public class CARnageAuxiliary : MonoBehaviour {
 
     public static float destroyAfterSec = 10;
+    public static bool isPaused;
+
+    public static void pause()
+    {
+        Time.timeScale = 0.0f;
+        isPaused = true;
+    }
+
+    public static void pauseEnd()
+    {
+        Time.timeScale = 1.0f;
+        isPaused = false;
+    }
 
     public static GameObject getCarFromHitbox(GameObject hitbox)
     {

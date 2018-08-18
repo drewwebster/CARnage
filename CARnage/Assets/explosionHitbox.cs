@@ -19,9 +19,9 @@ public class explosionHitbox : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponentInParent<CARnageCar>())
-            Debug.Log("explo collision: " + other.GetComponentInParent<CARnageCar>().gameObject.name);
-        Debug.Log(other.gameObject.name);
+        //if (other.GetComponentInParent<CARnageCar>())
+        //    Debug.Log("explo collision: " + other.GetComponentInParent<CARnageCar>().gameObject.name);
+        //Debug.Log(other.gameObject.name);
         if (other.GetComponent<damageCar>())
         {
             CARnageCar damagedCar = other.GetComponentInParent<CARnageCar>();
@@ -54,6 +54,24 @@ public class explosionHitbox : MonoBehaviour {
             if(rel_weapon != null)
                 knockbackDirection *= rel_weapon.knockbackMult;
             damagedCar.GetComponent<Rigidbody>().AddForce(knockbackDirection, ForceMode.Impulse);
-        }        
+        }    
+        else if(other.GetComponent<buildingCollision>())
+        {
+            buildingCollision bc = other.GetComponent<buildingCollision>();
+
+            if (rel_weapon != null)
+                rel_car = rel_weapon.getCar();
+
+            float damage = 0;
+            if (fixedDamage > 0)
+                damage = fixedDamage;
+            else
+                damage = rel_weapon.calcDamage(bc);
+            
+            bc.damageMe(damage, true, DamageType.EXPLOSION, rel_car);
+
+            if (rel_weapon != null)
+                rel_weapon.OnDMG_WeaponModelMod(rel_weapon.getCar(), bc);
+        }    
     }
 }

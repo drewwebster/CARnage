@@ -30,7 +30,7 @@ public class meleeHitbox : MonoBehaviour {
         {
             // damage to building
             float damage = rel_weapon.calcDamage(building);
-            other.gameObject.GetComponent<buildingCollision>().damageMe(damage, true);
+            other.gameObject.GetComponent<buildingCollision>().damageMe(damage, true, DamageType.MELEE, rel_car);
             rel_weapon.onHit();
             rel_weapon.OnDMG_WeaponModelMod(rel_car, building);
         }

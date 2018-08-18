@@ -124,6 +124,9 @@ public class CARnageWeapon : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        if (CARnageAuxiliary.isPaused)
+            return;
+
         if (weaponState == WeaponState.STASHED)
             return;
 
@@ -832,7 +835,7 @@ public class CARnageWeapon : MonoBehaviour {
         switch(weaponModel)
         {
             case WeaponModel.ACE_OF_SPADES:
-                Gear.spawnGears(1, getCar(), CARnageModifier.GearSource.ENVIRONMENT);
+                Gear.spawnGears(1, building.getBuilding(), CARnageModifier.GearSource.ENVIRONMENT);
                 break;
         }
     }

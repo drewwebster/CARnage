@@ -19,6 +19,9 @@ public class WeaponController : MonoBehaviour {
 
     private void Update()
     {
+        if (CARnageAuxiliary.isPaused)
+            return;
+
         bool changeLeftWeapon = false;
         bool changeRightWeapon = false;
         if (GetComponentInParent<CARnageCar>().controlledBy == CARnageAuxiliary.ControllerType.MouseKeyboard && Input.GetKeyDown(KeyCode.Q))

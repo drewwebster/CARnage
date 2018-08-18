@@ -173,7 +173,9 @@ public class RCC_Camera : MonoBehaviour{
 	}
 	
 	void Update(){
-		
+        if (CARnageAuxiliary.isPaused)
+            return;
+
 		// Early out if we don't have a player.
 		if (!playerCar || !playerRigid){
 			GetPlayerCar();
@@ -428,7 +430,9 @@ public class RCC_Camera : MonoBehaviour{
 		targetFieldOfView = Mathf.Lerp (minimumOrtSize, maximumOrtSize, Mathf.Abs(speed) / 100f);
 		cam.orthographicSize = targetFieldOfView;
 
-		transform.position = SmoothApproach(pastFollowerPosition, pastTargetPosition, targetPosition, Mathf.Clamp(.5f, Mathf.Abs(speed), Mathf.Infinity));
+        Vector3 newPos = SmoothApproach(pastFollowerPosition, pastTargetPosition, targetPosition, Mathf.Clamp(.5f, Mathf.Abs(speed), Mathf.Infinity));
+        if(!float.IsNaN(newPos.x)) // custom: To deal with timeScale=0 @pause menus
+            transform.position = newPos;
 
         if(lockZ)
         {

@@ -9,12 +9,16 @@ public class TestConsole : MonoBehaviour {
     CARnageCar relCar;
     public List<string> cmdHistory;
     int cmdHistoryPointer;
+    bool paused;
 
     private void Start()
     {
         cmdHistory = new List<string>();
         cmdHistoryPointer = 0;
-        relCar = GameObject.Find("RCCCamera").GetComponent<RCC_Camera>().playerCar.GetComponent<CARnageCar>();
+        if (GameObject.Find("RCCCamera"))
+            relCar = GameObject.Find("RCCCamera").GetComponent<RCC_Camera>().playerCar.GetComponent<CARnageCar>();
+        else
+            relCar = GameObject.FindGameObjectWithTag("Player").GetComponentInParent<CARnageCar>();
 
         //foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
         //    if (go.GetComponent<CARnageCar>() != null && go.GetComponent<CARnageCar>().controlledBy == CARnageAuxiliary.ControllerType.MouseKeyboard)
@@ -24,12 +28,16 @@ public class TestConsole : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Tab))
             if (inputField.activeSelf)
+            {
                 inputField.SetActive(false);
+                CARnageAuxiliary.pauseEnd();
+            }
             else
             {
                 inputField.SetActive(true);
                 inputField.GetComponent<InputField>().Select();
                 inputField.GetComponent<InputField>().ActivateInputField();
+                CARnageAuxiliary.pause();
             }
 
         if(Input.GetKeyDown(KeyCode.Return) && inputField.activeSelf)

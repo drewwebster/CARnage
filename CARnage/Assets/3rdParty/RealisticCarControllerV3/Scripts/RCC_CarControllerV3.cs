@@ -875,7 +875,7 @@ public class RCC_CarControllerV3 : MonoBehaviour {
         else
             isDrifting = false;
         
-        isInAir = !FrontLeftWheelCollider.wheelCollider.isGrounded && !FrontRightWheelCollider.wheelCollider.isGrounded;
+        isInAir = !FrontLeftWheelCollider.wheelCollider.isGrounded && !FrontRightWheelCollider.wheelCollider.isGrounded && !RearLeftWheelCollider.wheelCollider.isGrounded && !RearRightWheelCollider.wheelCollider.isGrounded;
     }
 
 	void Inputs(){

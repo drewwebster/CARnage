@@ -262,7 +262,7 @@ public class CARnageModifier : MonoBehaviour {
     public void onBuildingDestroyed()
     {
         if (modID == ModID.DEMOLITION)
-            getCar().repair();
+            getCar().repair(10);
     }
 
     public void onGearCollected(int amount)

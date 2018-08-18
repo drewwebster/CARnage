@@ -13,7 +13,7 @@ public class explodableHitbox : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(isCollidable && collision.transform.GetComponentInParent<CARnageCar>() != null)
+        if(isCollidable && (collision.transform.GetComponentInParent<CARnageCar>() != null || collision.transform.GetComponentInParent<Building>()))
             explode();
     }
 
