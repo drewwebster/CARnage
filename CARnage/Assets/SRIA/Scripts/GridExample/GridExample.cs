@@ -39,7 +39,7 @@ namespace frame8.ScrollRectItemsAdapter.GridExample
 
 			base.Start();
 
-			DrawerCommandPanel.Instance.galleryEffectSetting.slider.value = .3f;
+			DrawerCommandPanel.Instance.galleryEffectSetting.slider.value = 0f;
 
 			DrawerCommandPanel.Instance.ItemCountChangeRequested += this.LazySetNewItems;
 			// Initially set the number of items to the number in the input field

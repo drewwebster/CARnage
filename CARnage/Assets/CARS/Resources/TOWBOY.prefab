@@ -3069,6 +3069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1639945952649310}
   rightWeaponGO: {fileID: 1607747635305964}
   stashGO: {fileID: 1669944574443608}
@@ -3379,6 +3380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Towboy
+  carModel: 27
   carColor: 6
   speed: 5
   impact: 5

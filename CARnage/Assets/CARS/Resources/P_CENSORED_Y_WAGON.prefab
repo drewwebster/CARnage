@@ -3126,6 +3126,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: -1
   knockbackMult: 1
   weaponState: 0
@@ -3229,7 +3230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1760fe51982c143409c72ebc12dc4136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carName: P[CENSORED]Wagon
+  carName: P[CENSORED]Y Wagon
+  carModel: 25
   carColor: 3
   speed: 5
   impact: 7
@@ -3746,6 +3748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1803982506077980}
   rightWeaponGO: {fileID: 1080880732462612}
   stashGO: {fileID: 1594047656701180}
@@ -3762,6 +3765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2120b3b11e138cc48b2e1db3d8dfc525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reflectsProjectiles: 0
 --- !u!135 &135877064559183922
 SphereCollider:
   m_ObjectHideFlags: 1

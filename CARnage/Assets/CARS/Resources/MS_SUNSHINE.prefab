@@ -5209,6 +5209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114017905537738974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5276,6 +5278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114059949909548236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5304,6 +5308,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114081838894625536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5330,6 +5336,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114148997150612532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5720,6 +5728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1741036362746154}
   rightWeaponGO: {fileID: 1180479703077280}
   stashGO: {fileID: 1376338448605090}
@@ -5837,6 +5846,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114359227521738384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6092,6 +6103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114625805352029080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6209,6 +6222,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: -1
   knockbackMult: 0.7
   weaponState: 1
@@ -6353,6 +6367,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: -1
   knockbackMult: 1
   weaponState: 0
@@ -6446,6 +6461,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114889391170161212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6471,6 +6488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Ms Sunshine
+  carModel: 7
   carColor: 2
   speed: 3
   impact: 4

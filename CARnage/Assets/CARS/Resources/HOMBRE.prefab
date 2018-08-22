@@ -6031,6 +6031,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: -1
   knockbackMult: 1
   weaponState: 1
@@ -6130,6 +6131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Hombre
+  carModel: 23
   carColor: 3
   speed: 8
   impact: 1
@@ -6187,6 +6189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rel_car: {fileID: 0}
   rel_weapon: {fileID: 0}
+  reflected: 0
 --- !u!114 &114298875169788660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6211,6 +6214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1530976142723238}
   rightWeaponGO: {fileID: 1242849928326742}
   stashGO: {fileID: 1707276948540082}
@@ -6294,6 +6298,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 1
+  timeDelayAfterShooting: 0
   projectileSpeed: 1000
   knockbackMult: 1
   weaponState: 0
@@ -6941,6 +6946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2120b3b11e138cc48b2e1db3d8dfc525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reflectsProjectiles: 0
 --- !u!114 &114816794905808112
 MonoBehaviour:
   m_ObjectHideFlags: 1

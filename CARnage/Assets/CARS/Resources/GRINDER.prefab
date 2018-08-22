@@ -7955,6 +7955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Grinder
+  carModel: 31
   carColor: 1
   speed: 8
   impact: 8
@@ -8526,6 +8527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1077786550822072}
   rightWeaponGO: {fileID: 1528088675495876}
   stashGO: {fileID: 1116637613790816}

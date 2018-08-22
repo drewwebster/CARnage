@@ -3994,6 +3994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Hellway
+  carModel: 36
   carColor: 5
   speed: 3
   impact: 7
@@ -4090,6 +4091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1631884937898662}
   rightWeaponGO: {fileID: 1629684976607326}
   stashGO: {fileID: 1946641399580704}

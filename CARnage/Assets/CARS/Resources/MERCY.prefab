@@ -2852,6 +2852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Mercy
+  carModel: 16
   carColor: 0
   speed: 5
   impact: 4

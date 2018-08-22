@@ -4994,6 +4994,7 @@ MonoBehaviour:
   syncX: 1
   syncY: 0
   syncZ: 0
+  xTOz: 0
 --- !u!114 &114149543725894406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5050,6 +5051,7 @@ MonoBehaviour:
   syncX: 1
   syncY: 0
   syncZ: 0
+  xTOz: 0
 --- !u!114 &114264387892673156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5087,6 +5089,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: -1
   knockbackMult: 1
   weaponState: 1
@@ -5149,6 +5152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2120b3b11e138cc48b2e1db3d8dfc525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reflectsProjectiles: 0
 --- !u!114 &114388258445230522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5199,6 +5203,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: -1
   knockbackMult: 1
   weaponState: 0
@@ -5301,6 +5306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2120b3b11e138cc48b2e1db3d8dfc525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reflectsProjectiles: 0
 --- !u!114 &114517922399950248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5465,6 +5471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Freeride
+  carModel: 46
   carColor: 4
   speed: 9
   impact: 1
@@ -5561,6 +5568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1834291412921464}
   rightWeaponGO: {fileID: 1714285674711006}
   stashGO: {fileID: 1574720094172440}

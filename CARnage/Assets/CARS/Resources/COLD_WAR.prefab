@@ -2477,6 +2477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Cold War
+  carModel: 16
   carColor: 2
   speed: 3
   impact: 8
@@ -2573,6 +2574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1452260241963368}
   rightWeaponGO: {fileID: 1155584727978174}
   stashGO: {fileID: 1673717934483526}

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CARnageCar : MonoBehaviour {
     public string carName = "";
+    public CarModel carModel;
     public CarColor carColor;
 
     // stats values:
@@ -429,6 +430,20 @@ public class CARnageCar : MonoBehaviour {
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         getWeaponController().dropAllEquippedWeapons();
         dropGears((int)(currentGears * getModController().getDroppedGears_Multiplier()));
+
+        foreach (RCC_WheelCollider wc in GetComponent<RCC_CarControllerV3>().allWheelColliders)
+        {
+            wc.transform.parent = null;
+            wc.enabled = false;
+            //wc.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+        GetComponent<RCC_CarControllerV3>().FrontLeftWheelTransform.parent = null;
+        GetComponent<RCC_CarControllerV3>().FrontRightWheelTransform.parent = null;
+        GetComponent<RCC_CarControllerV3>().RearLeftWheelTransform.parent = null;
+        GetComponent<RCC_CarControllerV3>().RearRightWheelTransform.parent = null;
+
+
+
         foreach (MeshRenderer mr in GetComponentsInChildren<MeshRenderer>())
             mr.enabled = false;
         foreach (Collider c in GetComponentsInChildren<Collider>())
@@ -437,6 +452,23 @@ public class CARnageCar : MonoBehaviour {
             r.useGravity = false;
         foreach (Image i in GetComponentsInChildren<Image>())
             i.enabled = false;
+
+        GetComponent<RCC_CarControllerV3>().FrontLeftWheelTransform.gameObject.AddComponent<Rigidbody>();
+        GetComponent<RCC_CarControllerV3>().FrontRightWheelTransform.gameObject.AddComponent<Rigidbody>();
+        GetComponent<RCC_CarControllerV3>().RearLeftWheelTransform.gameObject.AddComponent<Rigidbody>();
+        GetComponent<RCC_CarControllerV3>().RearRightWheelTransform.gameObject.AddComponent<Rigidbody>();
+        GetComponent<RCC_CarControllerV3>().FrontLeftWheelTransform.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<RCC_CarControllerV3>().FrontRightWheelTransform.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<RCC_CarControllerV3>().RearLeftWheelTransform.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<RCC_CarControllerV3>().RearRightWheelTransform.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<RCC_CarControllerV3>().FrontLeftWheelTransform.gameObject.AddComponent<CapsuleCollider>();
+        GetComponent<RCC_CarControllerV3>().FrontRightWheelTransform.gameObject.AddComponent<CapsuleCollider>();
+        GetComponent<RCC_CarControllerV3>().RearLeftWheelTransform.gameObject.AddComponent<CapsuleCollider>();
+        GetComponent<RCC_CarControllerV3>().RearRightWheelTransform.gameObject.AddComponent<CapsuleCollider>();
+        GetComponent<RCC_CarControllerV3>().FrontLeftWheelTransform.gameObject.GetComponent<Rigidbody>().AddForce(Random.Range(-10, 10), Random.Range(0, 10), Random.Range(-10, 10), ForceMode.Impulse);
+        GetComponent<RCC_CarControllerV3>().FrontRightWheelTransform.gameObject.GetComponent<Rigidbody>().AddForce(Random.Range(-10, 10), Random.Range(0, 10), Random.Range(-10, 10), ForceMode.Impulse);
+        GetComponent<RCC_CarControllerV3>().RearLeftWheelTransform.gameObject.GetComponent<Rigidbody>().AddForce(Random.Range(-10, 10), Random.Range(0, 10), Random.Range(-10, 10), ForceMode.Impulse);
+        GetComponent<RCC_CarControllerV3>().RearRightWheelTransform.gameObject.GetComponent<Rigidbody>().AddForce(Random.Range(-10, 10), Random.Range(0, 10), Random.Range(-10, 10), ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)

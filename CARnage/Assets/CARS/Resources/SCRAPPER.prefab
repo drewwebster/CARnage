@@ -4811,6 +4811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Scrapper
+  carModel: 40
   carColor: 2
   speed: 5
   impact: 5

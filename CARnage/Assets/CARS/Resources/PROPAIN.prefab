@@ -3856,6 +3856,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114021629136506560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4063,6 +4065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1202850120134888}
   rightWeaponGO: {fileID: 1503504222828982}
   stashGO: {fileID: 1096723551516708}
@@ -4574,6 +4577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Pro-Pain
+  carModel: 38
   carColor: 0
   speed: 3
   impact: 7
@@ -4705,6 +4709,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114744731986831974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4785,6 +4791,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114896296407527956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4906,6 +4914,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: -1
   knockbackMult: 1
   weaponState: 0

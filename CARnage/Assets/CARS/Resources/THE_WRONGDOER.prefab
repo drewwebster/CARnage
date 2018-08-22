@@ -4045,6 +4045,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114070603401096692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4056,6 +4058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1351949779742548}
   rightWeaponGO: {fileID: 1278310760268374}
   stashGO: {fileID: 1850065771334846}
@@ -4239,6 +4242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2120b3b11e138cc48b2e1db3d8dfc525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reflectsProjectiles: 0
 --- !u!114 &114388524307712418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4388,6 +4392,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114635556248449818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4941,6 +4947,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: -1
   knockbackMult: 0.25
   weaponState: 1
@@ -5007,6 +5014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: The Wrongdoer
+  carModel: 14
   carColor: 1
   speed: 6
   impact: 6
@@ -5061,6 +5069,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: -1
   knockbackMult: 1
   weaponState: 0
@@ -5137,6 +5146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114964723571080190
 MonoBehaviour:
   m_ObjectHideFlags: 1

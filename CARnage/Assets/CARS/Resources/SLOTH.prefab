@@ -4474,6 +4474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: SLOTH
+  carModel: 24
   carColor: 1
   speed: 10
   impact: 10

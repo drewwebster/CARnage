@@ -6015,6 +6015,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: 1000
   knockbackMult: 1
   weaponState: 1
@@ -6131,6 +6132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rel_car: {fileID: 0}
   rel_weapon: {fileID: 0}
+  reflected: 0
 --- !u!114 &114231735729821342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6663,6 +6665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rel_car: {fileID: 0}
   rel_weapon: {fileID: 0}
+  reflected: 0
 --- !u!114 &114448838895919002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6700,6 +6703,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: 1000
   knockbackMult: 1
   weaponState: 0
@@ -6874,6 +6878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Taxi
+  carModel: 6
   carColor: 3
   speed: 6
   impact: 6
@@ -7062,6 +7067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1761985458563366}
   rightWeaponGO: {fileID: 1414538837762660}
   stashGO: {fileID: 1352691364027338}

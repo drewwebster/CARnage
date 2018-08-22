@@ -2965,6 +2965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Veterano
+  carModel: 45
   carColor: 5
   speed: 8
   impact: 5
@@ -3059,6 +3060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1601624370952442}
   rightWeaponGO: {fileID: 1340670658779824}
   stashGO: {fileID: 1748676063850246}

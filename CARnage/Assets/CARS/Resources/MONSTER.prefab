@@ -4073,6 +4073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: "\uAD34\uBB3C"
+  carModel: 32
   carColor: 0
   speed: 5
   impact: 6

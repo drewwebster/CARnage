@@ -4616,6 +4616,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: -1
   knockbackMult: 0.25
   weaponState: 1
@@ -4715,6 +4716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Purgatory
+  carModel: 43
   carColor: 1
   speed: 5
   impact: 5
@@ -4952,6 +4954,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114532780600376874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5549,6 +5553,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 1
+  timeDelayAfterShooting: 0
   projectileSpeed: -1
   knockbackMult: 1
   weaponState: 0
@@ -5598,6 +5603,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114971842602617000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5725,6 +5732,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114998016377401742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5736,6 +5745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1409664188007638}
   rightWeaponGO: {fileID: 1363723767526910}
   stashGO: {fileID: 1096784563036952}

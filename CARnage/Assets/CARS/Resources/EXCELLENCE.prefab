@@ -2376,6 +2376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Excellence
+  carModel: 1
   carColor: 6
   speed: 5
   impact: 6
@@ -2584,6 +2585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1408968124299824}
   rightWeaponGO: {fileID: 1289657278909230}
   stashGO: {fileID: 1120580457331060}

@@ -4566,7 +4566,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1760fe51982c143409c72ebc12dc4136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carName: Grammaton
+  carName: Crawler
+  carModel: 34
   carColor: 2
   speed: 7
   impact: 5
@@ -4669,6 +4670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rel_car: {fileID: 0}
   rel_weapon: {fileID: 0}
+  reflected: 0
 --- !u!114 &114184295117096732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5312,6 +5314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1083487066819314}
   rightWeaponGO: {fileID: 1128806126923614}
   stashGO: {fileID: 1864008189976508}
@@ -5478,6 +5481,7 @@ MonoBehaviour:
   projectileScatterAngle: 30
   projectileSpeedRNDRange: 0.3
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: 1000
   knockbackMult: 1
   weaponState: 0

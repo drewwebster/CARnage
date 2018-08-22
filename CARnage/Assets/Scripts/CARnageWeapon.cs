@@ -706,7 +706,8 @@ public class CARnageWeapon : MonoBehaviour {
         LUST_WEAPON,
         GREED_WEAPON,
         ENVY_WEAPON,
-        DETONATION_WEAPON
+        DETONATION_WEAPON,
+        TRAILER_THRASH_WEAPON
     }
 
     private void OnTriggerEnter(Collider other)
@@ -755,7 +756,36 @@ public class CARnageWeapon : MonoBehaviour {
     // ----- ----- ----- COMMON WEAPON BONUSES ----- ----- -----
     public void OnDMG_WeaponModelMod(CARnageCar damager, CARnageCar damagedCar)
     {
-        Vector3 knockbackDirection;
+        // melee knockback effect:
+        if(damageType == DamageType.MELEE)
+        {
+            Vector3 knockbackDirection = Vector3.zero;
+            switch (weaponModel)
+            {
+                case WeaponModel.PUNCH:
+                case WeaponModel.WHACK:
+                case WeaponModel.LUST_WEAPON:
+                    knockbackDirection = transform.forward * 50000;
+                    break;
+                case WeaponModel.SILLY_BILLY:
+                case WeaponModel.GLUTTONY_WEAPON:
+                    knockbackDirection = transform.forward * 25000;
+                    break;
+                case WeaponModel.BOOMSTICK:
+                case WeaponModel.RELIEF:
+                    knockbackDirection = transform.forward * 10000;
+                    break;
+                default:
+                    if(!automatic)
+                        knockbackDirection = transform.forward * 10000;
+                    break;
+            }
+            if(knockbackDirection != Vector3.zero)
+                damagedCar.GetComponent<Rigidbody>().AddForce(knockbackDirection, ForceMode.Impulse);
+        }
+
+
+        // additional weapon effects:
         switch (weaponModel)
         {
             case WeaponModel.BOOMSTICK:
@@ -771,20 +801,6 @@ public class CARnageWeapon : MonoBehaviour {
             case WeaponModel.SURPRISE:
                 damagedCar.applyDebuff(CARnageCar.Debuff.Fire, damager, 0.4f);
                 break;
-            case WeaponModel.PUNCH:
-            case WeaponModel.WHACK:
-            case WeaponModel.LUST_WEAPON:
-                knockbackDirection = transform.forward * 50000;                
-                damagedCar.GetComponent<Rigidbody>().AddForce(knockbackDirection, ForceMode.Impulse);
-                break;
-            case WeaponModel.SILLY_BILLY:
-                knockbackDirection = transform.forward * 10000;
-                damagedCar.GetComponent<Rigidbody>().AddForce(knockbackDirection, ForceMode.Impulse);
-                break;
-            case WeaponModel.GLUTTONY_WEAPON:
-                knockbackDirection = transform.forward * 25000;
-                damagedCar.GetComponent<Rigidbody>().AddForce(knockbackDirection, ForceMode.Impulse);
-                break;
             case WeaponModel.THE_BRIDE:
             case WeaponModel.ESE:
             case WeaponModel.GRACE:
@@ -792,6 +808,7 @@ public class CARnageWeapon : MonoBehaviour {
             case WeaponModel.MOMS_KNIFE:
             case WeaponModel.FILTH:
             case WeaponModel.WITNESS:
+            case WeaponModel.TRAILER_THRASH_WEAPON:
                 damagedCar.applyDebuff(CARnageCar.Debuff.Drain, damager);
                 break;
             case WeaponModel.MOTHER_THERESA:
@@ -819,8 +836,7 @@ public class CARnageWeapon : MonoBehaviour {
                 getCar().repair(HPvamp);
                 break;
             case WeaponModel.RELIEF:
-                knockbackDirection = transform.forward * 10000;
-                damagedCar.GetComponent<Rigidbody>().AddForce(knockbackDirection, ForceMode.Impulse);
+            case WeaponModel.BEACH_BUOY:
                 if(damagedCar.isOnFire())
                 {
                     damagedCar.fireTicks = -1;

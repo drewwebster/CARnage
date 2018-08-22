@@ -4477,6 +4477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rel_car: {fileID: 0}
   rel_weapon: {fileID: 0}
+  reflected: 0
 --- !u!114 &114256935132681534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4592,6 +4593,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: 1000
   knockbackMult: 1
   weaponState: 1
@@ -4704,6 +4706,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114514466470805942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4823,6 +4827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1252397229722200}
   rightWeaponGO: {fileID: 1073913765453162}
   stashGO: {fileID: 1311527370397648}
@@ -5326,6 +5331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Party Van
+  carModel: 15
   carColor: 6
   speed: 3
   impact: 6

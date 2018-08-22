@@ -5376,6 +5376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Mamma Mia!
+  carModel: 42
   carColor: 1
   speed: 6
   impact: 3
@@ -5470,6 +5471,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114150846974172384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5481,6 +5484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1838747382158458}
   rightWeaponGO: {fileID: 1078271386764690}
   stashGO: {fileID: 1893667638660302}
@@ -5790,6 +5794,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0.1
   automatic: 1
+  timeDelayAfterShooting: 0
   projectileSpeed: 200
   knockbackMult: 1
   weaponState: 3
@@ -6315,6 +6320,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114762877288758862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6356,6 +6363,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: -1
   knockbackMult: 0.25
   weaponState: 3
@@ -6447,6 +6455,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rel_weapon: {fileID: 0}
+  fixedDamage: 0
+  rel_car: {fileID: 0}
 --- !u!114 &114847361544790554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6575,6 +6585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rel_car: {fileID: 0}
   rel_weapon: {fileID: 0}
+  reflected: 0
 --- !u!114 &114957776202223914
 MonoBehaviour:
   m_ObjectHideFlags: 1

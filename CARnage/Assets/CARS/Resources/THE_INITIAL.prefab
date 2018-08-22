@@ -4222,6 +4222,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: 1000
   knockbackMult: 1
   weaponState: 0
@@ -4507,6 +4508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rel_car: {fileID: 0}
   rel_weapon: {fileID: 0}
+  reflected: 0
 --- !u!114 &114644365375842760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4664,6 +4666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1504628026573700}
   rightWeaponGO: {fileID: 1174705670963084}
   stashGO: {fileID: 1815208945795530}
@@ -5260,6 +5263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: The Initial
+  carModel: 0
   carColor: 0
   speed: 5
   impact: 5
@@ -60098,8 +60102,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -225}
-  m_SizeDelta: {x: 2278, y: 100}
+  m_AnchoredPosition: {x: 41.5, y: -225}
+  m_SizeDelta: {x: 2030.3, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224243066523563274
 RectTransform:
@@ -60152,8 +60156,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -225}
-  m_SizeDelta: {x: 2278, y: 100}
+  m_AnchoredPosition: {x: -58.4, y: -225}
+  m_SizeDelta: {x: 2062.8, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224385388891782200
 RectTransform:

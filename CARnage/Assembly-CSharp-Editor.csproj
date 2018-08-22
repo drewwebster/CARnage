@@ -183,34 +183,6 @@
     <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Utils\TCP2_ShaderGeneratorUtils.cs" />
     <Compile Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Utils\TCP2_Utils.cs" />
     <Compile Include="Assets\3rdParty\Low Poly Ultimate Pack\Shaders\UnityVC\Editor\StandardShaderVCGUI.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiAboutWindow.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiAerodynamicConstraintsEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiBendingConstraintsEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiBezierCurveEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiBoneEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiCatmullRomCurveEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiClothParticleHandles.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiColliderEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiDistanceConstraintsEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiDraggableIcon.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiEditorUtils.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiEmitterEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiEmitterMaterialEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiParticleActorEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiParticleBakerEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiParticleCacheEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiParticleHandleEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiParticleRendererEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiPinConstraintsEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiRopeCursorEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiRopeEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiRopeSectionEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiSolverEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiSplineHandles.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiStitcherEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiTetherConstraintsEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\ObiVolumeConstraintsEditor.cs" />
-    <Compile Include="Assets\3rdParty\Obi\Editor\PreviewHelpers.cs" />
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Editor\RCC_AIBZEditor.cs" />
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Editor\RCC_AIEditor.cs" />
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Editor\RCC_AIWPEditor.cs" />
@@ -232,18 +204,12 @@
     <Compile Include="Assets\SRIA\Scripts\Editor\MenuItems.cs" />
     <Compile Include="Assets\SRIA\Scripts\Editor\ReadOnlyDrawer.cs" />
     <Compile Include="Assets\SRIA\Scripts\Editor\ThankYou.cs" />
-    <None Include="Assets\3rdParty\Obi\Editor\Resources\EditorParticle.shader" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Shader Templates\TCP2_ShaderTemplate_Terrain.txt" />
-    <None Include="Assets\3rdParty\Obi\Editor\Resources\FlatSurfaceShader.shader" />
-    <None Include="Assets\3rdParty\Obi\Editor\Resources\EditorLineShader.shader" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Shader Templates\TCP2_ShaderTemplate_Default_CurvedWorld.txt" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Shader Templates\TCP2_ShaderTemplate_Default.txt" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Editor\PluginResources\Strings\cr_strings_en.xml" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Shader Templates\TCP2_ShaderTemplate_Water.txt" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Shader Templates\TCP2_ShaderTemplate_PBS.txt" />
-    <None Include="Assets\3rdParty\Obi\Editor\Resources\TopologyBorders.shader" />
-    <None Include="Assets\3rdParty\Obi\Editor\Resources\EditorParticleRadius.shader" />
-    <None Include="Assets\3rdParty\Obi\Editor\Resources\PropertyGradientMaterial.shader" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Editor\Shader Templates\TCP2_ShaderTemplate_Water_CurvedWorld.txt" />
     <Reference Include="Assembly-UnityScript">
       <HintPath>D:/CARnage/CARnage/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
@@ -505,18 +471,6 @@
     </Reference>
     <Reference Include="JMOAssets">
       <HintPath>D:/CARnage/CARnage/Assets/3rdParty/JMO Assets/Editor/JMOAssets.dll</HintPath>
-    </Reference>
-    <Reference Include="VacuumShaders.CurvedWorldVC">
-      <HintPath>D:/CARnage/CARnage/Assets/VacuumShaders/Curved World/Editor/VacuumShaders.CurvedWorldVC.dll</HintPath>
-    </Reference>
-    <Reference Include="VacuumShaders.CurvedWorld_Editor">
-      <HintPath>D:/CARnage/CARnage/Assets/VacuumShaders/Curved World/Editor/VacuumShaders.CurvedWorld_Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="VacuumShaders.CurvedWorld">
-      <HintPath>D:/CARnage/CARnage/Assets/VacuumShaders/Curved World/Scripts/VacuumShaders.CurvedWorld.dll</HintPath>
-    </Reference>
-    <Reference Include="VacuumShaders">
-      <HintPath>D:/CARnage/CARnage/Assets/VacuumShaders/Editor/VacuumShaders.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/Jo/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.7/Editor/UnityEditor.Advertisements.dll</HintPath>

@@ -4312,6 +4312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Postman
+  carModel: 18
   carColor: 3
   speed: 3
   impact: 8
@@ -4354,6 +4355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1526334c563d6f4f9651aba56679d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unableToPickupWeapons: 0
   leftWeaponGO: {fileID: 1156286434027334}
   rightWeaponGO: {fileID: 1773629734249630}
   stashGO: {fileID: 1264711083777586}
@@ -4870,6 +4872,7 @@ MonoBehaviour:
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 1
+  timeDelayAfterShooting: 0
   projectileSpeed: 2000
   knockbackMult: 1
   weaponState: 0
@@ -5245,6 +5248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rel_car: {fileID: 0}
   rel_weapon: {fileID: 0}
+  reflected: 0
 --- !u!114 &114893913856791808
 MonoBehaviour:
   m_ObjectHideFlags: 1
