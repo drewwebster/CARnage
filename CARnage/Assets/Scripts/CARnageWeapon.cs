@@ -88,6 +88,8 @@ public class CARnageWeapon : MonoBehaviour {
     
     public void onObtained()
     {
+        if (!GetComponent<Rigidbody>())
+            return;
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<BoxCollider>().enabled = false;

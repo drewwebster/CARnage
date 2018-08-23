@@ -4567,9 +4567,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Crawler
-  carModel: 34
+  carModel: 35
   carColor: 2
-  speed: 7
+  speed: 8
   impact: 5
   HP: 4
   shield: 0

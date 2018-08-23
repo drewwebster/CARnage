@@ -4961,7 +4961,7 @@ MonoBehaviour:
   HP: 8
   shield: 0
   nitro: 0
-  gearStorage: 9
+  gearStorage: 8
   maxHP: 0
   currentHP: 0
   maxShield: 0

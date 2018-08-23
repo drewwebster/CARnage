@@ -3339,6 +3339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: ENVY
+  carModel: 13
   carColor: 3
   speed: 2
   impact: 10
@@ -3507,6 +3508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2120b3b11e138cc48b2e1db3d8dfc525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reflectsProjectiles: 0
 --- !u!114 &114629840918776650
 MonoBehaviour:
   m_ObjectHideFlags: 1

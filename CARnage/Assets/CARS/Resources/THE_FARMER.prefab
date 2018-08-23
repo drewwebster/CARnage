@@ -4367,7 +4367,7 @@ MonoBehaviour:
   carModel: 30
   carColor: 5
   speed: 2
-  impact: 6
+  impact: 7
   HP: 7
   shield: 1
   nitro: 0

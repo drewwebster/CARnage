@@ -4813,7 +4813,7 @@ MonoBehaviour:
   carName: Scrapper
   carModel: 40
   carColor: 2
-  speed: 5
+  speed: 4
   impact: 5
   HP: 6
   shield: 4

@@ -5473,7 +5473,7 @@ MonoBehaviour:
   carName: Freeride
   carModel: 46
   carColor: 4
-  speed: 9
+  speed: 8
   impact: 1
   HP: 1
   shield: 0

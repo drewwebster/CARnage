@@ -4279,7 +4279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Concretor
-  carModel: 11
+  carModel: 12
   carColor: 3
   speed: 2
   impact: 9

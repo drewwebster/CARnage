@@ -5620,7 +5620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1760fe51982c143409c72ebc12dc4136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carName: Warlord
+  carName: "\u0428\u0434RL\u0424RD"
   carModel: 19
   carColor: 1
   speed: 5

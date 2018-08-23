@@ -15,9 +15,10 @@ public class GlobalModifiers : MonoBehaviour {
     {
         float mult = 1f;
         foreach (ModController mc in mcList)
-            foreach (CARnageModifier mod in mc.getMods())
-                if (mod.modID == CARnageModifier.ModID.INERTIA)
-                    mult += 5;
+            if(mc)
+                foreach (CARnageModifier mod in mc.getMods())
+                    if (mod.modID == CARnageModifier.ModID.INERTIA)
+                        mult += 5;
 
         return mult;
     }
@@ -26,9 +27,10 @@ public class GlobalModifiers : MonoBehaviour {
     {
         float mult = 1f;
         foreach (ModController mc in mcList)
-            foreach (CARnageModifier mod in mc.getMods())
-                if (mod.modID == CARnageModifier.ModID.MUZZLE__LOADER)
-                    mult = 1f/weapon.magazineSize;   // set to 1 (can be influenced by local mods tho)
+            if(mc)
+                foreach (CARnageModifier mod in mc.getMods())
+                    if (mod.modID == CARnageModifier.ModID.MUZZLE__LOADER)
+                        mult = 1f/weapon.magazineSize;   // set to 1 (can be influenced by local mods tho)
 
         return mult;
     }

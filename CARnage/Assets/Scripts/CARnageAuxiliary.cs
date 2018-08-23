@@ -60,7 +60,8 @@ public class CARnageAuxiliary : MonoBehaviour {
         Controller1,
         Controller2,
         Controller3,
-        AI
+        AI,
+        NONE
     }
 
     //public static void setAnimationSpeed(GameObject target, string animationName, float actualValue)

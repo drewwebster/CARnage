@@ -6292,8 +6292,8 @@ MonoBehaviour:
   Damage: 3
   shotDelay: 0.03
   meleeDMGdelay: 0
-  magazineSize: 10000
-  reloadTime: 0
+  magazineSize: -1
+  reloadTime: -1
   projectilesPerShot: 1
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0

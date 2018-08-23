@@ -3233,7 +3233,7 @@ MonoBehaviour:
   carName: P[CENSORED]Y Wagon
   carModel: 25
   carColor: 3
-  speed: 5
+  speed: 4
   impact: 7
   HP: 6
   shield: 0

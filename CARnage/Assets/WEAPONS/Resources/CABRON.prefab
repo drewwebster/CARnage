@@ -1796,6 +1796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rel_car: {fileID: 0}
   rel_weapon: {fileID: 0}
+  reflected: 0
 --- !u!114 &114795386769038086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1829,12 +1830,13 @@ MonoBehaviour:
   Damage: 3
   shotDelay: 0.03
   meleeDMGdelay: 0
-  magazineSize: 10000
-  reloadTime: 0
+  magazineSize: -1
+  reloadTime: -1
   projectilesPerShot: 1
   projectileScatterAngle: 0
   projectileSpeedRNDRange: 0
   automatic: 1
+  timeDelayAfterShooting: 0
   projectileSpeed: 1000
   knockbackMult: 1
   weaponState: 3

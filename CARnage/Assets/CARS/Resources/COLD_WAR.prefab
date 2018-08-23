@@ -2477,7 +2477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Cold War
-  carModel: 16
+  carModel: 17
   carColor: 2
   speed: 3
   impact: 8

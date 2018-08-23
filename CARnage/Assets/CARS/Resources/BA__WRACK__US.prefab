@@ -6447,7 +6447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Ba-Wrack-Us
-  carModel: 21
+  carModel: 22
   carColor: 1
   speed: 4
   impact: 6
