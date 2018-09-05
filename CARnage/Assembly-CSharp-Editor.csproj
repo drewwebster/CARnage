@@ -199,6 +199,7 @@
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Editor\RCC_SettingsEditor.cs" />
     <Compile Include="Assets\3rdParty\RealisticCarControllerV3\Editor\ScriptableObjectUtility.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
+    <Compile Include="Assets\3rdParty\UGUIMiniMap\Content\Scripts\Internal\Editor\SeparatorDrawer.cs" />
     <Compile Include="Assets\SRIA\Scripts\DLLSources\ScrollRectItemsAdapter\Editor\SRIAStandaloneInputModuleCustomEditor.cs" />
     <Compile Include="Assets\SRIA\Scripts\DLLSources\ScrollRectItemsAdapter\Editor\SRIATouchInputModuleCustomEditor.cs" />
     <Compile Include="Assets\SRIA\Scripts\Editor\MenuItems.cs" />

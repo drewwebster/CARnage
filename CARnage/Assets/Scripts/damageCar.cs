@@ -171,14 +171,15 @@ public class damageCar : MonoBehaviour {
 
         percentage = 1 - percentage;
 
-        if (percentage > 0)
-        {
-            FX_HPSmoke.SetActive(true);
-            var ps = FX_HPSmoke.GetComponent<ParticleSystem>().main;
-            ps.startSize = new ParticleSystem.MinMaxCurve(percentage * 2f, percentage * 6f);
-        }
-        else
-            FX_HPSmoke.SetActive(false);
+        if(FX_HPSmoke)
+            if (percentage > 0)
+            {
+                FX_HPSmoke.SetActive(true);
+                var ps = FX_HPSmoke.GetComponent<ParticleSystem>().main;
+                ps.startSize = new ParticleSystem.MinMaxCurve(percentage * 2f, percentage * 6f);
+            }
+            else
+                FX_HPSmoke.SetActive(false);
 
     }
 }

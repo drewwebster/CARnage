@@ -342,6 +342,18 @@
     <Compile Include="Assets\3rdParty\Standard Assets\Vehicles\Car\Scripts\SkidTrail.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Vehicles\Car\Scripts\Suspension.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Vehicles\Car\Scripts\WheelEffects.cs" />
+    <Compile Include="Assets\3rdParty\UGUIMiniMap\Content\Scripts\Core\bl_IconItem.cs" />
+    <Compile Include="Assets\3rdParty\UGUIMiniMap\Content\Scripts\Core\bl_MiniMap.cs" />
+    <Compile Include="Assets\3rdParty\UGUIMiniMap\Content\Scripts\Core\bl_MiniMapItem.cs" />
+    <Compile Include="Assets\3rdParty\UGUIMiniMap\Content\Scripts\Core\bl_MMCompass.cs" />
+    <Compile Include="Assets\3rdParty\UGUIMiniMap\Content\Scripts\Core\bl_WorldSpace.cs" />
+    <Compile Include="Assets\3rdParty\UGUIMiniMap\Content\Scripts\Core\Misc\bl_MaskHelper.cs" />
+    <Compile Include="Assets\3rdParty\UGUIMiniMap\Content\Scripts\Internal\Atributte\InspectorButtonAttribute.cs" />
+    <Compile Include="Assets\3rdParty\UGUIMiniMap\Content\Scripts\Internal\Atributte\SeparatorAttribute.cs" />
+    <Compile Include="Assets\3rdParty\UGUIMiniMap\Content\Scripts\Internal\Enum\MMItemEffect.cs" />
+    <Compile Include="Assets\3rdParty\UGUIMiniMap\Content\Scripts\Util\bl_SnapShot.cs" />
+    <Compile Include="Assets\3rdParty\UGUIMiniMap\Example\Scripts\bl_MMExampleManager.cs" />
+    <Compile Include="Assets\3rdParty\UGUIMiniMap\Example\Scripts\bl_RandomBot.cs" />
     <Compile Include="Assets\AutoTurretFire.cs" />
     <Compile Include="Assets\CarSelectionLogic.cs" />
     <Compile Include="Assets\DMGdisplay.cs" />
@@ -491,6 +503,7 @@
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders 2.0 Generated\Examples\Default\Old School.shader" />
     <None Include="Assets\3rdParty\Cartoon FX Pack\FX Mega Pack 2\FX Mega Pack 2 - Readme.txt" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
+    <None Include="Assets\3rdParty\Grunge UI Kit\Source Files\Fonts\Frijole Font\FrijoleLicense_OFL.txt" />
     <None Include="Assets\3rdParty\Cartoon FX Pack\Shaders\CFX2 Particle Alpha Blend Add.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Environment\Water (Basic)\DO_NOT_WORK_IN_VR.txt" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders PBS\TCP2_Standard PBS Outline (Specular).shader" />
@@ -616,6 +629,7 @@
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Resources\CarCSVertexAnimation.compute" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlur.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader" />
+    <None Include="Assets\3rdParty\Grunge UI Kit\Source Files\Fonts\Montserrat\Montserrat_OFL.txt" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableBlur.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Vehicles\Car\CarGuidelines.txt" />
     <None Include="Assets\3rdParty\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
@@ -657,6 +671,7 @@
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders 2.0 Generated\Examples\Default\Sketch.shader" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Shaders\Oven\CFX Corpuscles Diffuse.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader" />
+    <None Include="Assets\3rdParty\Grunge UI Kit\Source Files\Fonts\Frijole Font\OFL-FAQ.txt" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders 2.0\Include\TCP2_Include.cginc" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders 2.0 Generated\Examples\Default\HSV.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />
