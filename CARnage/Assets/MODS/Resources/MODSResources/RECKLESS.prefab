@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 12
   modName: Reckless
-  description: sample description
+  description: Don't take damage from explosions.
   image: {fileID: 21300000, guid: 7fc5a1abccd1d4c4287b92aec3352938, type: 3}

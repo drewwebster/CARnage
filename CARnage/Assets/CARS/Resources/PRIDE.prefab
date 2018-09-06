@@ -127,22 +127,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1034317606975506
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4248146883010642}
-  - component: {fileID: 114445826659367732}
-  m_Layer: 0
-  m_Name: MOONWALK
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1110799998938806
 GameObject:
   m_ObjectHideFlags: 1
@@ -386,22 +370,6 @@ GameObject:
   m_Layer: 0
   m_Name: Wheel_FR
   m_TagString: Player
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1328217115636106
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4693540059890678}
-  - component: {fileID: 114834135791990238}
-  m_Layer: 0
-  m_Name: CHALLENGER
-  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -700,6 +668,22 @@ GameObject:
   - component: {fileID: 23363998812378062}
   m_Layer: 0
   m_Name: SM_Veh_Shuttle_Wheel_02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1645459889324740
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4643145274036426}
+  - component: {fileID: 114111008165347438}
+  m_Layer: 0
+  m_Name: MOONWALK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1090,6 +1074,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1986580703605126
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4323614594538252}
+  - component: {fileID: 114398472406682394}
+  m_Layer: 0
+  m_Name: CHALLENGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1992639089322302
 GameObject:
   m_ObjectHideFlags: 1
@@ -1297,19 +1297,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!4 &4248146883010642
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1034317606975506}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4529062290158200}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4249595965617136
 Transform:
   m_ObjectHideFlags: 1
@@ -1364,6 +1351,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4858194911145934}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4323614594538252
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1986580703605126}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4529062290158200}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4341378190377184
 Transform:
@@ -1549,8 +1549,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4248146883010642}
-  - {fileID: 4693540059890678}
+  - {fileID: 4643145274036426}
+  - {fileID: 4323614594538252}
   m_Father: {fileID: 4239277037396750}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1650,6 +1650,19 @@ Transform:
   m_Father: {fileID: 4725289597651304}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4643145274036426
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1645459889324740}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4529062290158200}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4649270898274398
 Transform:
   m_ObjectHideFlags: 1
@@ -1681,19 +1694,6 @@ Transform:
   - {fileID: 4649270898274398}
   m_Father: {fileID: 4545318930592612}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4693540059890678
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1328217115636106}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4529062290158200}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4695172100716952
 Transform:
@@ -2828,6 +2828,21 @@ MonoBehaviour:
   m_FillAmount: 0.6
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114111008165347438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1645459889324740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 40
+  modName: Moonwalk
+  description: -50% Gravity for everyone.
+  image: {fileID: 21300000, guid: 75d5fc4fa4250ec44bd33c0dbacd1bf7, type: 3}
 --- !u!114 &114140223463673620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3403,21 +3418,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
---- !u!114 &114445826659367732
+--- !u!114 &114398472406682394
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1034317606975506}
+  m_GameObject: {fileID: 1986580703605126}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modID: 40
-  modName: Moonwalk
-  description: sample description
-  image: {fileID: 21300000, guid: 75d5fc4fa4250ec44bd33c0dbacd1bf7, type: 3}
+  modID: 41
+  modName: Challenger
+  description: Explode on contact.
+  image: {fileID: 21300000, guid: 9ee134444fcd4ac43b850ffbc3034ff9, type: 3}
 --- !u!114 &114489070787093584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3560,21 +3575,6 @@ MonoBehaviour:
   fireTicks: 0
   acidTicks: 0
   drainTicks: 0
---- !u!114 &114834135791990238
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1328217115636106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modID: 41
-  modName: Challenger
-  description: sample description
-  image: {fileID: 21300000, guid: 9ee134444fcd4ac43b850ffbc3034ff9, type: 3}
 --- !u!114 &114838555029390148
 MonoBehaviour:
   m_ObjectHideFlags: 1

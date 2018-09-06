@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 72
   modName: Halo
-  description: sample description
+  description: Melee weapons are automatic and orbit your car.
   image: {fileID: 21300000, guid: 67b1907b5b211f449878dfabc03c2682, type: 3}

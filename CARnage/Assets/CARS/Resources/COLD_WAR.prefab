@@ -191,22 +191,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1174531298442510
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4101408240652158}
-  - component: {fileID: 114068791634397298}
-  m_Layer: 0
-  m_Name: WELL__PLACED_ADVERTISEMENT
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1175731486666608
 GameObject:
   m_ObjectHideFlags: 1
@@ -320,22 +304,6 @@ GameObject:
   - component: {fileID: 114771747893638182}
   m_Layer: 0
   m_Name: WorldCanvasHPShieldNitro
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1277804558571180
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4958675812021418}
-  - component: {fileID: 114750868795274362}
-  m_Layer: 0
-  m_Name: BLIZZARD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -677,6 +645,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1626161483279316
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4697569783855022}
+  - component: {fileID: 114738236059132760}
+  m_Layer: 0
+  m_Name: WELL__PLACED_ADVERTISEMENT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1628001288837606
 GameObject:
   m_ObjectHideFlags: 1
@@ -818,6 +802,22 @@ GameObject:
   - component: {fileID: 4207071138010268}
   m_Layer: 0
   m_Name: FrontWeaponSpot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1874167045288198
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4810023373070560}
+  - component: {fileID: 114439869097178734}
+  m_Layer: 0
+  m_Name: BLIZZARD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1043,19 +1043,6 @@ Transform:
   m_Father: {fileID: 4011663246947894}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!4 &4101408240652158
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1174531298442510}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4975132421420898}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4118290847203732
 Transform:
   m_ObjectHideFlags: 1
@@ -1451,6 +1438,19 @@ Transform:
   m_Father: {fileID: 4592313793833006}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4697569783855022
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626161483279316}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4975132421420898}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4731161587092358
 Transform:
   m_ObjectHideFlags: 1
@@ -1488,6 +1488,19 @@ Transform:
   m_LocalScale: {x: 1.3333333, y: 1.6666665, z: 1.2500001}
   m_Children: []
   m_Father: {fileID: 4087226772543916}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4810023373070560
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1874167045288198}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4975132421420898}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4816917313715864
@@ -1601,19 +1614,6 @@ Transform:
   m_Father: {fileID: 4192729492581520}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4958675812021418
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1277804558571180}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4975132421420898}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4975132421420898
 Transform:
   m_ObjectHideFlags: 1
@@ -1624,8 +1624,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4958675812021418}
-  - {fileID: 4101408240652158}
+  - {fileID: 4810023373070560}
+  - {fileID: 4697569783855022}
   m_Father: {fileID: 4259188744831264}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2341,21 +2341,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelModel: {fileID: 0}
   camber: 0
---- !u!114 &114068791634397298
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1174531298442510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modID: 36
-  modName: Well-Placed Advertisement
-  description: sample description
-  image: {fileID: 21300000, guid: c5cfb595d7031034db045139e7c6019f, type: 3}
 --- !u!114 &114104957816261288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2563,6 +2548,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelModel: {fileID: 0}
   camber: 0
+--- !u!114 &114439869097178734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1874167045288198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 35
+  modName: Blizzard
+  description: Freeze cars when ramming them (5s).
+  image: {fileID: 21300000, guid: 721c287983127d24a8d724239f669dcd, type: 3}
 --- !u!114 &114468611121170060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2643,21 +2643,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c72887219efa8994d938b47f07b6625e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114750868795274362
+--- !u!114 &114738236059132760
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1277804558571180}
+  m_GameObject: {fileID: 1626161483279316}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modID: 35
-  modName: Blizzard
-  description: sample description
-  image: {fileID: 21300000, guid: 721c287983127d24a8d724239f669dcd, type: 3}
+  modID: 36
+  modName: Well-Placed Advertisement
+  description: +100% collected gears when shielded.
+  image: {fileID: 21300000, guid: c5cfb595d7031034db045139e7c6019f, type: 3}
 --- !u!114 &114771747893638182
 MonoBehaviour:
   m_ObjectHideFlags: 1

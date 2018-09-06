@@ -528,22 +528,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!1 &1331463243370966
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4216137324943926}
-  - component: {fileID: 114108351334763908}
-  m_Layer: 0
-  m_Name: OILWAY
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1335500688260280
 GameObject:
   m_ObjectHideFlags: 1
@@ -597,22 +581,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!1 &1358984555378278
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4889799149670716}
-  - component: {fileID: 114526422189649830}
-  m_Layer: 0
-  m_Name: DETONATION
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1359015576397258
 GameObject:
   m_ObjectHideFlags: 1
@@ -920,6 +888,22 @@ GameObject:
   - component: {fileID: 23283375286666966}
   m_Layer: 0
   m_Name: CAR_FuelTruck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1550209328239316
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4768023732524842}
+  - component: {fileID: 114254180951778994}
+  m_Layer: 0
+  m_Name: OILWAY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1426,6 +1410,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1857655383801988
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4713110018511026}
+  - component: {fileID: 114401279964184724}
+  m_Layer: 0
+  m_Name: DETONATION
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1919598401433904
 GameObject:
   m_ObjectHideFlags: 1
@@ -1735,19 +1735,6 @@ Transform:
   m_Father: {fileID: 4554117869388172}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!4 &4216137324943926
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1331463243370966}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4807306449174588}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4235566617348166
 Transform:
   m_ObjectHideFlags: 1
@@ -2297,6 +2284,19 @@ Transform:
   m_Father: {fileID: 4747495814344340}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4713110018511026
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857655383801988}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4807306449174588}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4747495814344340
 Transform:
   m_ObjectHideFlags: 1
@@ -2378,6 +2378,19 @@ Transform:
   m_Father: {fileID: 4754974743687196}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4768023732524842
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1550209328239316}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4807306449174588}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4776590657446626
 Transform:
   m_ObjectHideFlags: 1
@@ -2443,8 +2456,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4216137324943926}
-  - {fileID: 4889799149670716}
+  - {fileID: 4768023732524842}
+  - {fileID: 4713110018511026}
   m_Father: {fileID: 4342150557985208}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2481,19 +2494,6 @@ Transform:
   - {fileID: 4554117869388172}
   m_Father: {fileID: 4039974300581902}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4889799149670716
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1358984555378278}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4807306449174588}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4891887444350166
 Transform:
@@ -3958,21 +3958,6 @@ MonoBehaviour:
   m_FillAmount: 0.6
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114108351334763908
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1331463243370966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modID: 82
-  modName: Oilway
-  description: sample description
-  image: {fileID: 21300000, guid: 79720272d4338f247ab05683423afef6, type: 3}
 --- !u!114 &114147558904825360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4027,6 +4012,21 @@ MonoBehaviour:
   m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 2
+--- !u!114 &114254180951778994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1550209328239316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 82
+  modName: Oilway
+  description: 'Ramming inflicts Leak (10x 2 Damage, -50% Speed). '
+  image: {fileID: 21300000, guid: 79720272d4338f247ab05683423afef6, type: 3}
 --- !u!114 &114289465837627664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4118,6 +4118,21 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114401279964184724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857655383801988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 81
+  modName: Detonation
+  description: Create an explosion when you are destroyed. (+Fire)
+  image: {fileID: 21300000, guid: f9bddda751769f744a035b6585e0174f, type: 3}
 --- !u!114 &114408244602702034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4609,21 +4624,6 @@ MonoBehaviour:
   fireTicks: 0
   acidTicks: 0
   drainTicks: 0
---- !u!114 &114526422189649830
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1358984555378278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modID: 81
-  modName: Detonation
-  description: sample description
-  image: {fileID: 21300000, guid: f9bddda751769f744a035b6585e0174f, type: 3}
 --- !u!114 &114576901006341716
 MonoBehaviour:
   m_ObjectHideFlags: 1

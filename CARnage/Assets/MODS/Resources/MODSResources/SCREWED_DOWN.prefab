@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 85
   modName: Screwed Down
-  description: sample description
+  description: Converts 99% of your HP to Shield.
   image: {fileID: 21300000, guid: 0d7ce4355aa6e6b44a9b00a967085762, type: 3}

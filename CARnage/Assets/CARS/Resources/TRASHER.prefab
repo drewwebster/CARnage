@@ -613,6 +613,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1651123698125060
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4808043659242356}
+  - component: {fileID: 114653487863442488}
+  m_Layer: 0
+  m_Name: SPARE_PARTS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1666800295449846
 GameObject:
   m_ObjectHideFlags: 1
@@ -849,22 +865,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1815256351097928
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4540705190234144}
-  - component: {fileID: 114838093578418156}
-  m_Layer: 0
-  m_Name: SPARE_PARTS
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1830380163272786
 GameObject:
   m_ObjectHideFlags: 1
@@ -928,6 +928,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1859106546026710
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4488105455856476}
+  - component: {fileID: 114821604613202914}
+  m_Layer: 0
+  m_Name: ENDLESS_SUPPLY
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1865893767784526
 GameObject:
   m_ObjectHideFlags: 1
@@ -957,22 +973,6 @@ GameObject:
   - component: {fileID: 23761442971184812}
   m_Layer: 0
   m_Name: SA_Veh_Garbagetruck_Extras
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1889250279071004
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4672240891900856}
-  - component: {fileID: 114421421772729892}
-  m_Layer: 0
-  m_Name: ENDLESS_SUPPLY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1270,8 +1270,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4540705190234144}
-  - {fileID: 4672240891900856}
+  - {fileID: 4808043659242356}
+  - {fileID: 4488105455856476}
   m_Father: {fileID: 4443875809685758}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1521,6 +1521,19 @@ Transform:
   m_Father: {fileID: 4534710163938174}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4488105455856476
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1859106546026710}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4203287085821590}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4528209398742788
 Transform:
   m_ObjectHideFlags: 1
@@ -1551,19 +1564,6 @@ Transform:
   - {fileID: 4957522200111666}
   - {fileID: 4917682540513758}
   m_Father: {fileID: 4264874400306412}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4540705190234144
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1815256351097928}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4203287085821590}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4557995041304390
@@ -1644,19 +1644,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4948211624017856}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4672240891900856
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1889250279071004}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4203287085821590}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4681562628458316
 Transform:
@@ -1761,6 +1748,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4397659050710464}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4808043659242356
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651123698125060}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4203287085821590}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4864647117890134
 Transform:
@@ -3541,21 +3541,6 @@ MonoBehaviour:
   isDrifting: 0
   isInAir: 0
   isUsingNitro: 0
---- !u!114 &114421421772729892
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1889250279071004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modID: 84
-  modName: Endless Supply
-  description: sample description
-  image: {fileID: 21300000, guid: 27766799f998c8c468feba083f679dcb, type: 3}
 --- !u!114 &114425653516298886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3655,6 +3640,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!114 &114653487863442488
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651123698125060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 83
+  modName: Spare Parts
+  description: Destroying an enemies car repairs 25% of your HP.
+  image: {fileID: 21300000, guid: 8fc1bb72887835d42917cdd1bdf5263d, type: 3}
 --- !u!114 &114674574132406126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3763,21 +3763,21 @@ MonoBehaviour:
   stashGO: {fileID: 1507859766020162}
   RoofWeaponSpot: {fileID: 1613336777855588}
   FrontWeaponSpot: {fileID: 1856054516856618}
---- !u!114 &114838093578418156
+--- !u!114 &114821604613202914
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1815256351097928}
+  m_GameObject: {fileID: 1859106546026710}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modID: 83
-  modName: Spare Parts
-  description: sample description
-  image: {fileID: 21300000, guid: 8fc1bb72887835d42917cdd1bdf5263d, type: 3}
+  modID: 84
+  modName: Endless Supply
+  description: +100% Weapon Magazine Size.
+  image: {fileID: 21300000, guid: 27766799f998c8c468feba083f679dcb, type: 3}
 --- !u!114 &114875451088988926
 MonoBehaviour:
   m_ObjectHideFlags: 1

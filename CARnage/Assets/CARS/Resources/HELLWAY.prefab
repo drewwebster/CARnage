@@ -612,22 +612,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1587695980543958
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4635700819433072}
-  - component: {fileID: 114450465043040176}
-  m_Layer: 0
-  m_Name: DESTINATION
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1595692836263572
 GameObject:
   m_ObjectHideFlags: 1
@@ -743,22 +727,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1664695989761612
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4802992852699242}
-  - component: {fileID: 114075362813497096}
-  m_Layer: 0
-  m_Name: FINALE
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1666087047645762
 GameObject:
   m_ObjectHideFlags: 1
@@ -820,6 +788,22 @@ GameObject:
   - component: {fileID: 23037363744821486}
   m_Layer: 0
   m_Name: scp_car_03_col_01_wheel_01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1693943315065498
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4896524266534468}
+  - component: {fileID: 114786864243555816}
+  m_Layer: 0
+  m_Name: DESTINATION
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1003,6 +987,22 @@ GameObject:
   m_Layer: 0
   m_Name: Wheel_FL
   m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1862219117496474
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4073766110145868}
+  - component: {fileID: 114949441608269062}
+  m_Layer: 0
+  m_Name: FINALE
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1297,6 +1297,19 @@ Transform:
   - {fileID: 4807779817377654}
   - {fileID: 224057748330532324}
   m_Father: {fileID: 4747507167415620}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4073766110145868
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862219117496474}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4708900677469692}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4100580805863776
@@ -1723,19 +1736,6 @@ Transform:
   m_Father: {fileID: 4033247656303794}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4635700819433072
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1587695980543958}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4708900677469692}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4648865757936548
 Transform:
   m_ObjectHideFlags: 1
@@ -1759,8 +1759,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4802992852699242}
-  - {fileID: 4635700819433072}
+  - {fileID: 4073766110145868}
+  - {fileID: 4896524266534468}
   m_Father: {fileID: 4747507167415620}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1887,19 +1887,6 @@ Transform:
   m_Father: {fileID: 4985858519555562}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!4 &4802992852699242
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1664695989761612}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4708900677469692}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4807779817377654
 Transform:
   m_ObjectHideFlags: 1
@@ -1979,6 +1966,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4996267510444626}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4896524266534468
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1693943315065498}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4708900677469692}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4914865857577468
 Transform:
@@ -3714,21 +3714,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
---- !u!114 &114075362813497096
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1664695989761612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modID: 76
-  modName: Finale
-  description: sample description
-  image: {fileID: 21300000, guid: 8e4f0d3f14069934a92b4cad24d7198c, type: 3}
 --- !u!114 &114087996845880936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3877,21 +3862,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelModel: {fileID: 0}
   camber: 0
---- !u!114 &114450465043040176
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1587695980543958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modID: 77
-  modName: Destination
-  description: sample description
-  image: {fileID: 21300000, guid: 6ed4bd4dd0a12074fad5801add96744e, type: 3}
 --- !u!114 &114484183829162278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4080,6 +4050,21 @@ MonoBehaviour:
   m_FillAmount: 0.25
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114786864243555816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1693943315065498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 77
+  modName: Destination
+  description: Gain a Shield worth 100% of your HP when attacking an enemy base.
+  image: {fileID: 21300000, guid: 6ed4bd4dd0a12074fad5801add96744e, type: 3}
 --- !u!114 &114796928326881126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4138,6 +4123,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelModel: {fileID: 0}
   camber: 0
+--- !u!114 &114949441608269062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862219117496474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 76
+  modName: Finale
+  description: Ramming instantly kills for 10 seconds when losing your shield.
+  image: {fileID: 21300000, guid: 8e4f0d3f14069934a92b4cad24d7198c, type: 3}
 --- !u!114 &114961472979868352
 MonoBehaviour:
   m_ObjectHideFlags: 1

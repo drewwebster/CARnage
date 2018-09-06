@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 25
   modName: Concrete Front
-  description: sample description
+  description: Ramming inflicts knock-back.
   image: {fileID: 21300000, guid: 62a0c139222581c42a36067853f51b4c, type: 3}

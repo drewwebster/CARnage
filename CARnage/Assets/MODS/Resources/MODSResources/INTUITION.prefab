@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 70
   modName: Intuition
-  description: sample description
+  description: Reflect projectiles while on Nitro.
   image: {fileID: 21300000, guid: 8481697eb007fac43b358e3648b4980e, type: 3}

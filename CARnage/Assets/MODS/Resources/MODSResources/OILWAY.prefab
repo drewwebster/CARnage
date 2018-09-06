@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 82
   modName: Oilway
-  description: sample description
+  description: 'Ramming inflicts Leak (10x 2 Damage, -50% Speed). '
   image: {fileID: 21300000, guid: 79720272d4338f247ab05683423afef6, type: 3}

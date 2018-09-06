@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 42
   modName: Soldier of Fortune
-  description: sample description
+  description: +500% Gears when you kill your target (chosen at random initially).
   image: {fileID: 21300000, guid: 9c006b8e2a4b5524cb01faf123fcc781, type: 3}

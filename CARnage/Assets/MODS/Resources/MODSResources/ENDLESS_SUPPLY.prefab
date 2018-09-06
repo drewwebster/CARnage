@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 84
   modName: Endless Supply
-  description: sample description
+  description: +100% Weapon Magazine Size.
   image: {fileID: 21300000, guid: 27766799f998c8c468feba083f679dcb, type: 3}

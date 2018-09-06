@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 65
   modName: Finisher
-  description: sample description
+  description: Ramming enemies with <25% HP instantly kills them.
   image: {fileID: 21300000, guid: 6e9c4e97a1911854bab332837d6b2a7c, type: 3}

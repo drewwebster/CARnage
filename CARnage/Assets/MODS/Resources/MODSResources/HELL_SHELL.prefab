@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 89
   modName: Hell Shells
-  description: sample description
+  description: Projectiles bounce off cars and buildings.
   image: {fileID: 21300000, guid: 228d6850ce1cafc449a38c8df1647c24, type: 3}

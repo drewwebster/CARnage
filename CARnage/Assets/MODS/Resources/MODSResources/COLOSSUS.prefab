@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 50
   modName: Colossus
-  description: sample description
+  description: +50% HP and +50% Car size.
   image: {fileID: 21300000, guid: 518f3f3eb74ba304891ce77b05ece691, type: 3}

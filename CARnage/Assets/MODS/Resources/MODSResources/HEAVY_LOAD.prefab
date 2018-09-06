@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 21
   modName: Heavy Load
-  description: sample description
+  description: +500% Gear storage.
   image: {fileID: 21300000, guid: e97524410ebf77349bc9c8e25fe0cec5, type: 3}

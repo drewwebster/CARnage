@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 51
   modName: Bulletproof
-  description: sample description
+  description: Do not take damage from projectiles while Shielded.
   image: {fileID: 21300000, guid: d1db696c08740bd499ff23cf5f05f3ee, type: 3}

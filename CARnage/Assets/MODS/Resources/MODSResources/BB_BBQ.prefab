@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 61
   modName: BB BBQ
-  description: sample description
+  description: 10% of Melee Damage is restored as Shield.
   image: {fileID: 21300000, guid: 8dfd2e44fc25fe84aa6058c41d859fbe, type: 3}

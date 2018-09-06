@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 93
   modName: Inertia
-  description: sample description
+  description: +500% Weapon reload time for all players.
   image: {fileID: 21300000, guid: eeb857bb756a6a84ebb4c469fee36cbe, type: 3}

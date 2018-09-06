@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 75
   modName: Police Transmitter
-  description: sample description
+  description: Display enemies that fired on the map.
   image: {fileID: 21300000, guid: 3bdc5a344f155a34bbd63ff964fc405a, type: 3}

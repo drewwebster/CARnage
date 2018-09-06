@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 34
   modName: Surgeoneer
-  description: sample description
+  description: Repair 2HP when collecting Gears.
   image: {fileID: 21300000, guid: 9805c0e8adee4ec46a9ba2fb612ea6f9, type: 3}

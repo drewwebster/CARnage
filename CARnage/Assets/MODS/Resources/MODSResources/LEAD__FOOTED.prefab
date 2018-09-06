@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 18
   modName: Lead-Footed
-  description: sample description
+  description: -1% Nitro Consumption for each 1% lost.
   image: {fileID: 21300000, guid: 4e847974c20f1f04a8091e5a52aec6fc, type: 3}

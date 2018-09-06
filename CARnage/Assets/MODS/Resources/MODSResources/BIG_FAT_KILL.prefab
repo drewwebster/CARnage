@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 69
   modName: Big Fat Kill
-  description: sample description
+  description: +100% Melee Weapon Size.
   image: {fileID: 21300000, guid: 5fd628f48b0075748b26aeb603823ac9, type: 3}

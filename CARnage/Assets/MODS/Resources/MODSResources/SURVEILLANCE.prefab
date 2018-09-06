@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 31
   modName: Surveillance
-  description: sample description
+  description: Copy 1 random Modifier when destroying a car.
   image: {fileID: 21300000, guid: 639f011833b7b1d4cbe49f6ede87575f, type: 3}

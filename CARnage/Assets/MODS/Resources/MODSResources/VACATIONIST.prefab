@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 16
   modName: Vacationist
-  description: sample description
+  description: 50% Chance to spawn a Tent Base when old base gets destroyed.
   image: {fileID: 21300000, guid: 67aca79325ab04d44b470d3aa990c35d, type: 3}

@@ -577,6 +577,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1330524606807408
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4490756647101812}
+  - component: {fileID: 114211560242529614}
+  m_Layer: 0
+  m_Name: COWCATCHER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1337683964280940
 GameObject:
   m_ObjectHideFlags: 1
@@ -1191,15 +1207,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1755359218542908
+--- !u!1 &1783168986792256
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4199726892132048}
-  - component: {fileID: 114987255551063024}
+  - component: {fileID: 4626817098235020}
+  - component: {fileID: 114295475874310922}
   m_Layer: 0
   m_Name: RAPID_PROTOTYPING
   m_TagString: Untagged
@@ -1217,22 +1233,6 @@ GameObject:
   - component: {fileID: 4928086442697662}
   m_Layer: 0
   m_Name: RoofWeaponSpot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1806029387745604
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4207969493827840}
-  - component: {fileID: 114562514223088770}
-  m_Layer: 0
-  m_Name: COWCATCHER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1734,19 +1734,6 @@ Transform:
   m_Father: {fileID: 4825561997532852}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4199726892132048
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1755359218542908}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4875388105206488}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4200095437923424
 Transform:
   m_ObjectHideFlags: 1
@@ -1761,19 +1748,6 @@ Transform:
   m_Father: {fileID: 4276023914683658}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!4 &4207969493827840
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1806029387745604}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4875388105206488}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4218560697943788
 Transform:
   m_ObjectHideFlags: 1
@@ -2095,6 +2069,19 @@ Transform:
   m_Father: {fileID: 4825561997532852}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4490756647101812
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1330524606807408}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4875388105206488}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4504931749675470
 Transform:
   m_ObjectHideFlags: 1
@@ -2188,6 +2175,19 @@ Transform:
   m_Father: {fileID: 4118190532182212}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!4 &4626817098235020
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1783168986792256}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4875388105206488}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4627525756202236
 Transform:
   m_ObjectHideFlags: 1
@@ -2429,8 +2429,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4199726892132048}
-  - {fileID: 4207969493827840}
+  - {fileID: 4490756647101812}
+  - {fileID: 4626817098235020}
   m_Father: {fileID: 4999613612453600}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4950,6 +4950,21 @@ MonoBehaviour:
   automatic: 1
   distance: 10
   height: 5
+--- !u!114 &114211560242529614
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1330524606807408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 46
+  modName: Cowcatcher
+  description: +30% Ram Damage while Shielded.
+  image: {fileID: 21300000, guid: f199aad9c6a8343438927c3692c6052a, type: 3}
 --- !u!114 &114221295035945318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4977,6 +4992,22 @@ MonoBehaviour:
   m_FillAmount: 0.33
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114295475874310922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1783168986792256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 47
+  modName: Rapid Prototyping
+  description: Gain an additional modifier when purchasing a modifier in a shop, then
+    shuffle all modifiers apart from Rapid Prototyping.
+  image: {fileID: 21300000, guid: e11e432dd26f8b64cb87762db8cd5ab9, type: 3}
 --- !u!114 &114340181065592230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5174,21 +5205,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelModel: {fileID: 0}
   camber: 0
---- !u!114 &114562514223088770
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1806029387745604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modID: 46
-  modName: Cowcatcher
-  description: sample description
-  image: {fileID: 21300000, guid: f199aad9c6a8343438927c3692c6052a, type: 3}
 --- !u!114 &114602617535549976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5419,21 +5435,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelModel: {fileID: 0}
   camber: 0
---- !u!114 &114987255551063024
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1755359218542908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modID: 47
-  modName: Rapid Prototyping
-  description: sample description
-  image: {fileID: 21300000, guid: e11e432dd26f8b64cb87762db8cd5ab9, type: 3}
 --- !u!114 &114987575148804960
 MonoBehaviour:
   m_ObjectHideFlags: 1

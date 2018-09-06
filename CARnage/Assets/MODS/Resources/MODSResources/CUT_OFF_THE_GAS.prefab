@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 30
   modName: Cut off the gas
-  description: sample description
+  description: Delete 1 random modifier when destroying a car.
   image: {fileID: 21300000, guid: e3ca13fe729ac6f49af7d985ab655ce4, type: 3}

@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 66
   modName: Treacherous Flavor
-  description: sample description
+  description: Show the Base of the car that destroyed you.
   image: {fileID: 21300000, guid: d2dfad1ab393afb46ac1561dc3666879, type: 3}

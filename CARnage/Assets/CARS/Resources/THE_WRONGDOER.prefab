@@ -115,22 +115,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1060451745900480
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4989576116530456}
-  - component: {fileID: 114350727706620400}
-  m_Layer: 0
-  m_Name: CUT_OFF_THE_GAS
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1097652218866446
 GameObject:
   m_ObjectHideFlags: 1
@@ -311,22 +295,6 @@ GameObject:
   - component: {fileID: 114468197031288790}
   m_Layer: 0
   m_Name: Model
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1198869984331262
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4321610534692808}
-  - component: {fileID: 114964723571080190}
-  m_Layer: 0
-  m_Name: POLICE_OPPRESSION
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -646,6 +614,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &1345277034802464
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4184432986837732}
+  - component: {fileID: 114426395719064262}
+  m_Layer: 0
+  m_Name: POLICE_OPPRESSION
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1350779727904456
 GameObject:
   m_ObjectHideFlags: 1
@@ -762,6 +746,22 @@ GameObject:
   m_Layer: 0
   m_Name: Wheel Colliders
   m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1477590678637170
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4805401152132358}
+  - component: {fileID: 114286436038631832}
+  m_Layer: 0
+  m_Name: CUT_OFF_THE_GAS
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1625,6 +1625,19 @@ Transform:
   m_Father: {fileID: 4767380047592624}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4184432986837732
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1345277034802464}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4968068644758746}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4189389061074124
 Transform:
   m_ObjectHideFlags: 1
@@ -1755,19 +1768,6 @@ Transform:
   - {fileID: 4587331704193086}
   m_Father: {fileID: 4647961229172764}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4321610534692808
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1198869984331262}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4968068644758746}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4331655612348758
 Transform:
@@ -2269,6 +2269,19 @@ Transform:
   m_Father: {fileID: 4934736165236964}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4805401152132358
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1477590678637170}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4968068644758746}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4820658343600826
 Transform:
   m_ObjectHideFlags: 1
@@ -2481,23 +2494,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4989576116530456}
-  - {fileID: 4321610534692808}
+  - {fileID: 4805401152132358}
+  - {fileID: 4184432986837732}
   m_Father: {fileID: 4934736165236964}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4989576116530456
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1060451745900480}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4968068644758746}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4998034807942404
 Transform:
@@ -4195,12 +4195,12 @@ MonoBehaviour:
   explodeTime: 3
   explosionFX: {fileID: 1001239509134270}
   rel_weapon: {fileID: 0}
---- !u!114 &114350727706620400
+--- !u!114 &114286436038631832
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1060451745900480}
+  m_GameObject: {fileID: 1477590678637170}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
@@ -4208,7 +4208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 30
   modName: Cut off the gas
-  description: sample description
+  description: Delete 1 random modifier when destroying a car.
   image: {fileID: 21300000, guid: e3ca13fe729ac6f49af7d985ab655ce4, type: 3}
 --- !u!114 &114350737310337060
 MonoBehaviour:
@@ -4257,6 +4257,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!114 &114426395719064262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1345277034802464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 29
+  modName: Police Oppression
+  description: Steal a random weapon from a car when ramming it.
+  image: {fileID: 21300000, guid: 0a348ba003dc14a4b8a425a7bddf59cf, type: 3}
 --- !u!114 &114439748189411580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5148,21 +5163,6 @@ MonoBehaviour:
   rel_weapon: {fileID: 0}
   fixedDamage: 0
   rel_car: {fileID: 0}
---- !u!114 &114964723571080190
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1198869984331262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modID: 29
-  modName: Police Oppression
-  description: sample description
-  image: {fileID: 21300000, guid: 0a348ba003dc14a4b8a425a7bddf59cf, type: 3}
 --- !u!114 &114979041842925582
 MonoBehaviour:
   m_ObjectHideFlags: 1

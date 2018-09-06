@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 83
   modName: Spare Parts
-  description: sample description
+  description: Destroying an enemies car repairs 25% of your HP.
   image: {fileID: 21300000, guid: 8fc1bb72887835d42917cdd1bdf5263d, type: 3}

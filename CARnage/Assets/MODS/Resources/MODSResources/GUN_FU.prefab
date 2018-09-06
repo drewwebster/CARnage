@@ -53,5 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 71
   modName: Gun Fu
-  description: sample description
+  description: Fire your second weapon in the opposite direction while firing the
+    first.
   image: {fileID: 21300000, guid: b89dabbd6fa0dd54b9ee3ac57a2648c4, type: 3}

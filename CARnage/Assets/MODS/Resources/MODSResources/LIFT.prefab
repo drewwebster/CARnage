@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 52
   modName: Lift
-  description: sample description
+  description: Collect destroyed cars for a 25% Shield.
   image: {fileID: 21300000, guid: a69a141229f7f5947ac2c1c3bb03ed61, type: 3}

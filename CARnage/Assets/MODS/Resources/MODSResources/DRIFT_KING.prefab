@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 3
   modName: Drift King
-  description: sample description
+  description: +20% Projectile Damage while drifting.
   image: {fileID: 21300000, guid: 619b25cfd03b3284fa918451a609f063, type: 3}

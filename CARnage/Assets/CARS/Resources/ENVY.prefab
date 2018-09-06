@@ -11,6 +11,22 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1045006868502710}
   m_IsPrefabParent: 1
+--- !u!1 &1024510909266970
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4722346667960006}
+  - component: {fileID: 114086240373965658}
+  m_Layer: 0
+  m_Name: TEARDOWN
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1036057590447972
 GameObject:
   m_ObjectHideFlags: 1
@@ -443,6 +459,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1542113513814320
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4762671306613990}
+  - component: {fileID: 114647517202873176}
+  m_Layer: 0
+  m_Name: GOLD_DIGGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1547952472938600
 GameObject:
   m_ObjectHideFlags: 1
@@ -861,38 +893,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1868408131200848
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4389100525568928}
-  - component: {fileID: 114245266135679534}
-  m_Layer: 0
-  m_Name: TEARDOWN
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1880432986344256
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4046165551336804}
-  - component: {fileID: 114324083685596678}
-  m_Layer: 0
-  m_Name: GOLD_DIGGER
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1885085643602600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,19 +1088,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4604611950096006}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4046165551336804
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1880432986344256}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4816541295705926}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4053758071566582
 Transform:
@@ -1330,19 +1317,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!4 &4389100525568928
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1868408131200848}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4816541295705926}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4433445545657560
 Transform:
   m_ObjectHideFlags: 1
@@ -1625,6 +1599,19 @@ Transform:
   m_Father: {fileID: 4604611950096006}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4722346667960006
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024510909266970}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4816541295705926}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4725433363769556
 Transform:
   m_ObjectHideFlags: 1
@@ -1652,6 +1639,19 @@ Transform:
   m_Father: {fileID: 4707567769295652}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!4 &4762671306613990
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542113513814320}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4816541295705926}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4779117922859102
 Transform:
   m_ObjectHideFlags: 1
@@ -1715,8 +1715,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4389100525568928}
-  - {fileID: 4046165551336804}
+  - {fileID: 4722346667960006}
+  - {fileID: 4762671306613990}
   m_Father: {fileID: 4349977066640738}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2759,6 +2759,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelModel: {fileID: 0}
   camber: 0
+--- !u!114 &114086240373965658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024510909266970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 27
+  modName: Teardown
+  description: +500% Building Damage.
+  image: {fileID: 21300000, guid: bea776bda21d16646b42f6b9d99ddbf4, type: 3}
 --- !u!114 &114087821681380848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2851,21 +2866,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b013177ce840fd2468285033a4554736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114245266135679534
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1868408131200848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modID: 27
-  modName: Teardown
-  description: sample description
-  image: {fileID: 21300000, guid: bea776bda21d16646b42f6b9d99ddbf4, type: 3}
 --- !u!114 &114274714060596012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3371,21 +3371,6 @@ MonoBehaviour:
   fireTicks: 0
   acidTicks: 0
   drainTicks: 0
---- !u!114 &114324083685596678
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1880432986344256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modID: 28
-  modName: Gold Digger
-  description: sample description
-  image: {fileID: 21300000, guid: 4e1e4ee2c9b9f8844bf954734d91ba38, type: 3}
 --- !u!114 &114375922829072794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3567,6 +3552,21 @@ MonoBehaviour:
   FX_Destroy: {fileID: 1767237996325090}
   FX_Freeze: {fileID: 0}
   FX_Locked: {fileID: 0}
+--- !u!114 &114647517202873176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542113513814320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 28
+  modName: Gold Digger
+  description: +100% Gears from Environment.
+  image: {fileID: 21300000, guid: 4e1e4ee2c9b9f8844bf954734d91ba38, type: 3}
 --- !u!114 &114689219148874758
 MonoBehaviour:
   m_ObjectHideFlags: 1

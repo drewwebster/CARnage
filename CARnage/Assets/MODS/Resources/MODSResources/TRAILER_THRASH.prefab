@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 9
   modName: Trailer Thrash
-  description: sample description
+  description: Random thrash is thrown to the sides when shielded (5DMG + Leak).
   image: {fileID: 21300000, guid: 0065db00f8e2e814f916fea41f815454, type: 3}

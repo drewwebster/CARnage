@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 44
   modName: Rapid Rush
-  description: sample description
+  description: Shot delay decreases with Speed.
   image: {fileID: 21300000, guid: c7643c8ab4654be4c89d2fc97594a461, type: 3}

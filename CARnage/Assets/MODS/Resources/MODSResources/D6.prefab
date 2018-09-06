@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 73
   modName: D6
-  description: sample description
+  description: Start with two random additional modifiers.
   image: {fileID: 21300000, guid: 8951e2aff43fc7b4ba2abc9b771266a7, type: 3}

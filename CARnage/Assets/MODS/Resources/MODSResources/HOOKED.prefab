@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 53
   modName: Hooked
-  description: sample description
+  description: 'Ramming a car connects you via a towline. '
   image: {fileID: 21300000, guid: 7e404bee7300d704f90aa689b829e9cc, type: 3}

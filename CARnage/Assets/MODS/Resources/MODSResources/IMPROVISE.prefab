@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 1
   modName: Improvise
-  description: sample description
+  description: Weapons you obtain get a random upgrade.
   image: {fileID: 21300000, guid: ae008baab6f5be04c869d59ec81b5551, type: 3}

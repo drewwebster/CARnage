@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 26
   modName: Construction Worker
-  description: sample description
+  description: -50% Repair Cost.
   image: {fileID: 21300000, guid: e1c3b56f199c1564e89fde0dc3a0adad, type: 3}

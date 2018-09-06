@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 68
   modName: Sinner
-  description: sample description
+  description: +1% Damage for each car destroyed.
   image: {fileID: 21300000, guid: cbac5ab7259a4ce4487a7720c2e0e461, type: 3}

@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 81
   modName: Detonation
-  description: sample description
+  description: Create an explosion when you are destroyed. (+Fire)
   image: {fileID: 21300000, guid: f9bddda751769f744a035b6585e0174f, type: 3}

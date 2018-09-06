@@ -95,22 +95,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1060916106844594
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4135587647993112}
-  - component: {fileID: 114105600545287078}
-  m_Layer: 0
-  m_Name: TRAILER_THRASH
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1076528347757672
 GameObject:
   m_ObjectHideFlags: 1
@@ -467,22 +451,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1342184330655412
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4725600218908788}
-  - component: {fileID: 114811325850800784}
-  m_Layer: 0
-  m_Name: BARE_KNUCKLES
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1359817803122450
 GameObject:
   m_ObjectHideFlags: 1
@@ -566,6 +534,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1433047550776372
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4998574246515736}
+  - component: {fileID: 114896452659159040}
+  m_Layer: 0
+  m_Name: BARE_KNUCKLES
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1469308570965008
 GameObject:
   m_ObjectHideFlags: 1
@@ -595,6 +579,22 @@ GameObject:
   - component: {fileID: 23823379358033762}
   m_Layer: 0
   m_Name: scp_car_03_col_01_wheel_01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1515713671825882
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4108939619238146}
+  - component: {fileID: 114827787098357412}
+  m_Layer: 0
+  m_Name: TRAILER_THRASH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1390,6 +1390,19 @@ Transform:
   m_Father: {fileID: 4497749902266724}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4108939619238146
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515713671825882}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4359304132108822}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4113347855072028
 Transform:
   m_ObjectHideFlags: 1
@@ -1448,19 +1461,6 @@ Transform:
   - {fileID: 4292278738184098}
   m_Father: {fileID: 4552618335187366}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4135587647993112
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1060916106844594}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4359304132108822}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4166751894341394
 Transform:
@@ -1652,8 +1652,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4135587647993112}
-  - {fileID: 4725600218908788}
+  - {fileID: 4108939619238146}
+  - {fileID: 4998574246515736}
   m_Father: {fileID: 4001991413088736}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1994,19 +1994,6 @@ Transform:
   m_Father: {fileID: 4497749902266724}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4725600218908788
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1342184330655412}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4359304132108822}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4743195212375210
 Transform:
   m_ObjectHideFlags: 1
@@ -2243,6 +2230,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4120287135765626}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4998574246515736
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1433047550776372}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4359304132108822}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23042360617050576
 MeshRenderer:
@@ -3636,21 +3636,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114105600545287078
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1060916106844594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modID: 9
-  modName: Trailer Thrash
-  description: 
-  image: {fileID: 21300000, guid: 0065db00f8e2e814f916fea41f815454, type: 3}
 --- !u!114 &114107924502547380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4411,21 +4396,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c72887219efa8994d938b47f07b6625e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114811325850800784
+--- !u!114 &114827787098357412
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1342184330655412}
+  m_GameObject: {fileID: 1515713671825882}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modID: 10
-  modName: Bare Knuckles
-  description: 
-  image: {fileID: 21300000, guid: 76972626710e0e849800c8b872727736, type: 3}
+  modID: 9
+  modName: Trailer Thrash
+  description: Random thrash is thrown to the sides when shielded (5DMG + Leak).
+  image: {fileID: 21300000, guid: 0065db00f8e2e814f916fea41f815454, type: 3}
 --- !u!114 &114855174161385326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4470,6 +4455,21 @@ MonoBehaviour:
   fireTicks: 0
   acidTicks: 0
   drainTicks: 0
+--- !u!114 &114896452659159040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1433047550776372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 10
+  modName: Bare Knuckles
+  description: +30% Melee Weapon Damage.
+  image: {fileID: 21300000, guid: 76972626710e0e849800c8b872727736, type: 3}
 --- !u!114 &114897520753866096
 MonoBehaviour:
   m_ObjectHideFlags: 1

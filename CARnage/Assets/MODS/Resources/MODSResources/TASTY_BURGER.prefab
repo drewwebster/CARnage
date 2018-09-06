@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 5
   modName: Tasty Burger
-  description: sample description
+  description: Shield replenishes once when destroyed.
   image: {fileID: 21300000, guid: ec71dc1ff134a5946add34e07d663415, type: 3}

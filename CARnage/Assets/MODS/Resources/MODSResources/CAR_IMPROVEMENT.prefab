@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 0
   modName: Car Improvement
-  description: sample description
+  description: -50% Modifier price cost.
   image: {fileID: 21300000, guid: b1e532a9f2af99045a98b99fdbf2b81e, type: 3}

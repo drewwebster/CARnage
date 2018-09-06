@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 36
   modName: Well-Placed Advertisement
-  description: sample description
+  description: +100% collected gears when shielded.
   image: {fileID: 21300000, guid: c5cfb595d7031034db045139e7c6019f, type: 3}

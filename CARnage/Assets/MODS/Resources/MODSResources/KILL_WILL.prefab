@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 48
   modName: Kill Will
-  description: sample description
+  description: +30% Damage against the last Car that destroyed you.
   image: {fileID: 21300000, guid: 3fccea426b88f6342b18f072973e5014, type: 3}

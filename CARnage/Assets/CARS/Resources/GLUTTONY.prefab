@@ -77,22 +77,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1071098364004276
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4708146047084072}
-  - component: {fileID: 114838689954931412}
-  m_Layer: 0
-  m_Name: THRESH
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1071268993310928
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +296,22 @@ GameObject:
   - component: {fileID: 4808359021292848}
   m_Layer: 0
   m_Name: FrontWeaponSpot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1327604102658512
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4214810061237430}
+  - component: {fileID: 114323869448522816}
+  m_Layer: 0
+  m_Name: THRESH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -597,6 +597,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1638218759732630
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4195100817785920}
+  - component: {fileID: 114839876282008566}
+  m_Layer: 0
+  m_Name: CROP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1648613821882156
 GameObject:
   m_ObjectHideFlags: 1
@@ -750,22 +766,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!1 &1754901423716806
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4032815342569130}
-  - component: {fileID: 114021194013455196}
-  m_Layer: 0
-  m_Name: CROP
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1769051488760858
 GameObject:
   m_ObjectHideFlags: 1
@@ -1039,19 +1039,6 @@ Transform:
   m_Father: {fileID: 4203773462880258}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4032815342569130
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1754901423716806}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4328668967295158}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4037813814688820
 Transform:
   m_ObjectHideFlags: 1
@@ -1135,6 +1122,19 @@ Transform:
   m_Father: {fileID: 4758280652137916}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!4 &4195100817785920
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1638218759732630}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4328668967295158}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4203773462880258
 Transform:
   m_ObjectHideFlags: 1
@@ -1167,6 +1167,19 @@ Transform:
   - {fileID: 224629967292601716}
   m_Father: {fileID: 4815868390898956}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4214810061237430
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1327604102658512}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4328668967295158}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4218477544658276
 Transform:
@@ -1301,8 +1314,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4032815342569130}
-  - {fileID: 4708146047084072}
+  - {fileID: 4195100817785920}
+  - {fileID: 4214810061237430}
   m_Father: {fileID: 4815868390898956}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1513,19 +1526,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4203773462880258}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4708146047084072
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1071098364004276}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4328668967295158}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4719511514491620
@@ -2597,21 +2597,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114021194013455196
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1754901423716806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modID: 79
-  modName: Crop
-  description: sample description
-  image: {fileID: 21300000, guid: 52f5221e493dda64dbb12e9dfa9d68f6, type: 3}
 --- !u!114 &114021666679595028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3213,6 +3198,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b013177ce840fd2468285033a4554736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114323869448522816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1327604102658512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 80
+  modName: Thresh
+  description: +1% Ramming Damage for each Shield Point.
+  image: {fileID: 21300000, guid: f3798aa01b5e8cd41ae757f129c820f3, type: 3}
 --- !u!114 &114325033039006424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3404,21 +3404,21 @@ MonoBehaviour:
   stashGO: {fileID: 1180430552691398}
   RoofWeaponSpot: {fileID: 1648613821882156}
   FrontWeaponSpot: {fileID: 1306972008090554}
---- !u!114 &114838689954931412
+--- !u!114 &114839876282008566
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1071098364004276}
+  m_GameObject: {fileID: 1638218759732630}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modID: 80
-  modName: Thresh
-  description: sample description
-  image: {fileID: 21300000, guid: f3798aa01b5e8cd41ae757f129c820f3, type: 3}
+  modID: 79
+  modName: Crop
+  description: Collecting gears replenishes 1 Shield.
+  image: {fileID: 21300000, guid: 52f5221e493dda64dbb12e9dfa9d68f6, type: 3}
 --- !u!114 &114860456573356112
 MonoBehaviour:
   m_ObjectHideFlags: 1

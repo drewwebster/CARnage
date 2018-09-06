@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 56
   modName: Black Thumb
-  description: sample description
+  description: Debuffs you applied repair you by 2HP/s.
   image: {fileID: 21300000, guid: b81356de0577c0b47a04624602c0a4f1, type: 3}

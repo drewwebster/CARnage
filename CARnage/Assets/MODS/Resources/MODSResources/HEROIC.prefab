@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 58
   modName: Heroic
-  description: sample description
+  description: Immune to Fire, Acid, Leak.
   image: {fileID: 21300000, guid: 78bbe41b998c37244948946b6fe22856, type: 3}

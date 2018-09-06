@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 7
   modName: Downfall
-  description: sample description
+  description: Equip a Rocket Launcher when falling below 25% HP.
   image: {fileID: 21300000, guid: e3f79e0c1d8f0f84d8465fdae652c5f0, type: 3}

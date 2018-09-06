@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 43
   modName: Bad Attitude
-  description: sample description
+  description: +30% Projectile Damage when at 100% HP.
   image: {fileID: 21300000, guid: 224bef8a0cfffb642b703d02bef4b781, type: 3}

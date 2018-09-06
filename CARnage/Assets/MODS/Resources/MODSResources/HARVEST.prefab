@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 63
   modName: Harvest
-  description: sample description
+  description: +100% Gears from cars.
   image: {fileID: 21300000, guid: 5d50c2890d4d06748b7cb98095e485f5, type: 3}

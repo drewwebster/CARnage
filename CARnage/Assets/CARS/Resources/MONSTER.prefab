@@ -319,22 +319,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1314823338341384
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4161416501507616}
-  - component: {fileID: 114057285177194224}
-  m_Layer: 0
-  m_Name: FORCED_EXTRACTION
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1329250891334868
 GameObject:
   m_ObjectHideFlags: 1
@@ -581,22 +565,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1522558677278762
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4311155797285942}
-  - component: {fileID: 114651291103746550}
-  m_Layer: 0
-  m_Name: TREACHEROUS_FLAVOR
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1524083313205166
 GameObject:
   m_ObjectHideFlags: 1
@@ -713,6 +681,38 @@ GameObject:
   m_Layer: 0
   m_Name: Wheel_FR
   m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1561733395843714
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4292795758055178}
+  - component: {fileID: 114010170881382764}
+  m_Layer: 0
+  m_Name: FORCED_EXTRACTION
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1566462007601956
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4736411079772838}
+  - component: {fileID: 114278203457898190}
+  m_Layer: 0
+  m_Name: TREACHEROUS_FLAVOR
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1412,19 +1412,6 @@ Transform:
   m_Father: {fileID: 4757649938368692}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4161416501507616
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1314823338341384}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4681331935801520}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4174505631197272
 Transform:
   m_ObjectHideFlags: 1
@@ -1562,18 +1549,18 @@ Transform:
   m_Father: {fileID: 4695996836062200}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4311155797285942
+--- !u!4 &4292795758055178
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1522558677278762}
+  m_GameObject: {fileID: 1561733395843714}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4681331935801520}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4333345567550390
 Transform:
@@ -1889,8 +1876,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4161416501507616}
-  - {fileID: 4311155797285942}
+  - {fileID: 4292795758055178}
+  - {fileID: 4736411079772838}
   m_Father: {fileID: 4225954656176730}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1925,6 +1912,19 @@ Transform:
   - {fileID: 4406644810691832}
   m_Father: {fileID: 4661982497116450}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4736411079772838
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566462007601956}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4681331935801520}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4737181948135104
 Transform:
@@ -3332,6 +3332,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reflectsProjectiles: 0
+--- !u!114 &114010170881382764
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1561733395843714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 67
+  modName: Forced Extraction
+  description: Melee hits let enemy car weapons drop.
+  image: {fileID: 21300000, guid: d2914173c310b0642b1d6526af6baf23, type: 3}
 --- !u!114 &114018025030289082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3359,21 +3374,6 @@ MonoBehaviour:
   m_FillAmount: 0.5
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114057285177194224
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1314823338341384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modID: 67
-  modName: Forced Extraction
-  description: sample description
-  image: {fileID: 21300000, guid: d2914173c310b0642b1d6526af6baf23, type: 3}
 --- !u!114 &114064127346493368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3836,6 +3836,21 @@ MonoBehaviour:
   FX_Destroy: {fileID: 1329250891334868}
   FX_Freeze: {fileID: 0}
   FX_Locked: {fileID: 0}
+--- !u!114 &114278203457898190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566462007601956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modID: 66
+  modName: Treacherous Flavor
+  description: Show the Base of the car that destroyed you.
+  image: {fileID: 21300000, guid: d2dfad1ab393afb46ac1561dc3666879, type: 3}
 --- !u!114 &114307036738887976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4198,21 +4213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b013177ce840fd2468285033a4554736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114651291103746550
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1522558677278762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57c7d951d2d8944cb5603ed5ace8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modID: 66
-  modName: Treacherous Flavor
-  description: sample description
-  image: {fileID: 21300000, guid: d2dfad1ab393afb46ac1561dc3666879, type: 3}
 --- !u!114 &114683829633489656
 MonoBehaviour:
   m_ObjectHideFlags: 1

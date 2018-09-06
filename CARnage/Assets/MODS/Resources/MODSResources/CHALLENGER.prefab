@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 41
   modName: Challenger
-  description: sample description
+  description: Explode on contact.
   image: {fileID: 21300000, guid: 9ee134444fcd4ac43b850ffbc3034ff9, type: 3}

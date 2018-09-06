@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 22
   modName: Disassembly
-  description: sample description
+  description: Cars you damage drop gears.
   image: {fileID: 21300000, guid: 4cd6236fc3253ee4e859e0a370bf7d1e, type: 3}

@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 96
   modName: Upwind
-  description: sample description
+  description: Repair 10HP/s while in the air.
   image: {fileID: 21300000, guid: 2eb3ecc5cb234d14faba9cdd1513cca4, type: 3}

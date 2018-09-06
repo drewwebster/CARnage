@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 80
   modName: Thresh
-  description: sample description
+  description: +1% Ramming Damage for each Shield Point.
   image: {fileID: 21300000, guid: f3798aa01b5e8cd41ae757f129c820f3, type: 3}

@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 27
   modName: Teardown
-  description: sample description
+  description: +500% Building Damage.
   image: {fileID: 21300000, guid: bea776bda21d16646b42f6b9d99ddbf4, type: 3}

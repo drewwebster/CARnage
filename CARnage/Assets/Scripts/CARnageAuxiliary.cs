@@ -64,6 +64,11 @@ public class CARnageAuxiliary : MonoBehaviour {
         NONE
     }
 
+    public static string colorMe(string s)
+    {
+        return s.Replace("Acid", "<color=lime>Acid</color>").Replace("Fire", "<color=red>Fire</color>").Replace("Leak", "<color=black>Leak</color>").Replace("HP", "<color=red>HP</color>").Replace("Shielded", "<color=cyan>Shielded</color>").Replace("Shield", "<color=cyan>Shield</color>").Replace("Gears", "<color=#303030>Gears</color>").Replace("Gear", "<color=#303030>Gear</color>").Replace("Explosion", "<color=yellow>Explosion</color>").Replace("Nitro", "<color=#F29200>Nitro</color>").Replace("Freeze", "<color=lightblue>Freeze</color>").Replace("Damage", "DMG");
+    }
+
     //public static void setAnimationSpeed(GameObject target, string animationName, float actualValue)
     //{
     //    float speed = 1;

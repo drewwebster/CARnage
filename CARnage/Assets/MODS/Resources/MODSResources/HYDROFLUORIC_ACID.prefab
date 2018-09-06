@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 11
   modName: Hydrofluoric Acid
-  description: sample description
+  description: Dealing damage also applies Acid.
   image: {fileID: 21300000, guid: 4a88392898bdc4e40ab2deb516360c6a, type: 3}

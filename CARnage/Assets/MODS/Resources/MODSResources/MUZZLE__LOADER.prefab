@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 88
   modName: Muzzle-Loader
-  description: sample description
+  description: Magazine size of all weapons is limited to 1 for all players.
   image: {fileID: 21300000, guid: b158e116a4062fb489cb67ec33299273, type: 3}

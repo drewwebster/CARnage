@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 38
   modName: Merchant of Death
-  description: sample description
+  description: Prices drop by 1% for each destroyed car.
   image: {fileID: 21300000, guid: 49f5be2a515d7bb47afc5085cffed29b, type: 3}

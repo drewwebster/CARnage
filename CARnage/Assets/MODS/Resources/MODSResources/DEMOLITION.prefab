@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 23
   modName: Demolition
-  description: sample description
+  description: Repair 10HP when damaging the environment.
   image: {fileID: 21300000, guid: 3159bbb5ee4679f4a85448e5e05adf46, type: 3}

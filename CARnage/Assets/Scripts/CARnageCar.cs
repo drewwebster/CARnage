@@ -56,6 +56,7 @@ public class CARnageCar : MonoBehaviour {
     float lastDamagedTime;
     float shieldRegSeconds = 5;
     float shieldRepairRate = 1;
+    public bool isIndestructible;
 
     private void Start()
     {
@@ -162,6 +163,9 @@ public class CARnageCar : MonoBehaviour {
     CARnageCar lastDamager;
     public void damageMe(float damage, CARnageCar damager, DamageType damageType)
     {
+        if (isIndestructible) // preview screen
+            return;
+
         damage *= getModController().getSelfDMG_Multiplier(damager, damageType);
         if(damager != null)
             damage *= damager.getModController().getDMG_Multiplier(damageType, this);

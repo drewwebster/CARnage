@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 99
   modName: Gasworks
-  description: sample description
+  description: -50% Nitro consumption.
   image: {fileID: 21300000, guid: c9b7d195b6f75ff458f3b99525e8e99e, type: 3}

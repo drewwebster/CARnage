@@ -23,13 +23,14 @@ public class CarSelectionLogic : MonoBehaviour {
     GameObject selectedCar;
     int gridX = 0;
     int gridY = 0;
+    GameObject[,] carGrid;
 
     // Use this for initialization
     void Start () {
         // create list
-        carGrid = new GameObject[10,10];
+        carGrid = new GameObject[10, 10];
         Array values = Enum.GetValues(typeof(CarModel));
-        GameObject carIconBG = GameObject.Find("TransBG_Cars");
+        GameObject carIconBG = GameObject.Find("TransBG_Cars_Grid");
         carList = new List<GameObject>();
         foreach (CarModel model in values)
         {
@@ -37,14 +38,20 @@ public class CarSelectionLogic : MonoBehaviour {
 
             go.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>("CarIcons/" + model);
             GameObject CARgo = Instantiate(Resources.Load<GameObject>(model.ToString()), go.transform);
-            CARgo.transform.position = new Vector3(10000, 10000, 10000);
-            //CARgo.SetActive(false);
-            CARgo.GetComponent<CARnageCar>().controlledBy = CARnageAuxiliary.ControllerType.NONE;
+
+            CARgo.transform.parent = GameObject.Find("CAR_PREVIEW_SPAWN").transform;
+
+            //CARgo.GetComponent<CARnageCar>().controlledBy = CARnageAuxiliary.ControllerType.NONE;
             CARgo.GetComponent<CARnageCar>().enabled = false;
             CARgo.GetComponent<RCC_CarControllerV3>().enabled = false;
+            CARgo.GetComponent<CARnageCar>().isIndestructible = true;
 
             foreach (Rigidbody rb in CARgo.GetComponentsInChildren<Rigidbody>())
                 rb.useGravity = false;
+            foreach (Rigidbody rb in CARgo.GetComponentsInChildren<Rigidbody>())
+                rb.isKinematic = true;
+            CARgo.transform.localPosition = Vector3.zero;
+
             //foreach (CARnageWeapon weapon in carGO.GetComponent<CARnageCar>().getWeaponController().getAllWeapons())
             //    weapon.gameObject.SetActive(false);
             foreach (scaleEmission se in CARgo.GetComponentsInChildren<scaleEmission>())
@@ -54,6 +61,8 @@ public class CarSelectionLogic : MonoBehaviour {
             //go.GetComponentInChildren<Text>().text = CARgo.GetComponent<CARnageCar>().carName;
             
             carList.Add(go);
+            go.GetComponent<CarIcon>().rel_car = CARgo;
+            CARgo.SetActive(false);
 
             //GameObject carGO = CarFactory.spawnCar(model, position);
             //carGO.transform.Rotate(0, 180, 0);
@@ -66,7 +75,7 @@ public class CarSelectionLogic : MonoBehaviour {
         }
 
         // display
-        currSortOrder = SortOrder.NAME;
+        currSortOrder = SortOrder.ARRAY;
         sortCars();
 
 
@@ -77,7 +86,6 @@ public class CarSelectionLogic : MonoBehaviour {
 
     }
 
-    GameObject[,] carGrid;
     SortOrder currSortOrder;
     void sortCars()
     {
@@ -227,9 +235,11 @@ public class CarSelectionLogic : MonoBehaviour {
     {
         selectedCar.GetComponentInChildren<Image>().color = Color.white;
         //selectedCar.GetComponentInChildren<Text>().enabled = true;
-        Debug.Log("Instantiate: " + selectedCar.GetComponentInChildren<CARnageCar>().carModel);
-        CARnageCar car = selectedCar.GetComponentInChildren<CARnageCar>();
-        GameObject carGO = Instantiate(Resources.Load<GameObject>(car.carModel.ToString()), GameObject.Find("CAR_PREVIEW_SPAWN").transform);
+        //Debug.Log("Instantiate: " + selectedCar.GetComponentInChildren<CARnageCar>().carModel);
+        //GameObject carGO = Instantiate(Resources.Load<GameObject>(car.carModel.ToString()), GameObject.Find("CAR_PREVIEW_SPAWN").transform);
+        GameObject carGO = selectedCar.GetComponent<CarIcon>().rel_car;
+        carGO.SetActive(true);
+        CARnageCar car = carGO.GetComponent<CARnageCar>();
         GameObject.Find("CarName_Text").GetComponent<Text>().text = car.carName;
 
         CARnageModifier[] mods = car.GetComponentsInChildren<CARnageModifier>();
@@ -237,18 +247,28 @@ public class CarSelectionLogic : MonoBehaviour {
         {
             GameObject.Find("ModLImage").GetComponent<Image>().sprite = mods[0].image;
             GameObject.Find("ModLName").GetComponent<Text>().text = mods[0].modName;
-            GameObject.Find("ModLText").GetComponent<Text>().text = mods[0].description;
+            GameObject.Find("ModLText").GetComponent<Text>().text = CARnageAuxiliary.colorMe(mods[0].description);
         }
-        if (mods != null && mods.Length > 0)
+        else
+        {
+            GameObject.Find("ModLImage").GetComponent<Image>().sprite = null;
+            GameObject.Find("ModLName").GetComponent<Text>().text = "";
+            GameObject.Find("ModLText").GetComponent<Text>().text = "";
+        }
+        if (mods != null && mods.Length > 1)
         {
             GameObject.Find("ModRImage").GetComponent<Image>().sprite = mods[1].image;
             GameObject.Find("ModRName").GetComponent<Text>().text = mods[1].modName;
-            GameObject.Find("ModRText").GetComponent<Text>().text = mods[1].description;
+            GameObject.Find("ModRText").GetComponent<Text>().text = CARnageAuxiliary.colorMe(mods[1].description);
         }
-        if (car.getWeaponController().getLeftWeapon())
-            displayWeapon(car.getWeaponController().getLeftWeapon(), "L");
-        if (car.getWeaponController().getRightWeapon())
-            displayWeapon(car.getWeaponController().getRightWeapon(), "R");
+        else
+        {
+            GameObject.Find("ModRImage").GetComponent<Image>().sprite = null;
+            GameObject.Find("ModRName").GetComponent<Text>().text = "";
+            GameObject.Find("ModRText").GetComponent<Text>().text = "";
+        }
+        displayWeapon(car.getWeaponController().getLeftWeapon(), "L");
+        displayWeapon(car.getWeaponController().getRightWeapon(), "R");
 
         int i = 1;
         foreach (Image img in GameObject.Find("SpeedBlocks").GetComponentsInChildren<Image>())
@@ -310,83 +330,81 @@ public class CarSelectionLogic : MonoBehaviour {
                     img.enabled = false;
                 i++;
             }
-
-        car.controlledBy = CARnageAuxiliary.ControllerType.NONE;
-        car.enabled = false;
-        carGO.GetComponent<RCC_CarControllerV3>().enabled = false;
-
-        foreach (Rigidbody rb in carGO.GetComponentsInChildren<Rigidbody>())
-            rb.useGravity = false;
-        //foreach (CARnageWeapon weapon in carGO.GetComponent<CARnageCar>().getWeaponController().getAllWeapons())
-        //    weapon.gameObject.SetActive(false);
-        foreach (scaleEmission se in carGO.GetComponentsInChildren<scaleEmission>())
-            se.gameObject.SetActive(false);
-        Destroy(GameObject.Find("WorldCanvasHPShieldNitro"));
     }
 
     public void displayWeapon(CARnageWeapon weapon, string handSide)
     {
-        string dmgType = "";
-        string delayType = "";
-        Debug.Log("Weapon" + handSide + "Name");
-        GameObject.Find("Weapon"+handSide+"Name").GetComponent<Text>().text = weapon.weaponName;
-        switch (weapon.damageType)
+        if(weapon != null)
         {
-            case DamageType.PROJECTILE:
-                dmgType = " (Projectile)";
-                delayType = "Shot delay:";
-                break;
-            case DamageType.EXPLOSION:
-                dmgType = " (Explosion)";
-                delayType = "Throw delay:";
-                break;
-            case DamageType.MELEE:
-                dmgType = " (Melee)";
-                delayType = "Hit delay:";
-                break;
+            string dmgType = "";
+            string delayType = "";
+            GameObject.Find("Weapon" + handSide + "Name").GetComponent<Text>().text = weapon.weaponName.Replace("_WEAPON","");
+            switch (weapon.damageType)
+            {
+                case DamageType.PROJECTILE:
+                    dmgType = " (Projectile)";
+                    delayType = "Shot delay:";
+                    break;
+                case DamageType.EXPLOSION:
+                    dmgType = " (Explosion)";
+                    delayType = "Throw delay:";
+                    break;
+                case DamageType.MELEE:
+                    dmgType = " (Melee)";
+                    delayType = "Hit delay:";
+                    break;
+            }
+            string reloadStr = weapon.reloadTime > 0 ? "Reload time:\r\n" : "";
+            string reloadTime = weapon.reloadTime > 0 ? weapon.reloadTime + "<size=9> sec</size>" : "";
+            string delayAuto = weapon.automatic ? " <size=9>(auto)</size>" : "";
+            string magazineStr = weapon.magazineSize > 0 ? "Magazine:\r\n" : "";
+            string magazineSize = weapon.magazineSize > 0 ? weapon.magazineSize + "\r\n" : "";
+            GameObject.Find("Weapon" + handSide + "StatsText").GetComponent<Text>().text = weapon.Damage + "<size=11>" + dmgType + "</size>" + "\r\n" + weapon.shotDelay + "<size=9> sec</size>" + delayAuto + "\r\n" + magazineSize + reloadTime;
+            GameObject.Find("Weapon" + handSide + "Text").GetComponent<Text>().text = "DMG:\r\n" + delayType + "\r\n" + magazineStr + reloadStr;
+            GameObject.Find("Weapon" + handSide + "ExtraText").GetComponent<Text>().text = CARnageAuxiliary.colorMe(weapon.getExtraDescription());
         }
-        string reloadStr = weapon.reloadTime > 0 ? "Reload time:\r\n" : "";
-        string reloadTime = weapon.reloadTime > 0 ? weapon.reloadTime + "<size=9> sec</size>" : "";
-        string delayAuto = weapon.automatic ? " (automatic)" : "";
-        string magazineStr = weapon.magazineSize > 0 ? "Magazine:\r\n" : "";
-        string magazineSize = weapon.magazineSize > 0 ? weapon.magazineSize + "\r\n" : "";
-        GameObject.Find("Weapon" + handSide + "StatsText").GetComponent<Text>().text = weapon.Damage + "<size=11>" + dmgType + "</size>" + "\r\n" + weapon.shotDelay + "<size=9> sec</size>" + delayAuto + "\r\n" + magazineSize + reloadTime;
-        GameObject.Find("Weapon" + handSide + "Text").GetComponent<Text>().text = "DMG:\r\n" + delayType + "\r\n" + magazineStr + reloadStr;
+        else
+        {
+            GameObject.Find("Weapon" + handSide + "Name").GetComponent<Text>().text = "";
+            GameObject.Find("Weapon" + handSide + "StatsText").GetComponent<Text>().text = "";
+            GameObject.Find("Weapon" + handSide + "Text").GetComponent<Text>().text = "";
+            GameObject.Find("Weapon"+handSide+"ExtraText").GetComponent<Text>().text = "";
+        }
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            switch(currSortOrder)
-            {
-                case SortOrder.NAME:
-                    currSortOrder = SortOrder.SPEED;
-                    break;
-                case SortOrder.SPEED:
-                    currSortOrder = SortOrder.IMPACT;
-                    break;
-                case SortOrder.IMPACT:
-                    currSortOrder = SortOrder.STORAGE;
-                    break;
-                case SortOrder.STORAGE:
-                    currSortOrder = SortOrder.HP;
-                    break;
-                case SortOrder.HP:
-                    currSortOrder = SortOrder.SHIELD;
-                    break;
-                case SortOrder.SHIELD:
-                    currSortOrder = SortOrder.NITRO;
-                    break;
-                case SortOrder.NITRO:
-                    currSortOrder = SortOrder.COLOR;
-                    break;
-                case SortOrder.COLOR:
-                    currSortOrder = SortOrder.NAME;
-                    break;
-            }
-            sortCars();
-        }
+        //if(Input.GetKeyDown(KeyCode.E))
+        //{
+        //    switch(currSortOrder)
+        //    {
+        //        case SortOrder.NAME:
+        //            currSortOrder = SortOrder.SPEED;
+        //            break;
+        //        case SortOrder.SPEED:
+        //            currSortOrder = SortOrder.IMPACT;
+        //            break;
+        //        case SortOrder.IMPACT:
+        //            currSortOrder = SortOrder.STORAGE;
+        //            break;
+        //        case SortOrder.STORAGE:
+        //            currSortOrder = SortOrder.HP;
+        //            break;
+        //        case SortOrder.HP:
+        //            currSortOrder = SortOrder.SHIELD;
+        //            break;
+        //        case SortOrder.SHIELD:
+        //            currSortOrder = SortOrder.NITRO;
+        //            break;
+        //        case SortOrder.NITRO:
+        //            currSortOrder = SortOrder.COLOR;
+        //            break;
+        //        case SortOrder.COLOR:
+        //            currSortOrder = SortOrder.NAME;
+        //            break;
+        //    }
+        //    sortCars();
+        //}
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             selectedCar.GetComponentInChildren<Image>().color = new Color(50 / 255f, 50 / 255f, 50 / 255f);
@@ -405,6 +423,7 @@ public class CarSelectionLogic : MonoBehaviour {
         {
             case "right":
                 gridX++;
+                Debug.Log("trying to show pos: " + gridX + ", " + gridY);
                 if (gridX == carGrid.GetLength(0))
                 {
                     gridX = 0;
@@ -417,21 +436,23 @@ public class CarSelectionLogic : MonoBehaviour {
                 break;
             case "left":
                 gridX--;
+                Debug.Log("trying to show pos: " + gridX + ", " + gridY);
                 if (gridX < 0)
                 {
-                    gridX = carGrid.GetLength(0);
+                    gridX = carGrid.GetLength(0)-1;
                     gridY--;
                 }
                 if (gridY < 0)
                 {
-                    gridY = carGrid.GetLength(0);
+                    gridY = carGrid.GetLength(0)-1;
                 }
                 break;
         }
         if (carGrid[gridX, gridY] != null)
         {
             //selectedCar.GetComponentInChildren<Text>().enabled = false;
-            Destroy(GameObject.Find("CAR_PREVIEW_SPAWN").GetComponentInChildren<CARnageCar>().gameObject);
+            //Destroy(GameObject.Find("CAR_PREVIEW_SPAWN").GetComponentInChildren<CARnageCar>().gameObject);
+            selectedCar.GetComponent<CarIcon>().rel_car.SetActive(false);
             selectedCar = carGrid[gridX, gridY];
             showSelectedCar();
         }

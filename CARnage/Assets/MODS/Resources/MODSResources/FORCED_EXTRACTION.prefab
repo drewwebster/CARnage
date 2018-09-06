@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 67
   modName: Forced Extraction
-  description: sample description
+  description: Melee hits let enemy car weapons drop.
   image: {fileID: 21300000, guid: d2914173c310b0642b1d6526af6baf23, type: 3}

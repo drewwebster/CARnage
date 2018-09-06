@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 28
   modName: Gold Digger
-  description: sample description
+  description: +100% Gears from Environment.
   image: {fileID: 21300000, guid: 4e1e4ee2c9b9f8844bf954734d91ba38, type: 3}

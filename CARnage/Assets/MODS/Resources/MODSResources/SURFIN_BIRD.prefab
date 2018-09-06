@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 15
   modName: Surfin Bird
-  description: sample description
+  description: Car turns into a boat when on water.
   image: {fileID: 21300000, guid: 90040b1c1afb2d945a5df5da0570c3a8, type: 3}

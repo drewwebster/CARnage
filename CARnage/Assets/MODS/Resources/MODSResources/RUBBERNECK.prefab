@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 74
   modName: Rubberneck
-  description: sample description
+  description: Get 1000 Gears when you witness a destroyed car without interfering.
   image: {fileID: 21300000, guid: 90b8ceddea5035b4d8676d6ab18e4b3d, type: 3}

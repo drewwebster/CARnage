@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 8
   modName: Impatience
-  description: sample description
+  description: ' -50% Weapon Reload time.'
   image: {fileID: 21300000, guid: c415857cfd10550459e7bd661a1225e2, type: 3}

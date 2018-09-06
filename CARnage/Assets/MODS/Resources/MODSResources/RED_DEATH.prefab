@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 33
   modName: Red Death
-  description: sample description
+  description: Repair 2% HP/s when over 50%HP. Lose 2%HP/s when under 50% HP.
   image: {fileID: 21300000, guid: def3c95366a57b4479e2df35d6ce9fdd, type: 3}

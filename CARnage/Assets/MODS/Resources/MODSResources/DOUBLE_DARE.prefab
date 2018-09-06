@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 6
   modName: Double Dare
-  description: sample description
+  description: +30% Projectile Damage when equipping guns of the same model.
   image: {fileID: 21300000, guid: e7d1da492918a954a9117c8eeb40981f, type: 3}

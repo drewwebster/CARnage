@@ -890,4 +890,65 @@ public class CARnageWeapon : MonoBehaviour {
             OnDMG_WeaponModelMod(rel_car, damagedCar);
         }
     }
+
+    public string getExtraDescription()
+    {
+        switch(weaponModel)
+        {
+            case WeaponModel.BREAKFAST_CLUB:
+            case WeaponModel.PANSY:
+                return "Reflects Projectiles.";
+            case WeaponModel.SILLY_BILLY:
+                return "+100% Knock-back.";
+            case WeaponModel.PUNCH:
+            case WeaponModel.MERCURY:
+                return "+400% Knock-back.";
+            case WeaponModel.TOXIC_WASTE:
+            case WeaponModel.MOTHER_THERESA:
+                return "+Acid: 10<size=9>x</size> 2<size=9>DMG/s</size>, blocks repair.";
+            case WeaponModel.SAW:
+            case WeaponModel.FILTH:
+            case WeaponModel.GRACE:
+            case WeaponModel.ESE:
+            case WeaponModel.THE_BRIDE:
+            case WeaponModel.MOMS_KNIFE:
+                return "+Leak: 5<size=9>x</size> 2<size=9>DMG/s</size>, -50% Speed.";
+            case WeaponModel.TORCH:
+            case WeaponModel.BOOMSTICK:
+            case WeaponModel.BARREL_ROLL:
+            case WeaponModel.FLOWER_POWER:
+            case WeaponModel.INFERNO:
+                return "+Fire: 5<size=9>x</size> 5<size=9>DMG/s</size>.";
+            case WeaponModel.PHOENIX:
+                return "+Fire: 10<size=9>x</size> 5<size=9>DMG/s</size>.";
+            case WeaponModel.SURPRISE:
+                return "+Fire: 2<size=9>x</size> 5<size=9>DMG/s</size>.";
+            case WeaponModel.BEACH_BUOY:
+            case WeaponModel.RELIEF:
+                return "Extinguishes Fire.";
+            case WeaponModel.TOOL:
+                return "Repairs 1HP when swung.";
+            case WeaponModel.OUTLAW:
+                return "Throws sentry guns.";
+            case WeaponModel.ESCAPE:
+            case WeaponModel.DENTIST:
+            case WeaponModel.KEVIN:
+            case WeaponModel.THE_NEWS:
+                return "+100% DMG on Buildings.";
+            case WeaponModel.ACE_OF_SPADES:
+                return "+1 Gear when hitting a building";
+            case WeaponModel.LORI:
+                return "Spins enemies around.";
+            case WeaponModel.CROSSIE:
+                return "Transfers 10% of enemy's Shield.";
+            case WeaponModel.SLOTTIE:
+                return "Transfers 10% of enemy's HP.";
+            case WeaponModel.WRATH_WEAPON:
+            case WeaponModel.FORTUNE:
+            case WeaponModel.DOWNFALL:
+                return "+100% Explosion DMG at detonation.";
+            default:
+                return "";
+        }
+    }
 }

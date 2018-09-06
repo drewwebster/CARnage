@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 59
   modName: Commitment
-  description: sample description
+  description: +100% Shield Regeneration. -50% Shield Regeneration onset time.
   image: {fileID: 21300000, guid: 16393f259c9f9a948917da3a11ce6349, type: 3}

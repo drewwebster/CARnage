@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 86
   modName: Bulletstorm
-  description: sample description
+  description: 30% chance to fire an additional bullet while shielded.
   image: {fileID: 21300000, guid: 486b6a25d6a56e74eb1090a1d239f4df, type: 3}

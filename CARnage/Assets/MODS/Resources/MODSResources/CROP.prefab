@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 79
   modName: Crop
-  description: sample description
+  description: Collecting gears replenishes 1 Shield.
   image: {fileID: 21300000, guid: 52f5221e493dda64dbb12e9dfa9d68f6, type: 3}

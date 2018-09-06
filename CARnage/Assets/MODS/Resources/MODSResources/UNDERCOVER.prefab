@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 32
   modName: Undercover
-  description: sample description
+  description: Appear as a generic car when standing still.
   image: {fileID: 21300000, guid: 1a4db11466d64144da2faf92c2513382, type: 3}

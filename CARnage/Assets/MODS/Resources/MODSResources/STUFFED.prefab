@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 60
   modName: Stuffed
-  description: sample description
+  description: +100% Nitro Regeneration while Shielded.
   image: {fileID: 21300000, guid: 606c374ad3e19204fb60bd0ffbe32226, type: 3}

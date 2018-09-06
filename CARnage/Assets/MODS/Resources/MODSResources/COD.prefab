@@ -53,5 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 37
   modName: C.O.D.
-  description: sample description
+  description: Obtain 2 Random Modifiers and 1 Random Weapon when visiting a shop
+    the first time.
   image: {fileID: 21300000, guid: ba25e25e3b5f51c45ad40f4b2839fb90, type: 3}

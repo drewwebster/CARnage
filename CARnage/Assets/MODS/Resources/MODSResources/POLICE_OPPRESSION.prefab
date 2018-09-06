@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 29
   modName: Police Oppression
-  description: sample description
+  description: Steal a random weapon from a car when ramming it.
   image: {fileID: 21300000, guid: 0a348ba003dc14a4b8a425a7bddf59cf, type: 3}

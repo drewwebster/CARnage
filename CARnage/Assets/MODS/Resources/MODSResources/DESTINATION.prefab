@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 77
   modName: Destination
-  description: sample description
+  description: Gain a Shield worth 100% of your HP when attacking an enemy base.
   image: {fileID: 21300000, guid: 6ed4bd4dd0a12074fad5801add96744e, type: 3}

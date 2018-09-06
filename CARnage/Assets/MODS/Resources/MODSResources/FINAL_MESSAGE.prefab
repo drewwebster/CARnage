@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 45
   modName: Final Message
-  description: sample description
+  description: Show the Base of cars you destroyed.
   image: {fileID: 21300000, guid: 0d337c51056ddf5428573027a1bd90f4, type: 3}

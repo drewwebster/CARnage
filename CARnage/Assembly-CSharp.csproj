@@ -355,6 +355,7 @@
     <Compile Include="Assets\3rdParty\UGUIMiniMap\Example\Scripts\bl_MMExampleManager.cs" />
     <Compile Include="Assets\3rdParty\UGUIMiniMap\Example\Scripts\bl_RandomBot.cs" />
     <Compile Include="Assets\AutoTurretFire.cs" />
+    <Compile Include="Assets\CarIcon.cs" />
     <Compile Include="Assets\CarSelectionLogic.cs" />
     <Compile Include="Assets\DMGdisplay.cs" />
     <Compile Include="Assets\enableColliderDelayed.cs" />

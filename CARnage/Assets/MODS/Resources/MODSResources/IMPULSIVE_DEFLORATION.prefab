@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 92
   modName: Impulsive Defloration
-  description: sample description
+  description: Ramming instantly destroys shields.
   image: {fileID: 21300000, guid: 418e73ad9316dd840819fb4e97f7cc45, type: 3}

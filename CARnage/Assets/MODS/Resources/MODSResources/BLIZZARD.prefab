@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 35
   modName: Blizzard
-  description: sample description
+  description: Freeze cars when ramming them (5s).
   image: {fileID: 21300000, guid: 721c287983127d24a8d724239f669dcd, type: 3}

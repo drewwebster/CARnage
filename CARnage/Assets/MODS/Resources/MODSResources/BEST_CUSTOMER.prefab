@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 13
   modName: Best Customer
-  description: sample description
+  description: -50% Weapon prices.
   image: {fileID: 21300000, guid: 268ae9a2d55d87c499aeb35c5db6f5bd, type: 3}

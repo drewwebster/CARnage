@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 87
   modName: Cannonballs
-  description: sample description
+  description: +100% Projectile Size.
   image: {fileID: 21300000, guid: 556b49872e3b98240a164a3a944d33c5, type: 3}

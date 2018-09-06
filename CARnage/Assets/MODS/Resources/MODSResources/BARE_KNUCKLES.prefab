@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 10
   modName: Bare Knuckles
-  description: sample description
+  description: +30% Melee Weapon Damage.
   image: {fileID: 21300000, guid: 76972626710e0e849800c8b872727736, type: 3}

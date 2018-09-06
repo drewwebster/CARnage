@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 46
   modName: Cowcatcher
-  description: sample description
+  description: +30% Ram Damage while Shielded.
   image: {fileID: 21300000, guid: f199aad9c6a8343438927c3692c6052a, type: 3}

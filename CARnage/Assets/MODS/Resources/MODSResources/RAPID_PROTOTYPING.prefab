@@ -53,5 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 47
   modName: Rapid Prototyping
-  description: sample description
+  description: Gain an additional modifier when purchasing a modifier in a shop, then
+    shuffle all modifiers apart from Rapid Prototyping.
   image: {fileID: 21300000, guid: e11e432dd26f8b64cb87762db8cd5ab9, type: 3}

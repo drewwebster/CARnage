@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 4
   modName: Gun Rack
-  description: sample description
+  description: Destroying a car drops a random weapon.
   image: {fileID: 21300000, guid: 8921326ac6a260f4ca5e1fac8953f8e5, type: 3}

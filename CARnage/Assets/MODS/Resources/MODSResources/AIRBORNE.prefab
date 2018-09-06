@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 97
   modName: Airborne
-  description: sample description
+  description: Replenish 10 Shield/s while in the air.
   image: {fileID: 21300000, guid: 88bf4e7dd8bc7d348b60cc704066aa62, type: 3}

@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 64
   modName: Death Proof
-  description: sample description
+  description: Immune to Ramming Damage while Shielded.
   image: {fileID: 21300000, guid: 15f63d8fa630d3543952d0c43ff05d1a, type: 3}

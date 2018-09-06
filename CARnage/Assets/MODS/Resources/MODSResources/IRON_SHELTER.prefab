@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 57
   modName: Iron Shelter
-  description: sample description
+  description: -50% Damage while Shielded.
   image: {fileID: 21300000, guid: e2cf94d1b01e7784b8bc2e193db05a52, type: 3}

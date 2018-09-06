@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 24
   modName: Steamroller
-  description: sample description
+  description: Your damages ignores enemy shields.
   image: {fileID: 21300000, guid: ec32e2bc30d3d5b40bdee000fb8b302e, type: 3}

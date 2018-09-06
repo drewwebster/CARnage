@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 39
   modName: Delusions of Grandeur
-  description: sample description
+  description: +5% Damage for each posessed weapon.
   image: {fileID: 21300000, guid: a64cd0fe722517642b69678fc6ad8d60, type: 3}

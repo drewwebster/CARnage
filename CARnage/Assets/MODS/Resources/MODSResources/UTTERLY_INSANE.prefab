@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 100
   modName: Utterly Insane
-  description: sample description
+  description: +20% Damage while driving on Nitro.
   image: {fileID: 21300000, guid: c1bb8ecd0a5d4714e9bd7a3e17103ffe, type: 3}

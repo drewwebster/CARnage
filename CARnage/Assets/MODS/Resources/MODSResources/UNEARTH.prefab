@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 49
   modName: Unearth
-  description: sample description
+  description: Respawn with 50% Shield when destroyed (once per death).
   image: {fileID: 21300000, guid: 9fe103b72f55d6f49a63e27ab9943302, type: 3}
