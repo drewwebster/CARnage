@@ -594,6 +594,11 @@ public class CARnageCar : MonoBehaviour {
         BROWN
     }
 
+    public void setColor(CarColor newColor)
+    {
+        carColor = newColor;
+    }
+
     public ModController getModController()
     {
         return GetComponentInChildren<ModController>();

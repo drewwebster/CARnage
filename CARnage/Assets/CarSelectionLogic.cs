@@ -18,72 +18,124 @@ public class CarSelectionLogic : MonoBehaviour {
         SHIELD,
         NITRO
     }
+
+    enum CarSelectionState
+    {
+        SELECT_CAR,
+        SELECT_COLOR,
+        SELECT_WEAPON_1_UPGRADE,
+        SELECT_WEAPON_2_UPGRADE,
+        SELECT_MOD_1,
+        SELECT_MOD_2
+    }
+
+    public GameObject select_car_GO;
+    bool select_car_init;
+    public GameObject select_color_GO;
+    public GameObject select_weapon_1_upgrade_GO;
+    public GameObject select_weapon_2_upgrade_GO;
+    public GameObject select_mod_1_GO;
+    public GameObject select_mod_2_GO;
     
     List<GameObject> carList;
     GameObject selectedCar;
     int gridX = 0;
     int gridY = 0;
     GameObject[,] carGrid;
+    CarSelectionState currentState;
 
     // Use this for initialization
     void Start () {
-        // create list
-        carGrid = new GameObject[10, 10];
-        Array values = Enum.GetValues(typeof(CarModel));
-        GameObject carIconBG = GameObject.Find("TransBG_Cars_Grid");
-        carList = new List<GameObject>();
-        foreach (CarModel model in values)
+        currentState = CarSelectionState.SELECT_CAR;
+        updateCarSelectionState();
+    }
+
+    private void updateCarSelectionState()
+    {
+        select_car_GO.SetActive(false);
+        select_color_GO.SetActive(false);
+        select_weapon_1_upgrade_GO.SetActive(false);
+        select_weapon_2_upgrade_GO.SetActive(false);
+        select_mod_1_GO.SetActive(false);
+        select_mod_2_GO.SetActive(false);
+
+        switch (currentState)
         {
-            GameObject go = Instantiate(Resources.Load<GameObject>("CarIcon"), carIconBG.transform);
+            case CarSelectionState.SELECT_CAR:
+                select_car_GO.SetActive(true);
+                GameObject.Find("CarSelectionState_Text").GetComponent<Text>().text = "Select Car";
+                if(!select_car_init)
+                {
+                    // create list
+                    carGrid = new GameObject[10, 10];
+                    Array values = Enum.GetValues(typeof(CarModel));
+                    carList = new List<GameObject>();
+                    foreach (CarModel model in values)
+                    {
+                        GameObject go = Instantiate(Resources.Load<GameObject>("CarIcon"), select_car_GO.transform);
 
-            go.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>("CarIcons/" + model);
-            GameObject CARgo = Instantiate(Resources.Load<GameObject>(model.ToString()), go.transform);
+                        go.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>("CarIcons/" + model);
+                        GameObject CARgo = Instantiate(Resources.Load<GameObject>(model.ToString()), go.transform);
 
-            CARgo.transform.parent = GameObject.Find("CAR_PREVIEW_SPAWN").transform;
+                        CARgo.transform.parent = GameObject.Find("CAR_PREVIEW_SPAWN").transform;
+                        CARgo.GetComponent<CARnageCar>().enabled = false;
+                        CARgo.GetComponent<RCC_CarControllerV3>().enabled = false;
+                        CARgo.GetComponent<CARnageCar>().isIndestructible = true;
 
-            //CARgo.GetComponent<CARnageCar>().controlledBy = CARnageAuxiliary.ControllerType.NONE;
-            CARgo.GetComponent<CARnageCar>().enabled = false;
-            CARgo.GetComponent<RCC_CarControllerV3>().enabled = false;
-            CARgo.GetComponent<CARnageCar>().isIndestructible = true;
+                        foreach (Rigidbody rb in CARgo.GetComponentsInChildren<Rigidbody>())
+                            rb.useGravity = false;
+                        foreach (Rigidbody rb in CARgo.GetComponentsInChildren<Rigidbody>())
+                            rb.isKinematic = true;
+                        CARgo.transform.localPosition = Vector3.zero;
 
-            foreach (Rigidbody rb in CARgo.GetComponentsInChildren<Rigidbody>())
-                rb.useGravity = false;
-            foreach (Rigidbody rb in CARgo.GetComponentsInChildren<Rigidbody>())
-                rb.isKinematic = true;
-            CARgo.transform.localPosition = Vector3.zero;
+                        foreach (scaleEmission se in CARgo.GetComponentsInChildren<scaleEmission>())
+                            se.gameObject.SetActive(false);
+                        Destroy(GameObject.Find("WorldCanvasHPShieldNitro"));
 
-            //foreach (CARnageWeapon weapon in carGO.GetComponent<CARnageCar>().getWeaponController().getAllWeapons())
-            //    weapon.gameObject.SetActive(false);
-            foreach (scaleEmission se in CARgo.GetComponentsInChildren<scaleEmission>())
-                se.gameObject.SetActive(false);
-            Destroy(GameObject.Find("WorldCanvasHPShieldNitro"));
+                        carList.Add(go);
+                        go.GetComponent<CarIcon>().rel_car = CARgo;
+                        CARgo.SetActive(false);
+                    }
+                    // display
+                    currSortOrder = SortOrder.ARRAY;
+                    sortCars();
+                    // show selected car
+                    selectedCar = carList[0];
+                    showSelectedCar();
+                    select_car_init = true;
+                }               
+                break;
+            case CarSelectionState.SELECT_COLOR:
+                select_color_GO.SetActive(true);
+                selectedColor = selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().carColor;
+                showSelectedColor();
+                GameObject.Find("CarSelectionState_Text").GetComponent<Text>().text = "Select Color";
+                break;
+            case CarSelectionState.SELECT_WEAPON_1_UPGRADE:
+                select_weapon_1_upgrade_GO.SetActive(true);
+                GameObject.Find("CarSelectionState_Text").GetComponent<Text>().text = "Upgrade "+selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().weaponName.Replace("_WEAPON","");
 
-            //go.GetComponentInChildren<Text>().text = CARgo.GetComponent<CARnageCar>().carName;
-            
-            carList.Add(go);
-            go.GetComponent<CarIcon>().rel_car = CARgo;
-            CARgo.SetActive(false);
-
-            //GameObject carGO = CarFactory.spawnCar(model, position);
-            //carGO.transform.Rotate(0, 180, 0);
-            //position += Vector3.right * 3;
-            //carGO.GetComponent<CARnageCar>().enabled = false;
-            //foreach (Rigidbody rb in carGO.GetComponentsInChildren<Rigidbody>())
-            //    rb.useGravity = false;
-            //foreach (CARnageWeapon weapon in carGO.GetComponent<CARnageCar>().getWeaponController().getAllWeapons())
-            //    weapon.gameObject.SetActive(false);
+                // TODO: do this with images
+                //weaponPreview = Instantiate(Resources.Load<GameObject>(selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().name), GameObject.Find("WEAPON_PREVIEW_SPAWN").transform);
+                //weaponPreview.GetComponent<Rigidbody>().useGravity = false;
+                //weaponPreview.GetComponent<CARnageWeapon>().weaponState = CARnageWeapon.WeaponState.STASHED;
+                //foreach (Transform t in weaponPreview.GetComponentsInChildren<Transform>())
+                //    t.gameObject.layer = 10; // "Weapon" layer for WeaponCam
+                //weaponCam = Instantiate(Resources.Load<GameObject>("WeaponCam"), weaponPreview.GetComponentInChildren<CARnageWeapon>().transform);
+                break;
+            case CarSelectionState.SELECT_WEAPON_2_UPGRADE:
+                select_weapon_2_upgrade_GO.SetActive(true);
+                GameObject.Find("CarSelectionState_Text").GetComponent<Text>().text = "Upgrade " + selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon().weaponName.Replace("_WEAPON", "");
+                break;
+            case CarSelectionState.SELECT_MOD_1:
+                select_mod_1_GO.SetActive(true);
+                GameObject.Find("CarSelectionState_Text").GetComponent<Text>().text = "Select 1st Mod";
+                break;
+            case CarSelectionState.SELECT_MOD_2:
+                select_mod_2_GO.SetActive(true);
+                GameObject.Find("CarSelectionState_Text").GetComponent<Text>().text = "Select 2nd Mod";
+                break;
         }
-
-        // display
-        currSortOrder = SortOrder.ARRAY;
-        sortCars();
-
-
-
-        // show selected car
-        selectedCar = carList[0];
-        showSelectedCar();
-
     }
 
     SortOrder currSortOrder;
@@ -332,6 +384,25 @@ public class CarSelectionLogic : MonoBehaviour {
             }
     }
 
+    CARnageCar.CarColor selectedColor;
+    void showSelectedColor()
+    {
+        foreach (RectTransform rt in select_color_GO.GetComponentsInChildren<RectTransform>())
+        {
+            if (rt.name.Contains("Color"))
+                if (rt.name.Contains(selectedColor.ToString()))
+                {
+                    rt.GetComponentInChildren<Text>().color = Color.white;
+                    rt.GetComponentInChildren<Image>().rectTransform.localScale = new Vector3(0.8761683f, 0.4672897f, 1);
+                }
+                else
+                {
+                    rt.GetComponentInChildren<Text>().color = new Color(1, 1, 1, 100f / 255f);
+                    rt.GetComponentInChildren<Image>().rectTransform.localScale = new Vector3(0.5841122f, 0.4672897f, 1);
+                }
+        }
+    }
+
     public void displayWeapon(CARnageWeapon weapon, string handSide)
     {
         if(weapon != null)
@@ -407,19 +478,135 @@ public class CarSelectionLogic : MonoBehaviour {
         //}
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            selectedCar.GetComponentInChildren<Image>().color = new Color(50 / 255f, 50 / 255f, 50 / 255f);
-            selectNextCar("right");
+            switch (currentState)
+            {
+                case CarSelectionState.SELECT_CAR:
+                    selectNextCar("right");
+                    break;
+                case CarSelectionState.SELECT_COLOR:
+                    selectNextColor("right");
+                    break;
+            }
         }
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            selectedCar.GetComponentInChildren<Image>().color = new Color(50 / 255f, 50 / 255f, 50 / 255f);
-            selectNextCar("left");
+            switch (currentState)
+            {
+                case CarSelectionState.SELECT_CAR:
+                    selectNextCar("left");
+                    break;
+                case CarSelectionState.SELECT_COLOR:
+                    selectNextColor("left");
+                    break;
+            }
         }
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            switch (currentState)
+            {
+                case CarSelectionState.SELECT_CAR:
+                    selectNextCar("up");
+                    break;
+                case CarSelectionState.SELECT_COLOR:
+                    selectNextColor("up");
+                    break;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            switch (currentState)
+            {
+                case CarSelectionState.SELECT_CAR:
+                    selectNextCar("down");
+                    break;
+                case CarSelectionState.SELECT_COLOR:
+                    selectNextColor("down");
+                    break;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+            nextCarSelectionState();
+        if (Input.GetKeyDown(KeyCode.Backspace))
+            previousCarSelectionState();
+    }
+
+    public void nextCarSelectionState()
+    {
+        switch (currentState)
+        {
+            case CarSelectionState.SELECT_CAR:
+                Debug.Log("Player1_Car: " + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel);
+                PlayerPrefs.SetString("Player1_Car", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString());
+                currentState = CarSelectionState.SELECT_COLOR;
+                break;
+            case CarSelectionState.SELECT_COLOR:
+                currentState = CarSelectionState.SELECT_WEAPON_1_UPGRADE;
+                if (!selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon())
+                {
+                    nextCarSelectionState();
+                    return;
+                }
+                break;
+            case CarSelectionState.SELECT_WEAPON_1_UPGRADE:
+                currentState = CarSelectionState.SELECT_WEAPON_2_UPGRADE;
+                if (!selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon())
+                {
+                    nextCarSelectionState();
+                    return;
+                }
+                break;
+            case CarSelectionState.SELECT_WEAPON_2_UPGRADE:
+                currentState = CarSelectionState.SELECT_MOD_1;
+                break;
+            case CarSelectionState.SELECT_MOD_1:
+                currentState = CarSelectionState.SELECT_MOD_2;
+                break;
+            case CarSelectionState.SELECT_MOD_2:
+                // switch to next scene
+                break;
+        }
+        updateCarSelectionState();
+    }
+    public void previousCarSelectionState()
+    {
+        switch (currentState)
+        {
+            case CarSelectionState.SELECT_CAR:
+                // go back to menu where you are from
+                break;
+            case CarSelectionState.SELECT_COLOR:
+                currentState = CarSelectionState.SELECT_CAR;
+                break;
+            case CarSelectionState.SELECT_WEAPON_1_UPGRADE:
+                currentState = CarSelectionState.SELECT_COLOR;
+                break;
+            case CarSelectionState.SELECT_WEAPON_2_UPGRADE:
+                currentState = CarSelectionState.SELECT_WEAPON_1_UPGRADE;
+                if (!selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon())
+                {
+                    previousCarSelectionState();
+                    return;
+                }
+                break;
+            case CarSelectionState.SELECT_MOD_1:
+                currentState = CarSelectionState.SELECT_WEAPON_2_UPGRADE;
+                if (!selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon())
+                {
+                    previousCarSelectionState();
+                    return;
+                }
+                break;
+            case CarSelectionState.SELECT_MOD_2:
+                currentState = CarSelectionState.SELECT_MOD_1;
+                break;
+        }
+        updateCarSelectionState();
     }
 
     void selectNextCar(string direction)
     {
-        switch(direction)
+        selectedCar.GetComponentInChildren<Image>().color = new Color(50 / 255f, 50 / 255f, 50 / 255f);
+        switch (direction)
         {
             case "right":
                 gridX++;
@@ -458,5 +645,80 @@ public class CarSelectionLogic : MonoBehaviour {
         }
         else
             selectNextCar(direction);
+    }
+
+    void selectNextColor(string direction)
+    {
+        switch(direction)
+        {
+            case "right":
+            case "down":
+                switch(selectedColor)
+                {
+                    case CARnageCar.CarColor.RED:
+                        selectedColor = CARnageCar.CarColor.ORANGE;
+                        break;
+                    case CARnageCar.CarColor.ORANGE:
+                        selectedColor = CARnageCar.CarColor.YELLOW;
+                        break;
+                    case CARnageCar.CarColor.YELLOW:
+                        selectedColor = CARnageCar.CarColor.GREEN;
+                        break;
+                    case CARnageCar.CarColor.GREEN:
+                        selectedColor = CARnageCar.CarColor.BLUE;
+                        break;
+                    case CARnageCar.CarColor.BLUE:
+                        selectedColor = CARnageCar.CarColor.VIOLET;
+                        break;
+                    case CARnageCar.CarColor.VIOLET:
+                        selectedColor = CARnageCar.CarColor.BROWN;
+                        break;
+                    case CARnageCar.CarColor.BROWN:
+                        selectedColor = CARnageCar.CarColor.BLACK;
+                        break;
+                    case CARnageCar.CarColor.BLACK:
+                        selectedColor = CARnageCar.CarColor.WHITE;
+                        break;
+                    case CARnageCar.CarColor.WHITE:
+                        selectedColor = CARnageCar.CarColor.RED;
+                        break;
+                }
+                break;
+            case "left":
+            case "up":
+                switch (selectedColor)
+                {
+                    case CARnageCar.CarColor.RED:
+                        selectedColor = CARnageCar.CarColor.WHITE;
+                        break;
+                    case CARnageCar.CarColor.ORANGE:
+                        selectedColor = CARnageCar.CarColor.RED;
+                        break;
+                    case CARnageCar.CarColor.YELLOW:
+                        selectedColor = CARnageCar.CarColor.ORANGE;
+                        break;
+                    case CARnageCar.CarColor.GREEN:
+                        selectedColor = CARnageCar.CarColor.YELLOW;
+                        break;
+                    case CARnageCar.CarColor.BLUE:
+                        selectedColor = CARnageCar.CarColor.GREEN;
+                        break;
+                    case CARnageCar.CarColor.VIOLET:
+                        selectedColor = CARnageCar.CarColor.BLUE;
+                        break;
+                    case CARnageCar.CarColor.BROWN:
+                        selectedColor = CARnageCar.CarColor.VIOLET;
+                        break;
+                    case CARnageCar.CarColor.BLACK:
+                        selectedColor = CARnageCar.CarColor.BROWN;
+                        break;
+                    case CARnageCar.CarColor.WHITE:
+                        selectedColor = CARnageCar.CarColor.BLACK;
+                        break;
+                }
+                break;
+        }
+        selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().setColor(selectedColor);
+        showSelectedColor();
     }
 }

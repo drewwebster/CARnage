@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222768271203296856}
   - component: {fileID: 114199747838937534}
   - component: {fileID: 95199597421880154}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShootDelayTimeLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 4260385150508000}
   - component: {fileID: 33745878081538056}
   - component: {fileID: 23911340308607186}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: +Silencer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4592694199286566}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RightWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 4572641967971070}
   - component: {fileID: 33755525710791036}
   - component: {fileID: 23940143507742386}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MODEL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 4941604811711806}
   - component: {fileID: 33749503489407336}
   - component: {fileID: 23399785076654456}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: scp_we_laser_beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 33390725256470308}
   - component: {fileID: 23456508608735182}
   - component: {fileID: 64942599668264844}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: +Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 4073103603448934}
   - component: {fileID: 33840622564614808}
   - component: {fileID: 23199953239450864}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: +Automatic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -721,7 +721,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4858351169157732}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Upgrades
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +756,7 @@ GameObject:
   - component: {fileID: 4981370326254374}
   - component: {fileID: 33187923996232014}
   - component: {fileID: 23978456886169964}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: +Magazine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -773,7 +773,7 @@ GameObject:
   - component: {fileID: 4676058137367868}
   - component: {fileID: 108053143818597380}
   - component: {fileID: 123895547826543604}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -793,7 +793,7 @@ GameObject:
   - component: {fileID: 65923917979293102}
   - component: {fileID: 54057903288853214}
   - component: {fileID: 135570924102258822}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MY_LITTLE_PISTOL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 4498226748322098}
   - component: {fileID: 33007448712132158}
   - component: {fileID: 23287213456047346}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: +Scope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -825,7 +825,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4892425898217732}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeftWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 4376933667651886}
   - component: {fileID: 33431988253552304}
   - component: {fileID: 23689927211144384}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: scp_we_pistol_02_mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -857,7 +857,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4372842985334524}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SHOOTFX_SPAWN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -875,7 +875,7 @@ GameObject:
   - component: {fileID: 222078668183681350}
   - component: {fileID: 114420396698351520}
   - component: {fileID: 95732719511319482}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ReloadTimeLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -928,7 +928,7 @@ GameObject:
   - component: {fileID: 54743792380057062}
   - component: {fileID: 65596350944059970}
   - component: {fileID: 114556276570146634}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: _PISTOL_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: 223606526911635108}
   - component: {fileID: 114858387877466780}
   - component: {fileID: 114899172013194450}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WeaponCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1014,7 +1014,7 @@ GameObject:
   - component: {fileID: 4892418742273408}
   - component: {fileID: 33083438089727198}
   - component: {fileID: 23130475606718058}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: scp_we_pistol_02_trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1048,7 +1048,7 @@ GameObject:
   - component: {fileID: 4445947309187762}
   - component: {fileID: 108544678127245448}
   - component: {fileID: 123908032058749728}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1065,7 +1065,7 @@ GameObject:
   - component: {fileID: 4313586880458994}
   - component: {fileID: 33077892195049128}
   - component: {fileID: 23588975802126166}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: +Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1083,7 +1083,7 @@ GameObject:
   - component: {fileID: 198357248735663466}
   - component: {fileID: 199926242002876770}
   - component: {fileID: 114920872505997276}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FX_Pistol_MuzzleFlash
   m_TagString: FxTemporaire
   m_Icon: {fileID: 0}
@@ -1101,7 +1101,7 @@ GameObject:
   - component: {fileID: 198234293962164346}
   - component: {fileID: 199972189118506170}
   - component: {fileID: 114326944057392966}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Traits
   m_TagString: FxTemporaire
   m_Icon: {fileID: 0}
@@ -1121,7 +1121,7 @@ GameObject:
   - component: {fileID: 54972027230085936}
   - component: {fileID: 136992857013078274}
   - component: {fileID: 114759388395902916}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: _PISTOL_Bulletcase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1136,7 +1136,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4692617335370822}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WEAPON
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1253,7 +1253,7 @@ GameObject:
   - component: {fileID: 4551943766263362}
   - component: {fileID: 198196411208793720}
   - component: {fileID: 199325896985818916}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CollectableFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1300,7 +1300,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4724968019973558}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BULLET_SPAWN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1467,7 +1467,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4731733146748474}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BULLETCASE_SPAWN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5291,6 +5291,7 @@ MonoBehaviour:
   goShieldShattered: {fileID: 0}
   nakedModel: {fileID: 1390915971973976}
   controlledBy: 0
+  isIndestructible: 0
   fireTicks: 0
   acidTicks: 0
   drainTicks: 0
