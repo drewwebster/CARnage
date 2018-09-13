@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CarSelection.unity
     guid: 3e5812192ace9fb4ab1ab5386e4f0f39
+  - enabled: 1
+    path: Assets/Scenes/TestSpawn.unity
+    guid: 76dd8203286ecd8498eeaf88edd91f85
   m_configObjects: {}

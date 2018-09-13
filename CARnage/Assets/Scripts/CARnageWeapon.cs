@@ -590,6 +590,59 @@ public class CARnageWeapon : MonoBehaviour {
         }
     }
 
+    public void removeUpgrade(UpgradeTypes upgrade)
+    {
+        switch (upgrade)
+        {
+            case UpgradeTypes.AUTO:
+                upgraded_automatic = false;
+                upgrade_AutomaticGO.SetActive(false);
+                break;
+            case UpgradeTypes.COMPENSATOR:
+                upgraded_damage = false;
+                upgrade_DamageGO.SetActive(false);
+                break;
+            case UpgradeTypes.LIGHT:
+                upgraded_light = false;
+                upgrade_LightGO.SetActive(false);
+                break;
+            case UpgradeTypes.MAGAZINE:
+                upgraded_magazine = false;
+                upgrade_MagazineGO.SetActive(false);
+                break;
+            case UpgradeTypes.SCOPE:
+                upgraded_scope = false;
+                upgrade_ScopeGO.SetActive(false);
+                break;
+            case UpgradeTypes.SILENCER:
+                upgraded_silencer = false;
+                upgrade_SilencerGO.SetActive(false);
+                break;
+        }
+    }
+
+    public void removeAllUpgrades()
+    {
+        List<UpgradeTypes> currentUpgrades = new List<UpgradeTypes>();
+        if (upgraded_automatic)
+            currentUpgrades.Add(UpgradeTypes.AUTO);
+        if (upgraded_damage)
+            currentUpgrades.Add(UpgradeTypes.COMPENSATOR);
+        if (upgraded_light)
+            currentUpgrades.Add(UpgradeTypes.LIGHT);
+        if (upgraded_magazine)
+            currentUpgrades.Add(UpgradeTypes.MAGAZINE);
+        if (upgraded_scope)
+            currentUpgrades.Add(UpgradeTypes.SCOPE);
+        if (upgraded_silencer)
+            currentUpgrades.Add(UpgradeTypes.SILENCER);
+        if (currentUpgrades.Count == 0)
+            return;
+
+        foreach (UpgradeTypes ut in currentUpgrades)
+            removeUpgrade(ut);
+    }
+
     public void addAllUpgrades()
     {
         List<UpgradeTypes> possibleUpgrades = new List<UpgradeTypes>();
@@ -642,7 +695,8 @@ public class CARnageWeapon : MonoBehaviour {
         SILENCER,
         COMPENSATOR,
         LIGHT,
-        AUTO
+        AUTO,
+        NONE
     }
 
     public enum WeaponModel
@@ -950,5 +1004,29 @@ public class CARnageWeapon : MonoBehaviour {
             default:
                 return "";
         }
+    }
+
+    public bool isUpgradeable()
+    {
+        if (upgrade_AutomaticGO == null && upgrade_DamageGO == null && upgrade_LightGO == null && upgrade_MagazineGO == null && upgrade_ScopeGO == null && upgrade_SilencerGO == null)
+            return false;
+        return true;
+    }
+
+    public UpgradeTypes getFirstUpgrade()
+    {
+        if (upgraded_magazine)
+            return UpgradeTypes.MAGAZINE;
+        if (upgraded_scope)
+            return UpgradeTypes.SCOPE;
+        if (upgraded_silencer)
+            return UpgradeTypes.SILENCER;
+        if (upgraded_damage)
+            return UpgradeTypes.COMPENSATOR;
+        if (upgraded_light)
+            return UpgradeTypes.LIGHT;
+        if (upgraded_automatic)
+            return UpgradeTypes.AUTO;
+        return UpgradeTypes.NONE;
     }
 }

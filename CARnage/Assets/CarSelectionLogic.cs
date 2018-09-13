@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CarSelectionLogic : MonoBehaviour {
 
@@ -32,21 +33,27 @@ public class CarSelectionLogic : MonoBehaviour {
     public GameObject select_car_GO;
     bool select_car_init;
     public GameObject select_color_GO;
-    public GameObject select_weapon_1_upgrade_GO;
-    public GameObject select_weapon_2_upgrade_GO;
-    public GameObject select_mod_1_GO;
-    public GameObject select_mod_2_GO;
-    
+    public GameObject select_weapon_upgrade_GO;
+    public GameObject select_mod_GO;
+    bool select_mod_init;
+
+    public GameObject UpgradeOption_NONE;
+    public GameObject UpgradeOption_MAGAZINE;
+    public GameObject UpgradeOption_SCOPE;
+    public GameObject UpgradeOption_SILENCER;
+    public GameObject UpgradeOption_COMPENSATOR;
+    public GameObject UpgradeOption_LIGHT;
+    public GameObject UpgradeOption_AUTOMATIC;
+
     List<GameObject> carList;
     GameObject selectedCar;
-    int gridX = 0;
-    int gridY = 0;
-    GameObject[,] carGrid;
     CarSelectionState currentState;
+    string selectingPlayer;
 
     // Use this for initialization
     void Start () {
         currentState = CarSelectionState.SELECT_CAR;
+        selectingPlayer = "Player0";
         updateCarSelectionState();
     }
 
@@ -54,10 +61,8 @@ public class CarSelectionLogic : MonoBehaviour {
     {
         select_car_GO.SetActive(false);
         select_color_GO.SetActive(false);
-        select_weapon_1_upgrade_GO.SetActive(false);
-        select_weapon_2_upgrade_GO.SetActive(false);
-        select_mod_1_GO.SetActive(false);
-        select_mod_2_GO.SetActive(false);
+        select_weapon_upgrade_GO.SetActive(false);
+        select_mod_GO.SetActive(false);
 
         switch (currentState)
         {
@@ -67,7 +72,6 @@ public class CarSelectionLogic : MonoBehaviour {
                 if(!select_car_init)
                 {
                     // create list
-                    carGrid = new GameObject[10, 10];
                     Array values = Enum.GetValues(typeof(CarModel));
                     carList = new List<GameObject>();
                     foreach (CarModel model in values)
@@ -75,32 +79,26 @@ public class CarSelectionLogic : MonoBehaviour {
                         GameObject go = Instantiate(Resources.Load<GameObject>("CarIcon"), select_car_GO.transform);
 
                         go.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>("CarIcons/" + model);
-                        GameObject CARgo = Instantiate(Resources.Load<GameObject>(model.ToString()), go.transform);
+                        GameObject CARgo = spawnCar(model);
 
-                        CARgo.transform.parent = GameObject.Find("CAR_PREVIEW_SPAWN").transform;
-                        CARgo.GetComponent<CARnageCar>().enabled = false;
-                        CARgo.GetComponent<RCC_CarControllerV3>().enabled = false;
-                        CARgo.GetComponent<CARnageCar>().isIndestructible = true;
-
-                        foreach (Rigidbody rb in CARgo.GetComponentsInChildren<Rigidbody>())
-                            rb.useGravity = false;
-                        foreach (Rigidbody rb in CARgo.GetComponentsInChildren<Rigidbody>())
-                            rb.isKinematic = true;
-                        CARgo.transform.localPosition = Vector3.zero;
-
-                        foreach (scaleEmission se in CARgo.GetComponentsInChildren<scaleEmission>())
-                            se.gameObject.SetActive(false);
-                        Destroy(GameObject.Find("WorldCanvasHPShieldNitro"));
-
-                        carList.Add(go);
                         go.GetComponent<CarIcon>().rel_car = CARgo;
+                        carList.Add(go);
+
+                        if (!selectingPlayer.Equals(""))
+                        {
+                            if (PlayerPrefs.GetString(selectingPlayer + "_Car").Equals(CARgo.GetComponent<CARnageCar>().carModel.ToString()))
+                                selectedCar = go;
+                            CarFactory.modifyCarToPlayerPrefs(CARgo, selectingPlayer);
+                        }
                         CARgo.SetActive(false);
                     }
                     // display
                     currSortOrder = SortOrder.ARRAY;
                     sortCars();
                     // show selected car
-                    selectedCar = carList[0];
+                    if(selectedCar == null)
+                        selectedCar = carList[0];
+                    
                     showSelectedCar();
                     select_car_init = true;
                 }               
@@ -112,36 +110,46 @@ public class CarSelectionLogic : MonoBehaviour {
                 GameObject.Find("CarSelectionState_Text").GetComponent<Text>().text = "Select Color";
                 break;
             case CarSelectionState.SELECT_WEAPON_1_UPGRADE:
-                select_weapon_1_upgrade_GO.SetActive(true);
-                GameObject.Find("CarSelectionState_Text").GetComponent<Text>().text = "Upgrade "+selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().weaponName.Replace("_WEAPON","");
-
-                // TODO: do this with images
-                //weaponPreview = Instantiate(Resources.Load<GameObject>(selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().name), GameObject.Find("WEAPON_PREVIEW_SPAWN").transform);
-                //weaponPreview.GetComponent<Rigidbody>().useGravity = false;
-                //weaponPreview.GetComponent<CARnageWeapon>().weaponState = CARnageWeapon.WeaponState.STASHED;
-                //foreach (Transform t in weaponPreview.GetComponentsInChildren<Transform>())
-                //    t.gameObject.layer = 10; // "Weapon" layer for WeaponCam
-                //weaponCam = Instantiate(Resources.Load<GameObject>("WeaponCam"), weaponPreview.GetComponentInChildren<CARnageWeapon>().transform);
+                select_weapon_upgrade_GO.SetActive(true);
+                selectWeaponUpgradeInit(selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon());
                 break;
             case CarSelectionState.SELECT_WEAPON_2_UPGRADE:
-                select_weapon_2_upgrade_GO.SetActive(true);
-                GameObject.Find("CarSelectionState_Text").GetComponent<Text>().text = "Upgrade " + selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon().weaponName.Replace("_WEAPON", "");
+                select_weapon_upgrade_GO.SetActive(true);
+                selectWeaponUpgradeInit(selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon());
                 break;
             case CarSelectionState.SELECT_MOD_1:
-                select_mod_1_GO.SetActive(true);
-                GameObject.Find("CarSelectionState_Text").GetComponent<Text>().text = "Select 1st Mod";
+                select_mod_GO.SetActive(true);
+                selectModInit(0);
                 break;
             case CarSelectionState.SELECT_MOD_2:
-                select_mod_2_GO.SetActive(true);
-                GameObject.Find("CarSelectionState_Text").GetComponent<Text>().text = "Select 2nd Mod";
+                select_mod_GO.SetActive(true);
+                selectModInit(1);
                 break;
         }
+    }
+    GameObject spawnCar(CarModel model)
+    {
+        GameObject CARgo = Instantiate(Resources.Load<GameObject>(model.ToString()), GameObject.Find("CAR_PREVIEW_SPAWN").transform);
+        CARgo.GetComponent<CARnageCar>().enabled = false;
+        CARgo.GetComponent<RCC_CarControllerV3>().enabled = false;
+        CARgo.GetComponent<CARnageCar>().isIndestructible = true;
+
+        foreach (Rigidbody rb in CARgo.GetComponentsInChildren<Rigidbody>())
+            rb.useGravity = false;
+        foreach (Rigidbody rb in CARgo.GetComponentsInChildren<Rigidbody>())
+            rb.isKinematic = true;
+        CARgo.transform.localPosition = Vector3.zero;
+
+        foreach (scaleEmission se in CARgo.GetComponentsInChildren<scaleEmission>())
+            se.gameObject.SetActive(false);
+        Destroy(GameObject.Find("WorldCanvasHPShieldNitro"));
+
+        return CARgo;
     }
 
     SortOrder currSortOrder;
     void sortCars()
     {
-        carGrid = new GameObject[10,10];
         switch (currSortOrder)
         {
             case SortOrder.NAME:
@@ -215,7 +223,6 @@ public class CarSelectionLogic : MonoBehaviour {
             }
 
             go.transform.position = new Vector3(910, 1095, 0) + new Vector3(x * 120, -y * 105);
-            carGrid[x, y] = go;
             x++;
 
             if (x == 8)
@@ -286,39 +293,13 @@ public class CarSelectionLogic : MonoBehaviour {
     void showSelectedCar()
     {
         selectedCar.GetComponentInChildren<Image>().color = Color.white;
-        //selectedCar.GetComponentInChildren<Text>().enabled = true;
-        //Debug.Log("Instantiate: " + selectedCar.GetComponentInChildren<CARnageCar>().carModel);
-        //GameObject carGO = Instantiate(Resources.Load<GameObject>(car.carModel.ToString()), GameObject.Find("CAR_PREVIEW_SPAWN").transform);
+        selectedCar.GetComponentsInChildren<Image>()[1].color = new Color(50 / 255f, 50 / 255f, 50 / 255f);
         GameObject carGO = selectedCar.GetComponent<CarIcon>().rel_car;
         carGO.SetActive(true);
         CARnageCar car = carGO.GetComponent<CARnageCar>();
         GameObject.Find("CarName_Text").GetComponent<Text>().text = car.carName;
 
-        CARnageModifier[] mods = car.GetComponentsInChildren<CARnageModifier>();
-        if (mods != null && mods.Length > 0)
-        {
-            GameObject.Find("ModLImage").GetComponent<Image>().sprite = mods[0].image;
-            GameObject.Find("ModLName").GetComponent<Text>().text = mods[0].modName;
-            GameObject.Find("ModLText").GetComponent<Text>().text = CARnageAuxiliary.colorMe(mods[0].description);
-        }
-        else
-        {
-            GameObject.Find("ModLImage").GetComponent<Image>().sprite = null;
-            GameObject.Find("ModLName").GetComponent<Text>().text = "";
-            GameObject.Find("ModLText").GetComponent<Text>().text = "";
-        }
-        if (mods != null && mods.Length > 1)
-        {
-            GameObject.Find("ModRImage").GetComponent<Image>().sprite = mods[1].image;
-            GameObject.Find("ModRName").GetComponent<Text>().text = mods[1].modName;
-            GameObject.Find("ModRText").GetComponent<Text>().text = CARnageAuxiliary.colorMe(mods[1].description);
-        }
-        else
-        {
-            GameObject.Find("ModRImage").GetComponent<Image>().sprite = null;
-            GameObject.Find("ModRName").GetComponent<Text>().text = "";
-            GameObject.Find("ModRText").GetComponent<Text>().text = "";
-        }
+        displayMods();
         displayWeapon(car.getWeaponController().getLeftWeapon(), "L");
         displayWeapon(car.getWeaponController().getRightWeapon(), "R");
 
@@ -427,19 +408,65 @@ public class CarSelectionLogic : MonoBehaviour {
             }
             string reloadStr = weapon.reloadTime > 0 ? "Reload time:\r\n" : "";
             string reloadTime = weapon.reloadTime > 0 ? weapon.reloadTime + "<size=9> sec</size>" : "";
-            string delayAuto = weapon.automatic ? " <size=9>(auto)</size>" : "";
+            string delayAuto = weapon.automatic || weapon.getWeaponMod_automatic() ? " <size=9>(auto)</size>" : "";
             string magazineStr = weapon.magazineSize > 0 ? "Magazine:\r\n" : "";
-            string magazineSize = weapon.magazineSize > 0 ? weapon.magazineSize + "\r\n" : "";
-            GameObject.Find("Weapon" + handSide + "StatsText").GetComponent<Text>().text = weapon.Damage + "<size=11>" + dmgType + "</size>" + "\r\n" + weapon.shotDelay + "<size=9> sec</size>" + delayAuto + "\r\n" + magazineSize + reloadTime;
+            string magazineSize = weapon.magazineSize > 0 ? weapon.magazineSize * weapon.getWeaponMod_magazine_multiplier() + "\r\n" : "";
+            GameObject.Find("Weapon" + handSide + "StatsText").GetComponent<Text>().text = weapon.Damage * weapon.getWeaponMod_damage_multiplier() + "<size=11>" + dmgType + "</size>" + "\r\n" + weapon.shotDelay * weapon.getWeaponMod_shotDelay_multiplier() + "<size=9> sec</size>" + delayAuto + "\r\n" + magazineSize + reloadTime;
             GameObject.Find("Weapon" + handSide + "Text").GetComponent<Text>().text = "DMG:\r\n" + delayType + "\r\n" + magazineStr + reloadStr;
             GameObject.Find("Weapon" + handSide + "ExtraText").GetComponent<Text>().text = CARnageAuxiliary.colorMe(weapon.getExtraDescription());
+
+            string weaponImageUpgradeString = "";
+            if (weapon.upgraded_magazine)
+                weaponImageUpgradeString = "+MAGAZINE";
+            if (weapon.upgraded_scope)
+                weaponImageUpgradeString = "+SCOPE";
+            if (weapon.upgraded_silencer)
+                weaponImageUpgradeString = "+SILENCER";
+            if (weapon.upgraded_damage)
+                weaponImageUpgradeString = "+COMPENSATOR";
+            if (weapon.upgraded_light)
+                weaponImageUpgradeString = "+LIGHT";
+            if (weapon.upgraded_automatic)
+                weaponImageUpgradeString = "+AUTOMATIC";
+            GameObject.Find("Weapon" + handSide + "Image").GetComponent<Image>().sprite = Resources.Load<Sprite>("WeaponIcons/" + weapon.weaponModel + weaponImageUpgradeString);
+            GameObject.Find("Weapon" + handSide + "Image").GetComponent<Image>().enabled = true;
         }
         else
         {
             GameObject.Find("Weapon" + handSide + "Name").GetComponent<Text>().text = "";
             GameObject.Find("Weapon" + handSide + "StatsText").GetComponent<Text>().text = "";
             GameObject.Find("Weapon" + handSide + "Text").GetComponent<Text>().text = "";
-            GameObject.Find("Weapon"+handSide+"ExtraText").GetComponent<Text>().text = "";
+            GameObject.Find("Weapon" + handSide + "ExtraText").GetComponent<Text>().text = "";
+            GameObject.Find("Weapon" + handSide + "Image").GetComponent<Image>().enabled = false;
+        }
+    }
+
+    void displayMods()
+    {
+        CARnageModifier[] mods = selectedCar.GetComponent<CarIcon>().rel_car.GetComponentsInChildren<CARnageModifier>();
+        if (mods != null && mods.Length > 0)
+        {
+            GameObject.Find("ModLImage").GetComponent<Image>().sprite = mods[0].image;
+            GameObject.Find("ModLName").GetComponent<Text>().text = mods[0].modName;
+            GameObject.Find("ModLText").GetComponent<Text>().text = CARnageAuxiliary.colorMe(mods[0].description);
+        }
+        else
+        {
+            GameObject.Find("ModLImage").GetComponent<Image>().sprite = null;
+            GameObject.Find("ModLName").GetComponent<Text>().text = "";
+            GameObject.Find("ModLText").GetComponent<Text>().text = "";
+        }
+        if (mods != null && mods.Length > 1)
+        {
+            GameObject.Find("ModRImage").GetComponent<Image>().sprite = mods[1].image;
+            GameObject.Find("ModRName").GetComponent<Text>().text = mods[1].modName;
+            GameObject.Find("ModRText").GetComponent<Text>().text = CARnageAuxiliary.colorMe(mods[1].description);
+        }
+        else
+        {
+            GameObject.Find("ModRImage").GetComponent<Image>().sprite = null;
+            GameObject.Find("ModRName").GetComponent<Text>().text = "";
+            GameObject.Find("ModRText").GetComponent<Text>().text = "";
         }
     }
 
@@ -486,6 +513,18 @@ public class CarSelectionLogic : MonoBehaviour {
                 case CarSelectionState.SELECT_COLOR:
                     selectNextColor("right");
                     break;
+                case CarSelectionState.SELECT_WEAPON_1_UPGRADE:
+                    selectNextWeaponUpgrade(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon());
+                    displayWeapon(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon(), "L");
+                    break;
+                case CarSelectionState.SELECT_WEAPON_2_UPGRADE:
+                    selectNextWeaponUpgrade(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon());
+                    displayWeapon(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon(), "R");
+                    break;
+                case CarSelectionState.SELECT_MOD_1:
+                case CarSelectionState.SELECT_MOD_2:
+                    selectNextMod("right");
+                    break;
             }
         }
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
@@ -497,6 +536,18 @@ public class CarSelectionLogic : MonoBehaviour {
                     break;
                 case CarSelectionState.SELECT_COLOR:
                     selectNextColor("left");
+                    break;
+                case CarSelectionState.SELECT_WEAPON_1_UPGRADE:
+                    selectPreviousWeaponUpgrade(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon());
+                    displayWeapon(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon(), "L");
+                    break;
+                case CarSelectionState.SELECT_WEAPON_2_UPGRADE:
+                    selectPreviousWeaponUpgrade(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon());
+                    displayWeapon(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon(), "R");
+                    break;
+                case CarSelectionState.SELECT_MOD_1:
+                case CarSelectionState.SELECT_MOD_2:
+                    selectNextMod("left");
                     break;
             }
         }
@@ -510,6 +561,18 @@ public class CarSelectionLogic : MonoBehaviour {
                 case CarSelectionState.SELECT_COLOR:
                     selectNextColor("up");
                     break;
+                case CarSelectionState.SELECT_WEAPON_1_UPGRADE:
+                    selectPreviousWeaponUpgrade(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon());
+                    displayWeapon(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon(), "L");
+                    break;
+                case CarSelectionState.SELECT_WEAPON_2_UPGRADE:
+                    selectPreviousWeaponUpgrade(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon());
+                    displayWeapon(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon(), "R");
+                    break;
+                case CarSelectionState.SELECT_MOD_1:
+                case CarSelectionState.SELECT_MOD_2:
+                    selectNextMod("up");
+                    break;
             }
         }
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
@@ -522,12 +585,43 @@ public class CarSelectionLogic : MonoBehaviour {
                 case CarSelectionState.SELECT_COLOR:
                     selectNextColor("down");
                     break;
+                case CarSelectionState.SELECT_WEAPON_1_UPGRADE:
+                    selectNextWeaponUpgrade(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon());
+                    displayWeapon(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon(), "L");
+                    break;
+                case CarSelectionState.SELECT_WEAPON_2_UPGRADE:
+                    selectNextWeaponUpgrade(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon());
+                    displayWeapon(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon(), "R");
+                    break;
+                case CarSelectionState.SELECT_MOD_1:
+                case CarSelectionState.SELECT_MOD_2:
+                    selectNextMod("down");
+                    break;
             }
         }
         if (Input.GetKeyDown(KeyCode.Return))
             nextCarSelectionState();
         if (Input.GetKeyDown(KeyCode.Backspace))
             previousCarSelectionState();
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            // reset car
+            
+            PlayerPrefs.SetString("Player0_CarColor_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString(), "");
+            if (selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon())
+                PlayerPrefs.SetString("Player0_WeaponUpgrade_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().weaponName, "");
+            if (selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon())
+                PlayerPrefs.SetString("Player0_WeaponUpgrade_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon().weaponName, "");
+            PlayerPrefs.SetString("Player0_CarMod_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString() + "_0", "");
+            PlayerPrefs.SetString("Player0_CarMod_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString() + "_1", "");
+
+            GameObject newCar = spawnCar(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel);
+            DestroyImmediate(selectedCar.GetComponentInChildren<CarIcon>().rel_car);
+            selectedCar.GetComponent<CarIcon>().rel_car = newCar;
+            currentState = CarSelectionState.SELECT_CAR;
+            updateCarSelectionState();
+            showSelectedCar();
+        }
     }
 
     public void nextCarSelectionState()
@@ -535,13 +629,12 @@ public class CarSelectionLogic : MonoBehaviour {
         switch (currentState)
         {
             case CarSelectionState.SELECT_CAR:
-                Debug.Log("Player1_Car: " + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel);
-                PlayerPrefs.SetString("Player1_Car", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString());
                 currentState = CarSelectionState.SELECT_COLOR;
                 break;
             case CarSelectionState.SELECT_COLOR:
                 currentState = CarSelectionState.SELECT_WEAPON_1_UPGRADE;
-                if (!selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon())
+                CARnageWeapon weapon = selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon();
+                if (weapon == null || !weapon.isUpgradeable())
                 {
                     nextCarSelectionState();
                     return;
@@ -549,7 +642,8 @@ public class CarSelectionLogic : MonoBehaviour {
                 break;
             case CarSelectionState.SELECT_WEAPON_1_UPGRADE:
                 currentState = CarSelectionState.SELECT_WEAPON_2_UPGRADE;
-                if (!selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon())
+                CARnageWeapon weaponR = selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon();
+                if (weaponR == null || !weaponR.isUpgradeable())
                 {
                     nextCarSelectionState();
                     return;
@@ -562,6 +656,7 @@ public class CarSelectionLogic : MonoBehaviour {
                 currentState = CarSelectionState.SELECT_MOD_2;
                 break;
             case CarSelectionState.SELECT_MOD_2:
+                finishSelection();
                 // switch to next scene
                 break;
         }
@@ -582,7 +677,8 @@ public class CarSelectionLogic : MonoBehaviour {
                 break;
             case CarSelectionState.SELECT_WEAPON_2_UPGRADE:
                 currentState = CarSelectionState.SELECT_WEAPON_1_UPGRADE;
-                if (!selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon())
+                CARnageWeapon weapon = selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon();
+                if (weapon == null || !weapon.isUpgradeable())
                 {
                     previousCarSelectionState();
                     return;
@@ -590,7 +686,8 @@ public class CarSelectionLogic : MonoBehaviour {
                 break;
             case CarSelectionState.SELECT_MOD_1:
                 currentState = CarSelectionState.SELECT_WEAPON_2_UPGRADE;
-                if (!selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon())
+                CARnageWeapon weaponR = selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon();
+                if (weaponR == null || !weaponR.isUpgradeable())
                 {
                     previousCarSelectionState();
                     return;
@@ -606,45 +703,33 @@ public class CarSelectionLogic : MonoBehaviour {
     void selectNextCar(string direction)
     {
         selectedCar.GetComponentInChildren<Image>().color = new Color(50 / 255f, 50 / 255f, 50 / 255f);
+        selectedCar.GetComponentsInChildren<Image>()[1].color = Color.white;
+        selectedCar.GetComponent<CarIcon>().rel_car.SetActive(false);
+        int index = carList.IndexOf(selectedCar);
+        
         switch (direction)
         {
             case "right":
-                gridX++;
-                Debug.Log("trying to show pos: " + gridX + ", " + gridY);
-                if (gridX == carGrid.GetLength(0))
-                {
-                    gridX = 0;
-                    gridY++;
-                }
-                if (gridY == carGrid.GetLength(0))
-                {
-                    gridY = 0;
-                }
+                index++;
                 break;
             case "left":
-                gridX--;
-                Debug.Log("trying to show pos: " + gridX + ", " + gridY);
-                if (gridX < 0)
-                {
-                    gridX = carGrid.GetLength(0)-1;
-                    gridY--;
-                }
-                if (gridY < 0)
-                {
-                    gridY = carGrid.GetLength(0)-1;
-                }
+                index--;
+                break;
+            case "up":
+                index -= 8;
+                break;
+            case "down":
+                index += 8;
                 break;
         }
-        if (carGrid[gridX, gridY] != null)
-        {
-            //selectedCar.GetComponentInChildren<Text>().enabled = false;
-            //Destroy(GameObject.Find("CAR_PREVIEW_SPAWN").GetComponentInChildren<CARnageCar>().gameObject);
-            selectedCar.GetComponent<CarIcon>().rel_car.SetActive(false);
-            selectedCar = carGrid[gridX, gridY];
-            showSelectedCar();
-        }
-        else
-            selectNextCar(direction);
+        
+        if (index >= carList.Count)
+            index = index % carList.Count;
+        if (index < 0)
+            index += carList.Count;
+        selectedCar = carList[index];
+        showSelectedCar();
+        
     }
 
     void selectNextColor(string direction)
@@ -720,5 +805,262 @@ public class CarSelectionLogic : MonoBehaviour {
         }
         selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().setColor(selectedColor);
         showSelectedColor();
+    }
+
+    List<GameObject> weaponUpgradeList;
+    GameObject selectedWeaponUpgrade;
+    void selectWeaponUpgradeInit(CARnageWeapon weapon)
+    {
+        weaponUpgradeList = new List<GameObject>();
+        weaponUpgradeList.Add(UpgradeOption_NONE);
+        selectedWeaponUpgrade = UpgradeOption_NONE;
+        UpgradeOption_NONE.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("WeaponIcons/" + weapon.weaponModel);
+
+        //check: already upgrade on?
+        if (weapon.upgraded_magazine)
+            selectedWeaponUpgrade = UpgradeOption_MAGAZINE;
+        if (weapon.upgraded_scope)
+            selectedWeaponUpgrade = UpgradeOption_SCOPE;
+        if (weapon.upgraded_silencer)
+            selectedWeaponUpgrade = UpgradeOption_SILENCER;
+        if (weapon.upgraded_damage)
+            selectedWeaponUpgrade = UpgradeOption_COMPENSATOR;
+        if (weapon.upgraded_light)
+            selectedWeaponUpgrade = UpgradeOption_LIGHT;
+        if (weapon.upgraded_automatic)
+            selectedWeaponUpgrade = UpgradeOption_AUTOMATIC;
+
+        GameObject.Find("CarSelectionState_Text").GetComponent<Text>().text = "Upgrade " + weapon.weaponName.Replace("_WEAPON", "");
+        if (weapon.upgrade_MagazineGO != null)
+        {
+            UpgradeOption_MAGAZINE.SetActive(true);
+            weaponUpgradeList.Add(UpgradeOption_MAGAZINE);
+            UpgradeOption_MAGAZINE.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("WeaponIcons/" + weapon.weaponModel + "+MAGAZINE");
+        }
+        else
+            UpgradeOption_MAGAZINE.SetActive(false);
+        if (weapon.upgrade_ScopeGO != null)
+        {
+            UpgradeOption_SCOPE.SetActive(true);
+            weaponUpgradeList.Add(UpgradeOption_SCOPE);
+            UpgradeOption_SCOPE.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("WeaponIcons/" + weapon.weaponModel + "+SCOPE");
+        }
+        else
+            UpgradeOption_SCOPE.SetActive(false);
+        if (weapon.upgrade_SilencerGO != null)
+        {
+            UpgradeOption_SILENCER.SetActive(true);
+            weaponUpgradeList.Add(UpgradeOption_SILENCER);
+            UpgradeOption_SILENCER.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("WeaponIcons/" + weapon.weaponModel + "+SILENCER");
+        }
+        else
+            UpgradeOption_SILENCER.SetActive(false);
+        if (weapon.upgrade_DamageGO != null)
+        {
+            UpgradeOption_COMPENSATOR.SetActive(true);
+            weaponUpgradeList.Add(UpgradeOption_COMPENSATOR);
+            UpgradeOption_COMPENSATOR.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("WeaponIcons/" + weapon.weaponModel + "+COMPENSATOR");
+        }
+        else
+            UpgradeOption_COMPENSATOR.SetActive(false);
+        if (weapon.upgrade_LightGO != null)
+        {
+            UpgradeOption_LIGHT.SetActive(true);
+            weaponUpgradeList.Add(UpgradeOption_LIGHT);
+            UpgradeOption_LIGHT.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("WeaponIcons/" + weapon.weaponModel + "+LIGHT");
+        }
+        else
+            UpgradeOption_LIGHT.SetActive(false);
+        if (weapon.upgrade_AutomaticGO != null)
+        {
+            UpgradeOption_AUTOMATIC.SetActive(true);
+            weaponUpgradeList.Add(UpgradeOption_AUTOMATIC);
+            UpgradeOption_AUTOMATIC.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("WeaponIcons/" + weapon.weaponModel + "+AUTOMATIC");
+        }
+        else
+            UpgradeOption_AUTOMATIC.SetActive(false);
+
+        showWeaponUpgrade(weapon);
+    }
+
+    void showWeaponUpgrade(CARnageWeapon weapon)
+    {
+        foreach(GameObject go in weaponUpgradeList)
+        {
+            go.GetComponentInChildren<Image>().enabled = false;
+            go.GetComponentInChildren<Text>().color = new Color(1,1,1,50f/255f);
+        }
+        selectedWeaponUpgrade.GetComponentInChildren<Image>().enabled = true;
+        selectedWeaponUpgrade.GetComponentInChildren<Text>().color = Color.white;
+
+        weapon.removeAllUpgrades();
+        switch(selectedWeaponUpgrade.name)
+        {
+            case "MAGAZINE":
+                weapon.addUpgrade(CARnageWeapon.UpgradeTypes.MAGAZINE);
+                break;
+            case "SCOPE":
+                weapon.addUpgrade(CARnageWeapon.UpgradeTypes.SCOPE);
+                break;
+            case "SILENCER":
+                weapon.addUpgrade(CARnageWeapon.UpgradeTypes.SILENCER);
+                break;
+            case "COMPENSATOR":
+                weapon.addUpgrade(CARnageWeapon.UpgradeTypes.COMPENSATOR);
+                break;
+            case "LIGHT":
+                weapon.addUpgrade(CARnageWeapon.UpgradeTypes.LIGHT);
+                break;
+            case "AUTOMATIC":
+                weapon.addUpgrade(CARnageWeapon.UpgradeTypes.AUTO);
+                break;
+        }
+    }
+
+    void selectNextWeaponUpgrade(CARnageWeapon weapon)
+    {
+        int index = weaponUpgradeList.IndexOf(selectedWeaponUpgrade);
+        if (index == weaponUpgradeList.Count - 1)
+            index = 0;
+        else
+            index++;
+        selectedWeaponUpgrade = weaponUpgradeList[index];
+
+        showWeaponUpgrade(weapon);
+    }
+    void selectPreviousWeaponUpgrade(CARnageWeapon weapon)
+    {
+        int index = weaponUpgradeList.IndexOf(selectedWeaponUpgrade);
+        if (index == 0)
+            index = weaponUpgradeList.Count - 1;
+        else
+            index--;
+        selectedWeaponUpgrade = weaponUpgradeList[index];
+
+        showWeaponUpgrade(weapon);
+    }
+
+    List<GameObject> modList;
+    GameObject selectedMod;
+    void selectModInit(int modPosition)
+    {
+        if(modPosition == 0)
+            GameObject.Find("CarSelectionState_Text").GetComponent<Text>().text = "Select 1st Mod";
+        else
+            GameObject.Find("CarSelectionState_Text").GetComponent<Text>().text = "Select 2nd Mod";
+
+        if (!select_mod_init)
+        {
+            // create list
+            Array values = Enum.GetValues(typeof(CARnageModifier.ModID));
+            modList = new List<GameObject>();
+            foreach (CARnageModifier.ModID mod in values)
+            {
+                GameObject go = Instantiate(Resources.Load<GameObject>("ModIcon"), select_mod_GO.transform);
+                GameObject MODgo = Instantiate(Resources.Load<GameObject>("MODSResources/" + mod), go.transform);
+
+                go.GetComponentsInChildren<Image>()[1].sprite = MODgo.GetComponent<CARnageModifier>().image;
+
+                modList.Add(go);
+            }            
+            select_mod_init = true;
+        }
+
+        // show selected 
+        if(selectedMod)
+        {
+            selectedMod.GetComponentsInChildren<Image>()[0].color = new Color(50 / 255f, 50 / 255f, 50 / 255f);
+            selectedMod.GetComponentsInChildren<Image>()[1].color = Color.white;
+        }
+        int i = 0;
+        foreach (CARnageModifier cm in selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().getModController().getMods())
+        {
+            if (modPosition == i)
+            {
+                foreach (GameObject go in modList)
+                {
+                    if (go.GetComponentInChildren<CARnageModifier>().modID == cm.modID)
+                    {
+                        selectedMod = go;
+                        break;
+                    }
+                }
+            }
+            i++;
+            if (i >= 2)
+                break;
+        }
+
+        showSelectedMod();
+    }
+
+    void showSelectedMod()
+    {
+        //foreach (GameObject go in modList)
+        //{
+        //    go.GetComponentsInChildren<Image>()[0].color = new Color(50 / 255f, 50 / 255f, 50 / 255f);
+        //    go.GetComponentsInChildren<Image>()[1].color = Color.white;
+        //}
+        selectedMod.GetComponentsInChildren<Image>()[0].color = Color.white;
+        selectedMod.GetComponentsInChildren<Image>()[1].color = new Color(50 / 255f, 50 / 255f, 50 / 255f);
+    }
+
+    void selectNextMod(string direction)
+    {
+        selectedMod.GetComponentsInChildren<Image>()[0].color = new Color(50 / 255f, 50 / 255f, 50 / 255f);
+        selectedMod.GetComponentsInChildren<Image>()[1].color = Color.white;
+
+        int index = modList.IndexOf(selectedMod);
+        switch (direction)
+        {
+            case "right":
+                index++;
+                break;
+            case "left":
+                index--;
+                break;
+            case "up":
+                index -= 10;
+                break;
+            case "down":
+                index += 10;
+                break;
+        }
+        if (index >= modList.Count)
+            index = index % modList.Count;
+        if (index < 0)
+            index += modList.Count;
+        selectedMod = modList[index];
+
+        GameObject MODgo = Instantiate(Resources.Load<GameObject>("MODSResources/" + selectedMod.GetComponentInChildren<CARnageModifier>().modID), selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().getModController().transform);
+        if (currentState == CarSelectionState.SELECT_MOD_1)
+        {
+            DestroyImmediate(selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().getModController().getMods()[0].gameObject);
+            MODgo.transform.SetAsFirstSibling();
+        }
+        if (currentState == CarSelectionState.SELECT_MOD_2)
+        {
+            DestroyImmediate(selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().getModController().getMods()[1].gameObject);
+            MODgo.transform.SetAsLastSibling();
+        }
+        displayMods();
+        showSelectedMod();        
+    }
+
+    void finishSelection()
+    {
+        // save preferred selection
+        PlayerPrefs.SetString("Player0_controlledBy", "MouseKeyboard");
+        PlayerPrefs.SetString("Player0_Car", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString());
+        PlayerPrefs.SetString("Player0_CarColor_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString(), selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carColor.ToString());
+        if(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon())
+            PlayerPrefs.SetString("Player0_WeaponUpgrade_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().weaponName, selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().getFirstUpgrade().ToString());
+        
+        if (selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon())
+            PlayerPrefs.SetString("Player0_WeaponUpgrade_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon().weaponName, selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon().getFirstUpgrade().ToString());
+        PlayerPrefs.SetString("Player0_CarMod_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString() + "_0", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getModController().getMods()[0].modID.ToString());
+        PlayerPrefs.SetString("Player0_CarMod_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString() + "_1", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getModController().getMods()[1].modID.ToString());
+
+        SceneManager.LoadScene("TestSpawn");
     }
 }

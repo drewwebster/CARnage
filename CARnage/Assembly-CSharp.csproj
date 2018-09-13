@@ -477,6 +477,7 @@
     <Compile Include="Assets\SRIA\Scripts\Util\SimpleImageDownloader.cs" />
     <Compile Include="Assets\syncYangle.cs" />
     <Compile Include="Assets\TestConsole.cs" />
+    <Compile Include="Assets\TestSpawnLogic.cs" />
     <Compile Include="Assets\trashWeaponSpot.cs" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\SimpleClear.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />

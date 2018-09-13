@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4344433983817824}
   - component: {fileID: 114263199168488228}
   m_Layer: 0
-  m_Name: ABLAZE
+  m_Name: INCINERATOR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
