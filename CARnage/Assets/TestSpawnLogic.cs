@@ -7,8 +7,7 @@ public class TestSpawnLogic : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        CarFactory.spawnCarForPlayer("Player0", Vector3.zero);
-
+        CarFactory.spawnCarsForAllPlayers(true);
     }
 	
 	// Update is called once per frame

@@ -53,7 +53,9 @@ public class CarSelectionLogic : MonoBehaviour {
     // Use this for initialization
     void Start () {
         currentState = CarSelectionState.SELECT_CAR;
-        selectingPlayer = "Player0";
+        selectingPlayer = PlayerPrefs.GetString("selectingPlayer");
+        if (selectingPlayer.Equals(""))
+            selectingPlayer = "Player0";
         updateCarSelectionState();
     }
 
@@ -299,12 +301,19 @@ public class CarSelectionLogic : MonoBehaviour {
         CARnageCar car = carGO.GetComponent<CARnageCar>();
         GameObject.Find("CarName_Text").GetComponent<Text>().text = car.carName;
 
-        displayMods();
+        displayMods(selectedCar.GetComponent<CarIcon>().rel_car);
         displayWeapon(car.getWeaponController().getLeftWeapon(), "L");
         displayWeapon(car.getWeaponController().getRightWeapon(), "R");
-
+        displayCarStats(car);
+    }
+    public static void displayCarStats(CARnageCar car)
+    {
+        displayCarStats(car, GameObject.Find("Canvas").transform);
+    }
+    public static void displayCarStats(CARnageCar car, Transform playerTrans)
+    {
         int i = 1;
-        foreach (Image img in GameObject.Find("SpeedBlocks").GetComponentsInChildren<Image>())
+        foreach (Image img in CARnageAuxiliary.FindDeepChild(playerTrans, "SpeedBlocks").GetComponentsInChildren<Image>())
             if (img.name.Equals("Filled"))
             {
                 if (car.speed >= i)
@@ -314,7 +323,7 @@ public class CarSelectionLogic : MonoBehaviour {
                 i++;
             }
         i = 1;
-        foreach (Image img in GameObject.Find("ImpactBlocks").GetComponentsInChildren<Image>())
+        foreach (Image img in CARnageAuxiliary.FindDeepChild(playerTrans, "ImpactBlocks").GetComponentsInChildren<Image>())
             if (img.name.Equals("Filled"))
             {
                 if (car.impact >= i)
@@ -324,7 +333,7 @@ public class CarSelectionLogic : MonoBehaviour {
                 i++;
             }
         i = 1;
-        foreach (Image img in GameObject.Find("StorageBlocks").GetComponentsInChildren<Image>())
+        foreach (Image img in CARnageAuxiliary.FindDeepChild(playerTrans, "StorageBlocks").GetComponentsInChildren<Image>())
             if (img.name.Equals("Filled"))
             {
                 if (car.gearStorage >= i)
@@ -334,7 +343,7 @@ public class CarSelectionLogic : MonoBehaviour {
                 i++;
             }
         i = 1;
-        foreach (Image img in GameObject.Find("HPBlocks").GetComponentsInChildren<Image>())
+        foreach (Image img in CARnageAuxiliary.FindDeepChild(playerTrans, "HPBlocks").GetComponentsInChildren<Image>())
             if (img.name.Equals("Filled"))
             {
                 if (car.HP >= i)
@@ -344,7 +353,7 @@ public class CarSelectionLogic : MonoBehaviour {
                 i++;
             }
         i = 1;
-        foreach (Image img in GameObject.Find("ShieldBlocks").GetComponentsInChildren<Image>())
+        foreach (Image img in CARnageAuxiliary.FindDeepChild(playerTrans, "ShieldBlocks").GetComponentsInChildren<Image>())
             if (img.name.Equals("Filled"))
             {
                 if (car.shield >= i)
@@ -354,7 +363,7 @@ public class CarSelectionLogic : MonoBehaviour {
                 i++;
             }
         i = 1;
-        foreach (Image img in GameObject.Find("NitroBlocks").GetComponentsInChildren<Image>())
+        foreach (Image img in CARnageAuxiliary.FindDeepChild(playerTrans, "NitroBlocks").GetComponentsInChildren<Image>())
             if (img.name.Equals("Filled"))
             {
                 if (car.nitro >= i)
@@ -383,14 +392,18 @@ public class CarSelectionLogic : MonoBehaviour {
                 }
         }
     }
+    public static void displayWeapon(CARnageWeapon weapon, string handSide)
+    {
+        displayWeapon(weapon, handSide, GameObject.Find("Canvas").transform);
+    }
 
-    public void displayWeapon(CARnageWeapon weapon, string handSide)
+    public static void displayWeapon(CARnageWeapon weapon, string handSide, Transform playerTrans)
     {
         if(weapon != null)
         {
             string dmgType = "";
             string delayType = "";
-            GameObject.Find("Weapon" + handSide + "Name").GetComponent<Text>().text = weapon.weaponName.Replace("_WEAPON","");
+            CARnageAuxiliary.FindDeepChild(playerTrans, "Weapon" + handSide + "Name").GetComponent<Text>().text = weapon.weaponName.Replace("_WEAPON","");
             switch (weapon.damageType)
             {
                 case DamageType.PROJECTILE:
@@ -411,9 +424,9 @@ public class CarSelectionLogic : MonoBehaviour {
             string delayAuto = weapon.automatic || weapon.getWeaponMod_automatic() ? " <size=9>(auto)</size>" : "";
             string magazineStr = weapon.magazineSize > 0 ? "Magazine:\r\n" : "";
             string magazineSize = weapon.magazineSize > 0 ? weapon.magazineSize * weapon.getWeaponMod_magazine_multiplier() + "\r\n" : "";
-            GameObject.Find("Weapon" + handSide + "StatsText").GetComponent<Text>().text = weapon.Damage * weapon.getWeaponMod_damage_multiplier() + "<size=11>" + dmgType + "</size>" + "\r\n" + weapon.shotDelay * weapon.getWeaponMod_shotDelay_multiplier() + "<size=9> sec</size>" + delayAuto + "\r\n" + magazineSize + reloadTime;
-            GameObject.Find("Weapon" + handSide + "Text").GetComponent<Text>().text = "DMG:\r\n" + delayType + "\r\n" + magazineStr + reloadStr;
-            GameObject.Find("Weapon" + handSide + "ExtraText").GetComponent<Text>().text = CARnageAuxiliary.colorMe(weapon.getExtraDescription());
+            CARnageAuxiliary.FindDeepChild(playerTrans, "Weapon" + handSide + "StatsText").GetComponent<Text>().text = weapon.Damage * weapon.getWeaponMod_damage_multiplier() + "<size=11>" + dmgType + "</size>" + "\r\n" + weapon.shotDelay * weapon.getWeaponMod_shotDelay_multiplier() + "<size=9> sec</size>" + delayAuto + "\r\n" + magazineSize + reloadTime;
+            CARnageAuxiliary.FindDeepChild(playerTrans, "Weapon" + handSide + "Text").GetComponent<Text>().text = "DMG:\r\n" + delayType + "\r\n" + magazineStr + reloadStr;
+            CARnageAuxiliary.FindDeepChild(playerTrans, "Weapon" + handSide + "ExtraText").GetComponent<Text>().text = CARnageAuxiliary.colorMe(weapon.getExtraDescription());
 
             string weaponImageUpgradeString = "";
             if (weapon.upgraded_magazine)
@@ -428,45 +441,49 @@ public class CarSelectionLogic : MonoBehaviour {
                 weaponImageUpgradeString = "+LIGHT";
             if (weapon.upgraded_automatic)
                 weaponImageUpgradeString = "+AUTOMATIC";
-            GameObject.Find("Weapon" + handSide + "Image").GetComponent<Image>().sprite = Resources.Load<Sprite>("WeaponIcons/" + weapon.weaponModel + weaponImageUpgradeString);
-            GameObject.Find("Weapon" + handSide + "Image").GetComponent<Image>().enabled = true;
+            CARnageAuxiliary.FindDeepChild(playerTrans, "Weapon" + handSide + "Image").GetComponent<Image>().sprite = Resources.Load<Sprite>("WeaponIcons/" + weapon.weaponModel + weaponImageUpgradeString);
+            CARnageAuxiliary.FindDeepChild(playerTrans, "Weapon" + handSide + "Image").GetComponent<Image>().enabled = true;
         }
         else
         {
-            GameObject.Find("Weapon" + handSide + "Name").GetComponent<Text>().text = "";
-            GameObject.Find("Weapon" + handSide + "StatsText").GetComponent<Text>().text = "";
-            GameObject.Find("Weapon" + handSide + "Text").GetComponent<Text>().text = "";
-            GameObject.Find("Weapon" + handSide + "ExtraText").GetComponent<Text>().text = "";
-            GameObject.Find("Weapon" + handSide + "Image").GetComponent<Image>().enabled = false;
+            CARnageAuxiliary.FindDeepChild(playerTrans, "Weapon" + handSide + "Name").GetComponent<Text>().text = "";
+            CARnageAuxiliary.FindDeepChild(playerTrans, "Weapon" + handSide + "StatsText").GetComponent<Text>().text = "";
+            CARnageAuxiliary.FindDeepChild(playerTrans, "Weapon" + handSide + "Text").GetComponent<Text>().text = "";
+            CARnageAuxiliary.FindDeepChild(playerTrans, "Weapon" + handSide + "ExtraText").GetComponent<Text>().text = "";
+            CARnageAuxiliary.FindDeepChild(playerTrans, "Weapon" + handSide + "Image").GetComponent<Image>().enabled = false;
         }
     }
-
-    void displayMods()
+    public static void displayMods(GameObject carGO)
     {
-        CARnageModifier[] mods = selectedCar.GetComponent<CarIcon>().rel_car.GetComponentsInChildren<CARnageModifier>();
+        displayMods(carGO, GameObject.Find("Canvas").transform);
+    }    
+
+    public static void displayMods(GameObject carGO, Transform playerTrans)
+    {
+        CARnageModifier[] mods = carGO.GetComponentsInChildren<CARnageModifier>();
         if (mods != null && mods.Length > 0)
         {
-            GameObject.Find("ModLImage").GetComponent<Image>().sprite = mods[0].image;
-            GameObject.Find("ModLName").GetComponent<Text>().text = mods[0].modName;
-            GameObject.Find("ModLText").GetComponent<Text>().text = CARnageAuxiliary.colorMe(mods[0].description);
+            CARnageAuxiliary.FindDeepChild(playerTrans, "ModLImage").GetComponent<Image>().sprite = mods[0].image;
+            CARnageAuxiliary.FindDeepChild(playerTrans, "ModLName").GetComponent<Text>().text = mods[0].modName;
+            CARnageAuxiliary.FindDeepChild(playerTrans, "ModLText").GetComponent<Text>().text = CARnageAuxiliary.colorMe(mods[0].description);
         }
         else
         {
-            GameObject.Find("ModLImage").GetComponent<Image>().sprite = null;
-            GameObject.Find("ModLName").GetComponent<Text>().text = "";
-            GameObject.Find("ModLText").GetComponent<Text>().text = "";
+            CARnageAuxiliary.FindDeepChild(playerTrans, "ModLImage").GetComponent<Image>().sprite = null;
+            CARnageAuxiliary.FindDeepChild(playerTrans, "ModLName").GetComponent<Text>().text = "";
+            CARnageAuxiliary.FindDeepChild(playerTrans, "ModLText").GetComponent<Text>().text = "";
         }
         if (mods != null && mods.Length > 1)
         {
-            GameObject.Find("ModRImage").GetComponent<Image>().sprite = mods[1].image;
-            GameObject.Find("ModRName").GetComponent<Text>().text = mods[1].modName;
-            GameObject.Find("ModRText").GetComponent<Text>().text = CARnageAuxiliary.colorMe(mods[1].description);
+            CARnageAuxiliary.FindDeepChild(playerTrans, "ModRImage").GetComponent<Image>().sprite = mods[1].image;
+            CARnageAuxiliary.FindDeepChild(playerTrans, "ModRName").GetComponent<Text>().text = mods[1].modName;
+            CARnageAuxiliary.FindDeepChild(playerTrans, "ModRText").GetComponent<Text>().text = CARnageAuxiliary.colorMe(mods[1].description);
         }
         else
         {
-            GameObject.Find("ModRImage").GetComponent<Image>().sprite = null;
-            GameObject.Find("ModRName").GetComponent<Text>().text = "";
-            GameObject.Find("ModRText").GetComponent<Text>().text = "";
+            CARnageAuxiliary.FindDeepChild(playerTrans, "ModRImage").GetComponent<Image>().sprite = null;
+            CARnageAuxiliary.FindDeepChild(playerTrans, "ModRName").GetComponent<Text>().text = "";
+            CARnageAuxiliary.FindDeepChild(playerTrans, "ModRText").GetComponent<Text>().text = "";
         }
     }
 
@@ -607,13 +624,13 @@ public class CarSelectionLogic : MonoBehaviour {
         {
             // reset car
             
-            PlayerPrefs.SetString("Player0_CarColor_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString(), "");
+            PlayerPrefs.SetString(selectingPlayer+"_CarColor_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString(), "");
             if (selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon())
-                PlayerPrefs.SetString("Player0_WeaponUpgrade_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().weaponName, "");
+                PlayerPrefs.SetString(selectingPlayer+"_WeaponUpgrade_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().weaponName, "");
             if (selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon())
-                PlayerPrefs.SetString("Player0_WeaponUpgrade_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon().weaponName, "");
-            PlayerPrefs.SetString("Player0_CarMod_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString() + "_0", "");
-            PlayerPrefs.SetString("Player0_CarMod_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString() + "_1", "");
+                PlayerPrefs.SetString(selectingPlayer+"_WeaponUpgrade_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon().weaponName, "");
+            PlayerPrefs.SetString(selectingPlayer+"_CarMod_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString() + "_0", "");
+            PlayerPrefs.SetString(selectingPlayer+"_CarMod_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString() + "_1", "");
 
             GameObject newCar = spawnCar(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel);
             DestroyImmediate(selectedCar.GetComponentInChildren<CarIcon>().rel_car);
@@ -1043,24 +1060,24 @@ public class CarSelectionLogic : MonoBehaviour {
             DestroyImmediate(selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().getModController().getMods()[1].gameObject);
             MODgo.transform.SetAsLastSibling();
         }
-        displayMods();
+        displayMods(selectedCar.GetComponent<CarIcon>().rel_car);
         showSelectedMod();        
     }
 
     void finishSelection()
     {
         // save preferred selection
-        PlayerPrefs.SetString("Player0_controlledBy", "MouseKeyboard");
-        PlayerPrefs.SetString("Player0_Car", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString());
-        PlayerPrefs.SetString("Player0_CarColor_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString(), selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carColor.ToString());
+        PlayerPrefs.SetString(selectingPlayer+"_controlledBy", "MouseKeyboard");
+        PlayerPrefs.SetString(selectingPlayer+"_Car", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString());
+        PlayerPrefs.SetString(selectingPlayer+"_CarColor_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString(), selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carColor.ToString());
         if(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon())
-            PlayerPrefs.SetString("Player0_WeaponUpgrade_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().weaponName, selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().getFirstUpgrade().ToString());
+            PlayerPrefs.SetString(selectingPlayer+"_WeaponUpgrade_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().weaponName, selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().getFirstUpgrade().ToString());
         
         if (selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon())
-            PlayerPrefs.SetString("Player0_WeaponUpgrade_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon().weaponName, selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon().getFirstUpgrade().ToString());
-        PlayerPrefs.SetString("Player0_CarMod_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString() + "_0", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getModController().getMods()[0].modID.ToString());
-        PlayerPrefs.SetString("Player0_CarMod_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString() + "_1", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getModController().getMods()[1].modID.ToString());
+            PlayerPrefs.SetString(selectingPlayer+"_WeaponUpgrade_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon().weaponName, selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon().getFirstUpgrade().ToString());
+        PlayerPrefs.SetString(selectingPlayer+"_CarMod_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString() + "_0", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getModController().getMods()[0].modID.ToString());
+        PlayerPrefs.SetString(selectingPlayer+"_CarMod_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString() + "_1", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getModController().getMods()[1].modID.ToString());
 
-        SceneManager.LoadScene("TestSpawn");
+        SceneManager.LoadScene("PLAYER_SELECTION");
     }
 }

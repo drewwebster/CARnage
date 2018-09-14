@@ -363,6 +363,8 @@
     <Compile Include="Assets\explosionHitbox.cs" />
     <Compile Include="Assets\Gear.cs" />
     <Compile Include="Assets\meleeHitbox.cs" />
+    <Compile Include="Assets\PlayerSelectionLogic.cs" />
+    <Compile Include="Assets\PrePlayerSelection.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
@@ -486,6 +488,7 @@
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurves.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
+    <None Include="Assets\3rdParty\PolygonMini_Fantasy\Shaders\DistanceGradient.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\RadialBlur.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionSelective.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Shaders\UnityVC\StandardVC.shader" />
@@ -500,12 +503,14 @@
     <None Include="Assets\3rdParty\Cartoon FX Pack\Cartoon FX\Shaders (Mobile)\CFXM_MobileParticleAdd_Alpha8.shader" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Shaders\CFX Standard Specular (double sided).shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
+    <None Include="Assets\3rdParty\PolygonMini_Fantasy\Shaders\WorldFog.shader" />
     <None Include="Assets\SRIA\Docs\If upgrading from 2.x.x-ReadMe.txt" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Shaders\Oven\CFX-COMMON.cginc" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders 2.0 Generated\Examples\Default\Old School.shader" />
     <None Include="Assets\3rdParty\Cartoon FX Pack\FX Mega Pack 2\FX Mega Pack 2 - Readme.txt" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
     <None Include="Assets\3rdParty\Grunge UI Kit\Source Files\Fonts\Frijole Font\FrijoleLicense_OFL.txt" />
+    <None Include="Assets\3rdParty\PolygonMini_Fantasy\Shaders\LocalFog_Multiply.shader" />
     <None Include="Assets\3rdParty\Cartoon FX Pack\Shaders\CFX2 Particle Alpha Blend Add.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Environment\Water (Basic)\DO_NOT_WORK_IN_VR.txt" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders PBS\TCP2_Standard PBS Outline (Specular).shader" />
@@ -513,6 +518,7 @@
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceRaytrace.cginc" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders 2.0\Variants Base\TCP2_Desktop_Specular_Outline.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\VignettingShader.shader" />
+    <None Include="Assets\3rdParty\PolygonMini_Fantasy\Shaders\WorldGradient.shader" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders 2.0\Variants Base\TCP2_Mobile_Specular_Outline.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\!ToonyColorsPro Readme.txt" />
@@ -529,6 +535,7 @@
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Resources\CarCSVertexNormalsFastUpdater.compute" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders 2.0\Variants Base\TCP2_Mobile_Specular_OutlineBlending.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\SSAOShader.shader" />
+    <None Include="Assets\3rdParty\PolygonMini_Fantasy\Shaders\LocalFog_Overlay.shader" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders 2.0 Generated\Examples\PBS\Outline Behind.shader" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders 2.0\TCP2_OutlineOnly.shader" />
     <None Include="Assets\3rdParty\Cartoon FX Pack\Shaders\CFX3 Multiply Color.shader" />
@@ -556,6 +563,7 @@
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\MotionBlur.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\LensFlareCreate.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
+    <None Include="Assets\3rdParty\PolygonMini_Fantasy\Shaders\LocalFog_Add.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\EdgeDetectNormals.shader" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders PBS\TCP2_Standard PBS Outline Blended (Specular).shader" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders 2.0 Generated\Examples\Default\Comic Book.shader" />
@@ -593,6 +601,7 @@
     <None Include="Assets\3rdParty\SimpleRacer\_FX\UnlitVertexColour_Alpha.shader" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders 2.0 Generated\Examples\PBS\Blended Outline.shader" />
     <None Include="Assets\3rdParty\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+    <None Include="Assets\3rdParty\PolygonMini_Fantasy\Shaders\LocalGradient.shader" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Demo TCP2\SG Demo Assets\_Misc Assets\TCP2_Demo_3DText.shader" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Resources\CFX Standard VA (double sided).shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionEffect.shader" />
@@ -638,6 +647,7 @@
     <None Include="Assets\3rdParty\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
     <None Include="Assets\3rdParty\POLYGON_Renderbox\Shaders\SkyGradient.shader" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Shaders\CFX VertexColors.shader" />
+    <None Include="Assets\3rdParty\PolygonMini_Fantasy\README.txt" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Resources\CarCSVertexAnimationFiber.compute" />
     <None Include="Assets\3rdParty\RealisticCarControllerV3\LICENSE - Read Me!.txt" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Resources\CarCSComputeBonesInter.compute" />

@@ -69,6 +69,36 @@ public class CARnageAuxiliary : MonoBehaviour {
         return s.Replace("Acid", "<color=lime>Acid</color>").Replace("Fire", "<color=red>Fire</color>").Replace("Leak", "<color=black>Leak</color>").Replace("HP", "<color=red>HP</color>").Replace("Shielded", "<color=cyan>Shielded</color>").Replace("Shield", "<color=cyan>Shield</color>").Replace("Gears", "<color=#303030>Gears</color>").Replace("Gear", "<color=#303030>Gear</color>").Replace("Explosion", "<color=yellow>Explosion</color>").Replace("Nitro", "<color=#F29200>Nitro</color>").Replace("Freeze", "<color=lightblue>Freeze</color>").Replace("Damage", "DMG");
     }
 
+    public static int getPlayersPlayingCount()
+    {
+        int i = 0;
+        if (!PlayerPrefs.GetString("Player0_controlledBy").Equals(""))
+            i++;
+        if (!PlayerPrefs.GetString("Player1_controlledBy").Equals(""))
+            i++;
+        if (!PlayerPrefs.GetString("Player2_controlledBy").Equals(""))
+            i++;
+        if (!PlayerPrefs.GetString("Player3_controlledBy").Equals(""))
+            i++;
+
+        return i;
+    }
+
+    //Breadth-first search
+    public static Transform FindDeepChild(Transform parent, string name)
+    {
+        var result = parent.Find(name);
+        if (result != null)
+            return result;
+        foreach (Transform child in parent)
+        {
+            result = FindDeepChild(child, name);
+            if (result != null)
+                return result;
+        }
+        return null;
+    }
+
     //public static void setAnimationSpeed(GameObject target, string animationName, float actualValue)
     //{
     //    float speed = 1;

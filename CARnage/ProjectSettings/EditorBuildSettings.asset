@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestSpawn.unity
     guid: 76dd8203286ecd8498eeaf88edd91f85
+  - enabled: 1
+    path: Assets/Scenes/PLAYER_SELECTION.unity
+    guid: 37107e716405213498bd7c696c2fd5ca
+  - enabled: 1
+    path: Assets/Scenes/PrePlayerSelection.unity
+    guid: c4fb7f999bb042a4c8d6c8462549d159
   m_configObjects: {}
