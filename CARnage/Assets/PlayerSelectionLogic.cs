@@ -52,14 +52,14 @@ public class PlayerSelectionLogic : MonoBehaviour {
             SceneManager.LoadScene("CAR_SELECTION");
         }
         if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-            SceneManager.LoadScene("TestSpawn");
+            SceneManager.LoadScene("SCENE_SELECTION_RANDOM");
     }
 
     void displayPlayer(int playerNr)
     {
         Transform playerTrans = GameObject.Find("Player" + playerNr).transform;
         
-        GameObject carGO = CarFactory.spawnCarForPlayer("Player" + playerNr, new Vector3(20000,0,20000), false);
+        GameObject carGO = CarFactory.spawnCarForPlayer("Player" + playerNr, null, false);
         CARnageAuxiliary.FindDeepChild(playerTrans,"CarIcon").GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>("CarIcons/" + PlayerPrefs.GetString("Player" + playerNr + "_Car"));
         
         CARnageCar car = carGO.GetComponent<CARnageCar>();

@@ -127,7 +127,7 @@ public class CARnageModifier : MonoBehaviour {
                 getCar().damageMe(2f / 100f * getCar().maxHP, getCar(),DamageType.DIRECT_DAMAGE);
 
         if (modID == ModID.GROWTH)
-            Gear.spawnGears(1, getCar(),GearSource.OTHER);
+            Gear.spawnGears(1, getCar(),GearSource.OTHER, getCar());
 
         if (modID == ModID.UPWIND && getCar().GetComponent<RCC_CarControllerV3>().isInAir)
             getCar().repair(10);
@@ -206,7 +206,7 @@ public class CARnageModifier : MonoBehaviour {
             damagedCar.applyDebuff(CARnageCar.Debuff.Acid, getCar());
 
         if (modID == ModID.DISASSEMBLY)
-            damagedCar.dropGears(1);
+            damagedCar.dropGears(1, getCar());
 
         switch (damageType)
         {

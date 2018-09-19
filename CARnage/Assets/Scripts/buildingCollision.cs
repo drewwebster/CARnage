@@ -10,7 +10,7 @@ public class buildingCollision : MonoBehaviour {
     
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Player") && GetComponent<Rigidbody>().isKinematic) // TODO: scale with "Impact"
+        if (collision.gameObject.tag.Equals("Player") && !destroyed) // TODO: scale with "Impact"
         {
             CARnageCar dmgCar = collision.gameObject.GetComponent<CARnageCar>();
             damageMe(collision.relativeVelocity.magnitude * dmgCar.impact, true, DamageType.RAM, dmgCar);
@@ -30,7 +30,9 @@ public class buildingCollision : MonoBehaviour {
         if (initialDMG && damager)
             damage = damage * damager.getModController().getBuildingDMG_Multiplier();
 
-        if(damage > 0 && initialDMG)
+        GetComponentInParent<Building>().lastDamager = damager;
+
+        if (damage > 0 && initialDMG)
         {
             Transform parentTrans = GetComponentInParent<Building>().transform;
             if (GetComponentInParent<Building>().GetComponentInChildren<spawnableOffset>())
@@ -53,8 +55,6 @@ public class buildingCollision : MonoBehaviour {
         }
         else
             criticalForce -= damage; // Damage the buildingPart
-
-        GetComponentInParent<Building>().lastDamager = damager;
     }
 
     public void destroyMe(float force, DamageType damageType, CARnageCar destroyer)
@@ -72,7 +72,6 @@ public class buildingCollision : MonoBehaviour {
             GetComponentInParent<Building>().calcAdditionalDamage(force - criticalForce, damageType);
         Invoke("sink", Random.Range(4f,8f));
 
-        Debug.Log("destroy me (buildingPart)");
         if (destroyer)
             destroyer.getModController().onBuildingDestroyed();
     }

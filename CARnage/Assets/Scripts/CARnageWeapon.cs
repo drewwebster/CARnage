@@ -907,7 +907,7 @@ public class CARnageWeapon : MonoBehaviour {
         switch(weaponModel)
         {
             case WeaponModel.ACE_OF_SPADES:
-                Gear.spawnGears(1, building.getBuilding(), CARnageModifier.GearSource.ENVIRONMENT);
+                Gear.spawnGears(1, building.getBuilding(), CARnageModifier.GearSource.ENVIRONMENT, damager);
                 break;
         }
     }

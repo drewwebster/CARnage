@@ -2,8 +2,13 @@ WindowsStandalone
 PlayerPath?
 D:/CARnage/CARnage/Builds/Builds.exe
 SceneListBegin?
+Assets/Scenes/PrePlayerSelection.unity
 Assets/Scenes/CAR_SELECTION.unity
 Assets/Scenes/CarSelection.unity
+Assets/Scenes/TestSpawn.unity
+Assets/Scenes/PLAYER_SELECTION.unity
+Assets/Scenes/Level_Volcano.unity
+Assets/Scenes/SCENE_SELECTION_RANDOM.unity
 SceneListEnd?
 49cfede1e9c856b533ff4cd15c977a52 Assembly-CSharp.dll:.GunSwitchScript
 2a360b32dfcd6023a0125501b726d77e Assembly-CSharp.dll:frame8.ScrollRectItemsAdapter.Util.Drawer.LabelWithToggle
@@ -16,6 +21,7 @@ bb44a81ff6ff4dfe82ec8a1df1c521b9 Assembly-CSharp.dll:.RCC_UISteeringWheelControl
 7ba1e84ad3d2d8813486668e75f842ce Assembly-CSharp.dll:UnityStandardAssets.Effects.ExtinguishableParticleSystem
 993d701790a7c26f214c6513f104f32e Assembly-CSharp.dll:frame8.ScrollRectItemsAdapter.SimpleTutorialExample.SimpleTutorial
 109ba80d385b0c89e550c4e0b9a84051 Assembly-CSharp.dll:frame8.ScrollRectItemsAdapter.Util.Drawer.ButtonWithInputPanel
+a5a552807f390b14a47ea64d9b70afc9 Assembly-CSharp.dll:.bl_MaskHelper
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:frame8.ScrollRectItemsAdapter.Util.InputFieldInScrollRectFixer
 f62d1e12c4ea2e5d19ca5a2c81b0bf32 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.TiltShift
 bb6aff690417412a825e38207356e8d7 Assembly-CSharp.dll:CaronteFX.CarCorpusclesDepthRenderer
@@ -34,6 +40,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 30afa8783a8bbee2e465ec9ce1efaee2 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 607d64d2c4bc76ac9876e6f7b9cc7edf UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 bb6aff690417412a825e38207356e8d7 Assembly-CSharp.dll:CaronteFX.CarFluidRenderer
+4bf62d50d31e322119f31cb9eafc0cd7 Assembly-CSharp.dll:.bl_MiniMap
 67af8340ec9c081c037c8aa5c753ce0a Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ColorCorrectionRamp
 89c424426575ab316127d73d28bfaea4 Assembly-CSharp.dll:.TCP2_PlanarReflection
 3b249a6db7549e80282118845f7f5071 Assembly-CSharp.dll:.RCC_EnterExitPlayer
@@ -47,9 +54,10 @@ a30beadf4d109f44144b9a9f42e61cbf Assembly-CSharp.dll:UnityStandardAssets.ImageEf
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:frame8.ScrollRectItemsAdapter.MainExample.MainExampleHelper
 430c1729d7a445aa5df470ced463fca9 Assembly-CSharp.dll:UnityStandardAssets.Effects.ExplosionPhysicsForce
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.RCC_Chassis
+a5ea161a733682e6d4f4402bdf6db22d Assembly-CSharp.dll:.bl_MMExampleManager
 98faa35b2670502d11be1c8c9777407c Assembly-CSharp.dll:CaronteFX.CNScriptPlayer
 c35752b81d25e001fee445da226f3c4e Assembly-CSharp.dll:UnityStandardAssets.Vehicles.Car.Suspension
-048e5b96fb48691a1b28492620fb0329 Assembly-CSharp.dll:.CARnageCar
+5b5d00afa373d7164169503d45cb5ad5 Assembly-CSharp.dll:.CARnageCar
 23b50ef73e2c1a8a76860d35bcbbf8fc Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.GlobalFog
 92680f6a99aa8eaa9490b50f2ca768d3 Assembly-CSharp.dll:frame8.ScrollRectItemsAdapter.Util.PullToRefresh.PullToRefreshBehaviour
 a0aecdee73cb634ef9902e00a3c65eca Assembly-CSharp.dll:.damageCar
@@ -160,6 +168,7 @@ b3b3d2f6d00a8061e64436679cf7ecac Assembly-UnityScript.dll:.player_collider
 54337bbdfa345b09871644cfac209a86 Assembly-CSharp.dll:.SmoothCameraOrbit
 a32f33d00a7a1fe2bf4c764c4b02d30d Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.BloomAndFlares
 93691827ab63fd4f3a75cf1ca0e87471 Assembly-CSharp.dll:CaronteFX.CarCorpusclesDiffuseRenderer
+37bc92d8fc299db213a3af6d5a73d064 Assembly-CSharp.dll:.bl_IconItem
 be27436e7e350fe51a5a7327c7e7b145 Assembly-CSharp.dll:.TCP2_Demo_PBS
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 cf455f7a806648c6ed4c7d3e3f8a0e03 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -311,10 +320,12 @@ cb6b0d80dd9746dbed02ed89c4b8c6e8 Assembly-CSharp.dll:.ColorPickerBySliders
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:VacuumShaders.CurvedWorld.Water.WaterBasic
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:UnityStandardAssets.Effects.FireLight
 6c38d2cf7fd18a1f0642783d58640349 Assembly-CSharp.dll:.GrenadeScript
+fdac4c8fb246fe0871200f2abcdb78d8 Assembly-CSharp.dll:.bl_SnapShot
 3e30abd4958dc865d9fafca6fcc42ed9 Assembly-CSharp.dll:.Vintage
 35a85271514203b44e5f0317c842c90b Assembly-CSharp.dll:frame8.ThirdParty.UI.ScrollRectNested
 63476c3cd723e567416f94104be571f7 Assembly-CSharp.dll:frame8.ScrollRectItemsAdapter.Util.LoadSceneOnClick
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.PostEffectsHelper
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PrePlayerSelection
 16756866ef08c5c05c6229db9418c551 Assembly-CSharp.dll:UnityStandardAssets.Cameras.FreeLookCam
 04332fe0119d69ab6fd28123f0010803 Assembly-CSharp.dll:.AdvancedCA
 5f30db538998c14c21f2326ab9391fc4 Assembly-CSharp.dll:CaronteFX.CNTriggerByContact
@@ -322,9 +333,11 @@ cb6b0d80dd9746dbed02ed89c4b8c6e8 Assembly-CSharp.dll:.ColorPickerBySliders
 60f1a7ec197a458465b9567621f5f97a Assembly-CSharp.dll:.LightMovementScript
 4b0265527aa75a2352fc317527359241 Assembly-CSharp.dll:.RCC_Demo
 869e5abc2271c3b618904edff22e38ef Assembly-CSharp.dll:UnityStandardAssets.Effects.ExplosionFireAndDebris
+79a5050332b6168685deda9001a647b2 Assembly-CSharp.dll:.CarIcon
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:frame8.ScrollRectItemsAdapter.Util.SimpleImageDownloader
 2ebb8b6e720c69023e7ca8c96c29049b Assembly-CSharp.dll:.RCC_EnterExitCar
 7bb882233b4573c20e3eeca76258a262 Assembly-CSharp.dll:.scaleEmission
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.bl_RandomBot
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -341,6 +354,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 176c8d98d807f341647de405961d05e2 Assembly-CSharp.dll:CaronteFX.CNJet
 33ee3fe96e646be72132a657d927802b Assembly-CSharp.dll:CaronteFX.CNFluid
+25d6d479874a494b7b32f5e32e3f6d95 Assembly-CSharp.dll:.bl_MiniMapItem
 8522d54731b95d0f056c9f250185eb83 Assembly-CSharp.dll:UnityStandardAssets.SceneUtils.SlowMoButton
 cff2f7383b123d207597108afcecde7e Assembly-CSharp.dll:.CFX_AutoRotate
 01c7789c78a4c3a26a68cfb9d786abf4 Assembly-CSharp.dll:.ExplosiveBarrelScript
@@ -348,9 +362,10 @@ cff2f7383b123d207597108afcecde7e Assembly-CSharp.dll:.CFX_AutoRotate
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.RCC_HoodCamera
 2dbfd4f7836c7f6a79e17be5f4bf7969 Assembly-CSharp.dll:UnityStandardAssets.Utility.WaypointCircuit
 48718eef89369acea1a78774e6908099 Assembly-CSharp.dll:UnityStandardAssets.Cameras.TargetFieldOfView
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Gear
+475e436609234340d298bfedbb6a80d1 Assembly-CSharp.dll:.Gear
 0bfbee049dba4ee680f1e8f7ea41f888 Assembly-CSharp.dll:.buildingCollision
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.RCC_GetBounds
+7e9c60a072aaeaf6c7a40186567e5a3a Assembly-CSharp.dll:.bl_WorldSpace
 8988d0e67dfa321ce02f71e6206ee11a Assembly-CSharp.dll:.RCC_WheelCollider
 cc6454381e1a85d20b22cbcc8efccf6c Assembly-CSharp.dll:.explodableHitbox
 e41790817c5b4fa3f7a79bd4696bcde5 Assembly-CSharp.dll:.syncYangle
@@ -359,6 +374,7 @@ e41790817c5b4fa3f7a79bd4696bcde5 Assembly-CSharp.dll:.syncYangle
 52dec39820b09c1ff067eb9931049a24 Assembly-CSharp.dll:.RCC_Settings
 aed7a093a3c9b018fe2666f3d94c06d5 Assembly-CSharp.dll:UnityStandardAssets.Cameras.HandHeldCam
 e2b50e4e1e5006d87e7ebe8a724e8f6d Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ContrastEnhance
+9242aafe820c9e7b1b39c1140de54c5f Assembly-CSharp.dll:.VolcanoPort
 0afbef59df7a9fa9f3fef07dbd3bd833 Assembly-CSharp.dll:UnityStandardAssets.Vehicles.Aeroplane.AeroplanePropellerAnimator
 d294f499d4f10446de064c59859ef7d3 Assembly-CSharp.dll:frame8.ScrollRectItemsAdapter.SelectionExample.SelectionExample
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
@@ -442,8 +458,9 @@ bd6ec36a31f63516b595d922255b5db9 Assembly-CSharp.dll:frame8.ScrollRectItemsAdapt
 7fc3adfac7efbc0706567dbaca46f637 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.Fisheye
 169eba1d5e0366f9dda846da0d98a32f Assembly-UnityScript.dll:.LookAtCamera
 64b77d7137573808da6ccc7fd73fa09f Assembly-CSharp.dll:.TCP2_Demo_View
+5c400871c80903c1694704fedce4c0be Assembly-CSharp.dll:.PlayerSelectionLogic
 0fb0b9e2f53bf1ce0dfeb1e66879e3ff Assembly-CSharp.dll:.LightningScript
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CarSelectionLogic
+cdf6bd12edfc63616161e22e0f4f72be Assembly-CSharp.dll:.CarSelectionLogic
 983a952571108d7602d019f0575858cd Assembly-CSharp.dll:CaronteFX.CNServos
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.PostEffectsBase
 ca163e542e5d3681859330ed71872383 Assembly-CSharp.dll:.enableColliderDelayed
@@ -451,8 +468,10 @@ ca163e542e5d3681859330ed71872383 Assembly-CSharp.dll:.enableColliderDelayed
 44d51219c74506843accb47fe51be3d9 Assembly-UnityScript.dll:.Move
 745f1e7cbc8a96b5f90b652e0aa7c4ea Assembly-CSharp.dll:.RCC_MobileButtons
 c08b196716247885d3b27f7f282b2568 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.SepiaTone
+10d1b65c1118d714505e201962d72a9b Assembly-CSharp.dll:.SpawnLogic
 9c354d8cc0d2b625c87d5b3da48f6608 Assembly-CSharp.dll:.CFX_SpawnSystem
 945850d30d449b11586f6538756a5489 Assembly-CSharp.dll:.RCC_SuspensionArm
+ffe8557e41ad3c30efd0065b503a295a Assembly-CSharp.dll:.bl_MMCompass
 e2a8fd4524fc2a3a236b7e7720b544a6 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.EdgeDetection
 4702db161b081bd4a461b557247b06b4 Assembly-CSharp.dll:frame8.ScrollRectItemsAdapter.IncrementalItemFetchExample.IncrementalItemFetch
 b3432dfe180f02232d7612fb366593d3 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ColorCorrectionLookup
@@ -471,3 +490,5 @@ f464cb410f6c349883dd97e47ccdb8cb Assembly-CSharp.dll:.GasTankScript
 e4fa756fe6a12420cf596c59814c52b0 Assembly-CSharp.dll:.DynamicDOF
 daabd8d8800a87cff11f866c4d06a232 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ContrastStretch
 0f3d4bb7128a287827d041c696039525 Assembly-CSharp.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.InstantDestructor
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SceneSelection

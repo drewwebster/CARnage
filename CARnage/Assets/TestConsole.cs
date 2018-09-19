@@ -149,7 +149,7 @@ public class TestConsole : MonoBehaviour {
                 WeaponFactory.spawnRndWeapon(relCar.transform.position);
                 break;
             case "CAR":
-                CarFactory.spawnCar(CarModel.TOOLTIME, relCar.transform.position + relCar.transform.forward * 10);
+                CarFactory.spawnCar(CarModel.TOOLTIME, relCar.transform);
                 break;
             case "UP":
             case "UPGRADE":
@@ -159,7 +159,7 @@ public class TestConsole : MonoBehaviour {
             case "GEAR":
                 if (parameter.Length > 0)
                     mult = float.Parse(parameter);
-                Gear.spawnGears((int)mult,relCar,CARnageModifier.GearSource.OTHER);
+                Gear.spawnGears((int)mult,relCar,CARnageModifier.GearSource.OTHER, relCar);
                 break;
         }
     }

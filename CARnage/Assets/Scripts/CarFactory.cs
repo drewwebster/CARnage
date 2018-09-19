@@ -5,19 +5,28 @@ using UnityEngine;
 
 public class CarFactory : MonoBehaviour {
 
-    public static GameObject spawnCar(CarModel carModel, Vector3 position)
+    public static GameObject spawnCar(CarModel carModel, Transform trans)
     {
-        return spawnCar(carModel, position, "", false);
+        return spawnCar(carModel, trans, "", false);
     }
-    public static GameObject spawnCarForPlayer(string playerName, Vector3 position, bool alsoSpawnCamera)
+    public static GameObject spawnCarForPlayer(string playerName, Transform trans, bool alsoSpawnCamera)
     {
         Debug.Log("Spawn for: " + playerName + "_Car | " + PlayerPrefs.GetString(playerName + "_Car"));
-        return spawnCar((CarModel)Enum.Parse(typeof(CarModel), PlayerPrefs.GetString(playerName + "_Car")), position, playerName, alsoSpawnCamera);
+        return spawnCar((CarModel)Enum.Parse(typeof(CarModel), PlayerPrefs.GetString(playerName + "_Car")), trans, playerName, alsoSpawnCamera);
     }
-    public static GameObject spawnCar(CarModel carModel, Vector3 position, string playerName, bool alsoSpawnCamera)
+    public static GameObject spawnCar(CarModel carModel, Transform trans, string playerName, bool alsoSpawnCamera)
     {
+        Vector3 position = new Vector3(20000, 0, 20000);
+        Quaternion rotation = Quaternion.identity;
+        if(trans != null)
+        {
+            position = trans.position;
+            rotation = trans.rotation;
+        }
+
         GameObject go = Instantiate(Resources.Load<GameObject>(carModel.ToString()));
-        go.transform.position = new Vector3(position.x, position.y + 10, position.z);
+        go.transform.position = position + 10 * Vector3.up;
+        go.transform.rotation = rotation;
         go.GetComponent<CARnageCar>().controlledBy = CARnageAuxiliary.ControllerType.AI;
 
         if (!playerName.Equals(""))
@@ -88,16 +97,15 @@ public class CarFactory : MonoBehaviour {
         }
     }
 
-    public static void spawnCarsForAllPlayers(bool alsoSpawnCameras)
+    
+
+    public static List<GameObject> spawnCarsForAllPlayers(bool alsoSpawnCameras, Transform[] spawns)
     {
-        if (!PlayerPrefs.GetString("Player0_controlledBy").Equals(""))
-            spawnCarForPlayer("Player0", Vector3.zero, alsoSpawnCameras);
-        if (!PlayerPrefs.GetString("Player1_controlledBy").Equals(""))
-            spawnCarForPlayer("Player1", new Vector3(10, 0, 10), alsoSpawnCameras);
-        if (!PlayerPrefs.GetString("Player2_controlledBy").Equals(""))
-            spawnCarForPlayer("Player2", new Vector3(20, 0, 20), alsoSpawnCameras);
-        if (!PlayerPrefs.GetString("Player3_controlledBy").Equals(""))
-            spawnCarForPlayer("Player3", new Vector3(30, 0, 30), alsoSpawnCameras);
+        List<GameObject> spawnedCars = new List<GameObject>();
+
+        for(int i = 0; i < 4; i++)
+            if (!PlayerPrefs.GetString("Player"+i+"_controlledBy").Equals(""))
+                spawnedCars.Add(spawnCarForPlayer("Player"+i, spawns[i], alsoSpawnCameras));
 
         if(alsoSpawnCameras)
         {
@@ -122,5 +130,6 @@ public class CarFactory : MonoBehaviour {
                     break;
             }
         }
+        return spawnedCars;
     }
 }

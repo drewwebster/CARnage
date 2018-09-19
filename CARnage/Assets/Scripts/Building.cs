@@ -34,7 +34,7 @@ public class Building : MonoBehaviour {
         buildingParts.Remove(part);
         fundamentalBuildingParts.Remove(part);
         //transform.parent.GetComponentInChildren<Text>().text = (int)getPercentage() + "%";
-        Debug.Log(getPercentage());
+        //Debug.Log(getPercentage());
     }
 
     public void destroyMe()
@@ -45,7 +45,7 @@ public class Building : MonoBehaviour {
         foreach (GameObject part in buildingParts)
             if(part.GetComponent<buildingCollision>() && !part.GetComponent<buildingCollision>().destroyed)
                 part.GetComponent<buildingCollision>().destroyMe(-1, DamageType.DIRECT_DAMAGE, lastDamager);
-        Gear.spawnGears(gearsDropped, this, CARnageModifier.GearSource.ENVIRONMENT);
+        Gear.spawnGears(gearsDropped, this, CARnageModifier.GearSource.ENVIRONMENT, lastDamager);
     }
 
     public void checkIfDestroyed()

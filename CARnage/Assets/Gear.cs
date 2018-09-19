@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class Gear : MonoBehaviour {
 
-    CARnageCar rel_car;
+    public CARnageCar rel_car;
+    public CARnageCar magnetCar;
     Building rel_building;
     CARnageModifier.GearSource source;
-    bool collectable;
+    public bool collectable;
 
-    public static void spawnGears(int amount, CARnageCar car, CARnageModifier.GearSource source)
+    public static void spawnGears(int amount, CARnageCar car, CARnageModifier.GearSource source, CARnageCar collectingCar)
     {
-        Debug.Log("gears dropped: " + amount);
         for (int i = 0; i < amount; i++)
         {
             GameObject go = Instantiate(Resources.Load<GameObject>("GEAR"));
             go.GetComponent<Gear>().rel_car = car;
+            go.GetComponent<Gear>().magnetCar = collectingCar;
             go.GetComponent<Gear>().source = source;
             go.GetComponent<Gear>().Invoke("appear", i * 0.1f);
         }
     }
-    public static void spawnGears(int amount, Building building, CARnageModifier.GearSource source)
+    public static void spawnGears(int amount, Building building, CARnageModifier.GearSource source, CARnageCar collectingCar)
     {
-        Debug.Log("gears dropped: " + amount);
         for (int i = 0; i < amount; i++)
         {
             GameObject go = Instantiate(Resources.Load<GameObject>("GEAR"));
             go.GetComponent<Gear>().rel_building = building;
+            go.GetComponent<Gear>().magnetCar = collectingCar;
             go.GetComponent<Gear>().source = source;
             go.GetComponent<Gear>().Invoke("appear", i * 0.1f);
         }
@@ -62,10 +63,9 @@ public class Gear : MonoBehaviour {
     //    }
     //}
 
-    CARnageCar magnetCar;
     private void OnTriggerEnter(Collider other)
     {
-        if (!collectable)
+        if (!collectable || magnetCar)
             return;
         // magnet
         CARnageCar car = other.GetComponentInParent<CARnageCar>();
@@ -77,11 +77,10 @@ public class Gear : MonoBehaviour {
 
     private void Update()
     {
-        if(magnetCar != null)
+        if (magnetCar != null)
         {
             transform.LookAt(magnetCar.transform);
             float dist = Vector3.Distance(transform.position, magnetCar.transform.position);
-            //Debug.Log("dist to magnetcar: " + dist);
             float mult = (15 - dist) * (15 - dist);
             GetComponent<Rigidbody>().AddForce(transform.forward * mult);
             if (dist <= 2.5f)
@@ -90,8 +89,8 @@ public class Gear : MonoBehaviour {
                 magnetCar.getModController().onGearCollected(1);
                 Destroy(gameObject);
             }
-            else if (dist >= 15)
-                magnetCar = null;
+            //else if (dist >= 15)
+            //    magnetCar = null;
         }
     }
 }

@@ -362,6 +362,7 @@
     <Compile Include="Assets\explodableHitbox.cs" />
     <Compile Include="Assets\explosionHitbox.cs" />
     <Compile Include="Assets\Gear.cs" />
+    <Compile Include="Assets\InstantDestructor.cs" />
     <Compile Include="Assets\meleeHitbox.cs" />
     <Compile Include="Assets\PlayerSelectionLogic.cs" />
     <Compile Include="Assets\PrePlayerSelection.cs" />
@@ -373,6 +374,7 @@
     <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
+    <Compile Include="Assets\SceneSelection.cs" />
     <Compile Include="Assets\Scripts\AttachOnStart.cs" />
     <Compile Include="Assets\Scripts\Building.cs" />
     <Compile Include="Assets\Scripts\buildingCollision.cs" />
@@ -398,6 +400,7 @@
     <Compile Include="Assets\Scripts\WeaponController.cs" />
     <Compile Include="Assets\Scripts\WeaponFactory.cs" />
     <Compile Include="Assets\spawnableOffset.cs" />
+    <Compile Include="Assets\SpawnLogic.cs" />
     <Compile Include="Assets\SRIA\Scripts\C.cs" />
     <Compile Include="Assets\SRIA\Scripts\ChatExample\ChatExample.cs" />
     <Compile Include="Assets\SRIA\Scripts\ContentSizeFitterExample\ContentSizeFitterExample.cs" />
@@ -479,8 +482,8 @@
     <Compile Include="Assets\SRIA\Scripts\Util\SimpleImageDownloader.cs" />
     <Compile Include="Assets\syncYangle.cs" />
     <Compile Include="Assets\TestConsole.cs" />
-    <Compile Include="Assets\TestSpawnLogic.cs" />
     <Compile Include="Assets\trashWeaponSpot.cs" />
+    <Compile Include="Assets\VolcanoPort.cs" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\SimpleClear.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\MotionBlurClear.shader" />

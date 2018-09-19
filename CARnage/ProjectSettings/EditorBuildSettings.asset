@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/PrePlayerSelection.unity
+    guid: c4fb7f999bb042a4c8d6c8462549d159
+  - enabled: 1
     path: Assets/Scenes/CAR_SELECTION.unity
     guid: 998bbdb4711422741b7c311cd42ba287
   - enabled: 1
@@ -18,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/PLAYER_SELECTION.unity
     guid: 37107e716405213498bd7c696c2fd5ca
   - enabled: 1
-    path: Assets/Scenes/PrePlayerSelection.unity
-    guid: c4fb7f999bb042a4c8d6c8462549d159
+    path: Assets/Scenes/Level_Volcano.unity
+    guid: 3af7c95a8c044df4b8f1423604c5c7fb
+  - enabled: 1
+    path: Assets/Scenes/SCENE_SELECTION_RANDOM.unity
+    guid: 4da6a5f4a1d88594f96a8a2b3c751df0
   m_configObjects: {}

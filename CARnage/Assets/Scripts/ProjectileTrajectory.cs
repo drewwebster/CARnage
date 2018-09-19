@@ -25,7 +25,7 @@ public class ProjectileTrajectory : MonoBehaviour {
         if (other.GetComponent<ProjectileTrajectory>() && other.GetComponent<ProjectileTrajectory>().rel_weapon == rel_weapon)
             return;
 
-        Debug.Log(other.gameObject.name);
+        //Debug.Log(other.gameObject.name);
         if (other.GetComponent<meleeHitbox>())
             return;
 

@@ -169,7 +169,7 @@ public class CARnageCar : MonoBehaviour {
         damage *= getModController().getSelfDMG_Multiplier(damager, damageType);
         if(damager != null)
             damage *= damager.getModController().getDMG_Multiplier(damageType, this);
-        Debug.Log("Damage dealt: " + damage);
+        //Debug.Log("Damage dealt: " + damage);
         //if (damage <= 0) // TODO: See if this works out
         //    return;
 
@@ -433,7 +433,7 @@ public class CARnageCar : MonoBehaviour {
         GetComponent<RCC_CarControllerV3>().canControl = false;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         getWeaponController().dropAllEquippedWeapons();
-        dropGears((int)(currentGears * getModController().getDroppedGears_Multiplier()));
+        dropGears((int)(currentGears * getModController().getDroppedGears_Multiplier()), lastDamager);
 
         foreach (RCC_WheelCollider wc in GetComponent<RCC_CarControllerV3>().allWheelColliders)
         {
@@ -473,6 +473,9 @@ public class CARnageCar : MonoBehaviour {
         GetComponent<RCC_CarControllerV3>().FrontRightWheelTransform.gameObject.GetComponent<Rigidbody>().AddForce(Random.Range(-10, 10), Random.Range(0, 10), Random.Range(-10, 10), ForceMode.Impulse);
         GetComponent<RCC_CarControllerV3>().RearLeftWheelTransform.gameObject.GetComponent<Rigidbody>().AddForce(Random.Range(-10, 10), Random.Range(0, 10), Random.Range(-10, 10), ForceMode.Impulse);
         GetComponent<RCC_CarControllerV3>().RearRightWheelTransform.gameObject.GetComponent<Rigidbody>().AddForce(Random.Range(-10, 10), Random.Range(0, 10), Random.Range(-10, 10), ForceMode.Impulse);
+
+        GameObject.Find("SPAWNLOGIC").GetComponent<SpawnLogic>().onCarDestroyed(gameObject);
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -525,13 +528,13 @@ public class CARnageCar : MonoBehaviour {
         return false;
     }
 
-    public void dropGears(int amount)
+    public void dropGears(int amount, CARnageCar gearReceiver)
     {
         amount = Mathf.Min(amount, currentGears);
         if (amount <= 0)
             return;
         currentGears -= amount;
-        Gear.spawnGears(amount, this, CARnageModifier.GearSource.CAR);
+        Gear.spawnGears(amount, this, CARnageModifier.GearSource.CAR, gearReceiver);
     }
 
     public void repair()
@@ -578,7 +581,6 @@ public class CARnageCar : MonoBehaviour {
     {
         amount *= (int)getModController().getCollectedGears_Multiplier(source);
         currentGears = Mathf.Min(currentGears + amount, maxGears);
-        Debug.Log("current gears: " + currentGears + "/" + maxGears);
     }
 
     public enum CarColor
