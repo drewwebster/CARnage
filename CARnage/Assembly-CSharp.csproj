@@ -362,9 +362,11 @@
     <Compile Include="Assets\explodableHitbox.cs" />
     <Compile Include="Assets\explosionHitbox.cs" />
     <Compile Include="Assets\Gear.cs" />
+    <Compile Include="Assets\GlobalUI.cs" />
     <Compile Include="Assets\InstantDestructor.cs" />
     <Compile Include="Assets\meleeHitbox.cs" />
     <Compile Include="Assets\PlayerSelectionLogic.cs" />
+    <Compile Include="Assets\PlayerUI.cs" />
     <Compile Include="Assets\PrePlayerSelection.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
@@ -512,7 +514,6 @@
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders 2.0 Generated\Examples\Default\Old School.shader" />
     <None Include="Assets\3rdParty\Cartoon FX Pack\FX Mega Pack 2\FX Mega Pack 2 - Readme.txt" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
-    <None Include="Assets\3rdParty\Grunge UI Kit\Source Files\Fonts\Frijole Font\FrijoleLicense_OFL.txt" />
     <None Include="Assets\3rdParty\PolygonMini_Fantasy\Shaders\LocalFog_Multiply.shader" />
     <None Include="Assets\3rdParty\Cartoon FX Pack\Shaders\CFX2 Particle Alpha Blend Add.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Environment\Water (Basic)\DO_NOT_WORK_IN_VR.txt" />
@@ -686,7 +687,6 @@
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders 2.0 Generated\Examples\Default\Sketch.shader" />
     <None Include="Assets\3rdParty\Caronte\CaronteFX\Plugin\Materials\Shaders\Oven\CFX Corpuscles Diffuse.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader" />
-    <None Include="Assets\3rdParty\Grunge UI Kit\Source Files\Fonts\Frijole Font\OFL-FAQ.txt" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders 2.0\Include\TCP2_Include.cginc" />
     <None Include="Assets\3rdParty\JMO Assets\Toony Colors Pro\Shaders 2.0 Generated\Examples\Default\HSV.shader" />
     <None Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />

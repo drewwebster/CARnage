@@ -7,6 +7,14 @@ public class CARnageAuxiliary : MonoBehaviour {
     public static float destroyAfterSec = 10;
     public static bool isPaused;
 
+    public static void togglePause()
+    {
+        if (isPaused)
+            pauseEnd();
+        else
+            pause();
+    }
+
     public static void pause()
     {
         Time.timeScale = 0.0f;

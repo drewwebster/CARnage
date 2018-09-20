@@ -8151,7 +8151,7 @@ MonoBehaviour:
   SteeringWheel: {fileID: 0}
   steeringWheelRotateAround: 0
   steeringWheelAngleMultiplier: 3
-  _wheelTypeChoise: 1
+  _wheelTypeChoise: 2
   biasedWheelTorque: 100
   COM: {fileID: 4217057007153966}
   canControl: 1

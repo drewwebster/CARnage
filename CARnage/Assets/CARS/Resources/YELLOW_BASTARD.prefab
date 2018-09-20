@@ -2095,7 +2095,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1336976281499812}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0.15115736, y: 1.36, z: -3.5639937}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4913718142523982}
@@ -4515,7 +4515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modID: 69
   modName: Big Fat Kill
-  description: +100% Melee Weapon Size.
+  description: +50% Melee Weapon Size.
   image: {fileID: 21300000, guid: 5fd628f48b0075748b26aeb603823ac9, type: 3}
 --- !u!114 &114002022355024958
 MonoBehaviour:
@@ -4844,13 +4844,15 @@ MonoBehaviour:
   maxHPBar: {fileID: 114025961104104946}
   maxShieldBar: {fileID: 114921732364700494}
   maxNitroBar: {fileID: 114658923326164950}
-  speedUI: {fileID: 0}
   observingCamera: {fileID: 0}
   goShield: {fileID: 1306145954263748}
   goShieldShattered: {fileID: 1163980536919258, guid: 2d5b01873b228a2458f37a4d556eab2a,
     type: 2}
   nakedModel: {fileID: 1564591678270230}
   controlledBy: 0
+  isIndestructible: 0
+  lastDamager: {fileID: 0}
+  lastDamageType: 7
   fireTicks: 0
   acidTicks: 0
   drainTicks: 0
@@ -4974,7 +4976,7 @@ MonoBehaviour:
   SteeringWheel: {fileID: 0}
   steeringWheelRotateAround: 0
   steeringWheelAngleMultiplier: 3
-  _wheelTypeChoise: 1
+  _wheelTypeChoise: 2
   biasedWheelTorque: 100
   COM: {fileID: 4252937273290830}
   canControl: 1

@@ -3317,7 +3317,7 @@ MonoBehaviour:
   SteeringWheel: {fileID: 0}
   steeringWheelRotateAround: 0
   steeringWheelAngleMultiplier: 3
-  _wheelTypeChoise: 1
+  _wheelTypeChoise: 2
   biasedWheelTorque: 100
   COM: {fileID: 4394745783851328}
   canControl: 1
@@ -4143,6 +4143,7 @@ MonoBehaviour:
     type: 2}
   nakedModel: {fileID: 1279799957321484}
   controlledBy: 0
+  isIndestructible: 0
   fireTicks: 0
   acidTicks: 0
   drainTicks: 0

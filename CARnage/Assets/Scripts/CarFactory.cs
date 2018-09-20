@@ -11,7 +11,7 @@ public class CarFactory : MonoBehaviour {
     }
     public static GameObject spawnCarForPlayer(string playerName, Transform trans, bool alsoSpawnCamera)
     {
-        Debug.Log("Spawn for: " + playerName + "_Car | " + PlayerPrefs.GetString(playerName + "_Car"));
+        //Debug.Log("Spawn for: " + playerName + "_Car | " + PlayerPrefs.GetString(playerName + "_Car"));
         return spawnCar((CarModel)Enum.Parse(typeof(CarModel), PlayerPrefs.GetString(playerName + "_Car")), trans, playerName, alsoSpawnCamera);
     }
     public static GameObject spawnCar(CarModel carModel, Transform trans, string playerName, bool alsoSpawnCamera)
@@ -110,7 +110,7 @@ public class CarFactory : MonoBehaviour {
         if(alsoSpawnCameras)
         {
             GameObject multiplayerCanvas = Instantiate(Resources.Load<GameObject>("CARnageMultiplayerCanvas"));
-            Debug.Log(CARnageAuxiliary.getPlayersPlayingCount());
+            //Debug.Log(CARnageAuxiliary.getPlayersPlayingCount());
             switch(CARnageAuxiliary.getPlayersPlayingCount())
             {
                 case 1:

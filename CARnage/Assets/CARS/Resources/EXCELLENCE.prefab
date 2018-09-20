@@ -2404,6 +2404,7 @@ MonoBehaviour:
   goShieldShattered: {fileID: 0}
   nakedModel: {fileID: 1208334008270098}
   controlledBy: 0
+  isIndestructible: 0
   fireTicks: 0
   acidTicks: 0
   drainTicks: 0
@@ -2617,7 +2618,7 @@ MonoBehaviour:
   SteeringWheel: {fileID: 0}
   steeringWheelRotateAround: 0
   steeringWheelAngleMultiplier: 3
-  _wheelTypeChoise: 1
+  _wheelTypeChoise: 2
   biasedWheelTorque: 100
   COM: {fileID: 4462439804182486}
   canControl: 1

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/PLAYER_SELECTION.unity
+- path: Assets/Scenes/Level_Volcano.unity
   isLoaded: 1
   isActive: 1

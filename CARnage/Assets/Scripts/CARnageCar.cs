@@ -42,9 +42,7 @@ public class CARnageCar : MonoBehaviour {
     public Image maxHPBar;
     public Image maxShieldBar;
     public Image maxNitroBar;
-
-    public GameObject speedUI;
-
+    
     public GameObject observingCamera;
 
     public GameObject goShield;
@@ -66,8 +64,8 @@ public class CARnageCar : MonoBehaviour {
     float secondCounter;
     private void Update()
     {
-        if (speedUI != null)
-            speedUI.GetComponent<Text>().text = (int)(GetComponent<RCC_CarControllerV3>().speed) + " km/h";
+        //if (speedUI != null)
+        //    speedUI.GetComponent<Text>().text = (int)(GetComponent<RCC_CarControllerV3>().speed) + " km/h";
 
         if (isShielded() && lastDamagedTime + (shieldRegSeconds * getModController().getShieldRegenerationOnset_Multiplier()) < Time.time)
             regenerateShield(Time.deltaTime * shieldRepairRate * getModController().getShieldRegeneration_Multiplier());
@@ -78,7 +76,18 @@ public class CARnageCar : MonoBehaviour {
             secondCounter -= 1;
             getModController().onSecondPassed();
         }
+
+        if (controlledBy == CARnageAuxiliary.ControllerType.MouseKeyboard && Input.GetKeyDown(KeyCode.R))
+            resetStart = Time.time;
+        if (controlledBy == CARnageAuxiliary.ControllerType.MouseKeyboard && Input.GetKey(KeyCode.R))
+            if (Time.time - resetStart >= 3)
+            {
+                transform.position += Vector3.up * 30;
+                GetComponent<Rigidbody>().velocity = Vector3.zero;
+                resetStart = float.PositiveInfinity;
+            }
     }
+    float resetStart;
 
     public float getRCC_speed()
     {
@@ -160,7 +169,10 @@ public class CARnageCar : MonoBehaviour {
             destroyMe();
     }
 
-    CARnageCar lastDamager;
+    [HideInInspector]
+    public CARnageCar lastDamager;
+    [HideInInspector]
+    public DamageType lastDamageType = DamageType.DIRECT_DAMAGE;
     public void damageMe(float damage, CARnageCar damager, DamageType damageType)
     {
         if (isIndestructible) // preview screen
@@ -174,7 +186,9 @@ public class CARnageCar : MonoBehaviour {
         //    return;
 
         lastDamagedTime = Time.time;
-        lastDamager = damager;
+        if(damager)
+            lastDamager = damager;
+        lastDamageType = damageType;
 
         bool isIgnoringEnemyShield = (damager != null) ? damager.getModController().isIgnoringEnemyShield() : false;
 
@@ -426,6 +440,8 @@ public class CARnageCar : MonoBehaviour {
 
     public void destroyMe()
     {
+        if (destroyed)
+            return;
         if (lastDamager != null)
             lastDamager.getModController().onDestroyingCar(this);
         getModController().onSelfDestroyed(lastDamager);

@@ -247,8 +247,8 @@ public class RCC_Camera : MonoBehaviour{
         //if(Input.GetKeyDown(RCCSettings.changeCameraKB)){
         //	ChangeCamera();
         //}
-        if (Input.GetKeyDown(KeyCode.C))
-            switchTopModes();
+        //if (Input.GetKeyDown(KeyCode.C))
+        //    switchTopModes();
 
 	}
 
@@ -404,14 +404,14 @@ public class RCC_Camera : MonoBehaviour{
 
 	}
     
-    public bool lockZ = true;
-    void switchTopModes()
-    {
-        if (lockZ)
-            lockZ = false;
-        else
-            lockZ = true;
-    }
+    //public bool lockZ = true;
+    //void switchTopModes()
+    //{
+    //    if (lockZ)
+    //        lockZ = false;
+    //    else
+    //        lockZ = true;
+    //}
 
 	void TOP(){
 
@@ -434,13 +434,13 @@ public class RCC_Camera : MonoBehaviour{
         if(!float.IsNaN(newPos.x)) // custom: To deal with timeScale=0 @pause menus
             transform.position = newPos;
 
-        if(lockZ)
-        {
+        //if(lockZ)
+        //{
             Vector3 fixedAngle = new Vector3(topCameraAngle.x, playerCar.transform.rotation.eulerAngles.y, topCameraAngle.z); // CUSTOM
             transform.rotation = Quaternion.Euler(fixedAngle);
-        }
-        else
-            transform.rotation = Quaternion.Euler (topCameraAngle);
+        //}
+        //else
+        //    transform.rotation = Quaternion.Euler (topCameraAngle);
 
         pastFollowerPosition = transform.position;
 		pastTargetPosition = targetPosition;

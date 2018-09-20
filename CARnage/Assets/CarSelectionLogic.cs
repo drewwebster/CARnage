@@ -1067,7 +1067,22 @@ public class CarSelectionLogic : MonoBehaviour {
     void finishSelection()
     {
         // save preferred selection
-        PlayerPrefs.SetString(selectingPlayer+"_controlledBy", "MouseKeyboard");
+        switch(selectingPlayer)
+        {
+            case "Player0":
+                PlayerPrefs.SetString(selectingPlayer + "_controlledBy", "MouseKeyboard");
+                break;
+            case "Player1":
+                PlayerPrefs.SetString(selectingPlayer + "_controlledBy", "Controller1");
+                break;
+            case "Player2":
+                PlayerPrefs.SetString(selectingPlayer + "_controlledBy", "Controller2");
+                break;
+            case "Player3":
+                PlayerPrefs.SetString(selectingPlayer + "_controlledBy", "Controller3");
+                break;
+        }
+        
         PlayerPrefs.SetString(selectingPlayer+"_Car", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString());
         PlayerPrefs.SetString(selectingPlayer+"_CarColor_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString(), selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carColor.ToString());
         if(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon())

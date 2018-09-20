@@ -14,6 +14,9 @@ public class SpawnLogic : MonoBehaviour {
         if (spawns.Length == 0)
             Debug.LogWarning("WARN: No spawns on this map.");
         carList = CarFactory.spawnCarsForAllPlayers(true, spawns);
+
+        for(int i = 0; i < CARnageAuxiliary.getPlayersPlayingCount(); i++)
+            GameObject.Find("UI_Player" + i).GetComponent<PlayerUI>().init(carList[i].GetComponent<CARnageCar>());
     }
 	
 	public void onCarDestroyed(GameObject car)

@@ -279,13 +279,13 @@ public class CARnageModifier : MonoBehaviour {
         if (modID == ModID.IMPROVISE)
             weapon.addRandomUpgrade();
         if (modID == ModID.BIG_FAT_KILL && weapon.damageType == DamageType.MELEE)
-            weapon.transform.localScale *= 2;
+            weapon.transform.localScale *= 1.5f;
     }
 
     public void onWeaponDropped(CARnageWeapon weapon)
     {
         if (modID == ModID.BIG_FAT_KILL && weapon.damageType == DamageType.MELEE)
-            weapon.transform.localScale /= 2;
+            weapon.transform.localScale /= 1.5f;
     }
 
     public void onProjectileShot(ProjectileTrajectory projectile)

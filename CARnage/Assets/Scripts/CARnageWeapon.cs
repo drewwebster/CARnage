@@ -546,12 +546,12 @@ public class CARnageWeapon : MonoBehaviour {
             angleDegrees += 360;
 
         // if: camera not y-rotation-Normalized
-        if(rel_camera != null && !rel_camera.GetComponent<RCC_Camera>().lockZ)
-        {
-            angleDegrees += rel_car.transform.localRotation.eulerAngles.y;
-            //angleDegrees -= rel_camera.transform.localRotation.eulerAngles.y;
-            angleDegrees -= rel_camera.GetComponentInChildren<Camera>().transform.localRotation.eulerAngles.y;
-        }
+        //if(rel_camera != null && !rel_camera.GetComponent<RCC_Camera>().lockZ)
+        //{
+        //    angleDegrees += rel_car.transform.localRotation.eulerAngles.y;
+        //    //angleDegrees -= rel_camera.transform.localRotation.eulerAngles.y;
+        //    angleDegrees -= rel_camera.GetComponentInChildren<Camera>().transform.localRotation.eulerAngles.y;
+        //}
         
         transform.localRotation = Quaternion.Euler(new Vector3(0, -angleDegrees + addAngle, 0));
 
