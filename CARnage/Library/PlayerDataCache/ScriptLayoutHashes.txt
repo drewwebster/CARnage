@@ -57,7 +57,7 @@ a30beadf4d109f44144b9a9f42e61cbf Assembly-CSharp.dll:UnityStandardAssets.ImageEf
 a5ea161a733682e6d4f4402bdf6db22d Assembly-CSharp.dll:.bl_MMExampleManager
 98faa35b2670502d11be1c8c9777407c Assembly-CSharp.dll:CaronteFX.CNScriptPlayer
 c35752b81d25e001fee445da226f3c4e Assembly-CSharp.dll:UnityStandardAssets.Vehicles.Car.Suspension
-deecc7c65fa4f44ca1ffd74eb8c48124 Assembly-CSharp.dll:.CARnageCar
+66e8c85280e9d08da638d9a83f8ec7f8 Assembly-CSharp.dll:.CARnageCar
 23b50ef73e2c1a8a76860d35bcbbf8fc Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.GlobalFog
 92680f6a99aa8eaa9490b50f2ca768d3 Assembly-CSharp.dll:frame8.ScrollRectItemsAdapter.Util.PullToRefresh.PullToRefreshBehaviour
 a0aecdee73cb634ef9902e00a3c65eca Assembly-CSharp.dll:.damageCar
@@ -240,6 +240,7 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
+25d56d6ed04ed2261979b7ec4daa8fbc Assembly-CSharp.dll:.GlobalUI
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.RCC_WheelCamera
 602803e7721a9c0fc17376f55f3c6921 Assembly-CSharp.dll:.RCC_UIDashboardButton
 69f05d94227d8676c14071b3dbe1b417 Assembly-CSharp.dll:UnityStandardAssets.Vehicles.Aeroplane.AeroplaneController
@@ -358,6 +359,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 25d6d479874a494b7b32f5e32e3f6d95 Assembly-CSharp.dll:.bl_MiniMapItem
 8522d54731b95d0f056c9f250185eb83 Assembly-CSharp.dll:UnityStandardAssets.SceneUtils.SlowMoButton
 cff2f7383b123d207597108afcecde7e Assembly-CSharp.dll:.CFX_AutoRotate
+f5462c8a233869b1f2142923e45eb92d Assembly-CSharp.dll:.PlayerUI
 01c7789c78a4c3a26a68cfb9d786abf4 Assembly-CSharp.dll:.ExplosiveBarrelScript
 23f6aec9e1c625f78075fa8bc9a94130 Assembly-CSharp.dll:.spinCollectable
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.RCC_HoodCamera
@@ -492,4 +494,3 @@ f464cb410f6c349883dd97e47ccdb8cb Assembly-CSharp.dll:.GasTankScript
 e4fa756fe6a12420cf596c59814c52b0 Assembly-CSharp.dll:.DynamicDOF
 daabd8d8800a87cff11f866c4d06a232 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ContrastStretch
 0f3d4bb7128a287827d041c696039525 Assembly-CSharp.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
-f5462c8a233869b1f2142923e45eb92d Assembly-CSharp.dll:.PlayerUI

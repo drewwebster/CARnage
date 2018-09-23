@@ -16,6 +16,10 @@ public class CarFactory : MonoBehaviour {
     }
     public static GameObject spawnCar(CarModel carModel, Transform trans, string playerName, bool alsoSpawnCamera)
     {
+        Array values = Enum.GetValues(typeof(CarModel));
+        while (carModel == CarModel.RANDOM_CAR)
+            carModel = (CarModel)values.GetValue(UnityEngine.Random.Range(0, values.Length));
+
         Vector3 position = new Vector3(20000, 0, 20000);
         Quaternion rotation = Quaternion.identity;
         if(trans != null)
@@ -110,8 +114,9 @@ public class CarFactory : MonoBehaviour {
         if(alsoSpawnCameras)
         {
             GameObject multiplayerCanvas = Instantiate(Resources.Load<GameObject>("CARnageMultiplayerCanvas"));
+            multiplayerCanvas.name = "CARnageMultiplayerCanvas";
             //Debug.Log(CARnageAuxiliary.getPlayersPlayingCount());
-            switch(CARnageAuxiliary.getPlayersPlayingCount())
+            switch (CARnageAuxiliary.getPlayersPlayingCount())
             {
                 case 1:
                     Destroy(multiplayerCanvas);

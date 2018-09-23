@@ -1730,7 +1730,7 @@ MonoBehaviour:
   collectableFX: {fileID: 1955556789932856}
   ShootSound: {fileID: 8300000, guid: d6cd83642b48c6b41bc965e02bb7246a, type: 3}
   ReloadSound: {fileID: 8300000, guid: c20cd36a501755744ae56a687ba4bb79, type: 3}
-  WeaponGameObject: {fileID: 0}
+  WeaponGameObject: {fileID: 1183721494338894}
   WeaponModelGameObject: {fileID: 0}
   WeaponModelWhenCollectableGameObject: {fileID: 0}
   BulletSpawnGO: {fileID: 1426717010553636}

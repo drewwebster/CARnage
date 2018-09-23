@@ -642,4 +642,11 @@ public class CARnageCar : MonoBehaviour {
         if(other.GetComponentInParent<CARnageWeapon>() != null)
             other.GetComponentInParent<CARnageWeapon>().doParticleDMG(this);
     }
+
+    public PlayerUI relPlayerUI;
+    public void onModsChanged()
+    {
+        if (relPlayerUI)
+            relPlayerUI.onModsChanged();
+    }
 }

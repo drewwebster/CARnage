@@ -464,24 +464,28 @@ public class CarSelectionLogic : MonoBehaviour {
         if (mods != null && mods.Length > 0)
         {
             CARnageAuxiliary.FindDeepChild(playerTrans, "ModLImage").GetComponent<Image>().sprite = mods[0].image;
+            CARnageAuxiliary.FindDeepChild(playerTrans, "ModLImage").GetComponent<Image>().color = Color.white;
             CARnageAuxiliary.FindDeepChild(playerTrans, "ModLName").GetComponent<Text>().text = mods[0].modName;
             CARnageAuxiliary.FindDeepChild(playerTrans, "ModLText").GetComponent<Text>().text = CARnageAuxiliary.colorMe(mods[0].description);
         }
         else
         {
             CARnageAuxiliary.FindDeepChild(playerTrans, "ModLImage").GetComponent<Image>().sprite = null;
+            CARnageAuxiliary.FindDeepChild(playerTrans, "ModLImage").GetComponent<Image>().color = new Color(0,0,0,0);
             CARnageAuxiliary.FindDeepChild(playerTrans, "ModLName").GetComponent<Text>().text = "";
             CARnageAuxiliary.FindDeepChild(playerTrans, "ModLText").GetComponent<Text>().text = "";
         }
         if (mods != null && mods.Length > 1)
         {
             CARnageAuxiliary.FindDeepChild(playerTrans, "ModRImage").GetComponent<Image>().sprite = mods[1].image;
+            CARnageAuxiliary.FindDeepChild(playerTrans, "ModRImage").GetComponent<Image>().color = Color.white;
             CARnageAuxiliary.FindDeepChild(playerTrans, "ModRName").GetComponent<Text>().text = mods[1].modName;
             CARnageAuxiliary.FindDeepChild(playerTrans, "ModRText").GetComponent<Text>().text = CARnageAuxiliary.colorMe(mods[1].description);
         }
         else
         {
             CARnageAuxiliary.FindDeepChild(playerTrans, "ModRImage").GetComponent<Image>().sprite = null;
+            CARnageAuxiliary.FindDeepChild(playerTrans, "ModRImage").GetComponent<Image>().color = new Color(0, 0, 0, 0);
             CARnageAuxiliary.FindDeepChild(playerTrans, "ModRName").GetComponent<Text>().text = "";
             CARnageAuxiliary.FindDeepChild(playerTrans, "ModRText").GetComponent<Text>().text = "";
         }
@@ -643,6 +647,11 @@ public class CarSelectionLogic : MonoBehaviour {
 
     public void nextCarSelectionState()
     {
+        if(selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel == CarModel.RANDOM_CAR)
+        {
+            finishSelection();
+            return;
+        }
         switch (currentState)
         {
             case CarSelectionState.SELECT_CAR:
@@ -1082,16 +1091,19 @@ public class CarSelectionLogic : MonoBehaviour {
                 PlayerPrefs.SetString(selectingPlayer + "_controlledBy", "Controller3");
                 break;
         }
-        
+
         PlayerPrefs.SetString(selectingPlayer+"_Car", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString());
-        PlayerPrefs.SetString(selectingPlayer+"_CarColor_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString(), selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carColor.ToString());
-        if(selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon())
-            PlayerPrefs.SetString(selectingPlayer+"_WeaponUpgrade_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().weaponName, selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().getFirstUpgrade().ToString());
-        
-        if (selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon())
-            PlayerPrefs.SetString(selectingPlayer+"_WeaponUpgrade_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon().weaponName, selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon().getFirstUpgrade().ToString());
-        PlayerPrefs.SetString(selectingPlayer+"_CarMod_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString() + "_0", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getModController().getMods()[0].modID.ToString());
-        PlayerPrefs.SetString(selectingPlayer+"_CarMod_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString() + "_1", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getModController().getMods()[1].modID.ToString());
+        if (selectedCar.GetComponent<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel != CarModel.RANDOM_CAR)
+        {
+            PlayerPrefs.SetString(selectingPlayer + "_CarColor_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString(), selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carColor.ToString());
+            if (selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon())
+                PlayerPrefs.SetString(selectingPlayer + "_WeaponUpgrade_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().weaponName, selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getLeftWeapon().getFirstUpgrade().ToString());
+
+            if (selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon())
+                PlayerPrefs.SetString(selectingPlayer + "_WeaponUpgrade_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon().weaponName, selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getWeaponController().getRightWeapon().getFirstUpgrade().ToString());
+            PlayerPrefs.SetString(selectingPlayer + "_CarMod_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString() + "_0", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getModController().getMods()[0].modID.ToString());
+            PlayerPrefs.SetString(selectingPlayer + "_CarMod_" + selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().carModel.ToString() + "_1", selectedCar.GetComponentInChildren<CarIcon>().rel_car.GetComponent<CARnageCar>().getModController().getMods()[1].modID.ToString());
+        }
 
         SceneManager.LoadScene("PLAYER_SELECTION");
     }

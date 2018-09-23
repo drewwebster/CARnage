@@ -4148,7 +4148,7 @@ MonoBehaviour:
   collectableFX: {fileID: 1208130519334828}
   ShootSound: {fileID: 8300000, guid: d6cd83642b48c6b41bc965e02bb7246a, type: 3}
   ReloadSound: {fileID: 8300000, guid: c20cd36a501755744ae56a687ba4bb79, type: 3}
-  WeaponGameObject: {fileID: 0}
+  WeaponGameObject: {fileID: 1519960370114522}
   WeaponModelGameObject: {fileID: 0}
   WeaponModelWhenCollectableGameObject: {fileID: 0}
   BulletSpawnGO: {fileID: 1529332330598294}
@@ -5277,16 +5277,18 @@ MonoBehaviour:
   maxHPBar: {fileID: 114644365375842760}
   maxShieldBar: {fileID: 114191147894980974}
   maxNitroBar: {fileID: 114819782956055528}
-  speedUI: {fileID: 0}
   observingCamera: {fileID: 0}
   goShield: {fileID: 1035138565048950}
   goShieldShattered: {fileID: 0}
   nakedModel: {fileID: 1390915971973976}
   controlledBy: 0
   isIndestructible: 0
+  lastDamager: {fileID: 0}
+  lastDamageType: 7
   fireTicks: 0
   acidTicks: 0
   drainTicks: 0
+  relPlayerUI: {fileID: 0}
 --- !u!114 &114966821334088474
 MonoBehaviour:
   m_ObjectHideFlags: 1

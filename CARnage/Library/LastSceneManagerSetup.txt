@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Level_Volcano.unity
+- path: Assets/3rdParty/PolygonCity/Scenes/Demo.unity
   isLoaded: 1
   isActive: 1

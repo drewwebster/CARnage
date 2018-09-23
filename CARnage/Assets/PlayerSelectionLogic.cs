@@ -62,13 +62,27 @@ public class PlayerSelectionLogic : MonoBehaviour {
         GameObject carGO = CarFactory.spawnCarForPlayer("Player" + playerNr, null, false);
         CARnageAuxiliary.FindDeepChild(playerTrans,"CarIcon").GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>("CarIcons/" + PlayerPrefs.GetString("Player" + playerNr + "_Car"));
         
-        CARnageCar car = carGO.GetComponent<CARnageCar>();
-        CARnageAuxiliary.FindDeepChild(playerTrans, "CarName_Text").GetComponent<Text>().text = car.carName;
+        if(PlayerPrefs.GetString("Player" + playerNr + "_Car").Equals("RANDOM_CAR"))
+        {
+            displayPlayerInactive(playerNr);
+            CARnageAuxiliary.FindDeepChild(playerTrans, "CarName_Text").GetComponent<Text>().text = "RANDOM CAR";
+            CARnageAuxiliary.FindDeepChild(playerTrans, "CarIcon").GetComponentsInChildren<Image>()[0].color = new Color(50f / 255f, 50f / 255f, 50f / 255f);
+            CARnageAuxiliary.FindDeepChild(playerTrans, "CarIcon").GetComponentsInChildren<Image>()[1].color = Color.white;
+            CARnageAuxiliary.FindDeepChild(playerTrans, "CarIcon").GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>("CarIcons/RANDOM_CAR");
+            CARnageAuxiliary.FindDeepChild(playerTrans, "CarNamePanel").GetComponent<Image>().color = new Color(50f / 255f, 50f / 255f, 50f / 255f);
+            CARnageAuxiliary.FindDeepChild(playerTrans, "CarNamePanel").GetComponentInChildren<Text>().color =  Color.white;
+        }
+        else
+        {
+            CARnageCar car = carGO.GetComponent<CARnageCar>();
+            CARnageAuxiliary.FindDeepChild(playerTrans, "CarName_Text").GetComponent<Text>().text = car.carName;
 
-        CarSelectionLogic.displayMods(carGO, playerTrans);
-        CarSelectionLogic.displayWeapon(car.getWeaponController().getLeftWeapon(), "L", playerTrans);
-        CarSelectionLogic.displayWeapon(car.getWeaponController().getRightWeapon(), "R", playerTrans);
-        CarSelectionLogic.displayCarStats(car, playerTrans);
+            CarSelectionLogic.displayMods(carGO, playerTrans);
+            CarSelectionLogic.displayWeapon(car.getWeaponController().getLeftWeapon(), "L", playerTrans);
+            CarSelectionLogic.displayWeapon(car.getWeaponController().getRightWeapon(), "R", playerTrans);
+            CarSelectionLogic.displayCarStats(car, playerTrans);
+        }
+
         carGO.SetActive(false);
     }
 

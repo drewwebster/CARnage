@@ -6,6 +6,7 @@ public class CARnageAuxiliary : MonoBehaviour {
 
     public static float destroyAfterSec = 10;
     public static bool isPaused;
+    public static bool isStarted;
 
     public static void togglePause()
     {

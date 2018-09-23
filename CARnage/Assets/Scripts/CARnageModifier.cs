@@ -67,11 +67,24 @@ public class CARnageModifier : MonoBehaviour {
             used = true;
         }
 
-        if(modID == ModID.D6 && !used)
+        if (modID == ModID.D6 && !used)
         {
             ModFactory.spawnRandomMod(getCar());
             ModFactory.spawnRandomMod(getCar());
             used = true;
+            CARnageCar car = getCar();
+            DestroyImmediate(gameObject);
+            car.onModsChanged();
+            return;
+        }
+
+        if (modID == ModID.RANDOM_MOD && !used)
+        {
+            ModFactory.spawnRandomMod(getCar());
+            CARnageCar car = getCar();
+            DestroyImmediate(gameObject);
+            car.onModsChanged();
+            return;
         }
 
         if (modID == ModID.BIG_FAT_KILL)
@@ -81,6 +94,7 @@ public class CARnageModifier : MonoBehaviour {
                     weapon.transform.localScale *= 2;
         }
 
+        getCar().onModsChanged();
     }
 
     public void onDeleted()
@@ -116,6 +130,8 @@ public class CARnageModifier : MonoBehaviour {
                 if (weapon.damageType == DamageType.MELEE)
                     weapon.transform.localScale /= 2;
         }
+
+        getCar().onModsChanged();
     }
 
     public void onSecondPassed()
@@ -730,6 +746,7 @@ public class CARnageModifier : MonoBehaviour {
         AIRBORNE, // works
         APPOINTMENT, //
         GASWORKS, // works
-        UTTERLY_INSANE // works
+        UTTERLY_INSANE, // works
+        RANDOM_MOD
     }
 }

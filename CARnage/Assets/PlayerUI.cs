@@ -107,4 +107,17 @@ public class PlayerUI : MonoBehaviour {
         foreach (Text t in ModsGO.GetComponentsInChildren<Text>())
             t.enabled = false;
     }
+
+    public void onModsChanged()
+    {
+        foreach (Image i in ModsGO.GetComponentsInChildren<Image>())
+            DestroyImmediate(i.transform.parent.gameObject);
+
+        foreach (CARnageModifier mod in rel_car.getModController().getMods())
+        {
+            GameObject go = Instantiate(ModIconIngame_Prefab, ModsGO.transform);
+            go.GetComponentInChildren<Image>().sprite = mod.image;
+            go.GetComponentInChildren<Text>().text = CARnageAuxiliary.colorMe(mod.description);
+        }
+    }
 }

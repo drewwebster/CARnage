@@ -13,7 +13,8 @@ public class buildingCollision : MonoBehaviour {
         if (collision.gameObject.tag.Equals("Player") && !destroyed) // TODO: scale with "Impact"
         {
             CARnageCar dmgCar = collision.gameObject.GetComponent<CARnageCar>();
-            damageMe(collision.relativeVelocity.magnitude * dmgCar.impact, true, DamageType.RAM, dmgCar);
+            if(dmgCar)
+                damageMe(collision.relativeVelocity.magnitude * dmgCar.impact, true, DamageType.RAM, dmgCar);
         }
 
         //if (collision.gameObject.tag.Equals("BuildingPart") && collision.gameObject.GetComponent<buildingCollision>().getResidualForce() * impact >= criticalForce)

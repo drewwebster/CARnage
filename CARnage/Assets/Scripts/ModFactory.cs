@@ -8,7 +8,9 @@ public class ModFactory : MonoBehaviour {
     public static GameObject spawnRandomMod(CARnageCar car)
     {
         Array values = Enum.GetValues(typeof(CARnageModifier.ModID));
-        CARnageModifier.ModID mod = (CARnageModifier.ModID)values.GetValue(UnityEngine.Random.Range(0, values.Length));
+        CARnageModifier.ModID mod = CARnageModifier.ModID.RANDOM_MOD;
+        while(mod == CARnageModifier.ModID.RANDOM_MOD || mod == CARnageModifier.ModID.D6)
+            mod = (CARnageModifier.ModID)values.GetValue(UnityEngine.Random.Range(0, values.Length));
 
         return spawnMod(mod, car);
     }
