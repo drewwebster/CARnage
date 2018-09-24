@@ -6019,11 +6019,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1d0c0eabc95004b8764a073e07383f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: The Bride
-  weaponModel: 28
+  weaponName: "Es\xE9"
+  weaponModel: 27
   damageType: 1
-  Damage: 16
-  shotDelay: 1.2
+  Damage: 8
+  shotDelay: 0.8
   meleeDMGdelay: 0
   magazineSize: -1
   reloadTime: -1
@@ -6138,7 +6138,6 @@ MonoBehaviour:
   maxHPBar: {fileID: 114393514466238608}
   maxShieldBar: {fileID: 114564860192953510}
   maxNitroBar: {fileID: 114012923525662218}
-  speedUI: {fileID: 0}
   observingCamera: {fileID: 0}
   goShield: {fileID: 1434826023633048}
   goShieldShattered: {fileID: 1843332713123978, guid: fb853dd16bd98fd4988aa559506c9994,
@@ -6146,9 +6145,12 @@ MonoBehaviour:
   nakedModel: {fileID: 1211096212305072}
   controlledBy: 0
   isIndestructible: 0
+  lastDamager: {fileID: 0}
+  lastDamageType: 7
   fireTicks: 0
   acidTicks: 0
   drainTicks: 0
+  relPlayerUI: {fileID: 0}
 --- !u!114 &114171588558863850
 MonoBehaviour:
   m_ObjectHideFlags: 1

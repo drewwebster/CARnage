@@ -45,10 +45,14 @@ public class CarSelectionLogic : MonoBehaviour {
     public GameObject UpgradeOption_LIGHT;
     public GameObject UpgradeOption_AUTOMATIC;
 
-    List<GameObject> carList;
+    public List<GameObject> carList;
+    public List<GameObject> carIconList;
     GameObject selectedCar;
     CarSelectionState currentState;
     string selectingPlayer;
+
+    public GameObject CarIconPrefab;
+    public GameObject ModIconPrefab;
 
     // Use this for initialization
     void Start () {
@@ -73,33 +77,48 @@ public class CarSelectionLogic : MonoBehaviour {
                 GameObject.Find("CarSelectionState_Text").GetComponent<Text>().text = "Select Car";
                 if(!select_car_init)
                 {
-                    // create list
-                    Array values = Enum.GetValues(typeof(CarModel));
-                    carList = new List<GameObject>();
-                    foreach (CarModel model in values)
+                    carIconList = new List<GameObject>();
+                    foreach (GameObject carModel in carList)
                     {
-                        GameObject go = Instantiate(Resources.Load<GameObject>("CarIcon"), select_car_GO.transform);
-
-                        go.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>("CarIcons/" + model);
-                        GameObject CARgo = spawnCar(model);
-
-                        go.GetComponent<CarIcon>().rel_car = CARgo;
-                        carList.Add(go);
-
+                        CARnageCar car = carModel.GetComponent<CARnageCar>();
+                        GameObject go = Instantiate(CarIconPrefab, select_car_GO.transform);
+                        go.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>("CarIcons/" + car.carModel);
+                        go.GetComponent<CarIcon>().rel_car = carModel;
                         if (!selectingPlayer.Equals(""))
                         {
-                            if (PlayerPrefs.GetString(selectingPlayer + "_Car").Equals(CARgo.GetComponent<CARnageCar>().carModel.ToString()))
+                            if (PlayerPrefs.GetString(selectingPlayer + "_Car").Equals(car.carModel.ToString()))
                                 selectedCar = go;
-                            CarFactory.modifyCarToPlayerPrefs(CARgo, selectingPlayer);
+                            CarFactory.modifyCarToPlayerPrefs(carModel, selectingPlayer);
                         }
-                        CARgo.SetActive(false);
+                        carIconList.Add(go);
                     }
-                    // display
-                    currSortOrder = SortOrder.ARRAY;
-                    sortCars();
+                    // create list
+                    //Array values = Enum.GetValues(typeof(CarModel));
+                    //carList = new List<GameObject>();
+                    //foreach (CarModel model in values)
+                    //{
+                    //    GameObject go = Instantiate(CarIconPrefab, select_car_GO.transform);
+
+                    //    go.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>("CarIcons/" + model);
+                    //    GameObject CARgo = spawnCar(model);
+
+                    //    go.GetComponent<CarIcon>().rel_car = CARgo;
+                    //    carList.Add(go);
+
+                    //    if (!selectingPlayer.Equals(""))
+                    //    {
+                    //        if (PlayerPrefs.GetString(selectingPlayer + "_Car").Equals(CARgo.GetComponent<CARnageCar>().carModel.ToString()))
+                    //            selectedCar = go;
+                    //        CarFactory.modifyCarToPlayerPrefs(CARgo, selectingPlayer);
+                    //    }
+                    //    CARgo.SetActive(false);
+                    //}
+                    //// display
+                    //currSortOrder = SortOrder.ARRAY;
+                    //sortCars();
                     // show selected car
-                    if(selectedCar == null)
-                        selectedCar = carList[0];
+                    if (selectedCar == null)
+                        selectedCar = carIconList[0];
                     
                     showSelectedCar();
                     select_car_init = true;
@@ -132,6 +151,9 @@ public class CarSelectionLogic : MonoBehaviour {
     GameObject spawnCar(CarModel model)
     {
         GameObject CARgo = Instantiate(Resources.Load<GameObject>(model.ToString()), GameObject.Find("CAR_PREVIEW_SPAWN").transform);
+
+        //GameObject CARgo = GameObject.Find(model.ToString());
+
         CARgo.GetComponent<CARnageCar>().enabled = false;
         CARgo.GetComponent<RCC_CarControllerV3>().enabled = false;
         CARgo.GetComponent<CARnageCar>().isIndestructible = true;
@@ -442,7 +464,10 @@ public class CarSelectionLogic : MonoBehaviour {
             if (weapon.upgraded_automatic)
                 weaponImageUpgradeString = "+AUTOMATIC";
             CARnageAuxiliary.FindDeepChild(playerTrans, "Weapon" + handSide + "Image").GetComponent<Image>().sprite = Resources.Load<Sprite>("WeaponIcons/" + weapon.weaponModel + weaponImageUpgradeString);
-            CARnageAuxiliary.FindDeepChild(playerTrans, "Weapon" + handSide + "Image").GetComponent<Image>().enabled = true;
+            if(CARnageAuxiliary.FindDeepChild(playerTrans, "Weapon" + handSide + "Image").GetComponent<Image>().sprite)
+                CARnageAuxiliary.FindDeepChild(playerTrans, "Weapon" + handSide + "Image").GetComponent<Image>().enabled = true;
+            else
+                CARnageAuxiliary.FindDeepChild(playerTrans, "Weapon" + handSide + "Image").GetComponent<Image>().enabled = false;
         }
         else
         {
@@ -731,7 +756,8 @@ public class CarSelectionLogic : MonoBehaviour {
         selectedCar.GetComponentInChildren<Image>().color = new Color(50 / 255f, 50 / 255f, 50 / 255f);
         selectedCar.GetComponentsInChildren<Image>()[1].color = Color.white;
         selectedCar.GetComponent<CarIcon>().rel_car.SetActive(false);
-        int index = carList.IndexOf(selectedCar);
+        int index = carIconList.IndexOf(selectedCar);
+        Debug.Log("index: " + index);
         
         switch (direction)
         {
@@ -749,11 +775,11 @@ public class CarSelectionLogic : MonoBehaviour {
                 break;
         }
         
-        if (index >= carList.Count)
-            index = index % carList.Count;
+        if (index >= carIconList.Count)
+            index = index % carIconList.Count;
         if (index < 0)
-            index += carList.Count;
-        selectedCar = carList[index];
+            index += carIconList.Count;
+        selectedCar = carIconList[index];
         showSelectedCar();
         
     }
@@ -982,7 +1008,7 @@ public class CarSelectionLogic : MonoBehaviour {
             modList = new List<GameObject>();
             foreach (CARnageModifier.ModID mod in values)
             {
-                GameObject go = Instantiate(Resources.Load<GameObject>("ModIcon"), select_mod_GO.transform);
+                GameObject go = Instantiate(ModIconPrefab, select_mod_GO.transform);
                 GameObject MODgo = Instantiate(Resources.Load<GameObject>("MODSResources/" + mod), go.transform);
 
                 go.GetComponentsInChildren<Image>()[1].sprite = MODgo.GetComponent<CARnageModifier>().image;

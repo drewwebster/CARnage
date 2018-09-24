@@ -5398,7 +5398,6 @@ MonoBehaviour:
   maxHPBar: {fileID: 114847361544790554}
   maxShieldBar: {fileID: 114911225943959984}
   maxNitroBar: {fileID: 114290963353587806}
-  speedUI: {fileID: 0}
   observingCamera: {fileID: 0}
   goShield: {fileID: 1628030983298214}
   goShieldShattered: {fileID: 1843332713123978, guid: fb853dd16bd98fd4988aa559506c9994,
@@ -5406,9 +5405,12 @@ MonoBehaviour:
   nakedModel: {fileID: 1118433331009180}
   controlledBy: 0
   isIndestructible: 0
+  lastDamager: {fileID: 0}
+  lastDamageType: 7
   fireTicks: 0
   acidTicks: 0
   drainTicks: 0
+  relPlayerUI: {fileID: 0}
 --- !u!114 &114028987426098698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6367,7 +6369,7 @@ MonoBehaviour:
   timeDelayAfterShooting: 0
   projectileSpeed: -1
   knockbackMult: 0.25
-  weaponState: 3
+  weaponState: 0
   isRoofWeapon: 0
   isFrontWeapon: 0
   isSprayWeapon: 0

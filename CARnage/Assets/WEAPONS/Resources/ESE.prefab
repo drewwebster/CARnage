@@ -503,22 +503,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1d0c0eabc95004b8764a073e07383f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: The Bride
-  weaponModel: 28
+  weaponName: "Es\xE9"
+  weaponModel: 27
   damageType: 1
-  Damage: 16
-  shotDelay: 1.2
+  Damage: 8
+  shotDelay: 0.8
   meleeDMGdelay: 0
   magazineSize: -1
   reloadTime: -1
+  projectilesPerShot: 1
+  projectileScatterAngle: 0
+  projectileSpeedRNDRange: 0
   automatic: 0
+  timeDelayAfterShooting: 0
   projectileSpeed: -1
+  knockbackMult: 1
   weaponState: 3
+  isRoofWeapon: 0
+  isFrontWeapon: 0
+  isSprayWeapon: 0
   Projectile: {fileID: 0}
   meleeHitbox: {fileID: 1453993301734508}
   Projectile_Bulletcase: {fileID: 0}
   Magazine: {fileID: 0}
   shootFX: {fileID: 0}
+  shootFXinsta: {fileID: 0}
   collectableFX: {fileID: 1293462181531230}
   ShootSound: {fileID: 0}
   ReloadSound: {fileID: 0}
@@ -528,12 +537,14 @@ MonoBehaviour:
   BulletSpawnGO: {fileID: 0}
   BulletcaseSpawnGO: {fileID: 0}
   shootFXSpawnGO: {fileID: 0}
+  loadedProjectileGO: {fileID: 0}
   upgrade_MagazineGO: {fileID: 0}
   upgrade_ScopeGO: {fileID: 0}
   upgrade_SilencerGO: {fileID: 0}
   upgrade_AutomaticGO: {fileID: 0}
   upgrade_DamageGO: {fileID: 0}
   upgrade_LightGO: {fileID: 0}
+  throwableVariants: []
   upgraded_magazine: 0
   upgraded_scope: 0
   upgraded_silencer: 0
@@ -541,6 +552,7 @@ MonoBehaviour:
   upgraded_damage: 0
   upgraded_light: 0
   addAngle: 90
+  magazineLoaded: 0
 --- !u!114 &114388319427951852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -552,6 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2120b3b11e138cc48b2e1db3d8dfc525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reflectsProjectiles: 0
 --- !u!135 &135675939969037836
 SphereCollider:
   m_ObjectHideFlags: 1
